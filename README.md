@@ -1,6 +1,6 @@
 CSSCheckStyle
 =============
-
+<pre>
 @description {
 	destination: 检查代码中的不符合CSS编码规范的问题，并给出错误提示;
 	reference: 人人FED CSS编码规范;
@@ -113,4 +113,4 @@ CSSCheckStyle
     author: zhifu.wang;
     email: wangjeaf@gmail.com;
 }
-
+</pre>
