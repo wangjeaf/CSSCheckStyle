@@ -1,0 +1,19 @@
+@unit-test-expecteds {
+    2: need "extra space" before "1px solid red"
+    2: need "extra space" before "0"
+    2: two many "space"s before "10px solid red" 
+    2: two many "space"s before "20px solid red"
+}
+
+.no-space {
+    border:1px solid red;
+    width:0;
+}
+.correct {
+    border: 3px solid red;
+}
+.two-many-spaces {
+    border:    10px solid red;
+}
+
+.test-single-line { border:  20px solid red; }

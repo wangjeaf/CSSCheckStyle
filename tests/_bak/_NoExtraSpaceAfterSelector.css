@@ -1,0 +1,14 @@
+@unit-test-expecteds {
+}
+
+.no-extra-space{
+    width: 100px;
+}
+
+.one-extra-space {
+    width: 100px;
+}
+
+.two-extra-spaces  {
+    width: 100px;
+}

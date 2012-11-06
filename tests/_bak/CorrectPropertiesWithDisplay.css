@@ -1,0 +1,44 @@
+@unit-test-expecteds {
+    1: display:inline-block should not use float in ".test-display"
+    1: display:block should not use vertical-align in ".test-display-vertical-align"
+    1: display:table-* should not use margin or float in ".test-display-table-xxx"
+    1: display:table-* should not use margin or float in ".test-display-table-xxx2"
+    1: display:table-* should not use margin or float in ".test-display-table-xxx3"
+    1: display:inline should not use width,height,margin,margin-top,margin-bottom,float in ".test-display-inline"
+    1: display:inline should not use width,height,margin,margin-top,margin-bottom,float in ".test-display-inline-xxx"
+}
+
+.test-display-inline {
+    display: inline;
+    width: 100px;
+}
+
+.test-display-inline-xxx {
+    display: inline;
+    float: left;
+}
+
+.test-display {
+    display: inline-block;
+    float: left;
+}
+
+.test-display-vertical-align {
+    display: block;
+    vertical-align: center;
+}
+
+.test-display-table-xxx {
+    display: table-fixed;
+    margin: 0;
+}
+
+.test-display-table-xxx2 {
+    display: table-fixed;
+    margin-top: 0;
+}
+
+.test-display-table-xxx3 {
+    display: table-fixed;
+    float: left;
+}

@@ -1,0 +1,17 @@
+@unit-test-expecteds {
+    0: should not set style for "body" in "body"
+    0: should not set style for "body" in "body, .class"
+}
+
+body {
+    width: 100px;
+}
+
+body,
+.class {
+    width: 100px;
+}
+
+body.this-is-ok {
+    width: 100px;
+}

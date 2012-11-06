@@ -1,0 +1,6 @@
+error-level: 0
+include: all
+exlude: none
+recursive: false
+export: -n
+extend-name: .ckstyle.txt

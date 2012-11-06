@@ -1,0 +1,38 @@
+/*
+ * @author: zhifu.wang@renren-inc.com
+ */
+@unit-test-expecteds {
+    0: should combine "border-width,border-style" to "border" in ".test-border"
+    0: should combine "background-color,background-image,background-repeat" to "background" in ".test-background"
+    0: should combine "padding-top,padding-bottom" to "padding" in ".test-padding"
+    0: should combine "margin,margin-bottom" to "margin" in ".test-margin"
+    0: should combine "font-size,font-family,font-style" to "font" in ".test-font"
+    0: can not set font-family for ".test-font"
+}
+
+.test-border {
+    border-width: 1px;
+    border-style: solid;
+}
+
+.test-background {
+    background-color: red;
+    background-image: url(xxxx);
+    background-repeat: no-repeat;
+}
+
+.test-padding {
+    padding-top: 10px;
+    padding-bottom: 12px;
+}
+
+.test-margin {
+    margin: 10px;
+    margin-bottom: 10px;
+}
+
+.test-font {
+    font-size: 12px;
+    font-family: 'Microsoft Yahei';
+    font-style: italic;
+}
