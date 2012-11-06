@@ -18,7 +18,7 @@ class RuleChecker(Checker):
     def __init__(self):
         self.errorLevel = ERROR_LEVEL.LOG
         self.errorMsg = ''
-    def check(self, ruleSet):
+    def check(self, rule):
         return True
 
 class RuleSetChecker(Checker):
@@ -30,7 +30,7 @@ class RuleSetChecker(Checker):
 
 class StyleSheetChecker(Checker):
     def __init__(self):
-        self.errorLevel = ERROL_LEVEL.log
+        self.errorLevel = ERROL_LEVEL.LOG
         self.errorMsg = ''
     def check(self, styleSheet):
         return True
