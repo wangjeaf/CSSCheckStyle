@@ -39,7 +39,7 @@
     add-author:                     需要在文件中添加作者信息;
     no-alpha-image-loader:          不要使用alphaImageLoader;
     no-appearance-word-in-selector: 不要在选择器中出现表现相关的词汇;
-    no-comment-in-value:            不要再css属性中添加注释;
+    no-comment-in-value:            不要在css属性中添加注释;
     no-empty-ruleset:               删除空的规则;
     no-expression:                  不要使用非一次性表达式;
     number-in-selector:             不要在选择器中使用简单数字1、2、3;
