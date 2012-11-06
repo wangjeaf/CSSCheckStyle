@@ -1,1 +1,1 @@
-@python D:\staticcompiler\utils\CSSCheckStyle\doCssCheck.py %*
+@python D:\git\CSSCheckStyle\doCssCheck.py %*
