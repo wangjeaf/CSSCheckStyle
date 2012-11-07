@@ -1,0 +1,37 @@
+/*
+ * @author: zhifu.wang@renren-inc.com
+ */
+@unit-test-expecteds {
+    1: do not simply use 1,2,3 as selector, in ".class1"
+    1: do not simply use 1,2,3 as selector, in ".class2"
+    1: do not simply use 1,2,3 as selector, in ".class6"
+    1: do not simply use 1,2,3 as selector, in ".fdjas6"
+}
+
+.class1 {
+    width: 100px;
+}
+
+.class2 {
+    width: 100px;
+}
+
+.class6 {
+    width: 100px;
+}
+
+.class .ok {
+    width: 100px;
+}
+
+.v6 {
+    width: 100px;
+}
+
+.class .step3 {
+    width: 100px;
+}
+
+.fdjas6 {
+    width: 100px;
+}

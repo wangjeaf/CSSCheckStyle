@@ -1,0 +1,55 @@
+/*
+ * @author: zhifu.wang@renren-inc.com
+ */
+@unit-test-expecteds {
+    1: should have 4 spaces before "width" in ".no-space"
+    1: should have 4 spaces before "width" in ".one-space"
+    1: should have 4 spaces before "width" in ".two-spaces"
+    1: should have 4 spaces before "width" in ".three-spaces"
+    1: should have 4 spaces before "width" in ".five-spaces"
+    1: should have 4 spaces before "width" in ".five-more-spaces"
+    1: should have 4 spaces before "nav-down" in ".css-three-attrs-no-prefix-extra-space"
+    1: should have (only) one "space" before value of "width" in ".test-space-before-value"
+}
+
+.test-space-before-value {
+    width:100px;
+}
+
+.css-three-attrs-no-prefix-extra-space {
+      nav-down: 1;
+}
+
+.css-three-attrs-no-prefix-no-extra {
+    nav-down: 1;
+}
+
+.no-space {
+width: 100px;
+}
+
+.one-space {
+ width: 100px;
+}
+
+.two-spaces {
+  width: 100px;
+}
+
+.three-spaces {
+   width: 100px;
+}
+
+.four-spaces {
+    width: 100px;
+}
+
+.five-spaces {
+     width: 100px;
+}
+
+.five-more-spaces {
+         width: 100px;
+}
+
+.single-line { width: 100px; height: 200px; }

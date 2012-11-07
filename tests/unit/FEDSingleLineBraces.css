@@ -1,0 +1,36 @@
+/*
+ * @author: zhifu.wang@renren-inc.com
+ */
+@unit-test-expecteds {
+    2: should have "only one space" before the opening brace in ".no-space-after-selector"
+    2: should have "only one space" before the opening brace in ".too-many-space-after-selector"
+    2: should have "only one space" after the opening brace in ".no-space-after-first-brace"
+    2: should have "only one space" after the opening brace in ".too-many-space-after-first-brace"
+
+    2: should have "only one space" before the closing brace in ".no-space-before-closing"
+    2: should have "only one space" before the closing brace in ".too-space-before-closing"
+
+    2: should start with "space" in ".test-space-before-selector"
+
+    2: should have one "space" before "width" in ".no-space-after-first-brace"
+    2: selector should end with only one space ".no-space-after-selector"
+    2: selector should end with only one space ".too-many-space-after-selector"
+}
+
+.correct-single-line-styles { width: 100px; height: 100px; }
+
+.multi-selector,
+.multi-selectorb { width: 100px; height: 100px; }
+
+.no-space-after-selector{ width: 100px; }
+.too-many-space-after-selector  { width: 100px; }
+ .test-space-before-selector { width: 100px; }
+
+.no-space-after-first-brace {width: 100px; }
+.too-many-space-after-first-brace {  width: 100px; }
+
+.no-space-before-closing { width: 100px; height: 100px;}
+.too-space-before-closing { width: 100px; height: 100px;  }
+
+.multia,
+.multib { width: 100px; height: 100px; }

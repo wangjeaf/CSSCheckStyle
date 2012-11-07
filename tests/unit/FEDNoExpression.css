@@ -1,0 +1,34 @@
+/*
+ * @author: zhifu.wang@renren-inc.com
+ */
+@unit-test-expecteds {
+    0: should not use expression in ".abcd"
+    0: should not use expression in ".abcd:hover"
+    0: should not use expression in ".abcdef:hover"
+    0: should not use expression in ".expression-without-this-equals"
+    0: should add hack for expression in ".expression-with-this-equals"
+}
+
+.abcd {
+    width: expression(function() {fdasfdas});
+}
+
+.abcd:hover {
+    *width: expression(function() {fdasfdas});
+}
+
+.abcdef:hover {
+    _width: expression(function() {fdasfdas});
+}
+
+.expression-without-this-equals {
+    width: expression(function() {this = 11;});
+}
+
+.expression-with-this-equals {
+    width: expression(function() {this.style.width = 11;});
+}
+
+.expression-with-expressions {
+    *width: expression(Expressions.style.width(this,this.offsetWidth-32));
+}
