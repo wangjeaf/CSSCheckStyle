@@ -1,7 +1,0 @@
-@unit-test-expecteds {
-    0: filter only working for IE should add css hack;
-}
-
-.no-hack-before-microsoft-filter {
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=image, src='http://a.xnimg.cn/imgpro/button/close-alpha.png');
-}
