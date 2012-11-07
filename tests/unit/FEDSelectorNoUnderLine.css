@@ -1,0 +1,15 @@
+/*
+ * @author: zhifu.wang@renren-inc.com
+ */
+@unit-test-expecteds {
+    1: should not use _ in selector ".selector-with-_"
+}
+
+
+.selector-with-no-underscore {
+    width: 100px;
+}
+
+.selector-with-_ {
+    width: 100px;
+}

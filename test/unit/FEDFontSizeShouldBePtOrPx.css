@@ -1,0 +1,43 @@
+/*
+ * @author: zhifu.wang@renren-inc.com
+ */
+@unit-test-expecteds {
+    0: font-size unit should be px/pt in ".font-size-is-percent"
+    0: font-size unit should be px/pt in ".font-size-is-number"
+    0: font-size unit should be px/pt in ".font-size-is-em"
+    0: font-size should not be small/medium/large in ".font-size-is-x-small"
+    0: font-size should not be small/medium/large in ".font-size-is-x-large"
+    0: font-size unit should be px/pt in ".font-size-pt-in-middle"
+}
+
+
+.font-size-is-percent {
+    font-size: 17%;
+}
+
+.font-size-is-number {
+    font-size: 12.6;
+}
+
+.font-size-is-em {
+    font-size: 2em;
+}
+
+.font-size-is-x-small {
+    font-size: x-small;
+}
+.font-size-is-x-large {
+    font-size: x-large;
+}
+
+.font-size-pt-in-middle {
+    font-size: x-pt-smal;
+}
+
+.font-size-is-pt {
+    font-size: 12pt;
+}
+
+.font-size-is-px {
+    font-size: 12px;
+}

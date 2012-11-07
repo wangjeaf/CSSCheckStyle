@@ -4,8 +4,8 @@
 import os
 import string
 import datetime
-from plugins.Base import *
-from CssCheckerWrapper import doCheck
+from ckstyle.plugins.Base import *
+from ckstyle.CssCheckerWrapper import doCheck
 
 '''单元测试运行器
    将扫描test/unit目录下的所有py和css文件
@@ -54,7 +54,7 @@ def doCheckWithPythonFile(f):
     global fileCounter, okCounter, errorCounter
 
     caseName = os.path.splitext(f)[0]
-    plugin = __import__("test.unit." + caseName, fromlist = [caseName])
+    plugin = __import__("unit." + caseName, fromlist = [caseName])
     pluginMethod = None
     if hasattr(plugin, 'doTest'):
         pluginMethod = getattr(plugin, 'doTest')
@@ -86,7 +86,7 @@ def doCheckWithPythonFile(f):
 
 def runUnitTests():
     global fileCounter
-    filePath = realpath(__file__, '../test/unit')
+    filePath = realpath(__file__, '../unit')
     start = datetime.datetime.now()
     for filename in os.listdir(filePath):
         if filename == 'asserts.py' or filename == 'helper.py' or filename.startswith('_'):

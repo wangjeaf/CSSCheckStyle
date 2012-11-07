@@ -1,0 +1,23 @@
+/** zhifu.wang@renren-inc.com
+ */
+@unit-test-expecteds {
+}
+
+.test {
+    width: 100px;
+}
+
+/* comment 1*/
+/* comment 2*/
+.test-b {
+    width: 100px;
+}
+
+/* fa */ /* fda */
+.test-c {
+    width: 100px;
+}
+
+.test-d {
+    width: 100px;
+}

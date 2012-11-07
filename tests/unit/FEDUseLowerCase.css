@@ -1,0 +1,49 @@
+/*
+ * @author: zhifu.wang@renren-inc.com
+ */
+@unit-test-expecteds {
+    1: "WIDTH" should use lower case, in ".name-upper"
+    1: "HEIGHT" should use lower case, in ".name-upper-second-attr"
+    1: value of "width" should use lower case, in ".value-upper"
+    0: can not set font-family for ".value-upper-font-family"
+    1: value of "font" should use lower case, in ".value-upper-font"
+    0: can not set font-family for ".value-upper-font"
+}
+
+.is-correct-lower {
+    width: 100px;
+    height: 200px;
+}
+
+.name-upper {
+    WIDTH: 100px;
+}
+
+.name-upper-second-attr {
+    width: 100px;
+    HEIGHT: 10px;
+}
+
+.value-upper {
+    width: 100PX;
+}
+
+.value-upper-color-text {
+    color: RED;
+}
+
+.value-uppper-color {
+    color: #FFF;
+}
+
+.value-upper-background {
+    background: #FFF url('xxxx.png') no-repeat left top;
+}
+
+.value-upper-font-family {
+    font-family: 'Microsoft Yahei';
+}
+
+.value-upper-font {
+    font: ITALIC bold 12px/30px 'Courier New', Georgia, serif;
+}

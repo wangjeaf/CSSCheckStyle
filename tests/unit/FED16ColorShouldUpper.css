@@ -1,0 +1,33 @@
+/*
+ * @author: zhifu.wang@renren-inc.com
+ */
+@unit-test-expecteds {
+    1: replace "#DDDDDD" with "#DDD" in ".test"
+    1: replace "#AABBCC" with "#ABC" in ".test-c"
+    1: wrong color length(should be 3 or 6) in ".test-wrong-len"
+    1: color should in upper case in ".test-lower"
+}
+
+.test-lower {
+    color: #fff;
+}
+
+.test {
+    color: #DDDDDD;
+}
+
+.test-a {
+    color: #DDD;
+}
+
+.test-b {
+    color: #ABC;
+}
+
+.test-c {
+    color: #AABBCC;
+}
+
+.test-wrong-len {
+    color: #DDFDD;
+}

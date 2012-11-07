@@ -1,0 +1,39 @@
+@unit-test-expecteds {
+    2: should "enter" in multi selector rule ".selector-a, .selector-b"
+    2: should "enter" in multi selector rule ".sa2, .sb2, .sc2"
+    2: should "enter" in multi selector rule ".sa3, .sb3, .sc3"
+}
+
+.selector {
+    width: 100px;
+}
+
+.selector-a, .selector-b {
+    width: 100px;
+}
+
+.enter-after,
+.the-last-element {
+    width: 100px;
+}
+
+.selector-a2,
+.selector-b2 {
+    width: 100px;
+}
+
+.sa,
+.sb,
+.sc {
+    width: 100px;
+}
+
+.sa2,
+.sb2, .sc2 {
+    width: 100px;
+}
+
+.sa3, .sb3,
+.sc3 {
+    width: 1px;
+}

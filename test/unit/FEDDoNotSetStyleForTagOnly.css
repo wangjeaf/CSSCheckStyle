@@ -1,0 +1,30 @@
+/*
+ * @author: zhifu.wang@renren-inc.com
+ */
+@unit-test-expecteds {
+    0: should not set style for html tag in "div"
+    0: should not set style for html tag in "div, .class"
+    0: should not set style for html tag in "div, html"
+}
+
+div {
+    width: 100px;
+}
+
+div,
+.class {
+    width: 100px;
+}
+
+div,
+html {
+    width: 100px;
+}
+
+.test div {
+    width: 100px;
+}
+
+div:hover {
+    width: 100px;
+}

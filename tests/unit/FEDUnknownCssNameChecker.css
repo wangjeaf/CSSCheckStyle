@@ -1,0 +1,23 @@
+/*
+ * @author: zhifu.wang@renren-inc.com
+ */
+@unit-test-expecteds {
+    0: unknown attribute name "a" found in ".has-a"
+}
+
+.has-a {
+    a: 1px solid red;
+}
+
+.behavior {
+    behavior: test;
+}
+
+.khtml {
+    -webkit-border-radius: 3px;
+     -khtml-border-radius: 3px;
+       -moz-border-radius: 3px;
+        -ms-border-radius: 3px;
+         -o-border-radius: 3px;
+            border-radius: 3px;
+}

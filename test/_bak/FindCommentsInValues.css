@@ -1,0 +1,15 @@
+@unit-test-expecteds {
+    2: find css comment (/* */) in ".find-line-comment"
+    2: find css comment (/* */) in ".find-tail-comment"
+}
+
+.find-line-comment {
+    /* my comment */
+    width: 100px;
+    height: 100px;
+}
+
+.find-tail-comment {
+    width: 100px; /* find tail comment */
+    height: 100px;
+}

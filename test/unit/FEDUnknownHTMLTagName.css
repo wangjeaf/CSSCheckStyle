@@ -1,0 +1,88 @@
+/*
+ * @author: zhifu.wang@renren-inc.com
+ */
+@unit-test-expecteds {
+    0: unknown html tag "diva" found in "diva"
+    0: unknown html tag "ffda" found in "ffda"
+    0: unknown html tag "ffda" found in ".test ffda"
+    0: unknown html tag "ffda" found in "ffda.test"
+    0: unknown html tag "ffda" found in ".test div, ffda"
+    0: unknown html tag "ffda" found in ".test ffda, .testb ffda"
+    0: unknown html tag "ffda" found in ".testa .testb .testc ffda.testd"
+    0: unknown html tag "ffda" found in ".testa ffda:hover"
+    0: unknown html tag "ffda" found in ".testa ffda.test-class:hover"
+    0: should not set style for html tag in "button, input[type=button]"
+    0: do not use low performance selector ">" in "details:not([open]) > *:not(summary)"
+}
+
+* + html .input-button,
+* + html .input-submit {
+    width: 100px;
+}
+
+*html {
+    width: 100px;
+}
+
+*+html {
+    width: 100px;
+}
+
+button,
+input[type=button] {
+    width: 20px;
+}
+
+details:not([open]) > *:not(summary) {
+    width: 20px;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    width: 200px;
+}
+
+.test #fuck-id {
+    width: 100px;
+}
+
+.test #fuck-idb {
+    width: 100px;
+}
+
+diva {
+    width: 100px;
+}
+
+ffda {
+    border: 1px solid red;
+}
+
+.test ffda {
+    width: 100px;
+}
+
+ffda.test {
+    width: 100px;
+}
+
+.test div,
+ffda {
+    width: 100px;
+}
+
+.test ffda,
+.testb ffda {
+    width: 100px;
+}
+
+.testa .testb .testc ffda.testd {
+    width: 100px;
+}
+
+.testa ffda:hover {
+    width: 100px;
+}
+
+.testa ffda.test-class:hover {
+    width: 100px;
+}

@@ -1,0 +1,9 @@
+/* @author zhifu.wang */
+.test-special-word .a-class {
+    width: 10px;
+    color: #FFF;
+    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+         -o-border-radius: 3px;
+            border-radius: 3px;
+}
