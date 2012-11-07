@@ -34,5 +34,12 @@ def checkCssText(text):
     reporter.doReport()
     print reporter.export()
 
+def main(arg = None):
+    if len(sys.argv) == 1:
+        print 'at least two args'
+    else:
+        if checkCssFileByOpm(sys.argv[1]):
+            print 'no error in %s' % sys.argv[1]
+
 if __name__ == '__main__':
     checkCssFileByOpm(sys.argv[1])
