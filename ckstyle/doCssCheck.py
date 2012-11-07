@@ -15,7 +15,9 @@ def checkCssFileByOpm(filePath):
     if checker.hasError():
         reporter = ReporterUtil.getReporter('text', checker)
         reporter.doReport()
-        print reporter.export()
+        path = filePath + '.ckstyle.txt'
+        open(path, 'w').write(reporter.export())
+        print '[ckstyle] @see', path
         return False
     return True
 
