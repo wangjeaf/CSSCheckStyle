@@ -6,12 +6,12 @@ JUST run :
 to install
 
 ## usage
-* ckstyle -h / ckstyle --help
-* ckstyle file.css
-* ckstyle dir 
-* ckstyle -r dir
-* ckstyle -c config_file dir 
-* ckstyle -c config_file file.css
+* ckstyle -h / ckstyle --help(显示帮助)
+* ckstyle file.css(检查单个css)
+* ckstyle dir(检查目录下的所有css)
+* ckstyle -r dir(递归检查目录下的所有css)
+* ckstyle -p file.css(检查结果打印到控制台，默认是写file.css.ckstyle.txt文件)
+* ckstyle -r -p dir(同上)
 
 ## information
 <pre>

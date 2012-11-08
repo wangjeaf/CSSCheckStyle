@@ -12,8 +12,8 @@ def usage():
     ckstyle file.css
     ckstyle dir 
     ckstyle -r dir
-    ckstyle -c config_file dir 
-    ckstyle -c config_file file.css
+    ckstyle -p file.css
+    ckstyle -p -r dir
     '''
 
 def handleCmdArgs():
