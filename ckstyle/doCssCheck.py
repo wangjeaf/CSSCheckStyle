@@ -7,31 +7,33 @@ from reporter.ReporterUtil import ReporterUtil
 from cssparser.CssFileParser import CssParser
 from CssCheckerWrapper import CssChecker
 from entity.StyleSheet import StyleSheet
-from command.CommandParser import CommandLineParser, CommandFileParser
+import command.args as args
 
-def doCheck(fileContent, fileName = ''):
+defaultConfig = args.CommandArgs()
+
+def doCheck(fileContent, fileName = '', config = defaultConfig):
     '''封装一下'''
     parser = CssParser(fileContent)
     css = StyleSheet(fileName)
     parser.doParse(css)
 
-    checker = CssChecker(parser)
+    checker = CssChecker(parser, config)
 
     checker.loadPlugins(os.path.realpath(os.path.join(__file__, '../plugins')))
     checker.doCheck()
 
     return checker
 
-def checkFile(filePath, printFlag = False):
+def checkFile(filePath, config = defaultConfig):
     '''通过路径检查css文件'''
     fileContent = open(filePath).read()
     print '[ckstyle] checking %s' % filePath
-    checker = doCheck(fileContent, filePath)
+    checker = doCheck(fileContent, filePath, config)
     path = os.path.realpath(filePath + '.ckstyle.txt')
     if checker.hasError():
         reporter = ReporterUtil.getReporter('text', checker)
         reporter.doReport()
-        if printFlag:
+        if config.printFlag:
             print reporter.export(), '\n'
         else:
             open(path, 'w').write(reporter.export())
@@ -43,18 +45,24 @@ def checkFile(filePath, printFlag = False):
             os.remove(path)
         return True
 
-def checkDir(directory, printFlag = False):
+def checkDir(directory, config = defaultConfig):
+    if config.recursive:
+        checkDirRecursively(directory, config)
+    else:
+        checkDirSubFiles(directory, config)
+
+def checkDirSubFiles(directory, config = defaultConfig):
     for filename in os.listdir(directory):
         if not filename.endswith('.css') or filename.startswith('_'):
             continue
-        checkFile(os.path.join(directory, filename), printFlag)
+        checkFile(os.path.join(directory, filename), config)
 
-def checkDirRecursively(directory, printFlag = False):
+def checkDirRecursively(directory, config = defaultConfig):
     for dirpath, dirnames, filenames in os.walk(directory):
         for filename in filenames:
             if not filename.endswith('.css') or filename.startswith('_'):
                 continue
-            checkFile(os.path.join(dirpath, filename), printFlag)
+            checkFile(os.path.join(dirpath, filename), config)
 
 def checkCssText(text):
     checker = doCheck(text)

@@ -7,8 +7,9 @@ from plugins.Base import *
 
 class CssChecker():
     '''CSS检查类，需要CSS解析器作为辅助'''
-    def __init__(self, parser):
+    def __init__(self, parser, config = None):
         self.parser = parser
+        self.config = config
 
         # 错误记录，log是2级，warn是1级，error是0级
         self.logMsgs = []
@@ -45,6 +46,9 @@ class CssChecker():
     def loadPlugins(self, pluginDir):
         '''从plugins目录动态载入检查类'''
         # ids = {}
+        include = self.config.include
+        exclude = self.config.exclude
+
         for filename in os.listdir(pluginDir):
             if not filename.endswith('.py') or filename.startswith('_'):
                 continue
@@ -63,6 +67,12 @@ class CssChecker():
             # 构造plugin的类
             instance = pluginClass()
             # ids[instance.id] = pluginName
+
+            if include != 'all' and include.find(instance.id) == -1:
+                continue
+            elif exclude != 'none' and exclude.find(instance.id) != -1:
+                continue
+
             if instance.errorMsg.find(';') != -1 or instance.errorMsg.find('\n') != -1:
                 print r'[TOOL] errorMsg should not contain ";" or "\n" in %s.py' % pluginName
                 continue
@@ -137,7 +147,8 @@ class CssChecker():
 
     def doCheck(self):
         # 忽略的规则集（目前只忽略单元测试的selector）
-        ignoreRuleSets = ['@unit-test-expecteds']
+        ignoreRuleSets = self.config.ignoreRuleSets
+
         def findInArray(array, value):
             for x in array:
                 if x == value:
