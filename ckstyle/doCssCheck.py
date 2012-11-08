@@ -22,7 +22,7 @@ def doCheck(fileContent, fileName = ''):
 
     return checker
 
-def checkFile(filePath):
+def checkFile(filePath, printFlag = False):
     '''通过路径检查css文件'''
     fileContent = open(filePath).read()
     print '[ckstyle] checking %s' % filePath
@@ -31,8 +31,11 @@ def checkFile(filePath):
     if checker.hasError():
         reporter = ReporterUtil.getReporter('text', checker)
         reporter.doReport()
-        open(path, 'w').write(reporter.export())
-        print '[ckstyle] @see %s\n' % path
+        if printFlag:
+            print reporter.export(), '\n'
+        else:
+            open(path, 'w').write(reporter.export())
+            print '[ckstyle] @see %s\n' % path
         return False
     else:
         print '[ckstyle] %s is ok\n' % filePath
@@ -40,18 +43,18 @@ def checkFile(filePath):
             os.remove(path)
         return True
 
-def checkDir(directory):
+def checkDir(directory, printFlag = False):
     for filename in os.listdir(directory):
         if not filename.endswith('.css') or filename.startswith('_'):
             continue
-        checkFile(os.path.join(directory, filename))
+        checkFile(os.path.join(directory, filename), printFlag)
 
-def checkDirRecursively(directory):
+def checkDirRecursively(directory, printFlag = False):
     for dirpath, dirnames, filenames in os.walk(directory):
         for filename in filenames:
             if not filename.endswith('.css') or filename.startswith('_'):
                 continue
-            checkFile(os.path.join(dirpath, filename))
+            checkFile(os.path.join(dirpath, filename), printFlag)
 
 def checkCssText(text):
     checker = doCheck(text)

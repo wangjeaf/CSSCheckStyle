@@ -17,8 +17,10 @@ to install
 }
 
 @usage {
+    show-help: ckstyle -h / ckstyle --help
 	simple-check: ckstyle / ckstyle dirpath / ckstyle filepath.css;
-	check-dir-recursive:  ckstyle -r dirpath;
+	check-dir-recursively:  ckstyle -r / ckstyle -r dirpath;
+    print-result-to-console: ckstyle -r -p / ckstyle -r -p dirpath / ckstyle -p filepath.css;
 }
 
 @command-line-check-params {
