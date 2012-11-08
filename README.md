@@ -1,10 +1,10 @@
 CSSCheckStyle
 =============
-<pre>
 JUST run :
+<pre>
     easy_install https://github.com/wangjeaf/CSSCheckStyle/archive/master.tar.gz
-to install
 </pre>
+to install
 
 <pre>
 @description {
@@ -12,7 +12,7 @@ to install
 	reference: 人人FED CSS编码规范;
 	check-result: 默认将第一个文件的异常打印出，同时为每一个存在异常的检查文件生成错误信息文件，放在源文件相同目录下;
 	check-result-file-name: 文件名+.ckstyle.txt，例如a.css的异常文件名为a.css.ckstyle.txt;
-	check-result-extra: -n为不输出，-p为所有结果打印到控制台，-a为所有异常输出到同一个文件中;
+	check-result-extra: -p为所有结果打印到控制台，-a为所有异常输出到同一个文件中;
 	language: python;
 }
 
