@@ -1,7 +1,7 @@
 CSSCheckStyle
 =============
 ## Installation
-    **easy_install https://github.com/wangjeaf/CSSCheckStyle/archive/master.tar.gz**
+    easy_install https://github.com/wangjeaf/CSSCheckStyle/archive/master.tar.gz
 
 ## Usage
 * ckstyle -h / ckstyle --help    `显示帮助`
