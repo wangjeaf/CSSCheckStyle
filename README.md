@@ -1,11 +1,11 @@
 CSSCheckStyle
 =============
+## install
 JUST run :
-<pre>
-    easy_install https://github.com/wangjeaf/CSSCheckStyle/archive/master.tar.gz
-</pre>
+    **easy_install https://github.com/wangjeaf/CSSCheckStyle/archive/master.tar.gz**
 to install
 
+## information
 <pre>
 @description {
 	destination: 检查代码中的不符合CSS编码规范的问题，并给出错误提示;
