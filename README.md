@@ -24,13 +24,6 @@ to install
 	language: python;
 }
 
-@usage {
-    show-help: ckstyle -h / ckstyle --help
-	simple-check: ckstyle / ckstyle dirpath / ckstyle filepath.css;
-	check-dir-recursively:  ckstyle -r / ckstyle -r dirpath;
-    print-result-to-console: ckstyle -r -p / ckstyle -r -p dirpath / ckstyle -p filepath.css;
-}
-
 @command-line-check-params {
     error-level: 0/1/2; # 0:only error, 1:error&warning, 2: error&warning&log;
     include: all; #all:all-rules, 'no-font-family', 'font-unit,hack-prop,hack-ruleset'包含;
