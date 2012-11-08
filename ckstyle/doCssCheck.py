@@ -29,7 +29,7 @@ def checkFile(filePath, config = defaultConfig):
     fileContent = open(filePath).read()
     print '[ckstyle] checking %s' % filePath
     checker = doCheck(fileContent, filePath, config)
-    path = os.path.realpath(filePath + '.ckstyle.txt')
+    path = os.path.realpath(filePath + config.extension)
     if checker.hasError():
         reporter = ReporterUtil.getReporter('text', checker)
         reporter.doReport()
