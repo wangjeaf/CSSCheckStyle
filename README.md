@@ -1,19 +1,19 @@
 CSSCheckStyle
 =============
-## install
+## Installation
 JUST run :
     **easy_install https://github.com/wangjeaf/CSSCheckStyle/archive/master.tar.gz**
 to install
 
-## usage
-* ckstyle -h / ckstyle --help(显示帮助)
-* ckstyle file.css(检查单个css)
-* ckstyle dir(检查目录下的所有css)
-* ckstyle -r dir(递归检查目录下的所有css)
-* ckstyle -p file.css(检查结果打印到控制台，默认是写file.css.ckstyle.txt文件)
-* ckstyle -r -p dir(同上)
+## Usage
+* ckstyle -h / ckstyle --help    `显示帮助`
+* ckstyle file.css               *检查单个css*
+* ckstyle dir                    (检查目录下的所有css)
+* ckstyle -r dir                 (递归检查目录下的所有css)
+* ckstyle -p file.css            (检查结果打印到控制台，默认是写file.css.ckstyle.txt文件)
+* ckstyle -r -p dir              (同上)
 
-## information
+## Information
 <pre>
 @description {
 	destination: 检查代码中的不符合CSS编码规范的问题，并给出错误提示;
