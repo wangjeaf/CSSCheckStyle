@@ -11,7 +11,7 @@ CSSCheckStyle
 * ckstyle -p file.css            `检查结果打印到控制台，默认是写file.css.ckstyle.txt文件`
 * ckstyle -r -p dir              `同上`
 
-## Information
+## Description
 <pre>
 @description {
 	destination: 检查代码中的不符合CSS编码规范的问题，并给出错误提示;
@@ -21,13 +21,10 @@ CSSCheckStyle
 	check-result-extra: -p为所有结果打印到控制台，-a为所有异常输出到同一个文件中;
 	language: python;
 }
+</pre>
 
-@command-line-check-params {
-    error-level: 0/1/2; # 0:only error, 1:error&warning, 2: error&warning&log;
-    include: all; #all:all-rules, 'no-font-family', 'font-unit,hack-prop,hack-ruleset'包含;
-    exclude: none; #none:没有任何规则, 'no-font-family', 'font-unit,hack-prop,hack-ruleset'排除;
-}
-
+## Rules
+<pre>
 @all-rules {
     hexadecimal-color:              16进制颜色，大写，并且尽量省略;
     no-font-family:                 不允许业务代码设置字体;
@@ -70,7 +67,9 @@ CSSCheckStyle
     single-quotation:               使用单引号;
     z-index-in-range:               z-index取值应该符合范围要求;
 }
-
+</pre>
+所有的规则都对应唯一id，对应关系如下：
+<pre>
 @plugin-id-rule-mapping {
     no-font-family: FEDCanNotSetFontFamily;
     no-expression: FEDNoExpression;
@@ -113,7 +112,11 @@ CSSCheckStyle
     hack-prop: FEDHackAttributeInCorrectWay;
     unknown-html-tag: FEDUnknownHTMLTagName;
 }
+</pre>
 
+## Join us
+欢迎使用，并参与到开发当中来。
+<pre>
 @author-info {
     author: zhifu.wang;
     email: wangjeaf@gmail.com;
