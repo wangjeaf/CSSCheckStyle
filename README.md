@@ -5,6 +5,14 @@ JUST run :
     **easy_install https://github.com/wangjeaf/CSSCheckStyle/archive/master.tar.gz**
 to install
 
+## usage
+* ckstyle -h / ckstyle --help
+* ckstyle file.css
+* ckstyle dir 
+* ckstyle -r dir
+* ckstyle -c config_file dir 
+* ckstyle -c config_file file.css
+
 ## information
 <pre>
 @description {
