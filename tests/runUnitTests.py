@@ -2,7 +2,7 @@ import os
 import string
 import datetime
 from ckstyle.plugins.Base import *
-from ckstyle.CssCheckerWrapper import doCheck
+from ckstyle.doCssCheck import doCheck
 
 def realpath(directory, fileName):
     return os.path.realpath(os.path.join(directory, fileName))

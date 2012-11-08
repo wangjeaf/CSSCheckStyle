@@ -4,21 +4,6 @@
 import os
 
 from plugins.Base import *
-from cssparser.CssFileParser import CssParser
-from entity.StyleSheet import StyleSheet
-
-def doCheck(fileContent, fileName = ''):
-    '''封装一下'''
-    parser = CssParser(fileContent)
-    css = StyleSheet(fileName)
-    parser.doParse(css)
-
-    checker = CssChecker(parser)
-
-    checker.loadPlugins(os.path.realpath(os.path.join(__file__, '../plugins')))
-    checker.doCheck()
-
-    return checker
 
 class CssChecker():
     '''CSS检查类，需要CSS解析器作为辅助'''

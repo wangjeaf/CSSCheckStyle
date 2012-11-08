@@ -1,0 +1,2 @@
+[ERROR] 1. should add @author in the head of "D:\git\CSSCheckStyle\tests\experiment\outer\outer.css"
+ [WARN] 2. should have (only) one "space" before value of "width" in ".test"

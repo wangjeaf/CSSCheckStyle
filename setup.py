@@ -68,7 +68,7 @@ if setupFlag:
         # support auto-generation
         entry_points = {
             'console_scripts': [
-                'ckstyle = ckstyle.doCssCheck:main'
+                'ckstyle = ckstyle.command.index:main'
             ]
         },
         classifiers = ['Intended Audience :: Developers',

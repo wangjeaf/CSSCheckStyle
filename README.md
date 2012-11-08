@@ -17,10 +17,8 @@ to install
 }
 
 @usage {
-	simple-check: ckstyle xxxxx / ckstyle xxxxx.css;
-	check-dir-recursive:  ckstyle -r xxxxx;
-	print-on-cmd: ckstyle -p xxxxx;
-	export-all-to-one-file: ckstyle -a xxxxx xxxxx.txt;
+	simple-check: ckstyle / ckstyle dirpath / ckstyle filepath.css;
+	check-dir-recursive:  ckstyle -r dirpath;
 }
 
 @command-line-check-params {

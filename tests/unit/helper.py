@@ -1,4 +1,4 @@
-from ckstyle.CssCheckerWrapper import doCheck
+from ckstyle.doCssCheck import doCheck
 from ckstyle.reporter.ReporterUtil import ReporterUtil
 
 def doCssCheck(fileContent, level = 2):
