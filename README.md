@@ -68,7 +68,10 @@ CSSCheckStyle
     z-index-in-range:               z-index取值应该符合范围要求;
 }
 </pre>
-所有的规则都对应唯一id，对应关系如下：
+
+所有的规则都对应唯一id，并且有独立的检查类，所有的规则类都在`ckstyle/plugins`目录下。
+id与类的对应关系如下：
+
 <pre>
 @plugin-id-rule-mapping {
     no-font-family: FEDCanNotSetFontFamily;
