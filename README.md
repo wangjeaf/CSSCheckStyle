@@ -4,16 +4,16 @@ CSSCheckStyle
 **easy_install https://github.com/wangjeaf/CSSCheckStyle/archive/master.tar.gz**
 
 ## Usage
-* ckstyle                        `用默认配置检查当前目录下的所有css文件`
-* ckstyle -h / ckstyle --help    `显示帮助`
-* ckstyle file.css               `检查单个css`
-* ckstyle dir                    `检查目录下的所有css`
-* ckstyle -r dir                 `递归检查目录下的所有css`
-* ckstyle -p file.css            `检查结果打印到控制台，默认是写file.css.ckstyle.txt文件`
-* ckstyle -r -p dir              `同上`
-* ckstyle -c xxx.ini             `使用xxx.ini中的配置进行检查`
-* ckstyle -c xxx.ini -r -p       `使用xxx.ini中的配置进行递归检查，并将结果输出到控制台`
-* ckstyle -r --extension=.test.txt --include=all --exclude=none --errorLevel=2   `使用配置的信息进行检查`
+ckstyle                        用默认配置检查当前目录下的所有css文件
+ckstyle -h / ckstyle --help    显示帮助
+ckstyle file.css               检查单个css
+ckstyle dir                    检查目录下的所有css
+ckstyle -r dir                 递归检查目录下的所有css
+ckstyle -p file.css            检查结果打印到控制台，默认是写file.css.ckstyle.txt文件
+ckstyle -r -p dir              同上
+ckstyle -c xxx.ini             使用xxx.ini中的配置进行检查
+ckstyle -c xxx.ini -r -p       使用xxx.ini中的配置进行递归检查，并将结果输出到控制台
+ckstyle -r --extension=.test.txt --include=all --exclude=none --errorLevel=2   使用配置的信息进行检查
 
 ## Complete Example
 <pre>
@@ -21,26 +21,28 @@ ckstyle -c xxx.ini -r -p -c xxx.ini --extension=.test.txt --include=all --exclud
 </pre>
 
 ## Options
-* error-level        `[=0] 异常等级`
-* include            `[=all] 包含的规则`
-* exclude            `[=none] 除外的规则`
-* recursive          `[=false] 是否递归检查目录下所有文件`
-* print-flag         `[=false] 是否打印到控制台`
-* extension          `[=.ckstyle.txt] 指定检查结果文件的扩展名`
-* tab-spaces         `[=4] tag宽度`
-* standard           `[=standard.css] 给一个标准的css文件，检查时遵照此文件来检查`
-* ignore-rule-sets   `[=@unit-test-expecteds] 忽略的一些规则集`
+<pre>
+error-level        [=0] 异常等级
+include            [=all] 包含的规则
+exclude            [=none] 除外的规则
+recursive          [=false] 是否递归检查目录下所有文件
+print-flag         [=false] 是否打印到控制台
+extension          [=.ckstyle.txt] 指定检查结果文件的扩展名
+tab-spaces         [=4] tag宽度
+standard           [=standard.css] 给一个标准的css文件，检查时遵照此文件来检查
+ignore-rule-sets   [=@unit-test-expecteds] 忽略的一些规则集
+</pre>
 
 ## CommandLineOptions
 <pre>
--h / --help     `显示帮助`
--r              `递归检查所有文件`
--p              `将结果打印到控制台（同时删除已有的对应的结果文件）`
--c / --config   `指定配置文件（默认使用~/ckstyle.ini）`
---include       `指定包含的规则`
---exclude       `指定除外的规则`
---extension     `指定扩展名`
---errorLevel    `指定检查出的异常等级(0-error, 1-warning, 2-log)`
+-h / --help     显示帮助
+-r              递归检查所有文件
+-p              将结果打印到控制台（同时删除已有的对应的结果文件）
+-c / --config   指定配置文件（默认使用~/ckstyle.ini）
+--include       指定包含的规则
+--exclude       指定除外的规则
+--extension     指定扩展名
+--errorLevel    指定检查出的异常等级(0-error, 1-warning, 2-log)
 </pre>
 
 ## Priority
