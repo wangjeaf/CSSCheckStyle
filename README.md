@@ -31,7 +31,7 @@ ckstyle -r --extension=.test.txt --include=all --exclude=none --errorLevel=2   �
 ckstyle -c xxx.ini -r -p -c xxx.ini --extension=.test.txt --include=all --exclude=none --errorLevel=2 dirpath
 </pre>
 
-## CommandLineOptions
+## CommandLine Options
 <pre>
 -h / --help     显示帮助
 -r              递归检查所有文件
