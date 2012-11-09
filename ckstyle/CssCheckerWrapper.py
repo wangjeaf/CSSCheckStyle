@@ -101,9 +101,11 @@ class CssChecker():
     def remember(self, errorLevel, errorMsg):
         '''记录代码中的问题'''
         if errorLevel == ERROR_LEVEL.LOG:
-            self.logMsgs.append(errorMsg)
+            if self.config.errorLevel > 1:
+                self.logMsgs.append(errorMsg)
         elif errorLevel == ERROR_LEVEL.WARNING:
-            self.warningMsgs.append(errorMsg)
+            if self.config.errorLevel > 0:
+                self.warningMsgs.append(errorMsg)
         elif errorLevel == ERROR_LEVEL.ERROR:
             self.errorMsgs.append(errorMsg)
         else:

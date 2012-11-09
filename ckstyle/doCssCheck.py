@@ -34,6 +34,8 @@ def checkFile(filePath, config = defaultConfig):
         reporter = ReporterUtil.getReporter('text', checker)
         reporter.doReport()
         if config.printFlag:
+            if os.path.exists(path):
+                os.remove(path)
             print reporter.export(), '\n'
         else:
             open(path, 'w').write(reporter.export())
