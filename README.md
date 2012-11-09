@@ -259,4 +259,4 @@ id与类的对应关系如下：
 ## Join Us
 Email: wangjeaf@gmail.com
 
-Websites: <http://fed.renren.com/>  <http://www.renren.com/>
+Websites: <http://fed.renren.com/> | <http://www.renren.com/>
