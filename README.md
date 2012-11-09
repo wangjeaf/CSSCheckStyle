@@ -9,6 +9,9 @@ CSSCheckStyle
 }
 </pre>
 
+## Installation
+**easy_install https://github.com/wangjeaf/CSSCheckStyle/archive/master.tar.gz**
+
 ## Demo
 ### 原始CSS代码
 ```css
@@ -72,9 +75,6 @@ border-radius:3px
             border-radius: 3px;
 }
 ```
-
-## Installation
-**easy_install https://github.com/wangjeaf/CSSCheckStyle/archive/master.tar.gz**
 
 ## Usage
 <pre>
