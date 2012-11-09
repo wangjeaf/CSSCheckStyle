@@ -58,7 +58,7 @@ border-radius:3px
  [WARN] 2. replace "#FFFFFF" with "#FFF" in ".test-special-word a.a-class"
  [WARN] 3. should have (only) one "space" before value of "width" in ".test-special-word a.a-class"
  [WARN] 4. should have (only) one "space" before value of "color" in ".test-special-word a.a-class"
- </pre>
+</pre>
 
 #### 最终代码
 
