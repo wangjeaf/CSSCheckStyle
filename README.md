@@ -260,5 +260,5 @@ id与类的对应关系如下：
     @author-info {
         author: zhifu.wang;
         email: wangjeaf@gmail.com;
-        url: http://fed.renren.com, http://www.renren.com;
+        url: <http://fed.renren.com/>, <http://www.renren.com/>;
     }
