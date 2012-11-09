@@ -4,6 +4,7 @@ CSSCheckStyle
 **easy_install https://github.com/wangjeaf/CSSCheckStyle/archive/master.tar.gz**
 
 ## Usage
+<pre>
 ckstyle                        用默认配置检查当前目录下的所有css文件
 ckstyle -h / ckstyle --help    显示帮助
 ckstyle file.css               检查单个css
@@ -14,6 +15,7 @@ ckstyle -r -p dir              同上
 ckstyle -c xxx.ini             使用xxx.ini中的配置进行检查
 ckstyle -c xxx.ini -r -p       使用xxx.ini中的配置进行递归检查，并将结果输出到控制台
 ckstyle -r --extension=.test.txt --include=all --exclude=none --errorLevel=2   使用配置的信息进行检查
+</pre>
 
 ## Complete Example
 <pre>
