@@ -39,6 +39,7 @@ border-radius:3px
  [WARN] 14. each rule in ".test1 ul li a" need semicolon in the end, "border-radius" has not
  </pre>
 
+修改后：
 ```css
 .test-special-word a.a-class {
     width:10px;
@@ -57,6 +58,7 @@ border-radius:3px
  [WARN] 4. should have (only) one "space" before value of "color" in ".test-special-word a.a-class"
  </pre>
 
+修改后：
 ```css
 .test-special-word .a-class {
     width: 10px;
