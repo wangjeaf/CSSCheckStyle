@@ -64,6 +64,7 @@ ignore-rule-sets   [=@unit-test-expecteds] 忽略的一些规则集
 6、每一个规则，需要在tests目录中添加对应的单元测试用例，测试用例请参见"Unit Test"小节
 </pre>
 
+示例：
 ``` python
 from Base import *
 
@@ -98,6 +99,7 @@ css文件测试用例：
 5、一定要注意errorLevel是否正确
 </pre>
 
+示例：
 ``` css
 @unit-test-expecteds {
     1: zero should be removed when meet 0.xxx in ".test"
@@ -119,7 +121,7 @@ css文件测试用例：
 ```
 
 ## Description
-<pre>
+``` css
 @description {
 	destination: 检查代码中的不符合CSS编码规范的问题，并给出错误提示;
 	reference: 人人FED CSS编码规范;
@@ -128,10 +130,10 @@ css文件测试用例：
 	check-result-extra: -p为所有结果打印到控制台，同时删除检查结果文件;
 	language: python;
 }
-</pre>
+```
 
 ## Rules
-<pre>
+``` css
 @all-rules {
     hexadecimal-color:              16进制颜色，大写，并且尽量省略;
     no-font-family:                 不允许业务代码设置字体;
@@ -174,12 +176,12 @@ css文件测试用例：
     single-quotation:               使用单引号;
     z-index-in-range:               z-index取值应该符合范围要求;
 }
-</pre>
+```
 
 所有的规则都对应唯一id，并且有独立的检查类，所有的规则类都在`ckstyle/plugins`目录下。
 id与类的对应关系如下：
 
-<pre>
+``` css
 @plugin-id-rule-mapping {
     no-font-family: FEDCanNotSetFontFamily;
     no-expression: FEDNoExpression;
@@ -222,13 +224,13 @@ id与类的对应关系如下：
     hack-prop: FEDHackAttributeInCorrectWay;
     unknown-html-tag: FEDUnknownHTMLTagName;
 }
-</pre>
+```
 
 ## Join us
 欢迎使用，并参与到开发当中来。
-<pre>
+``` css
 @author-info {
     author: zhifu.wang;
     email: wangjeaf@gmail.com;
 }
-</pre>
+```
