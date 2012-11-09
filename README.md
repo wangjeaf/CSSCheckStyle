@@ -257,5 +257,6 @@ id与类的对应关系如下：
 </pre>
 
 ## Join Us
-email: wangjeaf@gmail.com;
-url: <http://fed.renren.com/>, <http://www.renren.com/>;
+Email(wangjeaf@gmail.com)
+
+url(<http://fed.renren.com/>, <http://www.renren.com/>)
