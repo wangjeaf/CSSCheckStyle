@@ -55,6 +55,7 @@ tab-spaces         [=4] tag宽度
 standard           [=standard.css] 给一个标准的css文件，检查时遵照此文件来检查
 ignore-rule-sets   [=@unit-test-expecteds] 忽略的一些规则集
 </pre>
+
 ### Config File Demo
 ```ini
 [config]
@@ -114,15 +115,6 @@ tests/runUnitTests.py是单元测试运行器，将运行tests/unit的所有单�
 2、必须在文件中加入doTest方法，并在doTest方法及其调用中编写断言
 </pre>
 
-### Css Unit Test
-<pre>
-1、必须包含 @unit-test-expecteds，并在此规则中写入单元测试断言
-2、每一个规则由key-value组成，key为错误的errorLevel，value为错误消息
-3、如果断言中有，而实际检查结果中没有，测试时将出现[expect but not have]
-4、如果断言中没有，而实际检查结果中有，测试时将出现[unexpect but has]
-5、一定要注意errorLevel是否正确
-</pre>
-
 ### python Unit Test Demo
 ``` python
 from asserts import *
@@ -137,6 +129,17 @@ def doTest():
     equal(warns[0], r'each rule in "body" need semicolon in the end, "width" has not', 'warn rule text is ok')
     equal(errors[0], r'should not set style for html tag in "body"', 'error rule text is ok')
 ```
+
+### Css Unit Test
+<pre>
+1、必须包含 @unit-test-expecteds，并在此规则中写入单元测试断言
+2、每一个规则由key-value组成，key为错误的errorLevel，value为错误消息
+3、如果断言中有，而实际检查结果中没有，测试时将出现[expect but not have]
+4、如果断言中没有，而实际检查结果中有，测试时将出现[unexpect but has]
+5、一定要注意errorLevel是否正确
+</pre>
+
+
 ### CSS Unit Test Demo
 
 ``` css
