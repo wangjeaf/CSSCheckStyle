@@ -9,6 +9,61 @@ CSSCheckStyle
 }
 </pre>
 
+## Demo
+## CSS Code
+```css
+.test1 ul li a {
+width:10px;
+color:#ffffff;
+    -webkit-border-radius:3px;
+-moz-border-radius : 3px;
+border-radius:3px
+}
+```
+## Check Result
+* part 1
+[ERROR] 1. use less tag in ".test1 ul li a"
+[ERROR] 2. css3 prop "-webkit-border-radius" missing some of "-webkit-,-moz-,-o-,std" in ".test1 ul li a"
+[ERROR] 3. css3 prop "-moz-border-radius" missing some of "-webkit-,-moz-,-o-,std" in ".test1 ul li a"
+[ERROR] 4. css3 prop "border-radius" missing some of "-webkit-,-moz-,-o-,std" in ".test1 ul li a"
+ [WARN] 5. do not simply use 1,2,3 as selector, in ".test1 ul li a"
+ [WARN] 6. color should in upper case in ".test1 ul li a"
+ [WARN] 7. css3 prop "-moz-border-radius" should align to right in ".test1 ul li a"
+ [WARN] 8. css3 prop "border-radius" should align to right in ".test1 ul li a"
+ [WARN] 9. should have 4 spaces before "width" in ".test1 ul li a"
+ [WARN] 10. should have 4 spaces before "color" in ".test1 ul li a"
+ [WARN] 11. should have (only) one "space" before value of "-webkit-border-radius" in ".test1 ul li a"
+ [WARN] 12. should not have "space" after "-moz-border-radius" in ".test1 ul li a"
+ [WARN] 13. should have (only) one "space" before value of "border-radius" in ".test1 ul li a"
+ [WARN] 14. each rule in ".test1 ul li a" need semicolon in the end, "border-radius" has not
+
+```css
+.test-special-word a.a-class {
+    width:10px;
+    color:#FFFFFF;
+    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+         -o-border-radius: 3px;
+            border-radius: 3px;
+}
+```
+* part 2
+[ERROR] 1. should not put "HTMLtag" and ".class" together in ".test-special-word a.a-class"
+ [WARN] 2. replace "#FFFFFF" with "#FFF" in ".test-special-word a.a-class"
+ [WARN] 3. should have (only) one "space" before value of "width" in ".test-special-word a.a-class"
+ [WARN] 4. should have (only) one "space" before value of "color" in ".test-special-word a.a-class"
+
+```css
+.test-special-word .a-class {
+    width: 10px;
+    color: #FFF;
+    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+         -o-border-radius: 3px;
+            border-radius: 3px;
+}
+```
+
 ## Installation
 **easy_install https://github.com/wangjeaf/CSSCheckStyle/archive/master.tar.gz**
 
