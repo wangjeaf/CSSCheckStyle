@@ -64,7 +64,8 @@ ignore-rule-sets   [=@unit-test-expecteds] 忽略的一些规则集
 6、每一个规则，需要在tests目录中添加对应的单元测试用例，测试用例请参见"Unit Test"小节
 </pre>
 
-示例：
+### plugin 示例
+
 ``` python
 from Base import *
 
@@ -86,13 +87,13 @@ class FEDSemicolonAfterValue(RuleChecker):
 tests/runUnitTests.py是单元测试运行器，将运行tests/unit的所有单元测试并给出运行结果
 </pre>
 
-# python文件测试用例
+### python文件测试用例
 <pre>
 1、必须在文件中引入asserts.py，用于断言
 2、必须在文件中加入doTest方法，并在doTest方法及其调用中编写断言
 </pre>
 
-# css文件测试用例
+### css文件测试用例
 <pre>
 1、必须包含 @unit-test-expecteds，并在此规则中写入单元测试断言
 2、每一个规则由key-value组成，key为错误的errorLevel，value为错误消息
@@ -101,7 +102,7 @@ tests/runUnitTests.py是单元测试运行器，将运行tests/unit的所有单�
 5、一定要注意errorLevel是否正确
 </pre>
 
-# python 用例示例
+### python 用例示例
 ``` python
 from asserts import *
 from helper import doCssCheck
@@ -115,8 +116,7 @@ def doTest():
     equal(warns[0], r'each rule in "body" need semicolon in the end, "width" has not', 'warn rule text is ok')
     equal(errors[0], r'should not set style for html tag in "body"', 'error rule text is ok')
 ```
-
-# CSS 用例示例
+### CSS 用例示例
 
 ``` css
 @unit-test-expecteds {
