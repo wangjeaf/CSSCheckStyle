@@ -64,7 +64,7 @@ ignore-rule-sets   [=@unit-test-expecteds] 忽略的一些规则集
 6、每一个规则，需要在tests目录中添加对应的单元测试用例，测试用例请参见"Unit Test"小节
 </pre>
 
-<pre>
+``` python
 from Base import *
 
 class FEDSemicolonAfterValue(RuleChecker):
@@ -76,7 +76,7 @@ class FEDSemicolonAfterValue(RuleChecker):
         if not rule.roughValue.strip().endswith(';'):
             return False
         return True 
-</pre>
+```
 
 ## Unit Test
 <pre>
@@ -98,7 +98,7 @@ css文件测试用例：
 5、一定要注意errorLevel是否正确
 </pre>
 
-<pre>
+``` css
 @unit-test-expecteds {
     1: zero should be removed when meet 0.xxx in ".test"
     1: zero should be removed when meet 0.xxx in ".test-another"
@@ -116,7 +116,7 @@ css文件测试用例：
 .test-padding {
     padding: 1px 0.2px;
 }
-</pre>
+```
 
 ## Description
 <pre>
