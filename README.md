@@ -5,8 +5,6 @@ CSSCheckStyle
 @description {
 	destination: 检查CSS代码中的编码规范和编码风格问题;
 	reference: 《人人FED CSS编码规范》;
-    author: zhifu.wang;
-    email: wangjeaf@gmail.com;
 	language: python;
 }
 </pre>
