@@ -63,7 +63,7 @@ border-radius:3px
  [WARN] 4. should have (only) one "space" before value of "color" in ".test-special-word a.a-class"
 </pre>
 
-#### 最终代码
+#### 符合规范的最终代码
 
 ```css
 .test-special-word .a-class {
