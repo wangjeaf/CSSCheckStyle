@@ -56,9 +56,9 @@ ignore-rule-sets   [=@unit-test-expecteds] 忽略的一些规则集
 @description {
 	destination: 检查代码中的不符合CSS编码规范的问题，并给出错误提示;
 	reference: 人人FED CSS编码规范;
-	check-result: 默认将第一个文件的异常打印出，同时为每一个存在异常的检查文件生成错误信息文件，放在源文件相同目录下;
-	check-result-file-name: 文件名+.ckstyle.txt，例如a.css的异常文件名为a.css.ckstyle.txt;
-	check-result-extra: -p为所有结果打印到控制台，-a为所有异常输出到同一个文件中;
+	check-result: 默认是为每一个存在异常的检查文件生成错误信息文件，放在源文件相同目录下;
+	check-result-file-name: 文件名 + .ckstyle.txt，例如a.css的异常文件名为a.css.ckstyle.txt;
+	check-result-extra: -p为所有结果打印到控制台，同时删除检查结果文件;
 	language: python;
 }
 </pre>
