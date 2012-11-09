@@ -86,12 +86,14 @@ class FEDSemicolonAfterValue(RuleChecker):
 tests/runUnitTests.py是单元测试运行器，将运行tests/unit的所有单元测试并给出运行结果
 </pre>
 
+# python文件测试用例
 <pre>
-python文件测试用例：
 1、必须在文件中引入asserts.py，用于断言
 2、必须在文件中加入doTest方法，并在doTest方法及其调用中编写断言
+</pre>
 
-css文件测试用例：
+# css文件测试用例
+<pre>
 1、必须包含 @unit-test-expecteds，并在此规则中写入单元测试断言
 2、每一个规则由key-value组成，key为错误的errorLevel，value为错误消息
 3、如果断言中有，而实际检查结果中没有，测试时将出现[expect but not have]
@@ -99,7 +101,23 @@ css文件测试用例：
 5、一定要注意errorLevel是否正确
 </pre>
 
-示例：
+# python 用例示例
+``` python
+from asserts import *
+from helper import doCssCheck
+
+def doTest():
+    text = 'body {width: 1px}'
+    logs, warns, errors = doCssCheck(text)
+    equal(len(logs), 2, 'two logs')
+    equal(len(warns), 1, 'one warn happened')
+    equal(len(errors), 1, 'one error happened')
+    equal(warns[0], r'each rule in "body" need semicolon in the end, "width" has not', 'warn rule text is ok')
+    equal(errors[0], r'should not set style for html tag in "body"', 'error rule text is ok')
+```
+
+# CSS 用例示例
+
 ``` css
 @unit-test-expecteds {
     1: zero should be removed when meet 0.xxx in ".test"
@@ -121,7 +139,7 @@ css文件测试用例：
 ```
 
 ## Description
-``` css
+<pre>
 @description {
 	destination: 检查代码中的不符合CSS编码规范的问题，并给出错误提示;
 	reference: 人人FED CSS编码规范;
@@ -130,10 +148,10 @@ css文件测试用例：
 	check-result-extra: -p为所有结果打印到控制台，同时删除检查结果文件;
 	language: python;
 }
-```
+</pre>
 
 ## Rules
-``` css
+<pre>
 @all-rules {
     hexadecimal-color:              16进制颜色，大写，并且尽量省略;
     no-font-family:                 不允许业务代码设置字体;
@@ -176,12 +194,12 @@ css文件测试用例：
     single-quotation:               使用单引号;
     z-index-in-range:               z-index取值应该符合范围要求;
 }
-```
+</pre>
 
 所有的规则都对应唯一id，并且有独立的检查类，所有的规则类都在`ckstyle/plugins`目录下。
 id与类的对应关系如下：
 
-``` css
+<pre>
 @plugin-id-rule-mapping {
     no-font-family: FEDCanNotSetFontFamily;
     no-expression: FEDNoExpression;
@@ -224,13 +242,13 @@ id与类的对应关系如下：
     hack-prop: FEDHackAttributeInCorrectWay;
     unknown-html-tag: FEDUnknownHTMLTagName;
 }
-```
+</pre>
 
 ## Join us
 欢迎使用，并参与到开发当中来。
-``` css
+<pre>
 @author-info {
     author: zhifu.wang;
     email: wangjeaf@gmail.com;
 }
-```
+</pre>

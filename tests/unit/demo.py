@@ -1,4 +1,4 @@
-from asserts import ok, equal, notEqual, getResults
+from asserts import *
 from helper import doCssCheck
 
 def doTest():
