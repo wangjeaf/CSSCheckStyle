@@ -33,6 +33,7 @@ ckstyle -c xxx.ini -r -p -c xxx.ini --extension=.test.txt --include=all --exclud
 * ignore-rule-sets   `[=@unit-test-expecteds] 忽略的一些规则集`
 
 ## CommandLineOptions
+<pre>
 -h / --help     `显示帮助`
 -r              `递归检查所有文件`
 -p              `将结果打印到控制台（同时删除已有的对应的结果文件）`
@@ -41,6 +42,7 @@ ckstyle -c xxx.ini -r -p -c xxx.ini --extension=.test.txt --include=all --exclud
 --exclude       `指定除外的规则`
 --extension     `指定扩展名`
 --errorLevel    `指定检查出的异常等级(0-error, 1-warning, 2-log)`
+</pre>
 
 ## Priority
 指定的配置项的优先级：
