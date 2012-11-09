@@ -21,7 +21,7 @@ border-radius:3px
 }
 ```
 ### Check Result
-代码问题：
+#### 检查结果 1：
 <pre>
 [ERROR] 1. use less tag in ".test1 ul li a"
 [ERROR] 2. css3 prop "-webkit-border-radius" missing some of "-webkit-,-moz-,-o-,std" in ".test1 ul li a"
@@ -37,7 +37,9 @@ border-radius:3px
  [WARN] 12. should not have "space" after "-moz-border-radius" in ".test1 ul li a"
  [WARN] 13. should have (only) one "space" before value of "border-radius" in ".test1 ul li a"
  [WARN] 14. each rule in ".test1 ul li a" need semicolon in the end, "border-radius" has not
- </pre>
+</pre>
+
+#### 第一次修改后：
 
 ```css
 .test-special-word a.a-class {
@@ -50,7 +52,7 @@ border-radius:3px
 }
 ```
 
-再次检查：
+#### 再次检查：
 <pre>
 [ERROR] 1. should not put "HTMLtag" and ".class" together in ".test-special-word a.a-class"
  [WARN] 2. replace "#FFFFFF" with "#FFF" in ".test-special-word a.a-class"
@@ -58,6 +60,7 @@ border-radius:3px
  [WARN] 4. should have (only) one "space" before value of "color" in ".test-special-word a.a-class"
  </pre>
 
+#### 最终代码
 
 ```css
 .test-special-word .a-class {
