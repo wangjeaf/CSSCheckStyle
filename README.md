@@ -10,7 +10,7 @@ CSSCheckStyle
 </pre>
 
 ## Demo
-### CSS Code
+### 原始CSS代码
 ```css
 .test1 ul li a {
 width:10px;
@@ -20,7 +20,7 @@ color:#ffffff;
 border-radius:3px
 }
 ```
-### Check Result
+### 检查与修改过程
 #### 检查结果 1：
 <pre>
 [ERROR] 1. use less tag in ".test1 ul li a"
