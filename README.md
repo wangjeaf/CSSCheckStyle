@@ -55,7 +55,19 @@ tab-spaces         [=4] tag宽度
 standard           [=standard.css] 给一个标准的css文件，检查时遵照此文件来检查
 ignore-rule-sets   [=@unit-test-expecteds] 忽略的一些规则集
 </pre>
-
+### Config File Demo
+```ini
+[config]
+error-level = 0
+include = all
+exclude = none
+recursive = false
+print-flag = false
+extension = .ckstyle.txt
+tab-spaces = 4
+standard = standard.css
+ignore-rule-sets = @unit-test-expecteds
+```
 ## Priority
 指定的配置项的优先级：
 **命令行参数 > 指定的配置文件中的配置 > 默认配置文件路径的配置 > 工具的默认参数**
@@ -73,7 +85,7 @@ ignore-rule-sets   [=@unit-test-expecteds] 忽略的一些规则集
 6、每一个规则，需要在tests目录中添加对应的单元测试用例，测试用例请参见"Unit Test"小节
 </pre>
 
-### plugin 示例
+### plugin Demo
 
 ``` python
 from Base import *
@@ -96,13 +108,13 @@ class FEDSemicolonAfterValue(RuleChecker):
 tests/runUnitTests.py是单元测试运行器，将运行tests/unit的所有单元测试并给出运行结果
 </pre>
 
-### python文件测试用例
+### Python Unit Test
 <pre>
 1、必须在文件中引入asserts.py，用于断言
 2、必须在文件中加入doTest方法，并在doTest方法及其调用中编写断言
 </pre>
 
-### css文件测试用例
+### Css Unit Test
 <pre>
 1、必须包含 @unit-test-expecteds，并在此规则中写入单元测试断言
 2、每一个规则由key-value组成，key为错误的errorLevel，value为错误消息
@@ -111,7 +123,7 @@ tests/runUnitTests.py是单元测试运行器，将运行tests/unit的所有单�
 5、一定要注意errorLevel是否正确
 </pre>
 
-### python 用例示例
+### python Unit Test Demo
 ``` python
 from asserts import *
 from helper import doCssCheck
@@ -125,7 +137,7 @@ def doTest():
     equal(warns[0], r'each rule in "body" need semicolon in the end, "width" has not', 'warn rule text is ok')
     equal(errors[0], r'should not set style for html tag in "body"', 'error rule text is ok')
 ```
-### CSS 用例示例
+### CSS Unit Test Demo
 
 ``` css
 @unit-test-expecteds {
