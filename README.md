@@ -26,7 +26,7 @@ ckstyle -c xxx.ini -r -p       使用xxx.ini中的配置进行递归检查，并
 ckstyle -r --extension=.test.txt --include=all --exclude=none --errorLevel=2   使用配置的信息进行检查
 </pre>
 
-## Complete Example
+### Complete Example
 <pre>
 ckstyle -c xxx.ini -r -p -c xxx.ini --extension=.test.txt --include=all --exclude=none --errorLevel=2 dirpath
 </pre>
