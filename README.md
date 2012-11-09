@@ -28,7 +28,7 @@ ckstyle -r --extension=.test.txt --include=all --exclude=none --errorLevel=2   ä
 
 ### Complete Example
 <pre>
-ckstyle -c xxx.ini -r -p -c xxx.ini --extension=.test.txt --include=all --exclude=none --errorLevel=2 dirpath
+ckstyle -c xxx.ini -r -p --extension=.test.txt --include=all --exclude=none --errorLevel=2 dirpath
 </pre>
 
 ## CommandLine Options
