@@ -68,7 +68,7 @@ tab-spaces = 4
 standard = standard.css
 ignore-rule-sets = @unit-test-expecteds
 ```
-## Priority
+## Config Priority
 指定的配置项的优先级：
 **命令行参数 > 指定的配置文件中的配置 > 默认配置文件路径的配置 > 工具的默认参数**
 
