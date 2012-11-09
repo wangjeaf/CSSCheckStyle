@@ -21,7 +21,7 @@ border-radius:3px
 }
 ```
 ## Check Result
-* part 1
+代码问题：
 <pre>
 [ERROR] 1. use less tag in ".test1 ul li a"
 [ERROR] 2. css3 prop "-webkit-border-radius" missing some of "-webkit-,-moz-,-o-,std" in ".test1 ul li a"
@@ -50,7 +50,7 @@ border-radius:3px
             border-radius: 3px;
 }
 ```
-* part 2
+再次检查：
 <pre>
 [ERROR] 1. should not put "HTMLtag" and ".class" together in ".test-special-word a.a-class"
  [WARN] 2. replace "#FFFFFF" with "#FFF" in ".test-special-word a.a-class"
