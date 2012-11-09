@@ -257,11 +257,9 @@ id与类的对应关系如下：
 </pre>
 
 ## Join us
-欢迎使用，并参与到开发当中来。
-<pre>
-@author-info {
-    author: zhifu.wang;
-    email: wangjeaf@gmail.com;
-    url: http://fed.renren.com, http://www.renren.com;
-}
-</pre>
+    欢迎使用，并参与到开发当中来。
+    @author-info {
+        author: zhifu.wang;
+        email: wangjeaf@gmail.com;
+        url: http://fed.renren.com, http://www.renren.com;
+    }
