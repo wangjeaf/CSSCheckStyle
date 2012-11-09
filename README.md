@@ -51,6 +51,71 @@ ignore-rule-sets   [=@unit-test-expecteds] 忽略的一些规则集
 指定的配置项的优先级：
 **命令行参数 > 指定的配置文件中的配置 > 默认配置文件路径的配置 > 工具的默认参数**
 
+## Plugin Development
+<pre>
+放置在ckstyle/plugins目录下的所有文件（Base.py和helper.py除外），每一个文件都对应一种检查规则，开发时可自行添加和修改。
+但是必须满足以下条件：
+1、文件中必须包含与文件名相同的类名，比如FEDNoExpression.py中包含FEDNoExpression类
+2、类必须继承自RuleChecker/RuleSetChecker/StyleSheetChecker
+3、类中必须包含check方法，并且传入rule/ruleSet/styleSheet作为参数，并且返回True/False，检查通过为True，不通过为False
+4、类中必须包含errorLevel和errorMsg属性，便于检测异常时给出错误提示
+5、errorMsg中可以包含 ${selector}/${name}/${value}等属性设置，在错误提示时将进行相应替换
+6、每一个规则，需要在tests目录中添加对应的单元测试用例，测试用例请参见"Unit Test"小节
+</pre>
+
+<pre>
+from Base import *
+
+class FEDSemicolonAfterValue(RuleChecker):
+    def __init__(self):
+        self.id = 'add-semicolon'
+        self.errorLevel = ERROR_LEVEL.WARNING
+        self.errorMsg = 'each rule in "${selector}" need semicolon in the end, "${name}" has not'
+    def check(self, rule):
+        if not rule.roughValue.strip().endswith(';'):
+            return False
+        return True 
+</pre>
+## Unit Test
+<pre>
+每一个规则，都需要添加对应的单元测试用例
+放置在tests/unit目录下的所有文件，都是单元测试用例文件（asserts.py和helper.py除外）
+tests/runUnitTests.py是单元测试运行器，将运行tests/unit的所有单元测试并给出运行结果
+</pre>
+
+<pre>
+python文件测试用例：
+1、必须在文件中引入asserts.py，用于断言
+2、必须在文件中加入doTest方法，并在doTest方法及其调用中编写断言
+
+css文件测试用例：
+1、必须包含 @unit-test-expecteds，并在此规则中写入单元测试断言
+2、每一个规则由key-value组成，key为错误的errorLevel，value为错误消息
+3、如果断言中有，而实际检查结果中没有，测试时将出现[expect but not have]
+4、如果断言中没有，而实际检查结果中有，测试时将出现[unexpect but has]
+5、一定要注意errorLevel是否正确
+</pre>
+
+<pre>
+@unit-test-expecteds {
+    1: zero should be removed when meet 0.xxx in ".test"
+    1: zero should be removed when meet 0.xxx in ".test-another"
+    1: zero should be removed when meet 0.xxx in ".test-padding"
+}
+
+.test {
+    width: 0.1px;
+}
+
+.test-another {
+    width: 0.001px;
+}
+
+.test-padding {
+    padding: 1px 0.2px;
+}
+</pre>
+
 ## Description
 <pre>
 @description {
