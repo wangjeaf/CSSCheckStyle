@@ -40,6 +40,7 @@ border-radius:3px
  </pre>
 
 修改后：
+
 ```css
 .test-special-word a.a-class {
     width:10px;
@@ -50,6 +51,7 @@ border-radius:3px
             border-radius: 3px;
 }
 ```
+
 再次检查：
 <pre>
 [ERROR] 1. should not put "HTMLtag" and ".class" together in ".test-special-word a.a-class"
@@ -59,6 +61,7 @@ border-radius:3px
  </pre>
 
 修改后：
+
 ```css
 .test-special-word .a-class {
     width: 10px;
