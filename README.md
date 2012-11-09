@@ -1,5 +1,16 @@
 CSSCheckStyle
 =============
+## Description
+<pre>
+@description {
+	destination: 检查CSS代码中的编码规范和编码风格问题;
+	reference: 《人人FED CSS编码规范》;
+    author: zhifu.wang;
+    email: wangjeaf@gmail.com;
+	language: python;
+}
+</pre>
+
 ## Installation
 **easy_install https://github.com/wangjeaf/CSSCheckStyle/archive/master.tar.gz**
 
@@ -138,18 +149,6 @@ def doTest():
 }
 ```
 
-## Description
-<pre>
-@description {
-	destination: 检查代码中的不符合CSS编码规范的问题，并给出错误提示;
-	reference: 人人FED CSS编码规范;
-	check-result: 默认是为每一个存在异常的检查文件生成错误信息文件，放在源文件相同目录下;
-	check-result-file-name: 文件名 + .ckstyle.txt，例如a.css的异常文件名为a.css.ckstyle.txt;
-	check-result-extra: -p为所有结果打印到控制台，同时删除检查结果文件;
-	language: python;
-}
-</pre>
-
 ## Rules
 <pre>
 @all-rules {
@@ -250,5 +249,6 @@ id与类的对应关系如下：
 @author-info {
     author: zhifu.wang;
     email: wangjeaf@gmail.com;
+    url: http://fed.renren.com, http://www.renren.com;
 }
 </pre>
