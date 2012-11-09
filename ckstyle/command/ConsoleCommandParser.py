@@ -21,7 +21,12 @@ def getDefaultConfigPath():
     return os.path.realpath(os.path.join(homedir, 'ckstyle.ini'))
 
 def handleCmdArgs():
-    opts, args = getopt.getopt(sys.argv[1:], "hrpc", ["help"])
+    try:
+        opts, args = getopt.getopt(sys.argv[1:], "hrpc", ["help"])
+    except getopt.GetoptError, e:
+        print '[option error] %s ' % e.msg
+        return
+
     configFile = getDefaultConfigPath()
     parser = CommandFileParser.CommandFileParser(configFile)
     config = parser.args
