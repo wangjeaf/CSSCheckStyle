@@ -1,8 +1,7 @@
 CSSCheckStyle
 =============
 ## Installation
-just run : 
-**easy_install https://github.com/wangjeaf/CSSCheckStyle/archive/master.tar.gz**
+just run **easy_install https://github.com/wangjeaf/CSSCheckStyle/archive/master.tar.gz** in console
 
 ## Usage
 * ckstyle                        `用默认配置检查当前目录下的所有css文件`
