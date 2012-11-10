@@ -11,7 +11,7 @@ class CommandFileParser():
         if exists(filePath):
             self.load(filePath)
         else:
-            print '[error] file %s does not exist, will use default settings.' % filePath
+            print '[error] file "%s" does not exist, will use default settings.' % filePath
     
     def load(self, filePath):
         config = ConfigParser.ConfigParser()

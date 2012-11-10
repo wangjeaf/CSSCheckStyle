@@ -125,6 +125,10 @@ def handleCmdArgs():
         return
 
     configFile = getDefaultConfigPath()
+
+    if not os.path.exists(configFile):
+        configFile = 'ckstyle.ini'
+
     parser = CommandFileParser.CommandFileParser(configFile)
     config = parser.args
 
