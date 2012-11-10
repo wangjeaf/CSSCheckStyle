@@ -151,6 +151,7 @@ def handleCmdArgs():
 
     if filePath.endswith('.css'):
         checkFile(filePath, config = config)
-        return
-
-    checkDir(filePath, config = config)
+    elif os.path.isdir(filePath):
+        checkDir(filePath, config = config)
+    else:
+        print '[error] check aborted! because "%s" is neither css file, nor dir' % filePath
