@@ -16,6 +16,7 @@ CSSCheckStyle
 * 自动fix样式的工具
 * 完善规则
 * 收集全站样式与文件的映射关系，并将此映射关系加入配置 [global-styles]
+* 默认可按照当前目录下的ckstyle.ini来配置
 
 ## Demo
 ### 原始CSS代码
