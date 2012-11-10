@@ -77,7 +77,7 @@ def getConfigFile(value):
         print '[error] %s does not exist, or is not a ".ini" file' % value
     return None
 
-def parseCmdArgs(config, opts, args, parser):
+def parseCmdArgs(defaultConfigFile, opts, args):
     recur = False
     printFlag = False
     configFile = None
@@ -104,9 +104,11 @@ def parseCmdArgs(config, opts, args, parser):
         elif op == '--exclude':
             exclude = getValue(value)
 
-    if configFile is not None :
-        parser.load(configFile)
-        config = parser.args
+    if configFile is None :
+        configFile = defaultConfigFile
+
+    parser = CommandFileParser.CommandFileParser(configFile)
+    config = parser.args
 
     if recur: config.recursive = True
     if printFlag: config.printFlag = True
@@ -129,14 +131,14 @@ def handleCmdArgs():
     if not os.path.exists(configFile):
         configFile = getDefaultConfigPath()
 
-    parser = CommandFileParser.CommandFileParser(configFile)
-    config = parser.args
-
     if len(args) == 0 and len(opts) == 0:
+        parser = CommandFileParser.CommandFileParser(configFile)
+        config = parser.args
+
         checkDir(os.getcwd(), config = config)
         return
 
-    config = parseCmdArgs(config, opts, args, parser)
+    config = parseCmdArgs(configFile, opts, args)
     
     filePath = None
     if len(args) == 0:

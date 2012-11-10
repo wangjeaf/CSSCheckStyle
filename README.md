@@ -16,7 +16,6 @@ CSSCheckStyle
 * 自动fix样式的工具
 * 完善规则
 * 收集全站样式与文件的映射关系，并将此映射关系加入配置 [global-styles]
-* 默认可按照当前目录下的ckstyle.ini来配置
 
 ## Demo
 ### 原始CSS代码
@@ -112,6 +111,12 @@ ckstyle -c xxx.ini -r -p --extension=.test.txt --include=all --exclude=none --er
 --extension     指定扩展名
 --errorLevel    指定检查出的异常等级(0-error, 1-warning, 2-log)
 </pre>
+
+## Config File
+可通过以下三个方式来指定配置文件：
+* 命令行通过-c 或 --config来指定配置文件路径
+* 在执行ckstyle命令的当前目录下添加 ckstyle.ini，则默认获取此配置文件
+* 在用户默认目录放入ckstyle.ini
 
 ## Config File Options
 <pre>
