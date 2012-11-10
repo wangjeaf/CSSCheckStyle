@@ -120,7 +120,7 @@ exclude            [=none] 除外的规则
 recursive          [=false] 是否递归检查目录下所有文件
 print-flag         [=false] 是否打印到控制台
 extension          [=.ckstyle.txt] 指定检查结果文件的扩展名
-tab-spaces         [=4] tag宽度
+tab-spaces         [=4] 一个tab占4个空格宽度
 standard           [=standard.css] 给一个标准的css文件，检查时遵照此文件来检查
 ignore-rule-sets   [=@unit-test-expecteds] 忽略的一些规则集
 </pre>
