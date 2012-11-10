@@ -124,10 +124,10 @@ def handleCmdArgs():
         print '[option error] %s ' % e.msg
         return
 
-    configFile = getDefaultConfigPath()
+    configFile = 'ckstyle.ini'
 
     if not os.path.exists(configFile):
-        configFile = 'ckstyle.ini'
+        configFile = getDefaultConfigPath()
 
     parser = CommandFileParser.CommandFileParser(configFile)
     config = parser.args
