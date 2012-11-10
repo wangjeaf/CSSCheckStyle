@@ -12,6 +12,9 @@ CSSCheckStyle
 ## Installation
 **easy_install https://github.com/wangjeaf/CSSCheckStyle/archive/master.tar.gz**
 
+## TODO
+* 自动fix样式的工具
+
 ## Demo
 ### 原始CSS代码
 ```css
