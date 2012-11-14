@@ -1,6 +1,9 @@
 CSSCheckStyle
 =============
 ## Description
+前端开发一直注重代码的规范性，JS代码有JSLint、gjslint等一系列工具来检查包括缩进、语法、最佳实践等问题，而且也有uglifyjs、YUI Compressor等工具来对JS代码进行压缩。通过这些工具，能让前端开发的js代码，既能用性能极高的压缩后代码满足浏览器的要求，又能用代码规范性良好的压缩前代码满足开发者的阅读、学习和重构。
+然而，CSS并没有JS这么“受宠”，CSS的压缩工具倒是不少，但是CSS代码的风格检查工具却不多。CSSLint能够检查一些CSS取值等方面的问题，但是忽略了对代码编写风格的检查（详见Demo示例）。
+CSSCheckStyle就是人人FED前端架构组为检查CSS的代码风格而开发的。
 <pre>
 @description {
 	destination: 检查CSS代码中的编码规范和编码风格问题;
