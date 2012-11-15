@@ -1,13 +1,15 @@
-from helper import isAlphaChar, findCharFrom, isSpecialString, isCommentStart, isCommentEnd
+from helper import findCharFrom, ignoreAtStatement, isCommentStart, isCommentEnd, isSpecialStart
+from ckstyle.entity.StyleSheet import StyleSheet
 
 class CssParser():
-    def __init__(self, rawCss = None):
+    def __init__(self, rawCss = None, fileName = ''):
         self.rawCss = rawCss
+        self.fileName = fileName
         self.totalLength = len(rawCss)
-        self.styleSheet = None
+        self.styleSheet = StyleSheet(fileName)
         self._parseErrors = []
 
-    def doParse(self, css):
+    def doParse(self, config):
         prevChar = None
         inComment = False
         length = self.totalLength
@@ -16,6 +18,7 @@ class CssParser():
         commentText = ''
         i = -1
         comments = []
+       
         while True:
             if (i == length - 1):
                 break;
@@ -33,21 +36,14 @@ class CssParser():
             if inComment:
                 commentText = commentText + char
                 continue;
-            if char == '@' and isSpecialString(text, i, '@import'):
-                nextPos, attrs = findCharFrom(text, i, length, ';')
-                i = nextPos
-                selector = '';
-                continue
-            if char == '@' and isSpecialString(text, i, '@-css-compiler '):
-                nextPos, attrs = findCharFrom(text, i, length, '}')
-                i = nextPos
-                selector = '';
-                continue
-            if char == '@' and isSpecialString(text, i, '@-css-compiler-'):
-                nextPos, attrs = findCharFrom(text, i, length, '\n')
-                i = nextPos
-                selector = '';
-                continue
+            if isSpecialStart(char):
+                nextPos, attrs = ignoreAtStatement(text, i, length, char)
+                if nextPos is not None:
+                    i = nextPos
+                    selector = ''
+                    commentText = ''
+                    comments = []
+                    continue
             if char == '{':
                 nextBracePos, attributes = findCharFrom(text, i, length, '{', '}')
                 # do not need the last brace
@@ -55,7 +51,7 @@ class CssParser():
                 if len(comments) != 0:
                     realComment = '\n'.join(comments)
                     comments = []
-                css.addRuleSetByStr(selector, attributes[:-1], realComment)
+                self.styleSheet.addRuleSetByStr(selector, attributes[:-1], realComment)
                 commentText = ''
                 i = nextBracePos
                 selector = ''
@@ -63,8 +59,6 @@ class CssParser():
                 selector = ''
             else:
                 selector = selector + char
-
-        self.styleSheet = css
 
         for ruleSet in self.styleSheet.getRuleSets():
             errors = self.doParseRules(ruleSet)

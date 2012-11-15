@@ -6,16 +6,14 @@ import os
 from reporter.ReporterUtil import ReporterUtil
 from cssparser.CssFileParser import CssParser
 from CssCheckerWrapper import CssChecker
-from entity.StyleSheet import StyleSheet
 import command.args as args
 
 defaultConfig = args.CommandArgs()
 
 def doCheck(fileContent, fileName = '', config = defaultConfig):
     '''封装一下'''
-    parser = CssParser(fileContent)
-    css = StyleSheet(fileName)
-    parser.doParse(css)
+    parser = CssParser(fileContent, fileName)
+    parser.doParse(config)
 
     checker = CssChecker(parser, config)
 

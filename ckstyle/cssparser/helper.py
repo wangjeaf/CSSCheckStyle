@@ -1,12 +1,32 @@
 def isAlphaChar(char):
     return 97 <= ord(char) <= 122
 
+specialTexts = [
+    {'start':'@', 'text':'@import', 'end':';\n'},
+    {'start':'@', 'text':'@charset', 'end':';\n'},
+    {'start':'@', 'text':'@-css-compiler ', 'end':'}'},
+    {'start':'@', 'text':'@-css-compiler-', 'end':';\n'}]
+
+specialStartChars = set([x['start'] for x in specialTexts])
+
+def isSpecialStart(char):
+    for x in specialStartChars:
+        if x == char:
+            return True
+    return False
+
+def ignoreAtStatement(text, i, length, char):
+    for obj in specialTexts:
+        if char == obj['start'] and isSpecialString(text, i, obj["text"]):
+            return findCharFrom(text, i, length, obj["end"])
+    return None, None
+
 def findCharFrom(text, i, length, left, right = None):
     counter = 1
     collector = ''
     for j in range(i + 1, length):
         if right == None:
-            if text[j] == left:
+            if text[j] == left or left.find(text[j]) != -1:
                 break;
             else:
                 collector = collector + text[j]
@@ -31,3 +51,4 @@ def isCommentStart(char, text, i):
 
 def isCommentEnd(char, text, i):
     return char == '/' and text[i - 1] == '*'
+
