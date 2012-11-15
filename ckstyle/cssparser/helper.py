@@ -4,6 +4,7 @@ def isAlphaChar(char):
 specialTexts = [
     {'start':'@', 'text':'@import', 'end':';\n'},
     {'start':'@', 'text':'@charset', 'end':';\n'},
+    {'start':'@', 'text':'@namespace', 'end':';'},
     {'start':'@', 'text':'@-css-compiler ', 'end':'}'},
     {'start':'@', 'text':'@-css-compiler-', 'end':';\n'}]
 
