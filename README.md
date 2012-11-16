@@ -13,7 +13,11 @@ CSSCheckStyle
 **easy_install https://github.com/wangjeaf/CSSCheckStyle/archive/master.tar.gz**
 
 ## TODOs
-* 自动fix样式的工具
+* standard.css支持 tellme
+* 自动fix样式的工具 autofixer
+* 代码压缩工具 compressor
+* 自动按照推荐顺序排列 orderer
+* import导入文件的支持 importer
 * 完善规则
 * 收集全站样式与文件的映射关系，并将此映射关系加入配置 [global-styles]
 
