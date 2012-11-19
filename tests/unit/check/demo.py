@@ -1,5 +1,4 @@
-from asserts import *
-from helper import doCssCheck
+from helper import *
 
 def doTest():
     text = 'body {width: 1px}'

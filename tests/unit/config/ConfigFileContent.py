@@ -1,5 +1,4 @@
-from asserts import *
-from helper import parseConfigFile
+from helper import *
 
 def doTest():
     _default()

@@ -9,7 +9,7 @@ class CssParser():
         self.styleSheet = StyleSheet(fileName)
         self._parseErrors = []
 
-    def doParse(self, config):
+    def doParse(self, config = None):
         prevChar = None
         inComment = False
         length = self.totalLength

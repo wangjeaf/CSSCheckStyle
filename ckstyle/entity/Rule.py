@@ -10,6 +10,10 @@ class Rule():
         self.value = Cleaner.clearValue(value)
         self.selector = Cleaner.clearSelector(selector)
 
+        self.strippedName = name.strip()
+        self.strippedValue = value.strip()
+        self.strippedSelector = selector.strip()
+
         self.ruleSet = ruleSet
 
     def getRuleSet(self):
