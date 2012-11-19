@@ -1,5 +1,6 @@
 import os
 import ConfigParser
+from ckstyle.cmdconsole.ConsoleClass import console
 import args
 
 def exists(filePath):
@@ -10,11 +11,11 @@ class CommandFileParser():
         self.args = args.CommandArgs()
         if exists(filePath):
             if not debug:
-                print '[log] load config from %s' % filePath
+                console.log('load config from %s' % filePath)
             self.load(filePath)
         else:
             if not debug:
-                print '[log] no config file specified, will use default settings.'
+                console.log('no config file specified, will use default settings.')
     
     def load(self, filePath):
         config = ConfigParser.ConfigParser()

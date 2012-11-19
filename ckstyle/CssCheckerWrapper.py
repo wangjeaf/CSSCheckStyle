@@ -4,6 +4,7 @@
 import os
 
 from plugins.Base import *
+from ckstyle.cmdconsole.ConsoleClass import console
 
 class CssChecker():
     '''CSS检查类，需要CSS解析器作为辅助'''
@@ -62,7 +63,7 @@ class CssChecker():
             if hasattr(plugin, pluginName):
                 pluginClass = getattr(plugin, pluginName)
             else:
-                print '[TOOL] class %s should exist in %s.py' % (pluginName, pluginName)
+                console.error('[TOOL] class %s should exist in %s.py' % (pluginName, pluginName))
                 continue
             # 构造plugin的类
             instance = pluginClass()
@@ -74,7 +75,7 @@ class CssChecker():
                 continue
 
             if instance.errorMsg.find(';') != -1 or instance.errorMsg.find('\n') != -1:
-                print r'[TOOL] errorMsg should not contain ";" or "\n" in %s.py' % pluginName
+                console.error(r'[TOOL] errorMsg should not contain ";" or "\n" in %s.py' % pluginName)
                 continue
 
             # 注册到检查器中
@@ -109,14 +110,14 @@ class CssChecker():
         elif errorLevel == ERROR_LEVEL.ERROR:
             self.errorMsgs.append(errorMsg)
         else:
-            print '[TOOL] wrong ErrorLevel for ' + errorMsg
+            console.error('[TOOL] wrong ErrorLevel for ' + errorMsg)
 
     def logStyleSheetMessage(self, checker, styleSheet):
         '''记录StyleSheet的问题'''
         errorLevel = checker.getLevel()
         errorMsg = checker.getMsg()
         if errorMsg is None or errorMsg == '':
-            print '[TOOL] no errorMsg in your plugin, please check it'
+            console.error('[TOOL] no errorMsg in your plugin, please check it')
         if errorMsg.find('${file}') == -1:
             errorMsg = errorMsg + ' (from "' + styleSheet.getFile() + '")'
         else:
@@ -128,7 +129,7 @@ class CssChecker():
         errorLevel = checker.getLevel()
         errorMsg = checker.getMsg()
         if errorMsg is None or errorMsg == '':
-            print '[TOOL] no errorMsg in your plugin, please check it'
+            console.error('[TOOL] no errorMsg in your plugin, please check it')
         if errorMsg.find('${selector}') == -1:
             errorMsg = errorMsg + ' (from "' + rule.selector + '")'
         else:

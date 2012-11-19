@@ -1,6 +1,7 @@
 import os
 import string
 import datetime
+from ckstyle.cmdconsole.ConsoleClass import console
 from ckstyle.plugins.Base import *
 from ckstyle.doCssCheck import doCheck
 
@@ -29,12 +30,12 @@ def checkUnitTestResult(expecteds, reals, level, fileName):
             expecteds[real] = 0
         else:
             errorCounter = errorCounter + 1
-            print '[UnitTest] [unexpected but has] level', level, '(', real, ')', 'in', fileName
+            console.show('[UnitTest] [unexpected but has] level', level, '(', real, ')', 'in', fileName)
 
     for key, value in expecteds.items():
         if value == 1:
             errorCounter = errorCounter + 1
-            print '[UnitTest] [expect but has not] level', level, '(', key, ')', 'in', fileName
+            console.show('[UnitTest] [expect but has not] level', level, '(', key, ')', 'in', fileName)
 
 errorCounter = 0;
 okCounter = 0;
@@ -49,7 +50,7 @@ def doCheckWithPythonFile(f):
     if hasattr(plugin, 'doTest'):
         pluginMethod = getattr(plugin, 'doTest')
     else:
-        print '[TOOL] doTest should exist in %s' % f
+        console.error('doTest should exist in %s' % f)
     if pluginMethod is None:
         return
 
@@ -59,7 +60,7 @@ def doCheckWithPythonFile(f):
     if hasattr(plugin, 'getResults'):
         getResults = getattr(plugin, 'getResults')
     else:
-        print '[TOOL] %s should import asserts.py' % f
+        console.error('[TOOL] %s should import asserts.py' % f)
     if getResults is None:
         return
 
@@ -70,7 +71,7 @@ def doCheckWithPythonFile(f):
     for result in results:
         if result[0] == False:
             errorCounter = errorCounter + 1
-            print '[UnitTest] [', f, ']', result[1]
+            console.show('[UnitTest] [', f, ']', result[1])
         else:
             okCounter = okCounter + 1
 
@@ -94,11 +95,11 @@ def runUnitTests():
 
         testErrorSet = styleSheet.getRuleSetBySelector('@unit-test-expecteds')
         if testErrorSet is None:
-            print 'no @unit-test-expecteds in %s' % testFileName
+            console.error('no @unit-test-expecteds in %s' % testFileName)
             continue
         expectedErrors = testErrorSet.getRules()
         if expectedErrors is None:
-            print 'no error instance in @unit-test-expecteds, %s' % testFileName
+            console.error('no error instance in @unit-test-expecteds, %s' % testFileName)
             continue
 
         fileCounter = fileCounter + 1
@@ -118,7 +119,7 @@ def runUnitTests():
 
     delta = (end - start).microseconds / 1000
 
-    print '[UnitTest] error: %s, pass: %s, in %s files, costs %s ms' % (errorCounter, okCounter, fileCounter, delta)
+    console.show('[UnitTest] error: %s, pass: %s, in %s files, costs %s ms' % (errorCounter, okCounter, fileCounter, delta))
 
 if __name__ == '__main__':
     runUnitTests()

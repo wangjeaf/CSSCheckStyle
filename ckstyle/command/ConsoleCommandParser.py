@@ -6,10 +6,11 @@ import os
 import getopt
 import string
 from ckstyle.doCssCheck import checkFile, checkDir, checkDirRecursively
+from ckstyle.cmdconsole.ConsoleClass import console
 import CommandFileParser
 
 def usage():
-    print '''
+    console.show('''
 [Usage]
     ckstyle -h / ckstyle --help
     ckstyle
@@ -32,7 +33,7 @@ def usage():
     --exclude       specify exclude rules(can be configed in .ini file)
     --extension     specify check result file extension(use ".ckstyle.txt" as default)
     --errorLevel    specify error level(0-error, 1-warning, 2-log)
-    '''
+    ''')
 
 def getDefaultConfigPath():
     homedir = os.getenv('USERPROFILE') or os.getenv('HOME')
@@ -50,7 +51,7 @@ def getErrorLevel(value):
             errorLevel = 0
         return errorLevel
     except ValueError:
-        print '[error] --errorLevel option should be number\n'
+        console.error('--errorLevel option should be number\n')
         return None
 
 def getExtension(value):
@@ -69,12 +70,12 @@ def getValue(value):
 def getConfigFile(value):
     value = value.strip()
     if value == '':
-        print '[error] no config file, ckstyle.ini path should be after -c.\n'
+        console.error('no config file, ckstyle.ini path should be after -c.\n')
         return None
     if os.path.exists(value) and value.endswith('.ini'):
         return value
     else:
-        print '[error] %s does not exist, or is not a ".ini" file' % value
+        console.error('%s does not exist, or is not a ".ini" file' % value)
     return None
 
 def parseCmdArgs(defaultConfigFile, opts, args):
@@ -123,7 +124,7 @@ def handleCmdArgs():
     try:
         opts, args = getopt.getopt(sys.argv[1:], "hrpc:", ["help", "config=", "errorLevel=", "extension=", "include=", "exclude="])
     except getopt.GetoptError, e:
-        print '[option error] %s ' % e.msg
+        console.error('[option] %s ' % e.msg)
         return
 
     configFile = 'ckstyle.ini'
@@ -146,7 +147,7 @@ def handleCmdArgs():
     else:
         filePath = args[0]
         if not os.path.exists(filePath):
-            print '[error] %s not exist' % filePath
+            console.error('%s not exist' % filePath)
             return
 
     if filePath.endswith('.css'):
@@ -154,4 +155,4 @@ def handleCmdArgs():
     elif os.path.isdir(filePath):
         checkDir(filePath, config = config)
     else:
-        print '[error] check aborted! because "%s" is neither css file, nor dir' % filePath
+        console.error('check aborted! because "%s" is neither css file, nor dir' % filePath)
