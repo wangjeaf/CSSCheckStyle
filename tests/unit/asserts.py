@@ -7,13 +7,16 @@ def equal(expected, actual, msg = 'ok'):
     if expected == actual:
         ok(True, msg)
     else:
-        ok(False, msg + '  expect: %s, actual: %s' % (expected, actual))
+        ok(False, msg + ' (expect: %s, actual: %s)' % (expected, actual))
 
 def notEqual(expected, actual, msg = 'ok'):
     if expected != actual:
         ok(True, msg)
     else:
-        ok(False, msg + '   %s is equal to %s' % (expected, actual))
+        ok(False, msg + ' (%s is equal to %s)' % (expected, actual))
 
 def getResults():
-    return results
+    global results
+    final = results
+    results = []
+    return final

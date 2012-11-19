@@ -6,13 +6,15 @@ def exists(filePath):
     return os.path.exists(filePath)
 
 class CommandFileParser():
-    def __init__(self, filePath):
+    def __init__(self, filePath, debug = False):
         self.args = args.CommandArgs()
         if exists(filePath):
-            print '[info] load config from %s' % filePath
+            if not debug:
+                print '[log] load config from %s' % filePath
             self.load(filePath)
         else:
-            print '[info] no config file specified, will use default settings.'
+            if not debug:
+                print '[log] no config file specified, will use default settings.'
     
     def load(self, filePath):
         config = ConfigParser.ConfigParser()
