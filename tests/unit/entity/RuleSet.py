@@ -30,3 +30,8 @@ def _ruleSet():
     equal(ruleSet.getRuleByName('width').value, '100px', 'find width')
     equal(ruleSet.getRuleByRoughName('  _width ').value, '100px', 'find width by rough name')
     equal(ruleSet.getRuleByStrippedName('_width').value, '100px', 'find width by stripped name')
+
+    ruleSet.addRuleByStr(' .aaa', 'height', '100px; ')
+    equal(len(ruleSet.getRules()), 2, 'two rules')
+    equal(ruleSet.getRules()[0].name, 'width', 'width is first')
+    equal(ruleSet.getRules()[1].name, 'height', 'height is second')
