@@ -14,7 +14,7 @@ class FEDUseSingleQuotation(RuleChecker):
 
     def fix(self, rule):
         if self._findDouble(rule.value):
-            rule.strippedValue = rule.strippedValue.replace('"', "'")
+            rule.fixedValue = rule.value.replace('"', "'")
 
     def _findDouble(self, value):
         return value.find('"') != -1

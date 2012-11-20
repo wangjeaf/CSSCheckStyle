@@ -18,8 +18,8 @@ def checkCssFileByOpm(filePath):
 def fixCss(filePath):
     fileContent = open(filePath).read()
     checker = doFix(fileContent, filePath)
-    print checker.parser.styleSheet.getRuleSets()[0].getRules()[0].strippedValue
-    print checker.parser.styleSheet.getRuleSets()[0].getRules()[1].strippedValue
+    print checker.parser.styleSheet.getRuleSets()[0].getRules()[0].fixedValue
+    print checker.parser.styleSheet.getRuleSets()[0].getRules()[1].fixedValue
 
 if __name__ == '__main__':
     fixCss('test.css')
