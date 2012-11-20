@@ -153,10 +153,7 @@ class CssChecker():
         ignoreRuleSets = self.config.ignoreRuleSets
 
         def findInArray(array, value):
-            for x in array:
-                if x == value:
-                    return True
-            return False
+            return value in array or value.strip() in array
 
         # 检查规则集
         def checkRuleSet(ruleSet):

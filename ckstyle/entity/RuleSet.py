@@ -57,6 +57,16 @@ class RuleSet():
                     return True
         return False
 
+    def getRuleByStrippedName(self, name):
+        for rule in self._rules:
+            if rule.strippedName == name:
+                return rule
+
+    def getRuleByRoughName(self, name):
+        for rule in self._rules:
+            if rule.roughName == name:
+                return rule
+
     def getRuleByName(self, name):
         for rule in self._rules:
             if rule.name == name:

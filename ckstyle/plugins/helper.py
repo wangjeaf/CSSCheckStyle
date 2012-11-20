@@ -43,11 +43,7 @@ def isSimpleSelector(selector):
     return False
 
 def containsInArray(array, value):
-    try:
-        array.index(value)
-        return True
-    except ValueError:
-        return False
+    return value in array
 
 canBeCombinedProps = 'border margin padding background font'.split(' ')
 
