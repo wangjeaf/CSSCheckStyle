@@ -3,7 +3,6 @@
 
 import sys
 import os
-from reporter.ReporterUtil import ReporterUtil
 from cssparser.CssFileParser import CssParser
 from ckstyle.cmdconsole.ConsoleClass import console
 from CssCheckerWrapper import CssChecker
