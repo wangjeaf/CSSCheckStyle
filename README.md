@@ -14,7 +14,7 @@ CSSCheckStyle
 
 ## TODOs
 * standard.css支持 tellme
-* 自动fix样式的工具 autofixer
+* 自动fix样式代码的工具 autofixer
 * 代码压缩工具 compressor
 * 自动按照推荐顺序排列 orderer
 * import导入文件的支持 importer
