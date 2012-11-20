@@ -14,6 +14,7 @@ class Rule():
         self.strippedValue = value.strip()
         self.strippedSelector = selector.strip()
 
+        self.fixedName = ''
         self.fixedValue = ''
 
         self.ruleSet = ruleSet
