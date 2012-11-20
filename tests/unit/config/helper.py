@@ -6,10 +6,14 @@ for p in os.environ.get('PYTHONPATH', '').split(';'):
 
 from asserts import *
 import ckstyle.command.CommandFileParser as CommandFileParser
+from ckstyle.command.ConsoleCommandParser import parseCmdArgs
+
+def realpath(filepath):
+    dirpath = os.path.realpath(os.path.join(__file__, '../'))
+    path = os.path.join(dirpath, filepath)
+    return path
 
 def parseConfigFile(path):
-    dirpath = os.path.realpath(os.path.join(__file__, '../'))
-    path = os.path.join(dirpath, path)
-    parser = CommandFileParser.CommandFileParser(path, True)
+    parser = CommandFileParser.CommandFileParser(realpath(path), True)
     config = parser.args
     return config

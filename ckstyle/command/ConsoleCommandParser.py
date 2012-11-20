@@ -78,7 +78,7 @@ def getConfigFile(value):
         console.error('%s does not exist, or is not a ".ini" file' % value)
     return None
 
-def parseCmdArgs(defaultConfigFile, opts, args):
+def parseCmdArgs(defaultConfigFile, opts, args, debug = False):
     recur = False
     printFlag = False
     configFile = None
@@ -108,7 +108,7 @@ def parseCmdArgs(defaultConfigFile, opts, args):
     if configFile is None :
         configFile = defaultConfigFile
 
-    parser = CommandFileParser.CommandFileParser(configFile)
+    parser = CommandFileParser.CommandFileParser(configFile, debug)
     config = parser.args
 
     if recur: config.recursive = True
