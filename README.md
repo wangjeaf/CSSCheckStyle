@@ -14,11 +14,12 @@ CSSCheckStyle
 
 ## TODOs
 * standard.css支持 tellme
-* 自动fix样式代码的工具 autofixer
+* 自动fix CSS代码 fixer
 * 代码压缩工具 compressor
 * 自动按照推荐顺序排列 orderer
+* 自动合并子样式 combiner
 * import导入文件的支持 importer
-* 完善规则
+* 完善检查规则
 * 收集全站样式与文件的映射关系，并将此映射关系加入配置 [global-styles]
 
 ## Demo
