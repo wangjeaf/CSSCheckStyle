@@ -4,7 +4,7 @@ CSSCheckStyle
 <pre>
 @description {
 	destination: 检查CSS代码中的编码规范和编码风格问题;
-	reference: 《人人FED CSS编码规范》;
+	reference: <a href="http://fed.renren.com/archives/1212">《人人FED CSS编码规范》</a>;
 	language: python;
 }
 </pre>
