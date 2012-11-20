@@ -4,7 +4,7 @@ from helper import canBeCombined, isCss3PrefixProp
 class FEDCombineInToOne(RuleSetChecker):
     def __init__(self):
         self.id = 'combine-into-one'
-        self.errorLevel = ERROR_LEVEL.ERROR
+        self.errorLevel = ERROR_LEVEL.WARNING
         self.errorMsg_rough = 'should combine "${small}" to "${big}" in "${selector}"'
         self.errorMsg = ''
 

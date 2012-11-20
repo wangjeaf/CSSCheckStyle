@@ -3,7 +3,7 @@ from Base import *
 class FEDCommentLengthLessThan80(RuleSetChecker):
     def __init__(self):
         self.id = 'comment-length'
-        self.errorLevel = ERROR_LEVEL.WARNING
+        self.errorLevel = ERROR_LEVEL.LOG
         self.errorMsg = 'comment for "${selector}" length should less than 80 per line'
 
     def check(self, ruleSet):

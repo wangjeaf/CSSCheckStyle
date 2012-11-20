@@ -5,7 +5,7 @@ class FEDCss3PropSpaces(RuleChecker):
     def __init__(self):
         self.id = 'css3-prop-spaces'
 
-        self.errorLevel = ERROR_LEVEL.WARNING
+        self.errorLevel = ERROR_LEVEL.LOG
         self.errorMsg = 'css3 prop "${name}" should align to right in "${selector}"'
 
     def check(self, rule):

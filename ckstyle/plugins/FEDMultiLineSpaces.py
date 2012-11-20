@@ -4,7 +4,7 @@ from helper import isCss3PrefixProp
 class FEDMultiLineSpaces(RuleChecker):
     def __init__(self):
         self.id = 'multi-line-space'
-        self.errorLevel = ERROR_LEVEL.WARNING
+        self.errorLevel = ERROR_LEVEL.LOG
         self.errorMsg_name_pre = 'should have 4 spaces before "${name}" in "${selector}"'
         self.errorMsg_name_after = 'should not have "space" after "${name}" in "${selector}"'
         self.errorMsg_value_pre = 'should have (only) one "space" before value of "${name}" in "${selector}"'
