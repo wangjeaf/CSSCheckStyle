@@ -2,10 +2,10 @@
  * @author: zhifu.wang@renren-inc.com
  */
 @unit-test-expecteds {
-    1: comment for ".test-comment-length" length should less than 80 per line
-    1: comment for ".test-chn-length" length should less than 80 per line
-    1: comment for ".test-chn-and-eng-length" length should less than 80 per line
-    1: comment for ".test-comment-multiline-length" length should less than 80 per line
+    2: comment for ".test-comment-length" length should less than 80 per line
+    2: comment for ".test-chn-length" length should less than 80 per line
+    2: comment for ".test-chn-and-eng-length" length should less than 80 per line
+    2: comment for ".test-comment-multiline-length" length should less than 80 per line
 }
 
 /** fdasfdsaffffffffffffffffffffffffffffffffffffffffffffffffffffffffftested code */

@@ -2,14 +2,14 @@
  * @author: zhifu.wang@renren-inc.com
  */
 @unit-test-expecteds {
-    1: should have 4 spaces before "width" in ".no-space"
-    1: should have 4 spaces before "width" in ".one-space"
-    1: should have 4 spaces before "width" in ".two-spaces"
-    1: should have 4 spaces before "width" in ".three-spaces"
-    1: should have 4 spaces before "width" in ".five-spaces"
-    1: should have 4 spaces before "width" in ".five-more-spaces"
-    1: should have 4 spaces before "nav-down" in ".css-three-attrs-no-prefix-extra-space"
-    1: should have (only) one "space" before value of "width" in ".test-space-before-value"
+    2: should have 4 spaces before "width" in ".no-space"
+    2: should have 4 spaces before "width" in ".one-space"
+    2: should have 4 spaces before "width" in ".two-spaces"
+    2: should have 4 spaces before "width" in ".three-spaces"
+    2: should have 4 spaces before "width" in ".five-spaces"
+    2: should have 4 spaces before "width" in ".five-more-spaces"
+    2: should have 4 spaces before "nav-down" in ".css-three-attrs-no-prefix-extra-space"
+    2: should have (only) one "space" before value of "width" in ".test-space-before-value"
 }
 
 .test-space-before-value {

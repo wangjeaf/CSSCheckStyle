@@ -30,12 +30,12 @@ def checkUnitTestResult(expecteds, reals, level, fileName):
             expecteds[real] = 0
         else:
             errorCounter = errorCounter + 1
-            console.show('[UnitTest] [unexpected but has] level' + level + '(' + real + ')' + 'in' + fileName)
+            console.show('[UnitTest] [unexpected but has] level ' + level + '( ' + real + ' )' + ' in ' + fileName)
 
     for key, value in expecteds.items():
         if value == 1:
             errorCounter = errorCounter + 1
-            console.show('[UnitTest] [expect but has not] level' + level + '(' + key + ')' + 'in' + fileName)
+            console.show('[UnitTest] [expect but has not] level ' + level + '( ' + key + ' )' + ' in ' + fileName)
 
 errorCounter = 0;
 okCounter = 0;

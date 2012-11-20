@@ -6,8 +6,8 @@
     2: should "enter" before the closing brace in ".multi-brace-no-enter"
     2: extra "space" after the opening brace in ".multi-space-after-brace"
     2: every name/value should in single line in ".multi-brace-no-enter-another"
-    1: should have (only) one "space" before value of "width" in ".multi-brace-no-enter"
-    1: should have (only) one "space" before value of "width" in ".multi-brace-no-enter-another"
+    2: should have (only) one "space" before value of "width" in ".multi-brace-no-enter"
+    2: should have (only) one "space" before value of "width" in ".multi-brace-no-enter-another"
 }
 
 .multi-a {
