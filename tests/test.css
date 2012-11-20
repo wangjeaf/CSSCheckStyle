@@ -1,13 +1,5 @@
-/* should not affect the parser */
-@import url(lfjdalkfda);
-@charset fjdaslkfjd;
-@-css-compiler {
-    fdas: fdas;
-}
-@-css-compiler-fdas {
-    fda: fadfa;
-}
-/* test */
+/* @author wangjeaf */ 
 .fda {
-    width: 100px;
+    width: "100px";
+    background-color: #ffccdd;
 }

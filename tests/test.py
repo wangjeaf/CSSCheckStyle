@@ -1,5 +1,6 @@
 import sys
 from ckstyle.doCssCheck import doCheck
+from ckstyle.doCssFix import doFix
 from ckstyle.reporter.ReporterUtil import ReporterUtil
 from ckstyle.cssparser.CssFileParser import CssParser
 from ckstyle.entity.StyleSheet import StyleSheet
@@ -7,7 +8,6 @@ from ckstyle.entity.StyleSheet import StyleSheet
 def checkCssFileByOpm(filePath):
     fileContent = open(filePath).read()
     checker = doCheck(fileContent, filePath)
-    print checker.parser.styleSheet._ruleSets[0].comment
     if checker.hasError():
         reporter = ReporterUtil.getReporter('text', checker)
         reporter.doReport()
@@ -15,5 +15,12 @@ def checkCssFileByOpm(filePath):
         return False
     return True
 
+def fixCss(filePath):
+    fileContent = open(filePath).read()
+    checker = doFix(fileContent, filePath)
+    print checker.parser.styleSheet.getRuleSets()[0].getRules()[0].strippedValue
+    print checker.parser.styleSheet.getRuleSets()[0].getRules()[1].strippedValue
+
 if __name__ == '__main__':
-    checkCssFileByOpm('test.css')
+    fixCss('test.css')
+    #checkCssFileByOpm('test.css')

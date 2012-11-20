@@ -7,7 +7,14 @@ class FEDUseSingleQuotation(RuleChecker):
         self.errorMsg = 'replace " with \' in "${selector}"'
 
     def check(self, rule):
-        if rule.value.find('"') != -1:
+        if self._findDouble(rule.value):
             return False
 
         return True
+
+    def fix(self, rule):
+        if self._findDouble(rule.value):
+            rule.strippedValue = rule.strippedValue.replace('"', "'")
+
+    def _findDouble(self, value):
+        return value.find('"') != -1

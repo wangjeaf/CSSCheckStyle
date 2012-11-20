@@ -148,6 +148,39 @@ class CssChecker():
             errorMsg = errorMsg.replace('${selector}', ruleSet.selector)
         self.remember(errorLevel, errorMsg);
 
+    def doFix(self):
+        # 忽略的规则集（目前只忽略单元测试的selector）
+        ignoreRuleSets = self.config.ignoreRuleSets
+
+        def findInArray(array, value):
+            return value in array or value.strip() in array
+
+        # fix规则集
+        def fixRuleSet(ruleSet):
+            for checker in self.ruleSetCheckers:
+                if hasattr(checker, 'fix'):
+                    checker.fix(ruleSet)
+
+        # fix规则
+        def fixRules(ruleSet):
+            for checker in self.ruleCheckers:
+                for rule in ruleSet._rules:
+                    if hasattr(checker, 'fix'):
+                        checker.fix(rule)
+
+        styleSheet = self.parser.styleSheet
+        for ruleSet in styleSheet.getRuleSets():
+            # 判断此规则是否忽略
+            if findInArray(ignoreRuleSets, ruleSet.selector):
+                continue
+            fixRules(ruleSet)
+            fixRuleSet(ruleSet)
+
+        # 最后fix样式表
+        for checker in self.styleSheetCheckers:
+            if hasattr(checker, 'fix'):
+                checker.fix(styleSheet)
+
     def doCheck(self):
         # 忽略的规则集（目前只忽略单元测试的selector）
         ignoreRuleSets = self.config.ignoreRuleSets

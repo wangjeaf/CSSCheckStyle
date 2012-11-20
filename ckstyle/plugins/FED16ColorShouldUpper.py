@@ -14,28 +14,63 @@ class FED16ColorShouldUpper(RuleChecker):
         if value.find('#') == -1:
             return True
 
-        splited = value.split(' ')
-        found = None
-        for x in splited:
-            if x.find('#') != -1:
-                found = x
-                break
+        found = self._findColor(rule.value)
 
-        found = found.strip()[1:]
-
-        if found != found.upper():
+        if self._isLower(found):
             self.errorMsg = self.errorMsg_upper
             return False
 
         if len(found) == 3:
             return True
 
-        if len(found) != 6:
+        if self._wrongLength(found):
             self.errorMsg = self.errorMsg_length
             return False
 
-        if found[0] == found[1] and found[2] == found[3] and found[4] == found[5]:
+        if self._isDuplicate(found):
             self.errorMsg = self.errorMsg_replace.replace('${from}', found).replace('${to}', found[0]+found[2]+found[4])
             return False
         
         return True
+
+    def fix(self, rule):
+        value = rule.value
+        if value.find('#') == -1:
+            return
+
+        found = self._findColor(rule.value)
+
+        if self._isLower(found):
+            rule.strippedValue = rule.strippedValue.replace(found, found.upper())
+            found = found.upper()
+
+        if len(found) == 3:
+            return
+
+        if self._wrongLength(found):
+            final = found + (6 - len(found)) * 'F'
+            rule.strippedValue = rule.strippedValue.replace(found, final)
+            found = final
+
+        if self._isDuplicate(found):
+            rule.strippedValue = rule.strippedValue.replace(found, found[0] + found[2] + found[4])
+
+    def _wrongLength(self, found):
+        return len(found) != 3 and len(found) != 6
+
+    def _isLower(self, found):
+        return found != found.upper()
+
+    def _isDuplicate(self, found):
+        return found[0] == found[1] and found[2] == found[3] and found[4] == found[5]
+
+    def _findColor(self, value):
+        splited = value.split(' ')
+        found = None
+        for x in splited:
+            if x.startswith('#'):
+                found = x
+                break
+        if found is not None:
+            found = found[1:]
+        return found
