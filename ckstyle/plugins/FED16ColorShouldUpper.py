@@ -34,26 +34,26 @@ class FED16ColorShouldUpper(RuleChecker):
         return True
 
     def fix(self, rule):
-        value = rule.value
+        value = rule.fixedValue
         if value.find('#') == -1:
             return
 
-        found = self._findColor(rule.value)
+        found = self._findColor(rule.fixedValue)
 
         if self._isLower(found):
-            rule.fixedValue = rule.value.replace(found, found.upper())
+            rule.fixedValue = rule.fixedValue.replace('#' + found, '#' + found.upper())
             found = found.upper()
 
         if len(found) == 3:
             return
 
         if self._wrongLength(found):
-            final = found + (6 - len(found)) * 'F'
-            rule.fixedValue = rule.fixedValue.replace(found, final)
+            final = found[0:6] if len(found) > 6 else (found + (6 - len(found)) * 'F')
+            rule.fixedValue = rule.fixedValue.replace('#' + found, '#' + final)
             found = final
 
         if self._isDuplicate(found):
-            rule.fixedValue = rule.fixedValue.replace(found, found[0] + found[2] + found[4])
+            rule.fixedValue = rule.fixedValue.replace('#' + found, '#' + found[0] + found[2] + found[4])
 
     def _wrongLength(self, found):
         return len(found) != 3 and len(found) != 6

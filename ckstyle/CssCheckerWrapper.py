@@ -166,6 +166,13 @@ class CssChecker():
             for checker in self.ruleCheckers:
                 for rule in ruleSet._rules:
                     if hasattr(checker, 'fix'):
+                        # 确保fixedName/fixedValue一定有值
+                        # fix中一定要针对fixedName/fixedValue来判断，确保其他plugin的fix不会被覆盖
+                        if rule.fixedValue == '':
+                            rule.fixedValue = rule.value
+                        if rule.fixedName == '':
+                            rule.fixedName = rule.strippedName
+
                         checker.fix(rule)
 
         styleSheet = self.parser.styleSheet
