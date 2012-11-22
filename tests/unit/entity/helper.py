@@ -10,3 +10,4 @@ from asserts import *
 from ckstyle.entity.Rule import Rule
 from ckstyle.entity.RuleSet import RuleSet
 from ckstyle.entity.StyleSheet import StyleSheet
+from ckstyle.entity.ExtraStatement import ExtraStatement
