@@ -179,6 +179,8 @@ class CssChecker():
 
         styleSheet = self.parser.styleSheet
         for ruleSet in styleSheet.getRuleSets():
+            if ruleSet.extra:
+                continue
             # 判断此规则是否忽略
             if findInArray(ignoreRuleSets, ruleSet.selector):
                 continue
@@ -217,6 +219,8 @@ class CssChecker():
                 self.logStyleSheetMessage(checker, styleSheet)
 
         for ruleSet in styleSheet.getRuleSets():
+            if ruleSet.extra:
+                continue
             # 判断此规则是否忽略
             if findInArray(ignoreRuleSets, ruleSet.selector):
                 continue

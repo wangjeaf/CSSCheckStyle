@@ -19,8 +19,9 @@ def isSpecialStart(char):
 def ignoreAtStatement(text, i, length, char):
     for obj in specialTexts:
         if char == obj['start'] and isSpecialString(text, i, obj["text"]):
-            return findCharFrom(text, i, length, obj["end"])
-    return None, None
+            a, b = findCharFrom(text, i, length, obj["end"])
+            return a, b, obj["text"]
+    return None, None, None
 
 def findCharFrom(text, i, length, left, right = None):
     counter = 1

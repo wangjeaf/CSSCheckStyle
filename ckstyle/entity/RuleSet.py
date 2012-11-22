@@ -3,6 +3,7 @@ from Rule import Rule
 
 class RuleSet():
     def __init__(self, selector, values, comment, styleSheet):
+        self.extra = False
         self.roughSelector = selector
         self.roughValue = values
         self.roughComment = comment

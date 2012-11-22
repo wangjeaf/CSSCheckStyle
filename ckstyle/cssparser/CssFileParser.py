@@ -37,8 +37,9 @@ class CssParser():
                 commentText = commentText + char
                 continue;
             if isSpecialStart(char):
-                nextPos, attrs = ignoreAtStatement(text, i, length, char)
+                nextPos, attrs, operator = ignoreAtStatement(text, i, length, char)
                 if nextPos is not None:
+                    self.styleSheet.addExtraStatement(operator, char + attrs + text[nextPos])
                     i = nextPos
                     selector = ''
                     commentText = ''
@@ -69,6 +70,8 @@ class CssParser():
 
     def doParseRules(self, ruleSet):
         errors = []
+        if ruleSet.extra:
+            return errors
         text = ruleSet.roughValue
         singleLine = len(text.split('\n')) == 1
         selector = ruleSet.selector.strip()

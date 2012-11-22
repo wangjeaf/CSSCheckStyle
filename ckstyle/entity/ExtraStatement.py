@@ -1,8 +1,9 @@
 from EntityUtil import Cleaner
-from Rule import Rule
+from RuleSet import RuleSet
 
-class ExtraStatement():
+class ExtraStatement(RuleSet):
     def __init__(self, operator, statement, styleSheet = None):
+        self.extra = True
         self.operator = operator.strip()
         self.statement = statement
         self.styleSheet = styleSheet

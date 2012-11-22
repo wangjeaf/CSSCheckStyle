@@ -1,4 +1,5 @@
 from RuleSet import RuleSet
+from ExtraStatement import ExtraStatement
 
 class StyleSheet():
     def __init__(self, fileName = ''):
@@ -7,6 +8,9 @@ class StyleSheet():
 
     def addRuleSetByStr(self, selector, attrs, comment):
         self._ruleSets.append(RuleSet(selector, attrs, comment, self))
+
+    def addExtraStatement(self, operator, statement):
+        self._ruleSets.append(ExtraStatement(operator, statement, self))
 
     def setFile(self, fileName):
         self._file = fileName

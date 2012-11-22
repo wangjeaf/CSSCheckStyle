@@ -7,6 +7,7 @@ def doTest():
 
 def _basic():
     stmt = ExtraStatement('@import', '@import url("fjdaslkjfdsa")', None)
+    ok(stmt.extra, '@import is extra statement')
     equal(stmt.operator, '@import', 'operator is @important')
     equal(stmt.statement, '@import url("fjdaslkjfdsa")', 'statement is ok')
     equal(stmt.styleSheet, None, 'no style sheet')

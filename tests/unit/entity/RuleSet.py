@@ -5,6 +5,7 @@ def doTest():
 
 def _ruleSet():
     ruleSet = RuleSet('   .test ', '  width:100px;height:100px;  ', '/* aa */   ', None)
+    ok(not ruleSet.extra, 'ruleset is not extra')
     equal(ruleSet.selector, '.test', 'selector is ok')
     equal(ruleSet.roughSelector, '   .test ', 'roughSelector is ok')
     equal(ruleSet.roughValue, '  width:100px;height:100px;  ', 'roughValue is ok')
