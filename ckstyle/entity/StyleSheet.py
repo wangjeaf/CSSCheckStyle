@@ -1,5 +1,6 @@
 from RuleSet import RuleSet
 from ExtraStatement import ExtraStatement
+from NestedStatement import NestedStatement
 
 class StyleSheet():
     def __init__(self, fileName = ''):
@@ -11,6 +12,9 @@ class StyleSheet():
 
     def addExtraStatement(self, operator, statement):
         self._ruleSets.append(ExtraStatement(operator, statement, self))
+
+    def addNestedRuleSet(self, selector, attrs, comment):
+        self._ruleSets.append(NestedStatement(selector, attrs, comment, self))
 
     def setFile(self, fileName):
         self._file = fileName
@@ -25,3 +29,9 @@ class StyleSheet():
         for ruleSet in self._ruleSets:
             if ruleSet.selector == selector:
                 return ruleSet
+
+    def compress(self):
+        result = []
+        for ruleSet in self._ruleSets:
+            result.append(ruleSet.compress())
+        return ''.join(result)

@@ -20,6 +20,18 @@ class RuleSet():
 
         self.singleLineFlag = (len(self.roughValue.split('\n')) == 1)
 
+    def compress(self):
+        result = self.selector if self.fixedSelector == '' else self.fixedSelector
+        result = result + '{'
+        collector = []
+        for rule in self._rules:
+            collector.append(rule.compress())
+        collected = ''.join(collector)
+        if collected != '':
+            collected = collected[0:-1]
+        result = result + collected + '}'
+        return result
+
     def getSingleLineFlag(self):
         return self.singleLineFlag
 

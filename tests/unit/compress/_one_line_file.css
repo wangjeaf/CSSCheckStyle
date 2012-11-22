@@ -1,0 +1,5 @@
+/**
+ * @author zhifu.wang
+ */
+
+.test { width: 100px; height: 200px; _z-index: 111; } @keyframes 'name' { 10% {width: 100px;} } .another { *width: 100px; color: #DDDDDD; background-color: #aabbcc; } 

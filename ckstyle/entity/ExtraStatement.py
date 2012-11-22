@@ -14,5 +14,8 @@ class ExtraStatement(RuleSet):
     def isOpmOperator(self):
         return self.operator.find('@-css-compiler') != -1
 
+    def compress(self):
+        return self.statement.strip()
+
     def __str__(self):
         return '%s' % self.statement

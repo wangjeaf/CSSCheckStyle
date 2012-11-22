@@ -148,6 +148,10 @@ class CssChecker():
             errorMsg = errorMsg.replace('${selector}', ruleSet.selector)
         self.remember(errorLevel, errorMsg);
 
+    def doCompress(self):
+        self.doFix()
+        return self.getStyleSheet().compress()
+
     def doFix(self):
         # 忽略的规则集（目前只忽略单元测试的selector）
         ignoreRuleSets = self.config.ignoreRuleSets

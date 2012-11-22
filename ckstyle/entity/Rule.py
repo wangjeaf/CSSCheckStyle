@@ -19,6 +19,11 @@ class Rule():
 
         self.ruleSet = ruleSet
 
+    def compress(self):
+        name = self.name if self.fixedName == '' else self.fixedName
+        value = self.value if self.fixedValue == '' else self.fixedValue
+        return name + ':' + value + ';'
+
     def getRuleSet(self):
         return self.ruleSet
 

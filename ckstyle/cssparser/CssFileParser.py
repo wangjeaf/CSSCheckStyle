@@ -1,4 +1,4 @@
-from helper import findCharFrom, handleSpecialStatement, isCommentStart, isCommentEnd, isSpecialStart
+from helper import findCharFrom, handleSpecialStatement, isCommentStart, isCommentEnd, isSpecialStart, isNestedStatement
 from ckstyle.entity.StyleSheet import StyleSheet
 
 class CssParser():
@@ -52,7 +52,10 @@ class CssParser():
                 if len(comments) != 0:
                     realComment = '\n'.join(comments)
                     comments = []
-                self.styleSheet.addRuleSetByStr(selector, attributes[:-1], realComment)
+                if isNestedStatement(selector):
+                    self.styleSheet.addNestedRuleSet(selector, attributes[:-1], realComment)
+                else:
+                    self.styleSheet.addRuleSetByStr(selector, attributes[:-1], realComment)
                 commentText = ''
                 i = nextBracePos
                 selector = ''

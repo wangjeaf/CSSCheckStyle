@@ -10,9 +10,19 @@ specialTexts = [
 
 specialStartChars = set([x['start'] for x in specialTexts])
 
+nestedStatements = ['keyframes']
+
 def isSpecialStart(char):
     for x in specialStartChars:
         if x == char:
+            return True
+    return False
+
+def isNestedStatement(selector):
+    if selector.find('@') == -1:
+        return False
+    for x in nestedStatements:
+        if selector.find(x) != -1:
             return True
     return False
 
