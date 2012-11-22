@@ -1,5 +1,5 @@
 /* @author wangjeaf */ 
-.fda {
-    width: "100px";
-    background: #ffccdd url(ffccdd) no-repeat left top;
+
+fff.test::selection {
+    color: red;
 }

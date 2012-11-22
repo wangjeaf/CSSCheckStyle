@@ -1,5 +1,5 @@
 from Base import *
-from helper import isHTMLTag
+from helper import isHTMLTag, isKeyFrames
 
 class FEDUnknownHTMLTagName(RuleSetChecker):
     def __init__(self):
@@ -14,14 +14,21 @@ class FEDUnknownHTMLTagName(RuleSetChecker):
             return True
         if selector.find('@-moz-document') != -1:
             return True
+        if isKeyFrames(selector):
+            return True
         selectors = selector.split(',')
         for s in selectors:
             for r in s.split(' '):
                 r = r.strip()
                 if r != '':
-                    # abcd:hover
-                    # abcd.class-name:hover
-                    tag = r.split(':')[0].split('.')[0].strip()
+                    if r.find('::') != -1:
+                        # p::selection
+                        tag = r.split('::')[0].split('.')[0].split('#')[0].strip()
+                    else:
+                        # abcd:hover
+                        # abcd.class-name:hover
+                        # abcd#class-name:hover
+                        tag = r.split(':')[0].split('.')[0].split('#')[0].strip()
 
                     # .test > .inner
                     if tag == '' or tag == '>' or tag == '*' or tag == '+':

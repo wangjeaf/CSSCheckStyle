@@ -13,6 +13,37 @@
     0: unknown html tag "ffda" found in ".testa ffda.test-class:hover"
     0: should not set style for html tag in "button, input[type=button]"
     0: do not use low performance selector ">" in "details:not([open]) > *:not(summary)"
+    0: unknown html tag "fff" found in "fff::selection"
+    0: unknown html tag "fff" found in "fff.class::selection"
+    0: should not put "HTMLtag" and ".class" together in "div.class::selection"
+}
+
+@keyframes 'wobble' {
+    0% {
+      left: 100px;
+    }
+    40% {
+      left: 150px;
+    }
+    100% {
+      left: 100px;
+    }
+}
+
+::selection {
+    color: red;
+}
+
+fff::selection {
+    color: red;
+}
+
+fff.class::selection {
+    color: red;
+}
+
+div.class::selection {
+    color: red;
 }
 
 * + html .input-button,

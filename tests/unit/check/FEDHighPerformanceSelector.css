@@ -20,6 +20,12 @@
     0: should not use ~=,^=,|=,$=,*= in selector of ".div[class*=xxx]"
     0: should not use ~=,^=,|=,$=,*= in selector of ".div[class|=xxx]"
     0: should not use ~=,^=,|=,$=,*= in selector of ".div[class$=xxx]"
+
+    0: should not put "HTMLtag" and ".class" together in "div.class::selection"
+}
+
+div.class::selection {
+    color: red;
 }
 
 .div[class*=xxx] {
