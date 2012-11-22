@@ -1,11 +1,11 @@
-from helper import findCharFrom, ignoreAtStatement, isCommentStart, isCommentEnd, isSpecialStart
+from helper import findCharFrom, handleSpecialStatement, isCommentStart, isCommentEnd, isSpecialStart
 from ckstyle.entity.StyleSheet import StyleSheet
 
 class CssParser():
-    def __init__(self, rawCss = None, fileName = ''):
-        self.rawCss = rawCss
+    def __init__(self, roughCss = None, fileName = ''):
+        self.roughCss = roughCss
         self.fileName = fileName
-        self.totalLength = len(rawCss)
+        self.totalLength = len(roughCss)
         self.styleSheet = StyleSheet(fileName)
         self._parseErrors = []
 
@@ -13,7 +13,7 @@ class CssParser():
         prevChar = None
         inComment = False
         length = self.totalLength
-        text = self.rawCss
+        text = self.roughCss
         selector = '';
         commentText = ''
         i = -1
@@ -37,7 +37,7 @@ class CssParser():
                 commentText = commentText + char
                 continue;
             if isSpecialStart(char):
-                nextPos, attrs, operator = ignoreAtStatement(text, i, length, char)
+                nextPos, attrs, operator = handleSpecialStatement(text, i, length, char)
                 if nextPos is not None:
                     self.styleSheet.addExtraStatement(operator, char + attrs + text[nextPos])
                     i = nextPos
