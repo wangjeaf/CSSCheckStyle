@@ -1,0 +1,18 @@
+/**
+ * @author zhifu.wang
+ */
+
+@charset utf-8;
+
+@import url('xxxxx');
+@namespace lalala;
+
+.test {
+    width: 100px;
+    height: 200px;
+    _z-index: 111;
+}
+
+@import url('xxx2');
+
+@import url('xxx3');
