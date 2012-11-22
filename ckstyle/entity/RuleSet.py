@@ -11,6 +11,9 @@ class RuleSet():
         self.values = Cleaner.clearValues(values)
         self.comment = Cleaner.clearComment(comment)
 
+        self.fixedSelector = ''
+        self.fixedComment = ''
+
         self.styleSheet = styleSheet
         self._rules = []
 

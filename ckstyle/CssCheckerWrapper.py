@@ -159,6 +159,9 @@ class CssChecker():
         def fixRuleSet(ruleSet):
             for checker in self.ruleSetCheckers:
                 if hasattr(checker, 'fix'):
+                    if ruleSet.fixedSelector == '':
+                        ruleSet.fixedSelector = ruleSet.selector
+                        ruleSet.fixedComment = ruleSet.comment
                     checker.fix(ruleSet)
 
         # fix规则
@@ -170,7 +173,6 @@ class CssChecker():
                         # fix中一定要针对fixedName/fixedValue来判断，确保其他plugin的fix不会被覆盖
                         if rule.fixedValue == '':
                             rule.fixedValue = rule.value
-                        if rule.fixedName == '':
                             rule.fixedName = rule.strippedName
 
                         checker.fix(rule)

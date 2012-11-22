@@ -15,6 +15,11 @@ def _complicated_color():
     ruleSet = styleSheet.getRuleSets()[0]
     equal(ruleSet.getRuleByName('border').fixedValue, '1px solid #FFF', 'border is ok')
 
+    fixer = doFix('.test {border:1px solid red;}', '')
+    styleSheet = fixer.getStyleSheet()
+    ruleSet = styleSheet.getRuleSets()[0]
+    equal(ruleSet.getRuleByName('border').fixedValue, '1px solid red', 'red border is ok')
+
 def _color():
     fixer = doFix('.test {color0:red;color1:#DDD;color2:#DDDDDD;color3:#dddddd;color4:#ddd;color5:#DDFFCC;color6:#ABCDEF;color7:#ABCDEFGH;color8:#abcdef;color9:#ffff;color10:#f;}', '')
 
