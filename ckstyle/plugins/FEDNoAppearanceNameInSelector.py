@@ -5,7 +5,7 @@ class FEDNoAppearanceNameInSelector(RuleSetChecker):
     def __init__(self):
         self.id = 'no-appearance-word-in-selector'
         self.errorLevel = ERROR_LEVEL.WARNING
-        self.errorMsg_origin = 'should not use appearance word "${word}" in "${selector}"'
+        self.errorMsg_origin = 'should not use appearance word "%s" in "${selector}"'
         self.errorMsg = ''
 
     def check(self, ruleSet):
@@ -18,7 +18,7 @@ class FEDNoAppearanceNameInSelector(RuleSetChecker):
 
         word = existsAppearanceWords(selector)
         if word is not None:
-            self.errorMsg = self.errorMsg_origin.replace("${word}", word)
+            self.errorMsg = self.errorMsg_origin % word
             return False
 
         return True

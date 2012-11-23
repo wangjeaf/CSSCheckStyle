@@ -12,7 +12,7 @@ class FEDHackAttributeInCorrectWay(RuleChecker):
             return False
 
         stripped = rule.roughName.strip()
-        if rule.name == stripped:
+        if rule.name == stripped.lower():
             return True
 
         if isCss3PrefixProp(rule.name):

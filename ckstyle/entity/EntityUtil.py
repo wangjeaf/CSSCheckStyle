@@ -7,7 +7,7 @@ class Cleaner():
         if name.startswith('-'):
             if name.startswith('-moz-') or name.startswith('-webkit-') or name.startswith('-ms-') or name.startswith('-o-') or name.startswith('-khtml-'):
                 name = '-'.join(name.split('-')[2:])
-        return name
+        return name.lower()
 
     @staticmethod
     def clearValue(value):

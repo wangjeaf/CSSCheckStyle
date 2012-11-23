@@ -87,8 +87,12 @@ class RuleSet():
         for rule in self._rules:
             if rule.name == name:
                 return rule
+
     def getRules(self):
         return self._rules
+
+    def setRules(self, newRules):
+        self._rules = newRules
 
     def __str__(self):
         return '%s {%s}' % (self.selector, self.roughValue)

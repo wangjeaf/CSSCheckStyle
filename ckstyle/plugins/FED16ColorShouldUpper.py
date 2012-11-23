@@ -5,7 +5,7 @@ class FED16ColorShouldUpper(RuleChecker):
         self.id = 'hexadecimal-color'
         self.errorLevel = ERROR_LEVEL.WARNING
         self.errorMsg_length = 'wrong color length(should be 3 or 6) in "${selector}"'
-        self.errorMsg_replace = 'replace "#${from}" with "#${to}" in "${selector}"'
+        self.errorMsg_replace = 'replace "#%s" with "#%s" in "${selector}"'
         self.errorMsg_upper = 'color should in upper case in "${selector}"'
         self.errorMsg = ''
 
@@ -28,7 +28,7 @@ class FED16ColorShouldUpper(RuleChecker):
             return False
 
         if self._isDuplicate(found):
-            self.errorMsg = self.errorMsg_replace.replace('${from}', found).replace('${to}', found[0]+found[2]+found[4])
+            self.errorMsg = self.errorMsg_replace % (found, found[0]+found[2]+found[4])
             return False
         
         return True

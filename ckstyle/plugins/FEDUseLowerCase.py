@@ -10,7 +10,7 @@ class FEDUseLowerCase(RuleChecker):
 
     def check(self, rule):
         value = rule.value
-        name = rule.name
+        name = rule.strippedName
 
         # give it to FED16ColorShouldUpper.py
         if name == 'color':

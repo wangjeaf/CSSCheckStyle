@@ -1,11 +1,4 @@
 /* @author wangjeaf */ 
 
-.test2 {
-    width: 100px;
-    height: 200px;
-    border: 1px solid #aaaaaa;
-}
-
-.test3 {
-    color: #FFFFFF;
-}
+@import (url-here);
+.test {_width: 100px; *height: 100px;}

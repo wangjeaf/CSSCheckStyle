@@ -5,7 +5,7 @@ class FEDDoNotSetStyleForSimpleSelector(RuleSetChecker):
     def __init__(self):
         self.id = 'no-style-for-simple-selector'
         self.errorLevel = ERROR_LEVEL.ERROR
-        self.errorMsg_rough = 'should not set style for "${s}" in "${selector}"'
+        self.errorMsg_rough = 'should not set style for "%s" in "${selector}"'
         self.errorMsg = ''
 
     def check(self, ruleSet):
@@ -21,6 +21,6 @@ class FEDDoNotSetStyleForSimpleSelector(RuleSetChecker):
         for s in selectors:
             s = s.strip()
             if isSimpleSelector(s):
-                self.errorMsg = self.errorMsg_rough.replace('${s}', s)
+                self.errorMsg = self.errorMsg_rough % s
                 return False
         return True 

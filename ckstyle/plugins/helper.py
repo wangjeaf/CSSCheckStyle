@@ -1,3 +1,15 @@
+def getAttrOrder(attr):
+    if cssAttrOrders.has_key(attr):
+        return cssAttrOrders[attr]
+    if attr.find('-') != -1:
+        splited = attr.split('-')
+        while len(splited) != 0:
+            splited = splited[0:-1]
+            attr = '-'.join(splited)
+            if cssAttrOrders.has_key(attr):
+                return cssAttrOrders[attr]
+    return 14
+
 def isHTMLTag(tag):
     return containsInArray(validHTMLTags, tag)
 
@@ -47,6 +59,25 @@ def isSimpleSelector(selector):
 
 def containsInArray(array, value):
     return value in array
+
+# according to http://fed.renren.com/archives/1212
+cssAttrOrdersMap = {
+    0 : ['display', 'list-style', 'position', 'float', 'clear'],
+    2 : ['width', 'height', 'margin', 'padding', 'border'],
+    4 : ['background'],
+    6 : ['line-height'],
+    8 : ['color', 'font', 'text-decoration', 'text-align', 'text-indent', 'vertical-align', 'white-space', 'content'],
+    10: ['cursor', 'z-index', 'zoom'],
+    12: ['transform', 'transition', 'animation', 'box-shadow', 'border-radius']
+    # 14 : ['other']
+}
+
+# convert 0:a, b to a:0, b:0
+cssAttrOrders = {}
+for key, value in cssAttrOrdersMap.items():
+    for x in value:
+        cssAttrOrders[x] = key
+
 
 canBeCombinedProps = 'border margin padding background font'.split(' ')
 

@@ -5,7 +5,7 @@ class FEDCombineInToOne(RuleSetChecker):
     def __init__(self):
         self.id = 'combine-into-one'
         self.errorLevel = ERROR_LEVEL.WARNING
-        self.errorMsg_rough = 'should combine "${small}" to "${big}" in "${selector}"'
+        self.errorMsg_rough = 'should combine "%s" to "%s" in "${selector}"'
         self.errorMsg = ''
 
     def check(self, ruleSet):
@@ -27,6 +27,6 @@ class FEDCombineInToOne(RuleSetChecker):
 
         for name, value in counter.items():
             if len(value) > 1:
-                self.errorMsg = self.errorMsg_rough.replace('${small}', ','.join(value)).replace('${big}', name)
+                self.errorMsg = self.errorMsg_rough % (','.join(value), name)
                 return False
         return True 
