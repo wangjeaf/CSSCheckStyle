@@ -8,8 +8,8 @@
 }
 
 .abcd {
-    border: 1px solid red
     width: 0
+    border: 1px solid red
 }
 
 .abcd:hover {

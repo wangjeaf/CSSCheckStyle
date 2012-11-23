@@ -20,16 +20,23 @@ class RuleSet():
 
         self.singleLineFlag = (len(self.roughValue.split('\n')) == 1)
 
-    def compress(self):
-        result = self.selector if self.fixedSelector == '' else self.fixedSelector
-        result = result + '{'
+    def extendSelector(self, other):
+        self.roughSelector = self.roughSelector + ',' + other.roughSelector
+        self.selector = self.selector + ',' + other.selector
+        self.fixedSelector = self.fixedSelector + ',' + other.fixedSelector
+
+    def compressRules(self):
         collector = []
         for rule in self._rules:
             collector.append(rule.compress())
         collected = ''.join(collector)
         if collected != '':
             collected = collected[0:-1]
-        result = result + collected + '}'
+        return collected
+
+    def compress(self):
+        result = self.selector if self.fixedSelector == '' else self.fixedSelector
+        result = result + '{' + self.compressRules() + '}'
         return result
 
     def getSingleLineFlag(self):

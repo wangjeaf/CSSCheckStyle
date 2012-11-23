@@ -1,0 +1,37 @@
+.test1 {
+    width: 100px;
+    height: 200px;
+    *display: none;
+    border: 1px solid #FFFFFF;
+    _display: inline-block;
+}
+
+.test2 {
+    *display: none;
+    width: 100px;
+    border: 1px solid #FFF;
+    height: 200px;
+    _display: inline-block;
+}
+
+.test3 {
+    border: 1px solid #fff;
+    width: 100px;
+    height: 200px;
+    *display: none;
+    _display: inline-block;
+}
+
+.test4 {
+    border: 1px solid #ffffff;
+    *display: none;
+    width: 100px;
+    height: 200px;
+    _display: inline-block;
+}
+
+.test5 {
+    width: 100px; *display: none; height: 200px;
+    border: 1px solid #ffffff;
+    _display: inline-block;
+}

@@ -43,9 +43,9 @@
 
 .test-same-order-display {
     display: none;
-    list-style: none;
     position: relative;
     float: left;
+    list-style: none;
     clear: both;
 }
 

@@ -86,6 +86,61 @@ border-radius:3px
 }
 ```
 
+### fix/reorder/combine/compress DEMO
+#### 说明
+以下是通过自动fix，自动排序，自动合并，自动压缩以后的代码示例。
+
+对于fix，目前只做了以下两个plugin的fix：
+* FED16ColorShouldUpper
+* FEDUseSingleQuotation
+其他的fix只需要在对应的plugin文件中添加fix方法，即可实现fix和压缩
+
+#### before
+```css
+.test1 {
+    width: 100px;
+    height: 200px;
+    *display: none;
+    border: 1px solid #FFFFFF;
+    _display: inline-block;
+}
+
+.test2 {
+    *display: none;
+    width: 100px;
+    border: 1px solid #FFF;
+    height: 200px;
+    _display: inline-block;
+}
+
+.test3 {
+    border: 1px solid #fff;
+    width: 100px;
+    height: 200px;
+    *display: none;
+    _display: inline-block;
+}
+
+.test4 {
+    border: 1px solid #ffffff;
+    *display: none;
+    width: 100px;
+    height: 200px;
+    _display: inline-block;
+}
+
+.test5 {
+    width: 100px; *display: none; height: 200px;
+    border: 1px solid #ffffff;
+    _display: inline-block;
+}
+
+```
+
+#### after
+```css
+.test1,.test2,.test3,.test4,.test5{*display:none;_display:inline-block;width:100px;height:200px;border:1px solid #FFF}
+```
 ## Usage
 <pre>
 ckstyle                        用默认配置检查当前目录下的所有css文件

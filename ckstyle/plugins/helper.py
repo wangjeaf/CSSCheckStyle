@@ -8,7 +8,7 @@ def getAttrOrder(attr):
             attr = '-'.join(splited)
             if cssAttrOrders.has_key(attr):
                 return cssAttrOrders[attr]
-    return 14
+    return 200
 
 def isHTMLTag(tag):
     return containsInArray(validHTMLTags, tag)
@@ -62,21 +62,23 @@ def containsInArray(array, value):
 
 # according to http://fed.renren.com/archives/1212
 cssAttrOrdersMap = {
-    0 : ['display', 'list-style', 'position', 'left', 'top', 'bottom', 'right', 'float', 'clear'],
-    2 : ['width', 'height', 'margin', 'padding', 'border'],
-    4 : ['background'],
-    6 : ['line-height'],
-    8 : ['color', 'font', 'text-decoration', 'text-align', 'text-indent', 'vertical-align', 'white-space', 'content'],
-    10: ['cursor', 'z-index', 'zoom'],
-    12: ['transform', 'transition', 'animation', 'box-shadow', 'border-radius']
+    0 : ['display', 'position', 'left', 'top', 'bottom', 'right', 'float', 'list-style', 'clear'],
+    20 : ['width', 'height', 'margin', 'padding', 'border'],
+    40 : ['background'],
+    60 : ['line-height'],
+    80 : ['color', 'font', 'text-decoration', 'text-align', 'text-indent', 'vertical-align', 'white-space', 'content'],
+    100: ['cursor', 'z-index', 'zoom'],
+    120: ['transform', 'transition', 'animation', 'box-shadow', 'border-radius']
     # 14 : ['other']
 }
 
 # convert 0:a, b to a:0, b:0
 cssAttrOrders = {}
 for key, value in cssAttrOrdersMap.items():
+    counter = 0
     for x in value:
-        cssAttrOrders[x] = key
+        cssAttrOrders[x] = key + counter
+        counter = counter + 1
 
 
 canBeCombinedProps = 'border margin padding background font'.split(' ')

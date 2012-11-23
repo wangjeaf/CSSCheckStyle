@@ -25,6 +25,17 @@ class StyleSheet():
     def getRuleSets(self):
         return self._ruleSets
 
+    def removeRuleSetByIndex(self, index):
+        self._ruleSets[index] = None
+
+    def clean(self):
+        newRuleSets = []
+        for x in self._ruleSets:
+            if x is None:
+                continue
+            newRuleSets.append(x)
+        self._ruleSets = newRuleSets
+
     def getRuleSetBySelector(self, selector):
         for ruleSet in self._ruleSets:
             if ruleSet.selector == selector:
