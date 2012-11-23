@@ -79,8 +79,19 @@ CSSCheckStyle
 ```
 
 ### after
+本压缩工具的压缩结果（属性排列已经经过优化）：
 ```css
 .test1,.test2,.test3,.test4,.test5{*display:none;_display:inline-block;width:100px;height:200px;border:1px solid #FFF}
+```
+
+CSS Optimizer(http://www.cssoptimiser.com/optimize.php)压缩结果：
+```css
+.test1,.test2,.test3,.test4,.test5{width:100px;height:200px;*display:none;_display:inline-block}.test1,.test3,.test4,.test5{border:1px solid #fff}.test2{border:1px solid #FFF}
+```
+
+YUI Compressor压缩结果：
+```css
+.test1{width:100px;height:200px;*display:none;border:1px solid #fff;_display:inline-block}.test2{*display:none;width:100px;border:1px solid #FFF;height:200px;_display:inline-block}.test3{border:1px solid #fff;width:100px;height:200px;*display:none;_display:inline-block}.test4{border:1px solid #fff;*display:none;width:100px;height:200px;_display:inline-block}.test5{width:100px;*display:none;height:200px;border:1px solid #fff;_display:inline-block}
 ```
 
 ## check Demo
