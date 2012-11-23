@@ -162,24 +162,27 @@ class CssChecker():
         # fix规则集
         def fixRuleSet(ruleSet):
             for checker in self.ruleSetCheckers:
-                if hasattr(checker, 'fix'):
-                    if ruleSet.fixedSelector == '':
-                        ruleSet.fixedSelector = ruleSet.selector
-                        ruleSet.fixedComment = ruleSet.comment
-                    checker.fix(ruleSet)
+                if not hasattr(checker, 'fix'):
+                    continue
+                if ruleSet.fixedSelector == '':
+                    ruleSet.fixedSelector = ruleSet.selector
+                    ruleSet.fixedComment = ruleSet.comment
+                checker.fix(ruleSet)
 
         # fix规则
         def fixRules(ruleSet):
             for checker in self.ruleCheckers:
-                for rule in ruleSet._rules:
-                    if hasattr(checker, 'fix'):
-                        # 确保fixedName/fixedValue一定有值
-                        # fix中一定要针对fixedName/fixedValue来判断，确保其他plugin的fix不会被覆盖
-                        if rule.fixedValue == '':
-                            rule.fixedValue = rule.value
-                            rule.fixedName = rule.strippedName
+                for rule in ruleSet.getRules():
+                    if not hasattr(checker, 'fix'):
+                        continue
 
-                        checker.fix(rule)
+                    # 确保fixedName/fixedValue一定有值
+                    # fix中一定要针对fixedName/fixedValue来判断，确保其他plugin的fix不会被覆盖
+                    if rule.fixedValue == '':
+                        rule.fixedValue = rule.value
+                        rule.fixedName = rule.strippedName
+
+                    checker.fix(rule)
 
         styleSheet = self.parser.styleSheet
         for ruleSet in styleSheet.getRuleSets():
@@ -188,10 +191,12 @@ class CssChecker():
             # 判断此规则是否忽略
             if findInArray(ignoreRuleSets, ruleSet.selector):
                 continue
+            # 先fix rule
             fixRules(ruleSet)
+            # 再fix ruleSet
             fixRuleSet(ruleSet)
 
-        # 最后fix样式表
+        # 最后fix styleSheet
         for checker in self.styleSheetCheckers:
             if hasattr(checker, 'fix'):
                 checker.fix(styleSheet)
@@ -206,19 +211,25 @@ class CssChecker():
         # 检查规则集
         def checkRuleSet(ruleSet):
             for checker in self.ruleSetCheckers:
+                if not hasattr(checker, 'check'):
+                    continue
                 if not checker.check(ruleSet):
                     self.logRuleSetMessage(checker, ruleSet)
 
         # 检查规则
         def checkRule(ruleSet):
             for checker in self.ruleCheckers:
-                for rule in ruleSet._rules:
+                for rule in ruleSet.getRules():
+                    if not hasattr(checker, 'check'):
+                        continue
                     if not checker.check(rule):
                         self.logRuleMessage(checker, rule)
 
         # 检查样式表
         styleSheet = self.parser.styleSheet
         for checker in self.styleSheetCheckers:
+            if not hasattr(checker, 'check'):
+                continue
             if not checker.check(styleSheet):
                 self.logStyleSheetMessage(checker, styleSheet)
 
