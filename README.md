@@ -149,6 +149,10 @@ border-radius:3px
 }
 ```
 
+目前自动fix检查错误的工具正在紧锣密鼓开发中。
+
+目前架构已经搭建好，需要做的事情，就是在plugins/*.py中，参照check，写一个对应的fix即可~~~
+
 ## Usage
 <pre>
 ckstyle                        用默认配置检查当前目录下的所有css文件
