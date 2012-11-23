@@ -84,7 +84,7 @@ CSSCheckStyle
 .test1,.test2,.test3,.test4,.test5{*display:none;_display:inline-block;width:100px;height:200px;border:1px solid #FFF}
 ```
 
-CSS Optimizer( <http://www.cssoptimiser.com/optimize.php/> ) 压缩结果：
+CSS Optimizer( <http://www.cssoptimiser.com/> ) 压缩结果：
 ```css
 .test1,.test2,.test3,.test4,.test5{width:100px;height:200px;*display:none;_display:inline-block}.test1,.test3,.test4,.test5{border:1px solid #fff}.test2{border:1px solid #FFF}
 ```
