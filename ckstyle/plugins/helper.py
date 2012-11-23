@@ -62,7 +62,7 @@ def containsInArray(array, value):
 
 # according to http://fed.renren.com/archives/1212
 cssAttrOrdersMap = {
-    0 : ['display', 'list-style', 'position', 'float', 'clear'],
+    0 : ['display', 'list-style', 'position', 'left', 'top', 'bottom', 'right', 'float', 'clear'],
     2 : ['width', 'height', 'margin', 'padding', 'border'],
     4 : ['background'],
     6 : ['line-height'],

@@ -1,0 +1,68 @@
+/*
+ * @author: zhifu.wang@renren-inc.com
+ */
+
+/**
+ correct order: 
+    0 : ['display', 'list-style', 'position', 'float', 'clear'],
+    2 : ['width', 'height', 'margin', 'padding', 'border'],
+    4 : ['background'],
+    6 : ['line-height'],
+    8 : ['color', 'font', 'text-decoration', 'text-align', 'text-indent', 'vertical-align', 'white-space', 'content'],
+    10: ['cursor', 'z-index', 'zoom'],
+    12: ['transform', 'transition', 'animation', 'box-shadow', 'border-radius']
+    # 14 : ['other']
+*/
+
+@unit-test-expecteds {
+    1: "width" should after "display" in ".test-width-display" (order: display/box/text/other/css3)
+    1: "background-color" should after "list-style" in ".test-list-style-background" (order: display/box/text/other/css3)
+    1: "z-index" should after "height" in ".test-other" (order: display/box/text/other/css3)
+    0: unknown attribute name "nav" found in ".test-unknown"
+    1: "nav" should after "z-index" in ".test-unknown" (order: display/box/text/other/css3)
+    1: "width" should after "_display" in ".test-with-hack" (order: display/box/text/other/css3)
+}
+
+.test-width-display {
+    width: 100px;
+    display: none;
+}
+
+.test-list-style-background {
+    background-color: red;
+    list-style: none;
+}
+
+.test-same-order-box {
+    width: 100px;
+    height: 100px;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.test-same-order-display {
+    display: none;
+    list-style: none;
+    position: relative;
+    float: left;
+    clear: both;
+}
+
+.test-other {
+    width: 100px;
+    z-index: 100;
+    height: 100px;
+}
+
+.test-unknown {
+    nav: false;
+    z-index: 100;
+}
+
+.test-with-hack {
+    width: 100px;
+    _display: none;
+    *display: inline-block;
+    *zoom: 1;
+}
