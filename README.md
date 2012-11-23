@@ -22,13 +22,14 @@ CSSCheckStyle
 * 完善检查规则
 * 收集全站样式与文件的映射关系，并将此映射关系加入配置 [global-styles]
 
-## fix/reorder/combine/compress DEMO
+## fix -> reorder -> combine -> compress DEMO
 ### 说明
 以下是通过自动fix，自动排序，自动合并，自动压缩以后的代码示例。
 
 对于fix，目前只做了以下两个plugin的fix：
 * FED16ColorShouldUpper
 * FEDUseSingleQuotation
+
 其他的fix只需要在对应的plugin文件中添加fix方法，即可实现fix和压缩
 
 ### before
