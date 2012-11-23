@@ -25,6 +25,7 @@ CSSCheckStyle
 ## fix -> reorder -> combine -> compress DEMO
 ### 说明
 以下是通过自动fix，自动排序，自动合并，自动压缩以后的代码示例。
+结果来自plugins/*.py中的fix方法，以及entity/*.py的compress方法。
 
 对于fix，目前只做了以下两个plugin的fix：
 * FED16ColorShouldUpper
@@ -79,7 +80,9 @@ CSSCheckStyle
 .test1,.test2,.test3,.test4,.test5{*display:none;_display:inline-block;width:100px;height:200px;border:1px solid #FFF}
 ```
 
-## Demo
+## check Demo
+此处演示的是代码风格检查功能。所有的检查项都来自于plugins/*.py的check方法
+
 ### 原始CSS代码
 ```css
 .test1 ul li a {
