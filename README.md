@@ -4,7 +4,7 @@ CSSCheckStyle
 <pre>
 @description {
 	destination: 检查CSS代码中的编码规范和编码风格问题;
-    good-news: 初步对比各大工具（包括YUI compressor和各种在线工具），确定初步达到业内领先水平，后期任重道远;
+    good-news: `初步对比各大工具（包括YUI compressor和各种在线工具），确定初步达到业内领先水平，后期任重道远`;
 	reference: <a href="http://fed.renren.com/archives/1212">《人人FED CSS编码规范》</a>;
 	language: python;
     what-can-i-do-for-css: check -> fix -> combine-attr -> reorder -> combine -> compress;
