@@ -79,7 +79,7 @@ CSSCheckStyle
 ```
 
 ### after
-本压缩工具的压缩结果（属性排列已经经过优化）：
+本压缩工具的压缩结果（属性排列顺序已经经过优化）：
 ```css
 .test1,.test2,.test3,.test4,.test5{*display:none;_display:inline-block;width:100px;height:200px;border:1px solid #FFF}
 ```
