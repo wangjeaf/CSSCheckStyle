@@ -6,7 +6,7 @@ for p in os.environ.get('PYTHONPATH', '').split(';'):
 
 from asserts import *
 import ckstyle.command.CommandFileParser as CommandFileParser
-from ckstyle.command.ConsoleCommandParser import parseCmdArgs
+from ckstyle.command.ConsoleCommandParser import parseCkStyleCmdArgs
 
 def realpath(filepath):
     dirpath = os.path.realpath(os.path.join(__file__, '../'))

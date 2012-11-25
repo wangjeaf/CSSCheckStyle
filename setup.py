@@ -68,7 +68,9 @@ if setupFlag:
         # support auto-generation
         entry_points = {
             'console_scripts': [
-                'ckstyle = ckstyle.command.index:main'
+                'ckstyle = ckstyle.command.index:ckstyle',
+                'fixstyle = ckstyle.command.index:fixstyle',
+                'compress = ckstyle.command.index:compress'
             ]
         },
         classifiers = ['Intended Audience :: Developers',
@@ -90,7 +92,7 @@ else:
         cmdclass = cmdclasses,
         data_files = data_files,
         # copy scripts if not support exe generation
-        scripts = ['bin/ckstyle-admin.py', 'bin/ckstyle.bat'],
+        scripts = ['bin/ckstyle-admin.py', 'bin/ckstyle.bat', 'bin/fixstyle-admin.py', 'bin/fixstyle.bat', 'bin/compress-admin.py', 'bin/compress.bat'],
         classifiers = ['Intended Audience :: Developers',
                        'Programming Language :: Python',
                        'Topic :: Software Development :: CSS'

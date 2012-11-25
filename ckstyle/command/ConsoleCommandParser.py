@@ -39,6 +39,14 @@ def getDefaultConfigPath():
     homedir = os.getenv('USERPROFILE') or os.getenv('HOME')
     return os.path.realpath(os.path.join(homedir, 'ckstyle.ini'))
 
+def getConfigFilePath():
+    configFile = 'ckstyle.ini'
+
+    if not os.path.exists(configFile):
+        configFile = getDefaultConfigPath()
+
+    return configFile
+
 def getErrorLevel(value):
     if value.strip() == '':
         return None
@@ -78,7 +86,7 @@ def getConfigFile(value):
         console.error('%s does not exist, or is not a ".ini" file' % value)
     return None
 
-def parseCmdArgs(defaultConfigFile, opts, args, debug = False):
+def parseCkStyleCmdArgs(defaultConfigFile, opts, args, debug = False):
     recur = False
     printFlag = False
     configFile = None
@@ -120,17 +128,14 @@ def parseCmdArgs(defaultConfigFile, opts, args, debug = False):
 
     return config
 
-def handleCmdArgs():
+def handleCkStyleCmdArgs():
     try:
         opts, args = getopt.getopt(sys.argv[1:], "hrpc:", ["help", "config=", "errorLevel=", "extension=", "include=", "exclude="])
     except getopt.GetoptError, e:
         console.error('[option] %s ' % e.msg)
         return
 
-    configFile = 'ckstyle.ini'
-
-    if not os.path.exists(configFile):
-        configFile = getDefaultConfigPath()
+    configFile = getConfigFilePath()
 
     if len(args) == 0 and len(opts) == 0:
         parser = CommandFileParser.CommandFileParser(configFile)
@@ -139,7 +144,7 @@ def handleCmdArgs():
         checkDir(os.getcwd(), config = config)
         return
 
-    config = parseCmdArgs(configFile, opts, args)
+    config = parseCkStyleCmdArgs(configFile, opts, args)
     
     filePath = None
     if len(args) == 0:
@@ -156,3 +161,24 @@ def handleCmdArgs():
         checkDir(filePath, config = config)
     else:
         console.error('check aborted! because "%s" is neither css file, nor dir' % filePath)
+
+def handleCompressCmdArgs():
+    try:
+        opts, args = getopt.getopt(sys.argv[1:], "hrpc:", ["help", "config=", "errorLevel=", "extension=", "include=", "exclude="])
+    except getopt.GetoptError, e:
+        console.error('[option] %s ' % e.msg)
+        return
+
+    configFile = getConfigFilePath()
+    print configFile, 'todo'
+
+def handleFixStyleCmdArgs():
+    try:
+        opts, args = getopt.getopt(sys.argv[1:], "hrpc:", ["help", "config=", "errorLevel=", "extension=", "include=", "exclude="])
+    except getopt.GetoptError, e:
+        console.error('[option] %s ' % e.msg)
+        return
+
+    configFile = getConfigFilePath()
+
+    print configFile, 'todo'

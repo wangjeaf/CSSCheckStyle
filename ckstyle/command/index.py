@@ -1,7 +1,13 @@
-from ConsoleCommandParser import handleCmdArgs
+from ConsoleCommandParser import handleCkStyleCmdArgs, handleFixStyleCmdArgs, handleCompressCmdArgs
 
-def main():
-    handleCmdArgs()
+def ckstyle():
+    handleCkStyleCmdArgs()
+
+def fixstyle():
+    handleFixStyleCmdArgs()
+
+def compress():
+    handleCompressCmdArgs()
 
 if __name__ == '__main__':
     main()
