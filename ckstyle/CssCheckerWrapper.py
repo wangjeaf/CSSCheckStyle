@@ -112,41 +112,47 @@ class CssChecker():
         else:
             console.error('[TOOL] wrong ErrorLevel for ' + errorMsg)
 
-    def logStyleSheetMessage(self, checker, styleSheet):
+    def logStyleSheetMessage(self, checker, styleSheet, errors = None):
         '''记录StyleSheet的问题'''
         errorLevel = checker.getLevel()
-        errorMsg = checker.getMsg()
-        if errorMsg is None or errorMsg == '':
-            console.error('[TOOL] no errorMsg in your plugin, please check it')
-        if errorMsg.find('${file}') == -1:
-            errorMsg = errorMsg + ' (from "' + styleSheet.getFile() + '")'
-        else:
-            errorMsg = errorMsg.replace('${file}', styleSheet.getFile())
-        self.remember(errorLevel, errorMsg);
+        if errors is None:
+            errors = [checker.getMsg()]
+        for errorMsg in errors:
+            if errorMsg is None or errorMsg == '':
+                console.error('[TOOL] no errorMsg in your plugin, please check it')
+            if errorMsg.find('${file}') == -1:
+                errorMsg = errorMsg + ' (from "' + styleSheet.getFile() + '")'
+            else:
+                errorMsg = errorMsg.replace('${file}', styleSheet.getFile())
+            self.remember(errorLevel, errorMsg);
 
-    def logRuleMessage(self, checker, rule):
+    def logRuleMessage(self, checker, rule, errors = None):
         '''记录一条key/value的问题'''
         errorLevel = checker.getLevel()
-        errorMsg = checker.getMsg()
-        if errorMsg is None or errorMsg == '':
-            console.error('[TOOL] no errorMsg in your plugin, please check it')
-        if errorMsg.find('${selector}') == -1:
-            errorMsg = errorMsg + ' (from "' + rule.selector + '")'
-        else:
-            errorMsg = errorMsg.replace('${selector}', rule.selector)
-        errorMsg = errorMsg.replace('${name}', rule.roughName.strip())
-        errorMsg = errorMsg.replace('${value}', rule.value.strip())
-        self.remember(errorLevel, errorMsg);
+        if errors is None:
+            errors = [checker.getMsg()]
+        for errorMsg in errors:
+            if errorMsg is None or errorMsg == '':
+                console.error('[TOOL] no errorMsg in your plugin, please check it')
+            if errorMsg.find('${selector}') == -1:
+                errorMsg = errorMsg + ' (from "' + rule.selector + '")'
+            else:
+                errorMsg = errorMsg.replace('${selector}', rule.selector)
+            errorMsg = errorMsg.replace('${name}', rule.roughName.strip())
+            errorMsg = errorMsg.replace('${value}', rule.value.strip())
+            self.remember(errorLevel, errorMsg);
 
-    def logRuleSetMessage(self, checker, ruleSet):
+    def logRuleSetMessage(self, checker, ruleSet, errors = None):
         '''记录一个"规则集"中的问题'''
         errorLevel = checker.getLevel()
-        errorMsg = checker.getMsg()
-        if errorMsg.find('${selector}') == -1:
-            errorMsg = errorMsg + ' (from "' + ruleSet.selector + '")'
-        else:
-            errorMsg = errorMsg.replace('${selector}', ruleSet.selector)
-        self.remember(errorLevel, errorMsg);
+        if errors is None:
+            errors = [checker.getMsg()]
+        for errorMsg in errors:
+            if errorMsg.find('${selector}') == -1:
+                errorMsg = errorMsg + ' (from "' + ruleSet.selector + '")'
+            else:
+                errorMsg = errorMsg.replace('${selector}', ruleSet.selector)
+            self.remember(errorLevel, errorMsg);
 
     def doCompress(self):
         self.doFix()
@@ -224,7 +230,7 @@ class CssChecker():
                     if not result:
                         self.logRuleSetMessage(checker, ruleSet)
                 elif isList(result) and len(result) != 0:
-                    self.logRuleSetMessage(checker, ruleSet)
+                    self.logRuleSetMessage(checker, ruleSet, result)
                 else:
                     console.error('check should be boolean/list, %s is not.' % checker.id)
 
@@ -239,7 +245,7 @@ class CssChecker():
                         if not result:
                             self.logRuleMessage(checker, rule)
                     elif isList(result) and len(result) != 0:
-                        self.logRuleMessage(checker, rule)
+                        self.logRuleMessage(checker, rule, result)
                     else:
                         console.error('check should be boolean/list, %s is not.' % checker.id)
 
@@ -253,7 +259,7 @@ class CssChecker():
                 if not result:
                     self.logStyleSheetMessage(checker, styleSheet)
             elif isList(result) and len(result) != 0:
-                self.logStyleSheetMessage(checker, styleSheet)
+                self.logStyleSheetMessage(checker, styleSheet, result)
             else:
                 console.error('check should be boolean/list, %s is not.' % checker.id)
 
