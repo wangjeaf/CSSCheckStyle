@@ -16,6 +16,7 @@ class FEDMustContainAuthorInfo(StyleSheetChecker):
             return False
 
         first = ruleSets[0]
+
         if styleSheet.getFile() != '' and first.comment.find('@author') == -1 and first.comment.find('@renren-inc.com') == -1:
             self.errorMsg = self.errorMsg_author
             return False

@@ -39,7 +39,11 @@ class CssParser():
             if isSpecialStart(char):
                 nextPos, attrs, operator = handleSpecialStatement(text, i, length, char)
                 if nextPos is not None:
-                    self.styleSheet.addExtraStatement(operator, char + attrs + text[nextPos])
+                    realComment = ''
+                    if len(comments) != 0:
+                        realComment = '\n'.join(comments)
+                        comments = []
+                    self.styleSheet.addExtraStatement(operator, char + attrs + text[nextPos], realComment)
                     i = nextPos
                     selector = ''
                     commentText = ''

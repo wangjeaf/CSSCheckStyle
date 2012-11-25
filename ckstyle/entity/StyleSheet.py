@@ -10,8 +10,8 @@ class StyleSheet():
     def addRuleSetByStr(self, selector, attrs, comment):
         self._ruleSets.append(RuleSet(selector, attrs, comment, self))
 
-    def addExtraStatement(self, operator, statement):
-        self._ruleSets.append(ExtraStatement(operator, statement, self))
+    def addExtraStatement(self, operator, statement, comment):
+        self._ruleSets.append(ExtraStatement(operator, statement, comment, self))
 
     def addNestedRuleSet(self, selector, attrs, comment):
         self._ruleSets.append(NestedStatement(selector, attrs, comment, self))

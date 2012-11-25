@@ -208,13 +208,25 @@ class CssChecker():
         def findInArray(array, value):
             return value in array or value.strip() in array
 
+        def isBoolean(value):
+            return type(value) == type(True)
+
+        def isList(value):
+            return isinstance(value, list)
+
         # 检查规则集
         def checkRuleSet(ruleSet):
             for checker in self.ruleSetCheckers:
                 if not hasattr(checker, 'check'):
                     continue
-                if not checker.check(ruleSet):
+                result = checker.check(ruleSet)
+                if isBoolean(result):
+                    if not result:
+                        self.logRuleSetMessage(checker, ruleSet)
+                elif isList(result) and len(result) != 0:
                     self.logRuleSetMessage(checker, ruleSet)
+                else:
+                    console.error('check should be boolean/list, %s is not.' % checker.id)
 
         # 检查规则
         def checkRule(ruleSet):
@@ -222,16 +234,28 @@ class CssChecker():
                 for rule in ruleSet.getRules():
                     if not hasattr(checker, 'check'):
                         continue
-                    if not checker.check(rule):
+                    result = checker.check(rule)
+                    if isBoolean(result):
+                        if not result:
+                            self.logRuleMessage(checker, rule)
+                    elif isList(result) and len(result) != 0:
                         self.logRuleMessage(checker, rule)
+                    else:
+                        console.error('check should be boolean/list, %s is not.' % checker.id)
 
         # 检查样式表
         styleSheet = self.parser.styleSheet
         for checker in self.styleSheetCheckers:
             if not hasattr(checker, 'check'):
                 continue
-            if not checker.check(styleSheet):
+            result = checker.check(styleSheet)
+            if isBoolean(result):
+                if not result:
+                    self.logStyleSheetMessage(checker, styleSheet)
+            elif isList(result) and len(result) != 0:
                 self.logStyleSheetMessage(checker, styleSheet)
+            else:
+                console.error('check should be boolean/list, %s is not.' % checker.id)
 
         for ruleSet in styleSheet.getRuleSets():
             if ruleSet.extra:

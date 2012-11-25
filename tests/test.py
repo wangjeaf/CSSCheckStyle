@@ -1,4 +1,5 @@
 import sys
+import os
 from ckstyle.doCssCheck import doCheck
 from ckstyle.doCssFix import doFix
 from ckstyle.doCssCompress import doCompress
@@ -28,6 +29,7 @@ def compressCss(filePath):
     print content
 
 if __name__ == '__main__':
+    path = os.path.realpath(os.path.join(__file__, '../test.css'))
+    checkCssFileByOpm(path)
     #fixCss('test.css')
-    #checkCssFileByOpm('test.css')
-    compressCss('test.css')
+    #compressCss(path)
