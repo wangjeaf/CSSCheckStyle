@@ -69,6 +69,18 @@ class RuleSet():
             counter = counter + 1
         return -1
     
+    def removeRuleByIndex(self, index):
+        if index < len(self._rules):
+            self._rules[index] = None
+
+    def clean(self):
+        newRules = []
+        for rule in self._rules:
+            if rule is None:
+                continue
+            newRules.append(rule)
+        self._rules = newRules
+
     def existNames(self, name):
         if name.find(',') != -1:
             names = name.split(',')
