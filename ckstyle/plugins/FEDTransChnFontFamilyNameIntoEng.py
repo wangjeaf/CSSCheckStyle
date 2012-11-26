@@ -7,7 +7,7 @@ class FEDTransChnFontFamilyNameIntoEng(RuleChecker):
         self.errorLevel = ERROR_LEVEL.ERROR
         self.errorMsg = 'should not use chinese font family name in "${selector}"'
 
-    def check(self, rule):
+    def check(self, rule, config):
         if rule.name != 'font' and rule.name != 'font-family':
             return True
 

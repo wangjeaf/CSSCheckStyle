@@ -9,7 +9,7 @@ class FEDSingleLineSelector(RuleSetChecker):
         self.errorMsg_shouldNotStartsWithSpace = 'should start with "space" in "${selector}"'
         self.errorMsg = ''
 
-    def check(self, ruleSet):
+    def check(self, ruleSet, config):
         selector = ruleSet.roughSelector
         if selector.find(',') != -1:
             return True

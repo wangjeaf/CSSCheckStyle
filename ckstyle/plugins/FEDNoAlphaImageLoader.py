@@ -6,7 +6,7 @@ class FEDNoAlphaImageLoader(RuleChecker):
         self.errorLevel = ERROR_LEVEL.ERROR
         self.errorMsg = 'should not use AlphaImageLoader in "${selector}"'
 
-    def check(self, rule):
+    def check(self, rule, config):
         if rule.value.find('AlphaImageLoader') != -1:
             return False
         return True 

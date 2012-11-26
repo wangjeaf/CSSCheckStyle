@@ -6,7 +6,7 @@ class FEDCommentLengthLessThan80(RuleSetChecker):
         self.errorLevel = ERROR_LEVEL.LOG
         self.errorMsg = 'comment for "${selector}" length should less than 80 per line'
 
-    def check(self, ruleSet):
+    def check(self, ruleSet, config):
         comment = ruleSet.roughComment
         if len(comment) == 0:
             return True

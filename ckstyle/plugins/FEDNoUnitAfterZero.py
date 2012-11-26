@@ -6,7 +6,7 @@ class FEDNoUnitAfterZero(RuleChecker):
         self.errorLevel = ERROR_LEVEL.WARNING
         self.errorMsg = 'unit should be removed when meet 0 in "${selector}"'
 
-    def check(self, rule):
+    def check(self, rule, config):
 
         def startsWithZero(value):
             return value.startswith('0') and value != '0' and value[1] != '.'

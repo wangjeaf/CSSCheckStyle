@@ -6,7 +6,7 @@ class FEDSelectorNoUnderLine(RuleSetChecker):
         self.errorLevel = ERROR_LEVEL.WARNING
         self.errorMsg = 'should not use _ in selector "${selector}"'
 
-    def check(self, ruleSet):
+    def check(self, ruleSet, config):
         selector = ruleSet.selector
         if selector.find('_') != -1:
             return False

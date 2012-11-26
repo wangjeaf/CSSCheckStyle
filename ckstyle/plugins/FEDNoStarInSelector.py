@@ -6,7 +6,7 @@ class FEDNoStarInSelector(RuleSetChecker):
         self.errorLevel = ERROR_LEVEL.ERROR
         self.errorMsg = 'please remove low performance selector "*" from "${selector}"'
 
-    def check(self, ruleSet):
+    def check(self, ruleSet, config):
         selector = ruleSet.selector
         if selector.find('*') == -1:
             return True

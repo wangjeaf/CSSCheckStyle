@@ -9,7 +9,7 @@ class FEDMustContainAuthorInfo(StyleSheetChecker):
         self.errorMsg = ''
         self.errorLevel = ERROR_LEVEL.ERROR
 
-    def check(self, styleSheet):
+    def check(self, styleSheet, config):
         ruleSets = styleSheet.getRuleSets()
         if len(ruleSets) == 0:
             self.errorMsg = self.errorMsg_empty

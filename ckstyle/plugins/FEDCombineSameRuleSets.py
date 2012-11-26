@@ -8,10 +8,10 @@ class FEDCombineSameRuleSets(StyleSheetChecker):
         self.errorLevel = ERROR_LEVEL.ERROR
 
     # can be checked correctly only after reorder/fix/compress, so do not check
-    def check(self, styleSheet):
+    def check(self, styleSheet, config):
         return True 
 
-    def fix(self, styleSheet):
+    def fix(self, styleSheet, config):
         ruleSets = styleSheet.getRuleSets()
         mapping = self._gen_hash(ruleSets)
 

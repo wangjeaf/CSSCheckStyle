@@ -7,7 +7,7 @@ class Checker():
     def __init__(self):
         self.errorLevel = ERROR_LEVEL.LOG
         self.errorMsg = '_default_msg'
-    def check(self, xxx):
+    def check(self, xxx, config):
         pass
     def getMsg(self):
         return self.errorMsg
@@ -18,19 +18,19 @@ class RuleChecker(Checker):
     def __init__(self):
         self.errorLevel = ERROR_LEVEL.LOG
         self.errorMsg = ''
-    def check(self, rule):
+    def check(self, rule, config):
         return True
 
 class RuleSetChecker(Checker):
     def __init__(self):
         self.errorLevel = ERROR_LEVEL.LOG
         self.errorMsg = ''
-    def check(self, ruleSet):
+    def check(self, ruleSet, config):
         return True
 
 class StyleSheetChecker(Checker):
     def __init__(self):
         self.errorLevel = ERROL_LEVEL.LOG
         self.errorMsg = ''
-    def check(self, styleSheet):
+    def check(self, styleSheet, config):
         return True

@@ -7,7 +7,7 @@ class FEDNoEmptyRuleSet(RuleSetChecker):
         self.errorLevel = ERROR_LEVEL.ERROR
         self.errorMsg = 'empty ruleset found "${selector}"'
 
-    def check(self, ruleSet):
+    def check(self, ruleSet, config):
         if isKeyFrames(ruleSet.selector):
             return True
 

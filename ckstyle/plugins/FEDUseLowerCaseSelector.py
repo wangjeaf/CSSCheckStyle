@@ -6,14 +6,14 @@ class FEDUseLowerCaseSelector(RuleSetChecker):
         self.errorLevel = ERROR_LEVEL.WARNING
         self.errorMsg = 'selector should use lower case, in "${selector}"'
 
-    def check(self, ruleSet):
+    def check(self, ruleSet, config):
         selector = ruleSet.selector
         if selector.lower() != selector:
             return False
 
         return True 
 
-    def fix(self, ruleSet):
+    def fix(self, ruleSet, config):
         selector = ruleSet.selector
         if selector.lower() != selector:
             ruleSet.fixedSelector = ruleSet.fixedSelector.lower()

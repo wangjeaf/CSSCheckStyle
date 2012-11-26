@@ -5,10 +5,10 @@ class FEDUnknownHTMLTagName(RuleSetChecker):
     def __init__(self):
         self.id = 'unknown-html-tag'
         self.errorLevel = ERROR_LEVEL.ERROR
-        self.roughErrorMsg = 'unknown html tag "${name}" found in "${selector}"'
-        self.errorMsg = 'unknown html tag "${name}" found in "${selector}"'
+        self.errorMsg_rough = 'unknown html tag "%s" found in "${selector}"'
+        self.errorMsg = ''
 
-    def check(self, ruleSet):
+    def check(self, ruleSet, config):
         selector = ruleSet.selector.lower()
         if selector.find('@media') != -1:
             return True
@@ -51,6 +51,6 @@ class FEDUnknownHTMLTagName(RuleSetChecker):
                         tag = tag[1:]
 
                     if not isHTMLTag(tag):
-                        self.errorMsg = self.roughErrorMsg.replace('${name}', tag)
+                        self.errorMsg = self.errorMsg_rough % tag
                         return False
         return True 

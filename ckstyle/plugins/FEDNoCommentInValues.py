@@ -6,7 +6,7 @@ class FEDNoCommentInValues(RuleSetChecker):
         self.errorLevel = ERROR_LEVEL.LOG
         self.errorMsg = 'find css comment (/* */) in "${selector}"'
 
-    def check(self, ruleSet):
+    def check(self, ruleSet, config):
         if ruleSet.roughValue.find('/*') != -1 or ruleSet.roughValue.find('*/') != -1:
             return False
         return True 

@@ -8,7 +8,7 @@ class FEDDoNotSetStyleForSimpleSelector(RuleSetChecker):
         self.errorMsg_rough = 'should not set style for "%s" in "${selector}"'
         self.errorMsg = ''
 
-    def check(self, ruleSet):
+    def check(self, ruleSet, config):
         selector = ruleSet.selector.lower()
 
         if selector.find('@media') != -1:

@@ -173,7 +173,7 @@ class CssChecker():
                 if ruleSet.fixedSelector == '':
                     ruleSet.fixedSelector = ruleSet.selector
                     ruleSet.fixedComment = ruleSet.comment
-                checker.fix(ruleSet)
+                checker.fix(ruleSet, self.config)
 
         # fix规则
         def fixRules(ruleSet):
@@ -188,7 +188,7 @@ class CssChecker():
                         rule.fixedValue = rule.value
                         rule.fixedName = rule.strippedName
 
-                    checker.fix(rule)
+                    checker.fix(rule, self.config)
 
         styleSheet = self.parser.styleSheet
         for ruleSet in styleSheet.getRuleSets():
@@ -205,7 +205,7 @@ class CssChecker():
         # 最后fix styleSheet
         for checker in self.styleSheetCheckers:
             if hasattr(checker, 'fix'):
-                checker.fix(styleSheet)
+                checker.fix(styleSheet, self.config)
 
     def doCheck(self):
         # 忽略的规则集（目前只忽略单元测试的selector）
@@ -225,7 +225,7 @@ class CssChecker():
             for checker in self.ruleSetCheckers:
                 if not hasattr(checker, 'check'):
                     continue
-                result = checker.check(ruleSet)
+                result = checker.check(ruleSet, self.config)
                 if isBoolean(result):
                     if not result:
                         self.logRuleSetMessage(checker, ruleSet)
@@ -240,7 +240,7 @@ class CssChecker():
                 for rule in ruleSet.getRules():
                     if not hasattr(checker, 'check'):
                         continue
-                    result = checker.check(rule)
+                    result = checker.check(rule, self.config)
                     if isBoolean(result):
                         if not result:
                             self.logRuleMessage(checker, rule)
@@ -254,7 +254,7 @@ class CssChecker():
         for checker in self.styleSheetCheckers:
             if not hasattr(checker, 'check'):
                 continue
-            result = checker.check(styleSheet)
+            result = checker.check(styleSheet, self.config)
             if isBoolean(result):
                 if not result:
                     self.logStyleSheetMessage(checker, styleSheet)

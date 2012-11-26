@@ -8,7 +8,7 @@ class FEDNoAppearanceNameInSelector(RuleSetChecker):
         self.errorMsg_origin = 'should not use appearance word "%s" in "${selector}"'
         self.errorMsg = ''
 
-    def check(self, ruleSet):
+    def check(self, ruleSet, config):
         selector = ruleSet.selector.lower()
 
         if selector.find('@media') != -1:

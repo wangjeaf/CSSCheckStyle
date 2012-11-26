@@ -6,7 +6,7 @@ class FEDNoZeroBeforeDot(RuleChecker):
         self.errorLevel = ERROR_LEVEL.WARNING
         self.errorMsg = 'zero should be removed when meet 0.xxx in "${selector}"'
 
-    def check(self, rule):
+    def check(self, rule, config):
         value = rule.value
 
         def startsWithZeroDot(value):

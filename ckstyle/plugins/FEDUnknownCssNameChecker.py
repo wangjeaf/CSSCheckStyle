@@ -7,5 +7,5 @@ class FEDUnknownCssNameChecker(RuleChecker):
         self.errorLevel = ERROR_LEVEL.ERROR
         self.errorMsg = 'unknown attribute name "${name}" found in "${selector}"'
 
-    def check(self, rule):
+    def check(self, rule, config):
         return isCssProp(rule.name.lower())

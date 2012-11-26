@@ -10,7 +10,7 @@ class FEDMultiLineSpaces(RuleChecker):
         self.errorMsg_value_pre = 'should have (only) one "space" before value of "${name}" in "${selector}"'
         self.errorMsg = ''
 
-    def check(self, rule):
+    def check(self, rule, config):
         singleLine = rule.getRuleSet().getSingleLineFlag()
         if singleLine:
             return True

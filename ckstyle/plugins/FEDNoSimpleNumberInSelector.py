@@ -6,7 +6,7 @@ class FEDNoSimpleNumberInSelector(RuleSetChecker):
         self.errorLevel = ERROR_LEVEL.WARNING
         self.errorMsg = 'do not simply use 1,2,3 as selector, in "${selector}"'
 
-    def check(self, ruleSet):
+    def check(self, ruleSet, config):
         selector = ruleSet.selector
 
         if selector.find('@media') != -1:

@@ -10,7 +10,7 @@ class FEDSingleLineSpaces(RuleChecker):
         self.errorMsg_extraSpaceAfterValue = 'found extra "space" after value of "${name}" in "${selector}"'
         self.errorMsg = ''
 
-    def check(self, rule):
+    def check(self, rule, config):
         singleLine = rule.getRuleSet().getSingleLineFlag()
         if not singleLine:
             return True

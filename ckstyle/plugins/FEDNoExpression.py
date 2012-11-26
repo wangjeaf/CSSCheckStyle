@@ -8,7 +8,7 @@ class FEDNoExpression(RuleChecker):
         self.errorMsg_hack = 'should add hack for expression in "${selector}"'
         self.errorMsg = ''
 
-    def check(self, rule):
+    def check(self, rule, config):
         value = rule.value
         name = rule.name
         replaced = value.replace(' ', '')

@@ -6,7 +6,7 @@ class FEDHackRuleSetInCorrectWay(RuleSetChecker):
         self.errorLevel = ERROR_LEVEL.ERROR
         self.errorMsg = 'not correct hacking way in "${selector}"'
 
-    def check(self, ruleSet):
+    def check(self, ruleSet, config):
         selector = ruleSet.selector.strip()
         if selector.find('@-moz-document') != -1:
             if selector != '@-moz-document url-prefix()':

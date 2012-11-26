@@ -8,7 +8,7 @@ class FEDReplaceBorderZeroWithBorderNone(RuleChecker):
         self.errorMsg_border = 'replace "border: 0" with "border: none" in "${selector}"'
         self.errorMsg = ''
 
-    def check(self, rule):
+    def check(self, rule, config):
         if rule.name == 'border' and rule.value == '0':
             self.errorMsg = self.errorMsg_border
             return False

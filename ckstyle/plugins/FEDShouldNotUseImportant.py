@@ -6,7 +6,7 @@ class FEDShouldNotUseImportant(RuleChecker):
         self.errorLevel = ERROR_LEVEL.ERROR
         self.errorMsg = 'Should not use !important in "${name}" of "${selector}"'
 
-    def check(self, rule):
+    def check(self, rule, config):
         value = rule.value
         if value.replace(' ', '').find('!important') != -1:
             return False

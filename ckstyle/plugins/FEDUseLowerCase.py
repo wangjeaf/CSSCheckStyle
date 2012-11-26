@@ -8,7 +8,7 @@ class FEDUseLowerCase(RuleChecker):
         self.errorMsg_value = 'value of "${name}" should use lower case, in "${selector}"'
         self.errorMsg = ''
 
-    def check(self, rule):
+    def check(self, rule, config):
         value = rule.value
         name = rule.strippedName
 

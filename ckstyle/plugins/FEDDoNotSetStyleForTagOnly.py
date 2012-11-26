@@ -6,7 +6,7 @@ class FEDDoNotSetStyleForTagOnly(RuleSetChecker):
         self.errorLevel = ERROR_LEVEL.ERROR
         self.errorMsg = 'should not set style for html tag in "${selector}"'
 
-    def check(self, ruleSet):
+    def check(self, ruleSet, config):
         selector = ruleSet.selector.lower()
         if selector.find('@media') != -1:
             return True

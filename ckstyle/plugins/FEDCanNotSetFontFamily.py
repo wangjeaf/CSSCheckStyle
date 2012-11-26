@@ -7,7 +7,7 @@ class FEDCanNotSetFontFamily(RuleChecker):
         self.errorLevel = ERROR_LEVEL.ERROR
         self.errorMsg = 'can not set font-family for "${selector}"'
 
-    def check(self, rule):
+    def check(self, rule, config):
         if rule.name == 'font-family':
             return False
 

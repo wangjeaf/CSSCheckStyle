@@ -12,7 +12,7 @@ class FEDCss3PropPrefix(RuleChecker):
         self.errorMsg_missing = 'css3 prop "${name}" missing some of "-webkit-,-moz-,-o-,std" in "${selector}"'
         self.errorMsg = ''
 
-    def check(self, rule):
+    def check(self, rule, config):
         name = rule.name
         # only for css3 props
         if not isCss3Prop(name):

@@ -8,7 +8,7 @@ class FEDStyleShouldInOrder(RuleSetChecker):
         self.errorMsg_rough = '"%s" should after "%s" in "${selector}" (order: display/box/text/other/css3)'
         self.errorMsg = ''
 
-    def check(self, ruleSet):
+    def check(self, ruleSet, config):
         rules = ruleSet.getRules()
         if len(rules) < 2:
             return True
@@ -27,7 +27,7 @@ class FEDStyleShouldInOrder(RuleSetChecker):
 
         return True 
 
-    def fix(self, ruleSet):
+    def fix(self, ruleSet, config):
         rules = ruleSet.getRules()
         if len(rules) < 2:
             return True

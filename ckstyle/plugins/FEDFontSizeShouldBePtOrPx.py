@@ -8,7 +8,7 @@ class FEDFontSizeShouldBePtOrPx(RuleChecker):
         self.errorMsg_xsmall = 'font-size should not be small/medium/large in "${selector}"'
         self.errorMsg = ''
 
-    def check(self, rule):
+    def check(self, rule, config):
         if rule.name != 'font-size':
             return True
 

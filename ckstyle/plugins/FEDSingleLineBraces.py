@@ -10,7 +10,7 @@ class FEDSingleLineBraces(RuleSetChecker):
         self.errorMsg_closingBraceEnd = 'should have "only one space" before the closing brace in "${selector}"'
         self.errorMsg = ''
 
-    def check(self, ruleSet):
+    def check(self, ruleSet, config):
         singleLine = ruleSet.getSingleLineFlag()
         if not singleLine:
             return True

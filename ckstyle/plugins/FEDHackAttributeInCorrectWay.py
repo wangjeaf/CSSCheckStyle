@@ -7,7 +7,7 @@ class FEDHackAttributeInCorrectWay(RuleChecker):
         self.errorLevel = ERROR_LEVEL.ERROR
         self.errorMsg = '"${name}" is not in correct hacking way in "${selector}"'
 
-    def check(self, rule):
+    def check(self, rule, config):
         if rule.value.find(r'\0') != -1:
             return False
 

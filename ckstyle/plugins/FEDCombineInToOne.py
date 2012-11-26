@@ -8,7 +8,7 @@ class FEDCombineInToOne(RuleSetChecker):
         self.errorMsg_rough = 'should combine "%s" to "%s" in "${selector}"'
         self.errorMsg = ''
 
-    def check(self, ruleSet):
+    def check(self, ruleSet, config):
         rules = ruleSet.getRules()
 
         counter = {}

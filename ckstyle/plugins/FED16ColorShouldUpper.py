@@ -9,7 +9,7 @@ class FED16ColorShouldUpper(RuleChecker):
         self.errorMsg_upper = 'color should in upper case in "${selector}"'
         self.errorMsg = ''
 
-    def check(self, rule):
+    def check(self, rule, config):
         value = rule.value
         if value.find('#') == -1:
             return True
@@ -33,7 +33,7 @@ class FED16ColorShouldUpper(RuleChecker):
         
         return True
 
-    def fix(self, rule):
+    def fix(self, rule, config):
         value = rule.fixedValue
         if value.find('#') == -1:
             return

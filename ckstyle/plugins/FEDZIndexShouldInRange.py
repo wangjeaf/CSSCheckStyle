@@ -8,7 +8,7 @@ class FEDZIndexShouldInRange(RuleChecker):
         self.errorLevel = ERROR_LEVEL.ERROR
         self.errorMsg = 'value of "z-index" is not correct in "${selector}"'
 
-    def check(self, rule):
+    def check(self, rule, config):
         if rule.name != 'z-index':
             return True
 

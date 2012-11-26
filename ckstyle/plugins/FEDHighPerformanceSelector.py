@@ -13,7 +13,7 @@ class FEDHighPerformanceSelector(RuleSetChecker):
         self.errorMsg_reg = 'should not use ~=,^=,|=,$=,*= in selector of "${selector}"'
         self.errorMsg = ''
 
-    def check(self, ruleSet):
+    def check(self, ruleSet, config):
         selectors = ruleSet.selector.replace('  ', '').split(',')
         for s in selectors:
             if s.find('@media') != -1:

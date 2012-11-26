@@ -17,7 +17,7 @@ class FEDMultiLineSelectors(RuleSetChecker):
         self.errorMsg_selectorEndsWithSpace = 'selector should end with only one space "${selector}"'
         self.errorMsg = ''
 
-    def check(self, ruleSet):
+    def check(self, ruleSet, config):
         selector = ruleSet.roughSelector
 
         if not selector.endswith(' ') or selector.endswith('  '):

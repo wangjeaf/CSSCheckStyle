@@ -10,7 +10,7 @@ class FEDMultiLineBraces(RuleSetChecker):
         self.errorMsg_everyAttrShouldInSingleLine = 'every name/value should in single line in "${selector}"'
         self.errorMsg = ''
 
-    def check(self, ruleSet):
+    def check(self, ruleSet, config):
         singleLine = ruleSet.getSingleLineFlag()
         if singleLine:
             return True
