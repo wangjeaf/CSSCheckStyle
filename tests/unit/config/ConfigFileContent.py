@@ -12,9 +12,23 @@ def _missing():
     equal(config.extension, '.ckstyle.txt', 'extension is ok from python')
     equal(config.include, 'all', 'include is all from python')
     equal(config.exclude, 'none', 'exclude is none from python')
-    equal(config.tabSpaces, 2, 'tab spaces is 2 from config file')
     equal(config.standard, 'standard3.css', 'standard css file name is ok')
-    equal(len(config.ignoreRuleSets), 1, 'two ignored rule sets')
+    equal(len(config.ignoreRuleSets), 1, 'one ignored rule set')
+
+    args = config.fixConfig
+    equal(args.include, '1111,222', 'include is changed')
+    equal(args.exclude, 'all', 'exclude is changed')
+    equal(args.extension, '.fixed.css', 'fixed extension is ok')
+    equal(args.recursive, False, 'recursive is false')
+    equal(args.standard, 'test.css', 'standard is changed')
+
+    args = config.compressConfig
+    equal(args.recursive, True, 'recursive is changed')
+    equal(args.reorder, False, 'reorder is changed')
+    equal(args.combineAttr, True, 'combine attr is still True')
+    equal(args.combineRuleSet, True, 'combine ruleset is still True')
+    equal(args.combineFile, True, 'combine file is still True')
+    equal(args.browsers, False, 'browsers is false')
 
 def _configed():
     config = parseConfigFile('ckstyle_configed.ini')
@@ -23,7 +37,6 @@ def _configed():
     equal(config.extension, '.ckstyle2.txt', 'extension is ok')
     equal(config.include, 'abc', 'include is abc')
     equal(config.exclude, 'ddd', 'exclude is ddd')
-    equal(config.tabSpaces, 2, 'tab spaces is 2')
     equal(config.standard, 'standard2.css', 'standard css file name is ok')
     equal(config.ignoreRuleSets[0], '@unit-test-expecteds', 'rule sets ignored')
     equal(config.ignoreRuleSets[1], '@unit-tests-fda', 'rule sets ignored')
@@ -36,7 +49,6 @@ def _default():
     equal(config.extension, '.ckstyle.txt', 'extension is ok')
     equal(config.include, 'all', 'include is all')
     equal(config.exclude, 'none', 'exclude is none')
-    equal(config.tabSpaces, 4, 'tab spaces is 4')
     equal(config.standard, 'standard.css', 'standard css file name is ok')
     equal(config.ignoreRuleSets[0], '@unit-test-expecteds', 'rule sets ignored')
     equal(len(config.ignoreRuleSets), 1, 'only one ignored rule set')
