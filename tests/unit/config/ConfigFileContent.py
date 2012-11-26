@@ -13,22 +13,13 @@ def _missing():
     equal(config.include, 'all', 'include is all from python')
     equal(config.exclude, 'none', 'exclude is none from python')
     equal(config.standard, 'standard3.css', 'standard css file name is ok')
+    equal(config.fixedExtension, '.fixed2.css', 'fixed extension is ok from python')
     equal(len(config.ignoreRuleSets), 1, 'one ignored rule set')
 
-    args = config.fixConfig
-    equal(args.include, '1111,222', 'include is changed')
-    equal(args.exclude, 'all', 'exclude is changed')
-    equal(args.extension, '.fixed.css', 'fixed extension is ok')
-    equal(args.recursive, False, 'recursive is false')
-    equal(args.standard, 'test.css', 'standard is changed')
-
     args = config.compressConfig
-    equal(args.recursive, True, 'recursive is changed')
-    equal(args.reorder, False, 'reorder is changed')
-    equal(args.combineAttr, True, 'combine attr is still True')
-    equal(args.combineRuleSet, True, 'combine ruleset is still True')
     equal(args.combineFile, True, 'combine file is still True')
     equal(args.browsers, False, 'browsers is false')
+    equal(args.extension, '.lala.min.css', 'extension changed')
 
 def _configed():
     config = parseConfigFile('ckstyle_configed.ini')
@@ -41,6 +32,11 @@ def _configed():
     equal(config.ignoreRuleSets[0], '@unit-test-expecteds', 'rule sets ignored')
     equal(config.ignoreRuleSets[1], '@unit-tests-fda', 'rule sets ignored')
     equal(len(config.ignoreRuleSets), 2, 'two ignored rule sets')
+
+    args = config.compressConfig
+    equal(args.combineFile, True, 'combine file is True')
+    equal(args.browsers, True, 'browsers is True')
+    equal(args.extension, '.min3.css', 'extension changed')
 
 def _default():
     config = parseConfigFile('ckstyle.ini')

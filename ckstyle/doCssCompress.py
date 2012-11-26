@@ -21,3 +21,39 @@ def doCompress(fileContent, fileName = '', config = defaultConfig):
     message = checker.doCompress()
 
     return checker, message
+
+def compressFile(filePath, config = defaultConfig):
+    extension = config.compressConfig.extension
+    if filePath.endswith(extension):
+        return
+    fileContent = open(filePath).read()
+    console.show('[compress] compressing %s' % filePath)
+    checker, message = doCompress(fileContent, filePath, config)
+
+    path = os.path.realpath(filePath.split('.css')[0] + extension)
+    if config.printFlag:
+        if os.path.exists(path):
+            os.remove(path)
+        console.show(message)
+    else:
+        open(path, 'w').write(message)
+        console.show('[compress] compressed ==> %s' % path)
+
+def compressDir(directory, config = defaultConfig):
+    if config.recursive:
+        compressDirRecursively(directory, config)
+    else:
+        compressDirSubFiles(directory, config)
+
+def compressDirSubFiles(directory, config = defaultConfig):
+    for filename in os.listdir(directory):
+        if not filename.endswith('.css') or filename.startswith('_'):
+            continue
+        compressFile(os.path.join(directory, filename), config)
+
+def compressDirRecursively(directory, config = defaultConfig):
+    for dirpath, dirnames, filenames in os.walk(directory):
+        for filename in filenames:
+            if not filename.endswith('.css') or filename.startswith('_'):
+                continue
+            compressFile(os.path.join(dirpath, filename), config)

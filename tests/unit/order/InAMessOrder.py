@@ -2,7 +2,7 @@ from helper import *
 
 
 def doTest():
-    fixer = doFix("a.feed-back-v6 { display: block; position: fixed; _position: absolute; top: 155px; _top: expression(documentElement.scrollTop + 'px'); _margin-top: 155px; right: 0; padding: 10px; font-size: 14px; font-weight: bold; width: 1em; background: #F7F7FF; z-index: 1999; }", '')
+    fixer, msg = doFix("a.feed-back-v6 { display: block; position: fixed; _position: absolute; top: 155px; _top: expression(documentElement.scrollTop + 'px'); _margin-top: 155px; right: 0; padding: 10px; font-size: 14px; font-weight: bold; width: 1em; background: #F7F7FF; z-index: 1999; }", '')
 
     equal(fixer.doCompress(), "a.feed-back-v6{display:block;position:fixed;_position:absolute;top:155px;_top:expression(documentElement.scrollTop + 'px');right:0;width:1em;_margin-top:155px;padding:10px;background:#F7F7FF;font-size:14px;font-weight:bold;z-index:1999}", 'compress feed-back-v6 is ok')
 

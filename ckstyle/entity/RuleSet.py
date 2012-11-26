@@ -39,6 +39,19 @@ class RuleSet():
         result = result + '{' + self.compressRules() + '}'
         return result
 
+    def fixedRules(self):
+        collector = []
+        spaces = ' ' * 4
+        for rule in self._rules:
+            collector.append(spaces + rule.fixed())
+        collected = '\n'.join(collector)
+        return collected
+
+    def fixed(self):
+        result = self.selector if self.fixedSelector == '' else self.fixedSelector
+        result = result + ' {\n' + self.fixedRules() + '\n}'
+        return result
+
     def getSingleLineFlag(self):
         return self.singleLineFlag
 

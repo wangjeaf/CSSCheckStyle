@@ -207,6 +207,8 @@ class CssChecker():
             if hasattr(checker, 'fix'):
                 checker.fix(styleSheet, self.config)
 
+        return self.getStyleSheet().fixed()
+
     def doCheck(self):
         # 忽略的规则集（目前只忽略单元测试的selector）
         ignoreRuleSets = self.config.ignoreRuleSets

@@ -5,35 +5,21 @@ import sys
 import os
 import getopt
 import string
-from ckstyle.doCssCheck import checkFile, checkDir, checkDirRecursively
+from ckstyle.doCssCheck import checkFile, checkDir
+from ckstyle.doCssFix import fixFile, fixDir
+from ckstyle.doCssCompress import compressFile, compressDir
 from ckstyle.cmdconsole.ConsoleClass import console
+from ckstyle.command.usage import fixUsage, ckstyleUsage, compressUsage
 import CommandFileParser
 
-def usage():
-    console.show('''
-[Usage]
-    ckstyle -h / ckstyle --help
-    ckstyle
-    ckstyle file.css
-    ckstyle dir 
-    ckstyle -r dir
-    ckstyle -p -r dir
-    ckstyle -c xxx.ini 
-    ckstyle -c xxx.ini -r -p
+def usage_compress():
+    console.show(compressUsage)
 
-[Example]
-    ckstyle -c xxx.ini -r -p -c xxx.ini --extension=.test.txt --include=all --exclude=none --errorLevel=2 dirpath
+def usage_fix():
+    console.show(fixUsage)
 
-[Options]
-    -h / --help     show help
-    -r              check files in directory recursively
-    -p              print check result to console(delete result files at the same time)
-    -c / --config   specify the config file name(use "~/ckstyle.ini" as default)
-    --include       specify rules(can be configed in .ini file)
-    --exclude       specify exclude rules(can be configed in .ini file)
-    --extension     specify check result file extension(use ".ckstyle.txt" as default)
-    --errorLevel    specify error level(0-error, 1-warning, 2-log)
-    ''')
+def usage_ckstyle():
+    console.show(ckstyleUsage)
 
 def getDefaultConfigPath():
     homedir = os.getenv('USERPROFILE') or os.getenv('HOME')
@@ -86,7 +72,7 @@ def getConfigFile(value):
         console.error('%s does not exist, or is not a ".ini" file' % value)
     return None
 
-def parseCkStyleCmdArgs(defaultConfigFile, opts, args, debug = False):
+def parseCkStyleCmdArgs(defaultConfigFile, opts, args, debug = False, called = False):
     recur = False
     printFlag = False
     configFile = None
@@ -102,8 +88,9 @@ def parseCkStyleCmdArgs(defaultConfigFile, opts, args, debug = False):
         elif op == '-c' or op == '-config':
             configFile = getConfigFile(value)
         elif op == "--help" or op == '-h':
-            usage()
-            sys.exit()
+            if not called:
+                usage_ckstyle()
+                sys.exit()
         elif op == '--extension':
             extension = getExtension(value)
         elif op == '--errorLevel':
@@ -128,9 +115,49 @@ def parseCkStyleCmdArgs(defaultConfigFile, opts, args, debug = False):
 
     return config
 
-def handleCkStyleCmdArgs():
+def parseFixStyleCmdArgs(defaultConfigFile, opts, args, debug = False):
+    extension = None
+    for op, value in opts:
+        if op == "--help" or op == '-h':
+            usage_fix()
+            sys.exit()
+        elif op == '--fixedExtension':
+            extension = getExtension(value)
+
+    config = parseCkStyleCmdArgs(defaultConfigFile, opts, args, debug, True)
+
+    if extension is not None: config.fixedExtension = extension
+    return config
+
+def parseCompressCmdArgs(defaultConfigFile, opts, args, debug = False):
+    #["help", "browsers=", "compressExtension=", "combineFile="]
+
+    browsers = None
+    extension = None
+    combineFile = None
+    for op, value in opts:
+        if op == "--help" or op == '-h':
+            usage_compress()
+            sys.exit()
+        elif op == '--compressExtension':
+            extension = getExtension(value)
+        elif op == '--browsers':
+            browsers = getValue(value).lower() == 'true'
+        elif op == '--combineFile':
+            combineFile = getValue(value).lower() == 'true'
+
+    config = parseCkStyleCmdArgs(defaultConfigFile, opts, args, debug, True)
+    args = config.compressConfig
+
+    if browsers is not None: args.browsers = browsers
+    if extension is not None: args.extension = extension
+    if combineFile is not None: args.combineFile = combineFile
+
+    return config
+
+def _handle(options, dirHandler, fileHandler, argsParser, operation):
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "hrpc:", ["help", "config=", "errorLevel=", "extension=", "include=", "exclude="])
+        opts, args = getopt.getopt(sys.argv[1:], "hrpc:", options)
     except getopt.GetoptError, e:
         console.error('[option] %s ' % e.msg)
         return
@@ -141,10 +168,10 @@ def handleCkStyleCmdArgs():
         parser = CommandFileParser.CommandFileParser(configFile)
         config = parser.args
 
-        checkDir(os.getcwd(), config = config)
+        dirHandler(os.getcwd(), config = config)
         return
 
-    config = parseCkStyleCmdArgs(configFile, opts, args)
+    config = argsParser(configFile, opts, args)
     
     filePath = None
     if len(args) == 0:
@@ -156,29 +183,32 @@ def handleCkStyleCmdArgs():
             return
 
     if filePath.endswith('.css'):
-        checkFile(filePath, config = config)
+        fileHandler(filePath, config = config)
     elif os.path.isdir(filePath):
-        checkDir(filePath, config = config)
+        dirHandler(filePath, config = config)
     else:
-        console.error('check aborted! because "%s" is neither css file, nor dir' % filePath)
+        console.error('%s aborted! because "%s" is neither css file, nor dir' % (operation, filePath))
+
+def handleCkStyleCmdArgs():
+    options = ["help", "config=", "errorLevel=", "extension=", "include=", "exclude="]
+    dirHandler = checkDir
+    fileHandler = checkFile
+    argsParser = parseCkStyleCmdArgs
+    operation = 'check'
+    _handle(options, dirHandler, fileHandler, argsParser, operation)
 
 def handleCompressCmdArgs():
-    try:
-        opts, args = getopt.getopt(sys.argv[1:], "hrpc:", ["help", "config=", "errorLevel=", "extension=", "include=", "exclude="])
-    except getopt.GetoptError, e:
-        console.error('[option] %s ' % e.msg)
-        return
-
-    configFile = getConfigFilePath()
-    print configFile, 'todo'
+    options = ["help", "config=", "errorLevel=", "extension=", "include=", "exclude=", "browsers=", "compressExtension=", "combineFile="]
+    dirHandler = compressDir
+    fileHandler = compressFile
+    argsParser = parseCompressCmdArgs
+    operation = 'compress'
+    _handle(options, dirHandler, fileHandler, argsParser, operation)
 
 def handleFixStyleCmdArgs():
-    try:
-        opts, args = getopt.getopt(sys.argv[1:], "hrpc:", ["help", "config=", "errorLevel=", "extension=", "include=", "exclude="])
-    except getopt.GetoptError, e:
-        console.error('[option] %s ' % e.msg)
-        return
-
-    configFile = getConfigFilePath()
-
-    print configFile, 'todo'
+    options = ["help", "config=", "errorLevel=", "extension=", "include=", "exclude=", "--fixedExtension"]
+    dirHandler = fixDir
+    fileHandler = fixFile
+    argsParser = parseFixStyleCmdArgs
+    operation = 'compress'
+    _handle(options, dirHandler, fileHandler, argsParser, operation)

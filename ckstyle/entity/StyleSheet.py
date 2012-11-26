@@ -46,3 +46,9 @@ class StyleSheet():
         for ruleSet in self._ruleSets:
             result.append(ruleSet.compress())
         return ''.join(result)
+
+    def fixed(self):
+        result = []
+        for ruleSet in self._ruleSets:
+            result.append(ruleSet.fixed())
+        return ''.join(result)

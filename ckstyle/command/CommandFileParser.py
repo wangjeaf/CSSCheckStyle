@@ -54,7 +54,6 @@ class CommandFileParser():
 
     def handleOptions(self, config):
         self.handleCkStyleOptions(config)
-        self.handleFixStyleOptions(config)
         self.handleCompressOptions(config)
         self.handleExtraOptions(config)
 
@@ -64,21 +63,9 @@ class CommandFileParser():
 
     def handleCompressOptions(self, config):
         args = self.args.compressConfig
-        args.recursive      = getBoolean(config, 'compress', 'recursive',       args.recursive)
         args.extension      = get       (config, 'compress', 'extension',       args.extension)
-        args.reorder        = getBoolean(config, 'compress', 'reorder',         args.reorder)
-        args.combineAttr    = getBoolean(config, 'compress', 'combine-attr',    args.combineAttr)
-        args.combineRuleSet = getBoolean(config, 'compress', 'combine-ruleset', args.combineRuleSet)
         args.combineFile    = getBoolean(config, 'compress', 'combine-file',    args.combineFile)
         args.browsers       = getBoolean(config, 'compress', 'browsers',        args.browsers)
-
-    def handleFixStyleOptions(self, config):
-        args = self.args.fixConfig
-        args.include   = get       (config, 'fixstyle', 'include',   args.include)
-        args.exclude   = get       (config, 'fixstyle', 'exclude',   args.exclude)
-        args.extension = get       (config, 'fixstyle', 'extension', args.extension)
-        args.recursive = getBoolean(config, 'fixstyle', 'recursive', args.recursive)
-        args.standard  = get       (config, 'fixstyle', 'standard',  args.standard)
 
     def handleCkStyleOptions(self, config):
         args = self.args
@@ -89,6 +76,7 @@ class CommandFileParser():
         args.printFlag  = getBoolean(config, 'ckstyle', 'print-flag',  args.printFlag)
         args.extension  = get       (config, 'ckstyle', 'extension',   args.extension)
         args.standard   = get       (config, 'ckstyle', 'standard',    args.standard)
+        args.fixedExtension   = get       (config, 'ckstyle', 'fixed-extension',    args.fixedExtension)
         self.handleIgnoreRuleSets(config)
 
     def handleIgnoreRuleSets(self, config):

@@ -1,7 +1,7 @@
 from helper import *
 
 def doTest():
-    fixer = doFix('.test {width:"100px";color:#DDDDDD;}', '')
+    fixer, msg = doFix('.test {width:"100px";color:#DDDDDD;}', '')
 
     styleSheet = fixer.getStyleSheet()
     equal(len(styleSheet.getRuleSets()), 1, 'one ruleset')
