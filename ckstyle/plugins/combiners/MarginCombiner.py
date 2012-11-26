@@ -36,6 +36,10 @@ class MarginCombiner(Combiner):
         right = self.collector[self.name + '-right']
         bottom = self.collector[self.name + '-bottom']
 
+        if left == '' or top == '' or right == '' or bottom == '':
+            self.combined = None
+            return
+
         if left == right == bottom == top:
             self.combined = left
         elif left == right and bottom == top:
@@ -49,16 +53,3 @@ class MarginCombiner(Combiner):
         self.collect()
         self.join()
         return self.combined, self.deleted
-
-def combine(name, props):
-    print MarginCombiner(name, props).combine()
-    
-if __name__ == '__main__':
-    combine('margin', [
-        ['margin', 'margin', '10px'],
-        ['margin-left', 'margin-left', '0px'],
-        ['margin-right', 'margin-right', '10px'],
-        ['margin-top', 'margin-top', '10px'],
-        ['margin-bottom', 'margin-bottom', '10px'],
-        ['margin-bottom', 'margin-bottom', '30px']
-    ])

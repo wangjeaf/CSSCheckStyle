@@ -1,2 +1,0 @@
-def getCombiner(name):
-    return ''

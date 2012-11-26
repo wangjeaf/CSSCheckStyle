@@ -1,5 +1,6 @@
 from Base import *
 from helper import canBeCombined, isCss3PrefixProp
+from combiners.CombinerFactory import getCombiner
 
 class FEDCombineInToOne(RuleSetChecker):
     def __init__(self):
@@ -51,4 +52,5 @@ class FEDCombineInToOne(RuleSetChecker):
         for name, value in counter.items():
             if len(value) < 2:
                 continue
+        print getCombiner('tests')
         return rules
