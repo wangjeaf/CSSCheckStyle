@@ -72,7 +72,7 @@ fixUsage = '''
     fixstyle --fixedExtension=.fixed2.css dirpath
 
 %s
-    ckstyle -r -p -c xxx.ini --fixedExtension=.test.txt --include=all --exclude=none dirpath
+    fixstyle -r -p -c xxx.ini --fixedExtension=.test.txt --include=all --exclude=none dirpath
 
 %s
     -h / --help     show help
