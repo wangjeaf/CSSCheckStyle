@@ -1,6 +1,6 @@
 CSSCheckStyle
 =============
-## 目录
+## Catalog
 * <a href="https://github.com/wangjeaf/CSSCheckStyle#description">Description</a>
 * <a href="https://github.com/wangjeaf/CSSCheckStyle#installation">Installation</a>
 * <a href="https://github.com/wangjeaf/CSSCheckStyle#demo-fix---reorder---combine---compress">DEMO (fix -> reorder -> combine -> compress)</a>
