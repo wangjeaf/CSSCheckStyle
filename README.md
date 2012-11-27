@@ -3,8 +3,8 @@ CSSCheckStyle
 ## Catalog
 * <a href="https://github.com/wangjeaf/CSSCheckStyle#description">Description</a>
 * <a href="https://github.com/wangjeaf/CSSCheckStyle#installation">Installation</a>
-* <a href="https://github.com/wangjeaf/CSSCheckStyle#demo-fix---reorder---combine---compress">Demo (parse -> fix -> combine-attr -> reorder -> combine -> compress)</a>
-* <a href="https://github.com/wangjeaf/CSSCheckStyle#demo-check">Demo (parse -> check)</a>
+* <a href="https://github.com/wangjeaf/CSSCheckStyle#demo-parse---fix---combine-attr---reorder---combine---compress">Demo (parse -> fix -> combine-attr -> reorder -> combine -> compress)</a>
+* <a href="https://github.com/wangjeaf/CSSCheckStyle#demo-parse---check">Demo (parse -> check)</a>
 * <a href="https://github.com/wangjeaf/CSSCheckStyle#usage">Usage</a>
 * <a href="https://github.com/wangjeaf/CSSCheckStyle#config-file">Config File</a>
 * <a href="https://github.com/wangjeaf/CSSCheckStyle#plugin-development">Plugin Development</a>
@@ -343,96 +343,52 @@ def doTest():
 ```
 
 ## Rules(Plugins)
+所有的规则都对应唯一id，并且有独立的检查类，所有的规则类都在`ckstyle/plugins`目录下。
+
+规则id、Python类与检查内容的对应关系(属性名为id，括号内为Python类名）如下：
+
 <pre>
 @all-rules {
-    hexadecimal-color:              16进制颜色，大写，并且尽量省略;
-    no-font-family:                 不允许业务代码设置字体;
-    combine-into-one:               将可以合并的样式设置合并;
-    comment-length:                 注释长度不允许超过80个字符;
-    css3-with-prefix:               css3前缀相关检查;
-    css3-prop-spaces:               css3缩进相关检查;
-    no-style-for-simple-selector:   不要为简单选择器设置样式，避免全局覆盖;
-    no-style-for-tag:               不要为html tag设置样式;
-    font-unit:                      字体的单位必须使用px或pt;
-    hack-prop:                      hack属性时的检查;
-    hack-ruleset:                   hack规则时的检查;
-    high-perf-selector:             针对低性能的选择器的检查;
-    multi-line-brace:               代码多行时的括号检查;
-    multi-line-selector:            代码多行时的选择器检查;
-    multi-line-space:               代码多行时的空格检查;
-    add-author:                     需要在文件中添加作者信息;
-    no-alpha-image-loader:          不要使用alphaImageLoader;
-    no-appearance-word-in-selector: 不要在选择器中出现表现相关的词汇;
-    no-comment-in-value:            不要在css属性中添加注释;
-    no-empty-ruleset:               删除空的规则;
-    no-expression:                  不要使用非一次性表达式;
-    number-in-selector:             不要在选择器中使用简单数字1、2、3;
-    no-star-in-selector:            不要在选择器中使用星号;
-    del-unit-after-zero:            删除0后面的单位;
-    no-zero-before-dot:             删除0.2前面的0;
-    no-border-zero:                 用border:none替换border:0;
-    no-underline-in-selector:       不要在选择器中使用下划线;
-    add-semicolon:                  为每一个属性后添加分号;
-    do-not-use-important:           不要使用important;
-    single-line-brace:              单行的括号检查;
-    single-line-selector:           单行的选择器检查;
-    single-line-space:              单行的空格检查;
-    keep-in-order:                  属性应该按照推荐的顺序编写;
-    no-chn-font-family:             不要出现中文的字体设置，改用对应的英文;
-    unknown-css-prop:               错误的css属性;
-    unknown-html-tag:               错误的html tag;
-    lowercase-prop:                 属性应该用小写;
-    lowercase-selector:             选择器用小写字母;
-    single-quotation:               使用单引号;
-    z-index-in-range:               z-index取值应该符合范围要求;
-}
-</pre>
-
-所有的规则都对应唯一id，并且有独立的检查类，所有的规则类都在`ckstyle/plugins`目录下。
-id与类的对应关系如下：
-
-<pre>
-@plugin-id-rule-mapping {
-    no-font-family: FEDCanNotSetFontFamily;
-    no-expression: FEDNoExpression;
-    font-unit: FEDFontSizeShouldBePtOrPx;
-    single-line-selector: FEDSingleLineSelector;
-    multi-line-selector: FEDMultiLineSelectors;
-    no-border-zero: FEDReplaceBorderZeroWithBorderNone;
-    css3-with-prefix: FEDCss3PropPrefix;
-    keep-in-order: FEDStyleShouldInOrder;
-    single-line-space: FEDSingleLineSpaces;
-    single-line-brace: FEDSingleLineBraces;
-    no-underline-in-selector: FEDSelectorNoUnderLine;
-    no-style-for-tag: FEDDoNotSetStyleForTagOnly;
-    single-quotation: FEDUseSingleQuotation;
-    no-comment-in-value: FEDNoCommentInValues;
-    high-perf-selector: FEDHighPerformanceSelector;
-    css3-prop-spaces: FEDCss3PropSpaces;
-    unknown-css-prop: FEDUnknownCssNameChecker;
-    multi-line-space: FEDMultiLineSpaces;
-    multi-line-brace: FEDMultiLineBraces;
-    combine-into-one: FEDCombineInToOne;
-    no-appearance-word-in-selector: FEDNoAppearanceNameInSelector;
-    no-alpha-image-loader: FEDNoAlphaImageLoader;
-    no-zero-before-dot: FEDNoZeroBeforeDot;
-    z-index-in-range: FEDZIndexShouldInRange;
-    del-unit-after-zero: FEDNoUnitAfterZero;
-    no-star-in-selector: FEDNoStarInSelector;
-    add-semicolon: FEDSemicolonAfterValue;
-    comment-length: FEDCommentLengthLessThan80;
-    no-empty-ruleset: FEDNoEmptyRuleSet;
-    add-author: FEDMustContainAuthorInfo;
-    no-chn-font-family: FEDTransChnFontFamilyNameIntoEng;
-    lowercase-selector: FEDUseLowerCaseSelector;
-    no-style-for-simple-selector: FEDDoNotSetStyleForSimpleSelector;
-    number-in-selector: FEDNoSimpleNumberInSelector;
-    do-not-use-important: FEDShouldNotUseImportant;
-    lowercase-prop: FEDUseLowerCase;
-    hexadecimal-color: FED16ColorShouldUpper;
-    hack-ruleset: FEDHackRuleSetInCorrectWay;
-    hack-prop: FEDHackAttributeInCorrectWay;
-    unknown-html-tag: FEDUnknownHTMLTagName;
+    hexadecimal-color:              16进制颜色，大写，并且尽量省略 (FED16ColorShouldUpper);
+    no-font-family:                 不允许业务代码设置字体 (FEDCanNotSetFontFamily);
+    combine-into-one:               将可以合并的样式设置合并 (FEDCombineInToOne);
+    comment-length:                 注释长度不允许超过80个字符 (FEDCommentLengthLessThan80);
+    css3-with-prefix:               css3前缀相关检查 (FEDCss3PropPrefix);
+    css3-prop-spaces:               css3缩进相关检查 (FEDCss3PropSpaces);
+    no-style-for-simple-selector:   不要为简单选择器设置样式，避免全局覆盖 (FEDDoNotSetStyleForSimpleSelector);
+    no-style-for-tag:               不要为html tag设置样式 (FEDDoNotSetStyleForTagOnly);
+    font-unit:                      字体的单位必须使用px或pt (FEDFontSizeShouldBePtOrPx);
+    hack-prop:                      hack属性时的检查 (FEDHackAttributeInCorrectWay);
+    hack-ruleset:                   hack规则时的检查 (FEDHackRuleSetInCorrectWay);
+    high-perf-selector:             针对低性能的选择器的检查 (FEDHighPerformanceSelector);
+    multi-line-brace:               代码多行时的括号检查 (FEDMultiLineBraces);
+    multi-line-selector:            代码多行时的选择器检查 (FEDMultiLineSelectors);
+    multi-line-space:               代码多行时的空格检查 (FEDMultiLineSpaces);
+    add-author:                     需要在文件中添加作者信息 (FEDMustContainAuthorInfo);
+    no-alpha-image-loader:          不要使用alphaImageLoader (FEDNoAlphaImageLoader);
+    no-appearance-word-in-selector: 不要在选择器中出现表现相关的词汇 (FEDNoAppearanceNameInSelector);
+    no-comment-in-value:            不要在css属性中添加注释 (FEDNoCommentInValues);
+    no-empty-ruleset:               删除空的规则 (FEDNoEmptyRuleSet);
+    no-expression:                  不要使用非一次性表达式 (FEDNoExpression);
+    number-in-selector:             不要在选择器中使用简单数字1、2、3 (FEDNoSimpleNumberInSelector);
+    no-star-in-selector:            不要在选择器中使用星号 (FEDNoStarInSelector);
+    del-unit-after-zero:            删除0后面的单位 (FEDNoUnitAfterZero);
+    no-zero-before-dot:             删除0.2前面的0 (FEDNoZeroBeforeDot);
+    no-border-zero:                 用border:none替换border:0 (FEDReplaceBorderZeroWithBorderNone);
+    no-underline-in-selector:       不要在选择器中使用下划线 (FEDSelectorNoUnderLine);
+    add-semicolon:                  为每一个属性后添加分号 (FEDSemicolonAfterValue);
+    do-not-use-important:           不要使用important (FEDShouldNotUseImportant);
+    single-line-brace:              单行的括号检查 (FEDSingleLineBraces);
+    single-line-selector:           单行的选择器检查 (FEDSingleLineSelector);
+    single-line-space:              单行的空格检查 (FEDSingleLineSpaces);
+    keep-in-order:                  属性应该按照推荐的顺序编写 (FEDStyleShouldInOrder);
+    no-chn-font-family:             不要出现中文的字体设置，改用对应的英文 (FEDTransChnFontFamilyNameIntoEng);
+    unknown-css-prop:               错误的css属性 (FEDUnknownCssNameChecker);
+    unknown-html-tag:               错误的html tag (FEDUnknownHTMLTagName);
+    lowercase-prop:                 属性应该用小写 (FEDUseLowerCaseProp);
+    lowercase-selector:             选择器用小写字母 (FEDUseLowerCaseSelector);
+    single-quotation:               使用单引号 (FEDUseSingleQuotation);
+    z-index-in-range:               z-index取值应该符合范围要求 (FEDZIndexShouldInRange);
 }
 </pre>
 

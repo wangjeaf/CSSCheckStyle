@@ -1,6 +1,6 @@
 from Base import *
 
-class FEDUseLowerCase(RuleChecker):
+class FEDUseLowerCaseProp(RuleChecker):
     def __init__(self):
         self.id = 'lowercase-prop'
         self.errorLevel = ERROR_LEVEL.WARNING
