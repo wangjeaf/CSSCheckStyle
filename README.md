@@ -1,5 +1,16 @@
 CSSCheckStyle
 =============
+## 目录
+* <a href="https://github.com/wangjeaf/CSSCheckStyle#description">Description</a>
+* <a href="https://github.com/wangjeaf/CSSCheckStyle#installation">Installation</a>
+* <a href="https://github.com/wangjeaf/CSSCheckStyle#demo-fix---reorder---combine---compress">DEMO (fix -> reorder -> combine -> compress)</a>
+* <a href="https://github.com/wangjeaf/CSSCheckStyle#demo-check">Demo (check)</a>
+* <a href="https://github.com/wangjeaf/CSSCheckStyle#usage">Usage</a>
+* <a href="https://github.com/wangjeaf/CSSCheckStyle#config-file">Config File</a>
+* <a href="https://github.com/wangjeaf/CSSCheckStyle#plugin-development">Plugin Development</a>
+* <a href="https://github.com/wangjeaf/CSSCheckStyle#unit-test">Unit Test</a>
+* <a href="https://github.com/wangjeaf/CSSCheckStyle#unit-test">Rules(Plugins)</a>
+
 ## Description
 <pre>
 @description {
@@ -169,7 +180,7 @@ border-radius:3px
 目前架构已经搭建好，需要做的事情，就是在plugins/*.py中，参照check，写一个对应的fix即可~~~
 
 ## Usage
-### 关于ckstyle/fixstyle/compress的命令行参数说明
+### 关于ckstyle / fixstyle / compress的命令行参数说明
 通过 command -h / command --help可以查看命令的帮助，例如： `compress -h`
 
 ckstyle(检查)/fixstyle(自动修复)/compress(压缩) 三个工具的命令行参数基本相同
@@ -194,7 +205,7 @@ ckstyle -r --extension=.test.txt --include=all --exclude=none --errorLevel=2   �
 ckstyle -c xxx.ini -r -p --extension=.test.txt --include=all --exclude=none --errorLevel=2 dirpath
 </pre>
 
-## CommandLine Options
+### CommandLine Options
 <pre>
 -h / --help     显示帮助
 -r              递归检查所有文件
@@ -206,13 +217,13 @@ ckstyle -c xxx.ini -r -p --extension=.test.txt --include=all --exclude=none --er
 --errorLevel    指定检查出的异常等级(0-error, 1-warning, 2-log)
 </pre>
 
-## Config File
+### Config File
 可通过以下三个方式来指定配置文件：
 * 命令行通过-c 或 --config来指定配置文件路径
 * 在执行ckstyle命令的当前目录下添加 ckstyle.ini，则默认获取此配置文件
 * 在用户默认目录放入ckstyle.ini
 
-## Config File Options
+#### Config File Options
 <pre>
 error-level        [=0] 异常等级
 include            [=all] 包含的规则
@@ -225,7 +236,7 @@ standard           [=standard.css] 给一个标准的css文件，检查时遵照
 ignore-rule-sets   [=@unit-test-expecteds] 忽略的一些规则集
 </pre>
 
-### Config File Demo
+#### Config File Demo
 ```ini
 [config]
 error-level = 0
@@ -238,7 +249,7 @@ tab-spaces = 4
 standard = standard.css
 ignore-rule-sets = @unit-test-expecteds
 ```
-## Config Priority
+### Config Priority
 指定的配置项的优先级：
 **命令行参数 > 指定的配置文件中的配置 > 默认配置文件路径的配置 > 工具的默认参数**
 
@@ -331,7 +342,7 @@ def doTest():
 }
 ```
 
-## Rules
+## Rules(Plugins)
 <pre>
 @all-rules {
     hexadecimal-color:              16进制颜色，大写，并且尽量省略;
