@@ -9,7 +9,7 @@ CSSCheckStyle
 * <a href="https://github.com/wangjeaf/CSSCheckStyle#config-file">Config File</a>
 * <a href="https://github.com/wangjeaf/CSSCheckStyle#plugin-development">Plugin Development</a>
 * <a href="https://github.com/wangjeaf/CSSCheckStyle#unit-test">Unit Test</a>
-* <a href="https://github.com/wangjeaf/CSSCheckStyle#unit-test">Rules(Plugins)</a>
+* <a href="https://github.com/wangjeaf/CSSCheckStyle#rulesplugins">Rules(Plugins)</a>
 
 ## Description
 <pre>
