@@ -181,7 +181,7 @@ border-radius:3px
 
 ## Usage
 ### 关于ckstyle / fixstyle / compress的命令行参数说明
-通过 command -h / command --help可以查看命令的帮助，例如： `compress -h`
+通过 command -h / command --help可以查看命令的帮助，例如： `compress -h`  `compress --help`
 
 ckstyle(检查)/fixstyle(自动修复)/compress(压缩) 三个工具的命令行参数基本相同
 
@@ -219,6 +219,7 @@ ckstyle -c xxx.ini -r -p --extension=.test.txt --include=all --exclude=none --er
 
 ### Config File
 可通过以下三个方式来指定配置文件：
+
 * 命令行通过-c 或 --config来指定配置文件路径
 * 在执行ckstyle命令的当前目录下添加 ckstyle.ini，则默认获取此配置文件
 * 在用户默认目录放入ckstyle.ini
@@ -231,37 +232,53 @@ exclude            [=none] 除外的规则
 recursive          [=false] 是否递归检查目录下所有文件
 print-flag         [=false] 是否打印到控制台
 extension          [=.ckstyle.txt] 指定检查结果文件的扩展名
-tab-spaces         [=4] 一个tab占4个空格宽度
 standard           [=standard.css] 给一个标准的css文件，检查时遵照此文件来检查
 ignore-rule-sets   [=@unit-test-expecteds] 忽略的一些规则集
+fixed-extension    [=.fixed.css] 修复后文件的扩展名
+
+extension(comperss)[=.min.css] 压缩后的文件扩展名
+combine-file       [=all.min.css] 压缩多个文件合并成一个的文件名
+browsers           [=false] 针对不同浏览器生成不同的压缩后文件
 </pre>
 
 #### Config File Demo
 ```ini
-[config]
+[ckstyle]
 error-level = 0
 include = all
 exclude = none
 recursive = false
 print-flag = false
 extension = .ckstyle.txt
-tab-spaces = 4
 standard = standard.css
 ignore-rule-sets = @unit-test-expecteds
+fixed-extension = .fixed.css
+
+[compress]
+extension = .min.css
+combine-file = all.min.css(todo)
+browsers = false
+
+[css-format](todo)
+tab-spaces = 4
+
+[global-selectors](todo)
+.nav, sidebar2 = home-frame2.css
 ```
 ### Config Priority
-指定的配置项的优先级：
-**命令行参数 > 指定的配置文件中的配置 > 默认配置文件路径的配置 > 工具的默认参数**
+配置项的优先级：
+** 命令行参数 > 指定的配置文件 > 当前路径下的配置文件 > 用户目录下的配置文件 > 工具的默认参数 **
 
 ## Plugin Development
+放置在`ckstyle/plugins`目录下的所有文件（Base.py和helper.py除外），每一个文件都对应一种检查规则。
+
+开发时可自行添加和修改，但是必须满足以下条件：
+
 <pre>
-放置在ckstyle/plugins目录下的所有文件（Base.py和helper.py除外）
-每一个文件都对应一种检查规则，开发时可自行添加和修改。
-但是必须满足以下条件：
 1、文件中必须包含与文件名相同的类名，比如FEDNoExpression.py中包含FEDNoExpression类
 2、类必须继承自RuleChecker/RuleSetChecker/StyleSheetChecker
-3、类中必须包含check方法，并且传入rule/ruleSet/styleSheet作为参数，并且返回True(通过)/False(不通过)
-4、类中必须包含errorLevel和errorMsg属性，便于检测异常时给出错误提示
+3、类中必须包含check方法，并且传入rule/ruleSet/styleSheet作为参数，并且返回True(通过)/False(不通过)或错误信息数组
+4、如果check返回bool值，则类中必须包含errorLevel和errorMsg属性，便于检测异常时给出错误提示
 5、errorMsg中可以包含 ${selector}/${name}/${value}等属性设置，在错误提示时将进行相应替换
 6、每一个规则，需要在tests目录中添加对应的单元测试用例，测试用例请参见"Unit Test"小节
 </pre>
@@ -276,26 +293,29 @@ class FEDSemicolonAfterValue(RuleChecker):
         self.id = 'add-semicolon'
         self.errorLevel = ERROR_LEVEL.WARNING
         self.errorMsg = 'each rule in "${selector}" need semicolon in the end, "${name}" has not'
+
     def check(self, rule):
-        if not rule.roughValue.strip().endswith(';'):
+        if not rule.strippedValue.endswith(';'):
             return False
         return True 
 ```
 
 ## Unit Test
-<pre>
-每一个规则，都需要添加对应的单元测试用例
+每一个规则，都需要添加对应的单元测试
+
 放置在tests/unit目录下的所有文件，都是单元测试用例文件（asserts.py和helper.py除外）
-tests/runUnitTests.py是单元测试运行器，将运行tests/unit的所有单元测试并给出运行结果
-</pre>
+
+`tests/runUnitTests.py`是单元测试运行器，将运行tests/unit的所有单元测试并给出运行结果
 
 ### Python Unit Test
-<pre>
-1、必须在文件中引入asserts.py，用于断言
-2、必须在文件中加入doTest方法，并在doTest方法及其调用中编写断言
-</pre>
+Python单元测试必须：
+
+1、在文件中引入`asserts.py`，用于断言
+
+2、在文件中加入`doTest`方法，并在doTest方法及其调用中编写断言
 
 ### python Unit Test Demo
+
 ``` python
 from asserts import *
 from helper import doCssCheck
@@ -311,14 +331,17 @@ def doTest():
 ```
 
 ### Css Unit Test
-<pre>
-1、必须包含 @unit-test-expecteds，并在此规则中写入单元测试断言
-2、每一个规则由key-value组成，key为错误的errorLevel，value为错误消息
-3、如果断言中有，而实际检查结果中没有，测试时将出现[expect but not have]
-4、如果断言中没有，而实际检查结果中有，测试时将出现[unexpect but has]
-5、一定要注意errorLevel是否正确
-</pre>
+CSS的单元测试，必须满足以下条件：
 
+1、必须包含`@unit-test-expecteds`，并在此规则中写入单元测试断言
+
+2、每一个规则由key-value组成，key为错误的errorLevel，value为错误消息
+
+3、如果断言中有，而实际检查结果中没有，测试时将出现`[expect but not have]`
+
+4、如果断言中没有，而实际检查结果中有，测试时将出现`[unexpect but has]`
+
+5、一定要注意errorLevel是否正确
 
 ### CSS Unit Test Demo
 
