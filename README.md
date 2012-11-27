@@ -83,17 +83,17 @@ CSSCheckStyle
 ```
 
 ### after
-本压缩工具的压缩结果（属性排列顺序已经按照推荐顺序优化）：
+本压缩工具的压缩结果（属性排列顺序已经按照推荐顺序优化），压缩比： 140 / 766 = 18.3%：
 ```css
 .test1,.test2,.test3,.test4,.test5{*display:none;_display:inline-block;width:100px;height:200px;margin:20px 10px 10px;border:1px solid #FFF}
 ```
 
-CSS Optimizer( <http://www.cssoptimiser.com/> ) 压缩结果：
+CSS Optimizer( <http://www.cssoptimiser.com/> ) 压缩结果，压缩比：310 / 766 = 40.5%：
 ```css
 .test1,.test2,.test3,.test4,.test5{width:100px;height:200px;*display:none;_display:inline-block}.test1,.test3,.test4,.test5{border:1px solid #fff}.test1,.test4,.test5{margin:10px;margin-top:20px}.test2{border:1px solid #FFF}.test2,.test3{margin:20px 10px 10px}.test3{margin:0 10px 20px}.test5{margin-left:10px}
 ```
 
-YUI Compressor压缩结果：
+YUI Compressor压缩结果，压缩比：662 / 766 = 86.4%：
 ```css
 .test1{width:100px;height:200px;*display:none;border:1px solid #fff;_display:inline-block;margin:10px;margin-top:20px}.test2{*display:none;width:100px;border:1px solid #FFF;height:200px;_display:inline-block;margin:20px 10px 10px}.test3{margin:0 10px 20px;border:1px solid #fff;width:100px;height:200px;*display:none;_display:inline-block;margin-top:20px;margin-left:10px;margin-right:10px;margin-bottom:10px}.test4{border:1px solid #fff;*display:none;width:100px;height:200px;margin:10px;_display:inline-block;margin-top:20px}.test5{margin:10px;margin-top:20px;width:100px;*display:none;height:200px;border:1px solid #fff;_display:inline-block;margin-left:10px}
 ```
