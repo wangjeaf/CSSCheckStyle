@@ -7,32 +7,23 @@ CSSCheckStyle
     good-news: 初步对比各大工具（包括YUI compressor和各种在线工具），确定初步达到业内领先水平，后期任重道远;
 	reference: <a href="http://fed.renren.com/archives/1212">《人人FED CSS编码规范》</a>;
 	language: python;
-    what-can-i-do-for-css: check -> fix -> combine-attr -> reorder -> combine -> compress;
+    what-can-i-do-for-css: parse -> check -> fix -> combine-attr -> reorder -> combine -> compress;
 }
 </pre>
 
 ## Installation
 **easy_install https://github.com/wangjeaf/CSSCheckStyle/archive/master.tar.gz**
 
-## TODOs
-* standard.css支持 tellme
-* 自动fix CSS代码 fixer
-* 代码压缩工具 compressor
-* 自动按照推荐顺序排列 orderer
-* 自动合并子样式 combiner
-* import导入文件的支持 importer
-* 完善检查规则
-* 收集全站样式与文件的映射关系，并将此映射关系加入配置 [global-styles]
-
-## fix -> reorder -> combine -> compress DEMO
+## DEMO (fix -> reorder -> combine -> compress)
 ### 说明
 以下是通过自动fix，自动排序，自动合并，自动压缩以后的代码示例。
 
 结果来自plugins/*.py中的fix方法，以及entity/*.py的compress方法。
 
-对于fix，目前只做了以下两个plugin的fix：
+对于fix，目前只做了以下几个plugin的fix：
 * FED16ColorShouldUpper
 * FEDUseSingleQuotation
+* FEDCombineInToOne(通过combiner的方式，目前只做了MarginCombiner)
 
 其他的fix只需要在对应的plugin文件中添加fix方法，即可实现fix和压缩
 
@@ -44,6 +35,8 @@ CSSCheckStyle
     *display: none;
     border: 1px solid #FFFFFF;
     _display: inline-block;
+    margin: 10px;
+    margin-top: 20px;
 }
 
 .test2 {
@@ -52,14 +45,20 @@ CSSCheckStyle
     border: 1px solid #FFF;
     height: 200px;
     _display: inline-block;
+    margin: 20px 10px 10px;
 }
 
 .test3 {
+    margin: 0 10px 20px;
     border: 1px solid #fff;
     width: 100px;
     height: 200px;
     *display: none;
     _display: inline-block;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 .test4 {
@@ -67,34 +66,39 @@ CSSCheckStyle
     *display: none;
     width: 100px;
     height: 200px;
+    margin: 10px;
     _display: inline-block;
+    margin-top: 20px;
 }
 
 .test5 {
+    margin: 10px;
+    margin-top: 20px;
     width: 100px; *display: none; height: 200px;
     border: 1px solid #ffffff;
     _display: inline-block;
+    margin-left: 10px;
 }
 
 ```
 
 ### after
-本压缩工具的压缩结果（属性排列顺序已经经过优化）：
+本压缩工具的压缩结果（属性排列顺序已经按照推荐顺序优化）：
 ```css
-.test1,.test2,.test3,.test4,.test5{*display:none;_display:inline-block;width:100px;height:200px;border:1px solid #FFF}
+.test1,.test2,.test3,.test4,.test5{*display:none;_display:inline-block;width:100px;height:200px;margin:20px 10px 10px;border:1px solid #FFF}
 ```
 
 CSS Optimizer( <http://www.cssoptimiser.com/> ) 压缩结果：
 ```css
-.test1,.test2,.test3,.test4,.test5{width:100px;height:200px;*display:none;_display:inline-block}.test1,.test3,.test4,.test5{border:1px solid #fff}.test2{border:1px solid #FFF}
+.test1,.test2,.test3,.test4,.test5{width:100px;height:200px;*display:none;_display:inline-block}.test1,.test3,.test4,.test5{border:1px solid #fff}.test1,.test4,.test5{margin:10px;margin-top:20px}.test2{border:1px solid #FFF}.test2,.test3{margin:20px 10px 10px}.test3{margin:0 10px 20px}.test5{margin-left:10px}
 ```
 
 YUI Compressor压缩结果：
 ```css
-.test1{width:100px;height:200px;*display:none;border:1px solid #fff;_display:inline-block}.test2{*display:none;width:100px;border:1px solid #FFF;height:200px;_display:inline-block}.test3{border:1px solid #fff;width:100px;height:200px;*display:none;_display:inline-block}.test4{border:1px solid #fff;*display:none;width:100px;height:200px;_display:inline-block}.test5{width:100px;*display:none;height:200px;border:1px solid #fff;_display:inline-block}
+.test1{width:100px;height:200px;*display:none;border:1px solid #fff;_display:inline-block;margin:10px;margin-top:20px}.test2{*display:none;width:100px;border:1px solid #FFF;height:200px;_display:inline-block;margin:20px 10px 10px}.test3{margin:0 10px 20px;border:1px solid #fff;width:100px;height:200px;*display:none;_display:inline-block;margin-top:20px;margin-left:10px;margin-right:10px;margin-bottom:10px}.test4{border:1px solid #fff;*display:none;width:100px;height:200px;margin:10px;_display:inline-block;margin-top:20px}.test5{margin:10px;margin-top:20px;width:100px;*display:none;height:200px;border:1px solid #fff;_display:inline-block;margin-left:10px}
 ```
 
-## check Demo
+## Demo (check)
 此处演示的是代码风格检查功能。
 
 所有的检查项都来自于plugins/*.py的check方法
@@ -161,12 +165,17 @@ border-radius:3px
             border-radius: 3px;
 }
 ```
-
-目前自动fix检查错误的工具正在紧锣密鼓开发中。
-
 目前架构已经搭建好，需要做的事情，就是在plugins/*.py中，参照check，写一个对应的fix即可~~~
 
 ## Usage
+### 关于ckstyle/fixstyle/compress的命令行参数说明
+ckstyle(检查)/fixstyle(自动修复)/compress(压缩) 三个工具的命令行参数基本相同
+
+不同之处：
+* fixstyle给出了额外的参数：--fixedExtension（修复后文件的扩展名） 
+* compress给出了额外的参数：--browsers（是否分浏览器压缩）, --compressExtension（压缩后文件的扩展名）, --combineFile（是否将多个压缩后文件合并），这些参数目前有的尚未实现~~~
+
+### Examples
 <pre>
 ckstyle                        用默认配置检查当前目录下的所有css文件
 ckstyle -h / ckstyle --help    显示帮助
@@ -178,10 +187,7 @@ ckstyle -r -p dir              同上
 ckstyle -c xxx.ini             使用xxx.ini中的配置进行检查
 ckstyle -c xxx.ini -r -p       使用xxx.ini中的配置进行递归检查，并将结果输出到控制台
 ckstyle -r --extension=.test.txt --include=all --exclude=none --errorLevel=2   使用配置的信息进行检查
-</pre>
 
-### Complete Example
-<pre>
 ckstyle -c xxx.ini -r -p --extension=.test.txt --include=all --exclude=none --errorLevel=2 dirpath
 </pre>
 
