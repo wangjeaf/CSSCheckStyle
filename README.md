@@ -100,7 +100,7 @@ CSSCheckStyle
 .test1,.test2,.test3,.test4,.test5{*display:none;_display:inline-block;width:100px;height:200px;margin:20px 10px 10px;border:1px solid #FFF}
 ```
 
-CSS Optimizer( <http://www.cssoptimiser.com/> ) 压缩结果，压缩率：310 / 766 = 40.5%：
+<a href="http://www.cssoptimiser.com">CSS Optimizer</a>压缩结果，压缩率：310 / 766 = 40.5%：
 ```css
 .test1,.test2,.test3,.test4,.test5{width:100px;height:200px;*display:none;_display:inline-block}.test1,.test3,.test4,.test5{border:1px solid #fff}.test1,.test4,.test5{margin:10px;margin-top:20px}.test2{border:1px solid #FFF}.test2,.test3{margin:20px 10px 10px}.test3{margin:0 10px 20px}.test5{margin-left:10px}
 ```
