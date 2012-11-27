@@ -8,6 +8,7 @@ class MarginCombiner(Combiner):
         self.combined = ''
         self.collector = {}
         self.deleted = []
+        self.hasFather = False
         self.subs = ['left', 'top', 'bottom', 'right']
         self.initSubs()
 
@@ -15,6 +16,30 @@ class MarginCombiner(Combiner):
         name = self.name
         for sub in self.subs:
             self.collector[name + '-' + sub] = ''
+
+    def _seperate(self, value):
+        splited = value.split(' ')
+        top = right = bottom = left = ''
+        length = len(splited)
+        if length == 1:
+            top = right = bottom = left = value
+        elif length == 2:
+            top = bottom = splited[0].strip()
+            left = right = splited[1].strip()
+        elif length == 3:
+            top = splited[0].strip()
+            left = right = splited[1].strip()
+            bottom = splited[2].strip()
+        elif length >= 4:
+            top = splited[0].strip()
+            right = splited[1].strip()
+            bottom = splited[2].strip()
+            left = splited[3].strip()
+        name = self.name
+        self.collector[self.name + '-top'] = top
+        self.collector[self.name + '-right'] = right
+        self.collector[self.name + '-bottom'] = bottom
+        self.collector[self.name + '-left'] = left
 
     def collect(self):
         name = self.name
@@ -24,10 +49,11 @@ class MarginCombiner(Combiner):
                 break;
 
             if prop[1] == name:
-                for direction in self.subs:
-                    self.collector[name + '-' + direction] = prop[2]
+                self.hasFather = True
+                self._seperate(prop[2])
             else:
-                self.deleted.append(prop[1])
+                if not prop[1] in self.deleted:
+                    self.deleted.append(prop[1])
                 self.collector[prop[0]] = prop[2]
 
     def join(self):
@@ -38,6 +64,7 @@ class MarginCombiner(Combiner):
 
         if left == '' or top == '' or right == '' or bottom == '':
             self.combined = None
+            self.deleted = []
             return
 
         if left == right == bottom == top:
@@ -52,4 +79,4 @@ class MarginCombiner(Combiner):
     def combine(self):
         self.collect()
         self.join()
-        return self.combined, self.deleted
+        return self.combined, self.deleted, self.hasFather

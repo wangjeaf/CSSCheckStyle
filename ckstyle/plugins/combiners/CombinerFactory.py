@@ -1,13 +1,24 @@
-def getCombiner(name, props):
+from ckstyle.cmdconsole.ConsoleClass import console
+
+def doCombine(name, props):
     pluginName = camelCase(name) + 'Combiner'
-    plugin = __import__(pluginName, fromlist = [pluginName])
-    pluginClass = None
-    if hasattr(plugin, pluginName):
-        pluginClass = getattr(plugin, pluginName)
-    else:
-        return
+    pluginClass = NullCombiner
+    try:
+        plugin = __import__('ckstyle.plugins.combiners.' + pluginName, fromlist = [pluginName])
+        if hasattr(plugin, pluginName):
+            pluginClass = getattr(plugin, pluginName)
+        else:
+            console.error('%s should exist in %s.py' (pluginName, pluginName))
+    except ImportError, e:
+        pass
     instance = pluginClass(name, props)
-    print instance.combine()
+    return instance.combine()
+
+class NullCombiner():
+    def __init__(self, name, props):
+        pass
+    def combine(self):
+        return None, [], False
 
 def camelCase(name):
     splited = name.split('-')
@@ -18,11 +29,7 @@ def camelCase(name):
     return ''.join(collector)
 
 if __name__ == '__main__':
-    getCombiner('margin', [
-        ['margin', 'margin', '10px'],
-        ['margin-left', 'margin-left', '0px'],
-        ['margin-right', 'margin-right', '10px'],
-        ['margin-top', 'margin-top', '10px'],
-        ['margin-bottom', 'margin-bottom', '10px'],
-        ['margin-bottom', 'margin-bottom', '30px']
+    print doCombine('margin', [
+        ['margin', 'margin', '0 1px 2px 3px'],
+        ['margin-left', 'margin-left', '10px'],
     ])

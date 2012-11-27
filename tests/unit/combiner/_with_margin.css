@@ -1,0 +1,44 @@
+/* @author wangjeaf */ 
+
+.test {
+    _width: 100px; 
+    *height: 100px;
+    margin: 10px;
+    margin-top: 20px;
+}
+
+.test2 {
+    _width: 100px; 
+    *height: 100px;
+    margin: 20px 10px 10px;
+}
+.test3 {
+    _width: 100px;
+    *height: 100px;
+    margin: 0 10px 0px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.test4 {
+    margin: 10px;
+    _width: 100px; 
+    margin-top: 20px;
+    *height: 100px;
+}
+
+.test5 {
+    margin: 10px;
+    margin-top: 20px;
+    margin-left: 10px;
+    *height: 100px;
+    _width: 100px;
+}
+
+.test6 {
+    _width: 100px; 
+    *height: 100px;
+    display:none;
+}

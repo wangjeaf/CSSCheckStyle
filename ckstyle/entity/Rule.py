@@ -19,6 +19,10 @@ class Rule():
 
         self.ruleSet = ruleSet
 
+    def reset(self, name, value):
+        self.roughName = self.name = self.strippedName = self.fixedName = name
+        self.roughValue = self.value = self.strippedValue = self.fixedValue = value
+
     def compress(self):
         name = self.name if self.fixedName == '' else self.fixedName
         value = self.value if self.fixedValue == '' else self.fixedValue

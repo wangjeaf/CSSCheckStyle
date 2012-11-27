@@ -1,6 +1,6 @@
 from Base import *
 from helper import canBeCombined, isCss3PrefixProp
-from combiners.CombinerFactory import getCombiner
+from combiners.CombinerFactory import doCombine
 
 class FEDCombineInToOne(RuleSetChecker):
     def __init__(self):
@@ -49,8 +49,28 @@ class FEDCombineInToOne(RuleSetChecker):
         return counter
 
     def _combineAttrs(self, rules, counter):
+        originRules = rules
         for name, value in counter.items():
             if len(value) < 2:
                 continue
-        print getCombiner('tests')
-        return rules
+            combined, deleted, hasFather = doCombine(name, value)
+            if combined == None:
+                continue
+
+            newRules = []
+            for rule in originRules:
+                # it is what i want
+                if rule.fixedName == name:
+                    rule.fixedValue = combined
+                    newRules.append(rule)
+                    continue
+                # it is what i want to delete
+                if rule.fixedName in deleted:
+                    if not hasFather:
+                        rule.reset(name, combined)
+                        newRules.append(rule)
+                        hasFather = True
+                    continue
+                newRules.append(rule)
+            originRules = newRules
+        return originRules
