@@ -9,5 +9,8 @@ def fixstyle():
 def compress():
     handleCompressCmdArgs()
 
+def main():
+    ckstyle()
+
 if __name__ == '__main__':
     main()
