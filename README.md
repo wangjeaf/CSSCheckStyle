@@ -343,7 +343,7 @@ def doTest():
 ```
 
 ## Rules(Plugins)
-所有的规则都对应唯一id，并且有独立的检查类，所有的规则类都在`ckstyle/plugins`目录下。
+所有的规则都对应唯一id，并且有独立的检查类，所有的规则类都在`ckstyle/plugins`的一级目录下。
 
 规则id、Python类与检查内容的对应关系(属性名为id，括号内为Python类名）如下：
 
