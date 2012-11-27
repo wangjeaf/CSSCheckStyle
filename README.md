@@ -3,8 +3,8 @@ CSSCheckStyle
 ## Catalog
 * <a href="https://github.com/wangjeaf/CSSCheckStyle#description">Description</a>
 * <a href="https://github.com/wangjeaf/CSSCheckStyle#installation">Installation</a>
-* <a href="https://github.com/wangjeaf/CSSCheckStyle#demo-fix---reorder---combine---compress">Demo (fix -> reorder -> combine -> compress)</a>
-* <a href="https://github.com/wangjeaf/CSSCheckStyle#demo-check">Demo (check)</a>
+* <a href="https://github.com/wangjeaf/CSSCheckStyle#demo-fix---reorder---combine---compress">Demo (parse -> fix -> combine-attr -> reorder -> combine -> compress)</a>
+* <a href="https://github.com/wangjeaf/CSSCheckStyle#demo-check">Demo (parse -> check)</a>
 * <a href="https://github.com/wangjeaf/CSSCheckStyle#usage">Usage</a>
 * <a href="https://github.com/wangjeaf/CSSCheckStyle#config-file">Config File</a>
 * <a href="https://github.com/wangjeaf/CSSCheckStyle#plugin-development">Plugin Development</a>
