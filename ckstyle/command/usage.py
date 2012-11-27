@@ -60,8 +60,26 @@ ckstyleUsage = '''
     ''' % (usage, example, options)
 
 fixUsage = '''
-[compress]
+[fixstyle]
 %s
+    Fixstyle shares almost the same options with ckstyle, but has more.
+
+    fixstyle -h / fixstyle --help
+    fixstyle file.css
+    fixstyle -r dir
+    fixstyle -r -p dir
+
+    fixstyle --fixedExtension=.fixed2.css dirpath
+
 %s
+    ckstyle -r -p -c xxx.ini --fixedExtension=.test.txt --include=all --exclude=none dirpath
+
 %s
+    -h / --help     show help
+    -r              fix files in directory recursively
+    -p              print fixed file content to console(delete result files at the same time)
+    -c / --config   specify the config file name(use ckstyle.ini or ~/ckstyle.ini as default)
+    --include       specify rules(can be configed in .ini file)
+    --exclude       specify exclude rules(can be configed in .ini file)
+    --fixedExtension     specify fixed file extension(use ".fixed.css" as default)
     ''' % (usage, example, options)

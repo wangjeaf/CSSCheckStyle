@@ -194,7 +194,7 @@ def handleCkStyleCmdArgs():
     dirHandler = checkDir
     fileHandler = checkFile
     argsParser = parseCkStyleCmdArgs
-    operation = 'check'
+    operation = 'ckstyle'
     _handle(options, dirHandler, fileHandler, argsParser, operation)
 
 def handleCompressCmdArgs():
@@ -210,5 +210,5 @@ def handleFixStyleCmdArgs():
     dirHandler = fixDir
     fileHandler = fixFile
     argsParser = parseFixStyleCmdArgs
-    operation = 'compress'
+    operation = 'fixstyle'
     _handle(options, dirHandler, fileHandler, argsParser, operation)
