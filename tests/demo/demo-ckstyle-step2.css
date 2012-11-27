@@ -1,8 +1,8 @@
-/* @author : */
+/* @author : zhifu.wang */
 
-.test-special-word .a-class {
-    width: 10px;
-    color: #FFF;
+.test-special-word a.a-class {
+    width:10px;
+    color:#FFFFFF;
     -webkit-border-radius: 3px;
        -moz-border-radius: 3px;
          -o-border-radius: 3px;

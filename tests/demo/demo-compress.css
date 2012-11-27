@@ -1,0 +1,50 @@
+.test1 {
+    width: 100px;
+    height: 200px;
+    *display: none;
+    border: 1px solid #FFFFFF;
+    _display: inline-block;
+    margin: 10px;
+    margin-top: 20px;
+}
+
+.test2 {
+    *display: none;
+    width: 100px;
+    border: 1px solid #FFF;
+    height: 200px;
+    _display: inline-block;
+    margin: 20px 10px 10px;
+}
+
+.test3 {
+    margin: 0 10px 20px;
+    border: 1px solid #fff;
+    width: 100px;
+    height: 200px;
+    *display: none;
+    _display: inline-block;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.test4 {
+    border: 1px solid #ffffff;
+    *display: none;
+    width: 100px;
+    height: 200px;
+    margin: 10px;
+    _display: inline-block;
+    margin-top: 20px;
+}
+
+.test5 {
+    margin: 10px;
+    margin-top: 20px;
+    width: 100px; *display: none; height: 200px;
+    border: 1px solid #ffffff;
+    _display: inline-block;
+    margin-left: 10px;
+}

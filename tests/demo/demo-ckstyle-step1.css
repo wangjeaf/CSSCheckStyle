@@ -1,0 +1,9 @@
+/* @author : zhifu.wang */
+
+.test1 ul li a {
+width:10px;
+color:#ffffff;
+    -webkit-border-radius:3px;
+-moz-border-radius : 3px;
+border-radius:3px
+}

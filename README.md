@@ -15,7 +15,7 @@ CSSCheckStyle
 ## Installation
 **easy_install https://github.com/wangjeaf/CSSCheckStyle/archive/master.tar.gz**
 
-## DEMO (fix -> reorder -> combine -> compress)
+## DEMO (parse -> fix -> combine-attr -> reorder -> combine -> compress)
 ### 说明
 以下是通过自动fix，自动排序，自动合并，自动压缩以后的代码示例。
 
@@ -99,7 +99,7 @@ YUI Compressor压缩结果，压缩比：662 / 766 = 86.4%：
 .test1{width:100px;height:200px;*display:none;border:1px solid #fff;_display:inline-block;margin:10px;margin-top:20px}.test2{*display:none;width:100px;border:1px solid #FFF;height:200px;_display:inline-block;margin:20px 10px 10px}.test3{margin:0 10px 20px;border:1px solid #fff;width:100px;height:200px;*display:none;_display:inline-block;margin-top:20px;margin-left:10px;margin-right:10px;margin-bottom:10px}.test4{border:1px solid #fff;*display:none;width:100px;height:200px;margin:10px;_display:inline-block;margin-top:20px}.test5{margin:10px;margin-top:20px;width:100px;*display:none;height:200px;border:1px solid #fff;_display:inline-block;margin-left:10px}
 ```
 
-## Demo (check)
+## Demo (parse -> check)
 此处演示的是代码风格检查功能。
 
 所有的检查项都来自于plugins/*.py的check方法
@@ -123,14 +123,14 @@ border-radius:3px
 [ERROR] 4. css3 prop "border-radius" missing some of "-webkit-,-moz-,-o-,std" in ".test1 ul li a"
  [WARN] 5. do not simply use 1,2,3 as selector, in ".test1 ul li a"
  [WARN] 6. color should in upper case in ".test1 ul li a"
- [WARN] 7. css3 prop "-moz-border-radius" should align to right in ".test1 ul li a"
- [WARN] 8. css3 prop "border-radius" should align to right in ".test1 ul li a"
- [WARN] 9. should have 4 spaces before "width" in ".test1 ul li a"
- [WARN] 10. should have 4 spaces before "color" in ".test1 ul li a"
- [WARN] 11. should have (only) one "space" before value of "-webkit-border-radius" in ".test1 ul li a"
- [WARN] 12. should not have "space" after "-moz-border-radius" in ".test1 ul li a"
- [WARN] 13. should have (only) one "space" before value of "border-radius" in ".test1 ul li a"
- [WARN] 14. each rule in ".test1 ul li a" need semicolon in the end, "border-radius" has not
+ [WARN] 7. each rule in ".test1 ul li a" need semicolon in the end, "border-radius" has not
+  [LOG] 8. css3 prop "-moz-border-radius" should align to right in ".test1 ul li a"
+  [LOG] 9. css3 prop "border-radius" should align to right in ".test1 ul li a"
+  [LOG] 10. should have 4 spaces before "width" in ".test1 ul li a"
+  [LOG] 11. should have 4 spaces before "color" in ".test1 ul li a"
+  [LOG] 12. should have (only) one "space" before value of "-webkit-border-radius" in ".test1 ul li a"
+  [LOG] 13. should not have "space" after "-moz-border-radius" in ".test1 ul li a"
+  [LOG] 14. should have (only) one "space" before value of "border-radius" in ".test1 ul li a"
 </pre>
 
 #### 第一次修改后：
@@ -150,8 +150,8 @@ border-radius:3px
 <pre>
 [ERROR] 1. should not put "HTMLtag" and ".class" together in ".test-special-word a.a-class"
  [WARN] 2. replace "#FFFFFF" with "#FFF" in ".test-special-word a.a-class"
- [WARN] 3. should have (only) one "space" before value of "width" in ".test-special-word a.a-class"
- [WARN] 4. should have (only) one "space" before value of "color" in ".test-special-word a.a-class"
+  [LOG] 3. should have (only) one "space" before value of "width" in ".test-special-word a.a-class"
+  [LOG] 4. should have (only) one "space" before value of "color" in ".test-special-word a.a-class"
 </pre>
 
 #### 符合规范的最终代码
@@ -170,6 +170,8 @@ border-radius:3px
 
 ## Usage
 ### 关于ckstyle/fixstyle/compress的命令行参数说明
+通过 command -h / command --help可以查看命令的帮助，例如： `compress -h`
+
 ckstyle(检查)/fixstyle(自动修复)/compress(压缩) 三个工具的命令行参数基本相同
 
 不同之处：
