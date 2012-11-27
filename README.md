@@ -26,7 +26,7 @@ CSSCheckStyle
 ## Installation
 **easy_install https://github.com/wangjeaf/CSSCheckStyle/archive/master.tar.gz**
 
-## DEMO (parse -> fix -> combine-attr -> reorder -> combine -> compress)
+## Demo (parse -> fix -> combine-attr -> reorder -> combine -> compress)
 ### 说明
 以下是通过自动fix，自动排序，自动合并，自动压缩以后的代码示例。
 
