@@ -6,8 +6,9 @@ CSSCheckStyle
 	destination: 检查CSS代码中的编码规范和编码风格问题;
     good-news: 初步对比各大工具（包括YUI compressor和各种在线工具），确定初步达到业内领先水平，后期任重道远;
 	reference: <a href="http://fed.renren.com/archives/1212">《人人FED CSS编码规范》</a>;
+    what-can-i-do: parse -> check -> fix -> combine-attr -> reorder -> combine -> compress;
+    export-tools: ckstyle(检查) / fixstyle(修复) / compress(压缩)
 	language: python;
-    what-can-i-do-for-css: parse -> check -> fix -> combine-attr -> reorder -> combine -> compress;
 }
 </pre>
 
@@ -27,6 +28,7 @@ CSSCheckStyle
 
 其他的fix只需要在对应的plugin文件中添加fix方法，即可实现fix和压缩
 
+此Demo执行的命令： `compress -p test.css`
 ### before
 ```css
 .test1 {
@@ -79,7 +81,6 @@ CSSCheckStyle
     _display: inline-block;
     margin-left: 10px;
 }
-
 ```
 
 ### after
