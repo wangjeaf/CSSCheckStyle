@@ -35,7 +35,7 @@ CSSCheckStyle
 对于fix，目前只做了以下几个plugin的fix：
 * FED16ColorShouldUpper
 * FEDUseSingleQuotation
-* FEDCombineInToOne(通过combiner的方式，目前只做了MarginCombiner)
+* FEDCombineInToOne (通过combiner的方式灵活扩展，目前只做了MarginCombiner)
 
 其他的fix只需要在对应的plugin文件中添加fix方法，即可实现fix和压缩
 
