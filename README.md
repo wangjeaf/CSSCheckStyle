@@ -100,12 +100,12 @@ CSSCheckStyle
 .test1,.test2,.test3,.test4,.test5{*display:none;_display:inline-block;width:100px;height:200px;margin:20px 10px 10px;border:1px solid #FFF}
 ```
 
-<a href="http://www.cssoptimiser.com">CSS Optimizer</a>压缩结果，压缩率：310 / 766 = 40.5%：
+<a href="http://www.cssoptimiser.com">CSS Optimizer</a> 压缩结果，压缩率：310 / 766 = 40.5%：
 ```css
 .test1,.test2,.test3,.test4,.test5{width:100px;height:200px;*display:none;_display:inline-block}.test1,.test3,.test4,.test5{border:1px solid #fff}.test1,.test4,.test5{margin:10px;margin-top:20px}.test2{border:1px solid #FFF}.test2,.test3{margin:20px 10px 10px}.test3{margin:0 10px 20px}.test5{margin-left:10px}
 ```
 
-YUI Compressor压缩结果，压缩率：662 / 766 = 86.4%：
+YUI Compressor 压缩结果，压缩率：662 / 766 = 86.4%：
 ```css
 .test1{width:100px;height:200px;*display:none;border:1px solid #fff;_display:inline-block;margin:10px;margin-top:20px}.test2{*display:none;width:100px;border:1px solid #FFF;height:200px;_display:inline-block;margin:20px 10px 10px}.test3{margin:0 10px 20px;border:1px solid #fff;width:100px;height:200px;*display:none;_display:inline-block;margin-top:20px;margin-left:10px;margin-right:10px;margin-bottom:10px}.test4{border:1px solid #fff;*display:none;width:100px;height:200px;margin:10px;_display:inline-block;margin-top:20px}.test5{margin:10px;margin-top:20px;width:100px;*display:none;height:200px;border:1px solid #fff;_display:inline-block;margin-left:10px}
 ```
@@ -177,8 +177,6 @@ border-radius:3px
             border-radius: 3px;
 }
 ```
-目前架构已经搭建好，需要做的事情，就是在plugins/*.py中，参照check，写一个对应的fix即可~~~
-
 ## Usage
 ### 关于ckstyle / fixstyle / compress的命令行参数说明
 通过 command -h / command --help可以查看命令的帮助，例如： `compress -h`  `compress --help`
@@ -236,7 +234,7 @@ standard           [=standard.css] 给一个标准的css文件，检查时遵照
 ignore-rule-sets   [=@unit-test-expecteds] 忽略的一些规则集
 fixed-extension    [=.fixed.css] 修复后文件的扩展名
 
-extension(comperss)[=.min.css] 压缩后的文件扩展名
+extension(compress)[=.min.css] 压缩后的文件扩展名
 combine-file       [=all.min.css] 压缩多个文件合并成一个的文件名
 browsers           [=false] 针对不同浏览器生成不同的压缩后文件
 </pre>
@@ -259,29 +257,32 @@ extension = .min.css
 combine-file = all.min.css(todo)
 browsers = false
 
-[css-format](todo)
+[css-format(todo)]
 tab-spaces = 4
 
-[global-selectors](todo)
+[global-selectors(todo)]
 .nav, sidebar2 = home-frame2.css
 ```
 ### Config Priority
 配置项的优先级：
-** 命令行参数 > 指定的配置文件 > 当前路径下的配置文件 > 用户目录下的配置文件 > 工具的默认参数 **
+**命令行参数 > 指定的配置文件 > 当前路径下的配置文件 > 用户目录下的配置文件 > 工具的默认参数**
 
 ## Plugin Development
 放置在`ckstyle/plugins`目录下的所有文件（Base.py和helper.py除外），每一个文件都对应一种检查规则。
 
 开发时可自行添加和修改，但是必须满足以下条件：
 
-<pre>
 1、文件中必须包含与文件名相同的类名，比如FEDNoExpression.py中包含FEDNoExpression类
+
 2、类必须继承自RuleChecker/RuleSetChecker/StyleSheetChecker
+
 3、类中必须包含check方法，并且传入rule/ruleSet/styleSheet作为参数，并且返回True(通过)/False(不通过)或错误信息数组
+
 4、如果check返回bool值，则类中必须包含errorLevel和errorMsg属性，便于检测异常时给出错误提示
+
 5、errorMsg中可以包含 ${selector}/${name}/${value}等属性设置，在错误提示时将进行相应替换
+
 6、每一个规则，需要在tests目录中添加对应的单元测试用例，测试用例请参见"Unit Test"小节
-</pre>
 
 ### plugin Demo
 
