@@ -1,0 +1,224 @@
+/*----This is normal stylesheet for full column by yuhaoyang----*/
+body{ font-size:12px;color:#444;word-wrap:break-word; padding-bottom:50px; background-color:#f2f1f1; font-family:'Microsoft Yahei',Tahoma,Arial,Helvetica,Simsun,STHeiti;}
+a, a:link, a:visited {color:#666;text-decoration:none}
+.last-col { margin-right:0!important}
+
+/*header*/
+#container {background:url(http://a.xnimg.cn/smallsite/images/theme/mise/bg.png) 0 0 repeat;}
+#container header ,.end #header{background-color:#fff; text-align:center; box-shadow: 0 3px 2px rgba(0, 0, 0, 0.2);}
+#container header , #sitesummary{padding:40px 0 40px 0;}
+#sitesummary{position: relative; margin: 0 auto; width: 952px;}
+#main-wrap {padding-top:40px; box-shadow:0 3px 2px rgba(0, 0, 0, 0.2);}
+#title { font-size:46px; color:#666; text-decoration:none}
+/*html5 reset*/
+footer,section,header{display:block}
+/*main*/
+#main{width:952px;margin:0 auto; background-color:#f2f1f1; padding:0 10px 5px 20px; border-left:1px solid #ccc; border-top:1px solid #ccc; border-right:1px solid #ccc;}
+.home .post-audio .audio-desc { padding-top:28px}
+.end .post-link {margin: 0 auto; width: 770px;}
+.reprint  { width:700px; margin:0 auto; text-align:left}
+.end .morereply { padding:10px 0;}
+.end .morereply a,.end .morereply a:link, .end .morereply a:visited{color: #888!important;}
+.home .post-action { display:none}
+/*sync_area*/
+.add-reply .sync_area input{vertical-align:middle;width:auto;height:auto;margin-bottom:5px;*margin-top:3px;margin-bottom:1px\9;background:none;border:none;outline:none}
+.add-reply .sync_area label{cursor:pointer;*zoom:1;*padding-top:3px}
+/*post style*/
+.post-audio .audio-desc {padding-top:10px;font-size:18px;line-height:22px;text-align:center}
+.post .cover .video-desc{position:absolute;left:-1px;top:-1px;width:202px;height:106px;overflow:hidden;margin:72px 20px;color:#ffffff;opacity:0;filter:Alpha(opacity=0);font-size:20px}
+.post .cover:hover .video-desc{opacity:1;filter:Alpha(opacity=100)}
+.post-audio  .audio-panel{text-align:center; margin-bottom:10px}
+.post-video .video-desc{margin:8px 60px 0;font-size:16px;line-height:22px;}
+.post .post-video .video-play img{width:194px}
+.post-panel .post-music{width:208px;height:208px;overflow:hidden;text-align:center}
+.post-panel .post-music .music-desc{display:none}
+.post-panel .post-music .music-play {_position:relative;_width:100%;_height:100%}
+.post-panel .post-music .music-screen{position:relative;width:100%;height:100%;margin:0px auto;text-align:center;zoom:1}
+.post-panel .post-music .music-screen img{width:208px; height:208px; _height: 120px; _margin: 44px; _width: 120px;}
+.post-panel .post-music .music-screen .music-botton{position:absolute;display:block;left:0;top:0px;width:208px;height:208px; background:url('http://xnimg.cn/smallsite/images/theme/mise/music.png') no-repeat center center; _background:url('http://xnimg.cn/smallsite/images/music-terminalie.png') no-repeat center center;zoom:1}
+.post-article .content { margin:10px 0 20px; color:#666; font-size:14px; line-height:20px;}
+.post-article .title {font-size:16px; color:#666;}
+.end .post-article .title {font-size:30px;}
+.post .post-audio .audio-play {display: block;width:102px;height:28px;margin:8px auto 20px;background: url("http://s.xnimg.cn/smallsite/images/audio-player.png") no-repeat scroll 0 0 transparent;cursor:pointer}
+#postList {padding:20px  0 0}
+#postList .post {-webkit-transition: all 0.1s linear;-moz-transition: all 0.1s linear; transition: all 0.1s linear;height:208px; width:208px;border-width:10px; border-style:solid; border-color:#fff; background-color:#fff; float:left; overflow:hidden; margin:0 10px 20px 0; position:relative; display:inline;}
+#postList .post:hover, #postList .post:focus {-webkit-transform:scale(1.05);-moz-transform:scale(1.05);transform:scale(1.05)}
+#postList .audio-holder {height:194px}
+#postList .post .post-audio .audio-play {display:block;width:155px;height:110px;margin:4px auto 0;background:url("http://a.xnimg.cn/smallsite/images/theme/mise/audio.png") no-repeat scroll 95px 33px transparent;cursor:pointer}
+#postList .post .post-video .video-play{cursor:pointer;display:block;position:relative; height:208px;overflow:hidden;width:208px}
+#postList .post .post-video .play-botton {position:absolute;background:url("http://xnimg.cn/smallsite/images/theme/mise/video.png") no-repeat scroll -1px -1px transparent; _background:url("http://xnimg.cn/smallsite/images/play-ie6.png") no-repeat center center transparent;display: block;height: 208px;left: 0;top: 0;width: 208px;zoom:1}
+#postList .post .cover{display:block;position:absolute;left:0px;top:0px;text-decoration:none}
+#postList .post .cover i{display:block;width:208px;height:208px;background-color:#000000;opacity:0;filter:Alpha(opacity=0)}
+#postList .post .cover:hover i{opacity:0.6;filter:Alpha(opacity=60);cursor:pointer}
+#postList .post a.cover h4{position:absolute;top:60px;width:189px;height:108px; margin:0 auto; padding:0 10px;overflow:hidden;color:#fff;opacity:0;filter:Alpha(opacity=0);font-size:16px;font-weight:normal;text-align:center}
+#postList .post a.cover:hover h4{opacity:1;filter:Alpha(opacity=100)}
+#postList .post .cover p.desc {display:none;}
+.post .cover span {position:absolute;right:10px;bottom:10px;color:#fff;font-size:14px;-webkit-transition:opacity 0.3s ease;-moz-transition:opacity 0.3s ease;transition:opacity 0.3s ease;opacity:0;filter:Alpha(opacity=0);}
+.post .cover:hover span {opacity:0.9;filter:Alpha(opacity=90)}
+.post .cover span, .post .cover i, .post .cover h4 {cursor:pointer;}
+#postList .post .post-text, #postList .post .post-link,#postList .post .post-article {height:176px; width:178px; padding:24px 14px 0; font-size:18px; line-height:24px; overflow:hidden}
+#postList .post-panel { background-color:#ded9d3; height:208px}
+/*topic*/
+#siteTopic-followsCounter {display:block;position:relative;left:-60px;top:215px; float:left; font-size:16px;z-index:110;}
+#siteTopic-followsCounter a, #siteTopic-followsCounter a:hover {text-decoration:none; color:#666;}
+#siteTopic-followsCounter em {font-style:normal;font-size:13px;}
+.topics {height:40px; overflow:hidden; width:570px;line-height:20px;}
+.topics li {display:block; float:left; padding:0 8px; margin-top:26px; height:26px; line-height:26px; overflow:hidden;} 
+.topics li a {display:block; float:left; padding:0 12px; background-color:#ddd; border-radius:10px;}
+.topics li a:hover {text-decoration:none; background-color:#e7e7e7;}
+.topics li .s {width:30px; font-weight:bold}
+#siteTopic h4 { display:none}
+/*footer*/
+#main-wrap footer {width:983px; margin:50px auto 0;position:relative; padding-bottom:20px;z-index:98;}
+#main-wrap footer h4 {height:30px; margin:35px 0 0 5px;font-size:16px; font-weight:normal;}
+#main-wrap footer #followers h4 {margin-top:20px;}
+#main-wrap footer #master img,#main-wrap footer #followers img{height:49px;width:49px;}
+#main-wrap footer li{float:left;width:49px;height:49px;margin:0 5px 10px; border:1px solid #E5EEF1;}
+/*pages bar*/
+#pagerbar{*margin-bottom:20px}
+.pages {position:relative;top:-9px;*top:20px;_top:-9px;width:267px; margin:0 auto;}
+.pages li{display:inline-block; *float:left; line-height:18px}
+.pages li a ,.pages li.next,.pages li.prev{ background: url("http://a.xnimg.cn/smallsite/images/theme/mise/sprite_v1.png") no-repeat scroll 0 0 transparent}
+.pages li.prev a,.pages li.next a{ width:36px; display:block}
+.pages li.prev a{ background-position:0px -30px; padding-left:20px; text-decoration:none;}
+.pages li.next a{ text-align:right; padding-right:20px; background-position:40px -56px; text-decoration:none;}
+.pages li.next {background-position:3px 1px; padding-left:50px}
+.pages li.prev {background-position:67px 1px; padding-right:50px}
+.pages li.current {font-size:16px;text-align:center;color:#666;}
+.pages li.current:first-child {margin-left:113px;}
+/*terminal main*/
+.end #main {margin-top:60px;min-height:150px;height:auto!important;height:150px;overflow:visible;padding:0 0 50px 0;}
+/*terminal style*/
+.end .post-audio .audio-desc { width:900px; margin:0 auto; font-size:16px}
+/*terminal music style*/
+.end .post-panel .post-music{width:580px;height:auto;margin:0px auto}
+.end .post-panel .post-music h4{width:100%;text-align:center;padding:10px 0px}
+.end .post-panel .post-music .music-desc{display:block;margin-top:-85px;padding:10px 10px 10px 150px;text-align:left;width:410px;font-size:14px;*overflow-x:hidden;min-height:70px;height:auto!important;height:70px;*overflow-y:visible}
+.end .post-panel .post-music .music-play{display:block;height:120px}
+.end .post-panel .post-music .music-play img{display:block;margin:0px 20px 0 auto;float:left;width:120px;height:120px}
+.end .post-panel .post-music .music-play object {float:right;margin-right:239px}
+.end .post-panel .post-music .music-play span{display:none;float:left}
+.end .post-panel .post-music .music-screen{width:auto;height:auto;margin:0px}
+.end .post-panel .post-music .reprint{width:580px;overflow-x:hidden;margin-left:0px}
+/*teminal footer*/
+#content footer{width:952px;margin:-50px auto 0px auto; border-bottom:1px solid #ccc; border-left:1px solid #ccc; border-right:1px solid #ccc;}
+.post-link .thumbnail  { margin:0 auto;  text-align:center}
+.post-link .thumbnail img { padding:9px; border:1px solid #ccc; background-color:#fff}
+.post-link .thumbnail .desc { width:580px; margin:24px auto; color:#333; font-size:12px}
+.post-meta{ width:770px; margin:20px auto 0px}
+.end .post-meta .post-topic{margin:0 auto 20px; padding-top: 25px; background-position: 0 27px; overflow:hidden;width:735px; line-height:17px; border-top:1px solid #ccc; overflow:hidden;}
+.post-meta .post-topic ul {height:20px; overflow: hidden; zoom: 1;}
+.post-meta .post-topic ul:before, .post-meta .post-topic ul:after {
+    content: '\0020';
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+.post-meta .post-topic ul:after {clear: both;}
+.end .post-meta .post-topic li{float:left; height:20px; display:inline-block; *display: inline;}
+.end .post-meta .post-topic li a{padding:0 10px; height:20px; white-space: nowrap; display: inline;}
+.post-meta .post-topic li a:hover {text-decoration:none;}
+.post-meta .post-action{margin:0 auto; *margin-bottom: 30px; white-space: nowrap; width:770px;}
+.post-meta .post-action ul {float:left; margin: 0 0 30px;}
+.post-meta .post-action li {float:left; height:20px; line-height:20px;}
+.post-meta .post-action li a:hover {text-decoration:none;}
+.post-reply {background-color:#F2F1F1; margin: 0 auto; width: 770px;}
+/*reply*/
+.end .sync_area{right: 0; _right:2px;}
+.add-reply textarea{width: 675px;}
+.reply-list{*zoom:1; _border-top: 1px solid #E3E3E3;}
+.end .reply-list li{position:relative;*zoom:1; padding:6px 0; margin-right: 0;}
+.reply-list .head img{float:left;display:block;width:30px;height:30px;}
+.reply-list .reply-main{float:left; display:inline-block;width:630px;zoom:1}
+.reply-list .reply-content{padding:0 180px 0 4px;font-size:12px; _zoom:1;_padding-left:0;_display:inline;*zoom:1;*padding-left:0;*display:inline}
+.reply-list .reply-content a{display:inline-block;zoom:1;*display:inline; color:#8e8e8e}
+.reply-list .reply-content a:hover{color:#333333}
+.reply-list  img {display:block;width:30px;height:30px;float:left;border:1px solid #FFFFFF;vertical-align:middle}
+.reply-list .reply-time{position:absolute;right:0px;top:5px;font-size:12px}
+.reply-list .delete,.reply-panel .shield, .reply-panel .reply-report {float:left; margin:0 0 0 4px; display:none;width:13px;height:13px;text-indent:-9999px;overflow:hidden; outline:none;background-image:url('http://a.xnimg.cn/smallsite/images/home-new/reply-icon.png'); background-repeat:no-repeat;}
+.reply-list .reply-list-btn {top:7px; right:0px; }
+.reply-list .to-share {display:none; position:absolute; right:0px; top:25px;}
+.reply-list .to-share a {color:#8e8e8e;}
+.reply-list .to-share a:hover {color:#333;}
+
+.end .post-photo,.end .video-holder,.end .post-article { text-align:center}
+.end .post-article p{ text-align:left; line-height:1.5;}
+.end .post-photo .desc { padding:10px 0}
+.end .post-panel {width:100%; overflow:hidden;padding-top:25px; margin-bottom: 25px; font-size:14px; line-height:24px;}
+.end .post-panel img {max-width:900px;margin:0px auto; _width:900px; overflow:hidden; display:block;}
+.end .post-article .content,.end .post-music { width:700px; margin:20px auto 0}
+.end .post-article .content {margin:20px auto;}
+.end  h4, .end .post-text, .end .post-link .link{font-size:30px; margin:0px auto 25px; line-height:40px; text-align:center; width:770px; font-weight:normal;}
+.end .post-photo .desc { width:800px;margin:0 auto}
+.end .back, .end #sitedesc,.end #header-master, .end .data, .end #footer-sitedesc,
+.end footer .sitehead, .end #master, .end #followers {display:none;}
+
+#header-followsCounter,#sitedesc,#followsCounter,header .sitehead, .time-meta{display:none}
+#siteTopic { width:782px; margin:0 auto; height:150px;padding:15px 100px 0;position:relative;background-color:#F2F1F1;z-index:99; border-left:1px solid #ccc; border-right:1px solid #ccc; border-bottom:1px solid #ccc;}
+#siteTopic ul{width:630px; margin:0 auto;text-align:center;height:78px;overflow:hidden; border-top:1px solid #ccc; border-bottom:1px solid #ccc;}
+footer .sitehead { position:absolute;top:125px; left:40px; z-index:100;}
+footer .sitehead img{max-width:70px;max-height:75px;_width:70px}
+#footer-sitedesc{position:absolute; top:60px; left:0; display:block;width:275px; padding:60px 40px 95px 130px;margin:0 auto 0; background-color:rgba(255,255,255,0.6); background-color:#fff\9; z-index:1;color:#666;font-size:14px;text-align:left; line-height:22px;overflow:visible}
+#footer-sitedesc a,#footer-sitedesc p { display:block; float:left}
+#footer-sitedesc p { width:555px; line-height:24px;margin-left:-325px}
+.post-prev,.post-next {
+    background: url("http://s.xnimg.cn/smallsite/images/theme/mise/mise-btn.png") no-repeat scroll 0 0 transparent;
+    height: 96px;
+    position: absolute;
+    text-indent: -9999px;
+    top: 40px;
+    width:47px;
+	z-index:100}
+.post-prev {
+    left: -36px}
+.post-next {
+    background-position: right 0;
+    right: -36px}
+.post-prev:hover, .post-next:hover {
+    background: url("http://s.xnimg.cn/smallsite/images/theme/mise/mise-btn.png") no-repeat scroll 0 -120px transparent;}
+.post-prev:hover {
+    left: -36px}
+.post-next:hover {
+    background-position: right -120px;
+    right: -36px}
+.post{ position:relative}
+footer #master{width:370px; position:absolute;right:0;top:60px; padding:0 40px; z-index:2; background-color:rgba(255,255,255,0.6);background-color:#fff\9;}
+footer #followers{width:370px; position:absolute; right:0; top:166px; margin-top:20px; *margin-top:0; padding:0 40px 20px; background-color:rgba(255,255,255,0.6);background-color:#fff\9;}
+img[src='']{
+		display:none;
+	}
+
+.post-footer {background-color:#F2F1F1;}
+.reprint a {color:#666;}
+.reprint a:hover {text-decoration:none;}
+
+/*RSS与归档样式*/
+.rss a,.archive a{ display:none; position: absolute; width: 21px; height:21px; background:url(http://a.xnimg.cn/smallsite/images/theme/mise/rss-new.png) no-repeat; _background:url(http://a.xnimg.cn/smallsite/images/theme/mise/rss-ie.png) no-repeat; text-indent: -9999em;}
+#siteTopic .rss a{ display:block!important; right:26px; top:-571px; _top:-586px; background-position:-87px 0;_background-position:0px -21px;}
+.end header .rss a{ display:block!important; right:27px; bottom:-43px; background-position:-87px 0;_background-position:0px -21px;}
+#siteTopic .archive a{ display:block!important; background-position:-60px 0; _background-position:0px 0px; top:-571px; _top:-586px;  right:54px;}
+.customize #siteTopic .archive a,.customize #siteTopic .rss a,.customize #siteTopic .sitehead{*top:-553px;_top:-608px;}
+.end header .archive a{ display:block!important; right:54px; bottom:-43px;background-position:-60px 0; _background-position:0px 0px;}
+#siteTopic .rss a:hover, .end header .rss a:hover{ background-position:-27px 0; _background-position:0px -21px;}
+#siteTopic .archive a:hover, .end header .archive a:hover{ background-position:0 0; _background-position:0px 0px;}
+body.customize header .rss a,body.customize header .archive a{top: 60px;}
+/*#siteTopic .rss a{}
+#siteTopic .archive a{}
+footer .rss a{}
+footer .archive a{}*/
+#siteTopic .sitehead{display: block; position:absolute; top:-571px; _top:-586px; right:0px; height:21px; width:21px;background:url(http://a.xnimg.cn/smallsite/images/theme/mise/home.png) no-repeat scroll 0 5px;_background:url(http://a.xnimg.cn/smallsite/images/theme/mise/home-ie.png) no-repeat scroll 0 0px;}
+.end header .back{display: block; position:absolute; bottom:-43px; right:0px; height:21px; width:21px;background:url(http://a.xnimg.cn/smallsite/images/theme/mise/home.png) no-repeat scroll 0 5px;_background:url(http://a.xnimg.cn/smallsite/images/theme/mise/home-ie.png) no-repeat scroll 0 0px;text-indent:-9999px;}
+#siteTopic .sitehead img, .end header .sitehead img{display: none;}
+#siteTopic .sitehead:hover,.end header .back:hover{background-position:0px -26px;_background-position:0 0;}
+.reply-time{color: #888888}
+/*hot-count*/
+.hot-count h5 {display:none;}
+header #master, header #followers {display:none;}
+header #master, header #followers,#header-followers,#header-master {display:none;}
+#container .post .post-photo .photo h4{display:none;}
+/*status*/
+#container .feed-text .inner .quote-start,#container .feed-text .inner .quote-end{display:none;}
+.followabout .layer-content .about-sites h4{width: auto; text-align: left; color: #333333!important; line-height: 19px;}
+.post .ccagreement {margin: 10px auto; width: 700px;}

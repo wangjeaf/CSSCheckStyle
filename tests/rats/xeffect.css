@@ -1,0 +1,761 @@
+/*----This is normal stylesheet for full column by yuhaoyang----*/
+body{ font-size:12px;color:#666;word-wrap:break-word; padding-bottom:50px; background-color:#f2f1f1; font-family:'Microsoft Yahei',Tahoma,Arial,Helvetica,Simsun,STHeiti;}
+a, a:link, a:visited {color:#666;text-decoration:none}
+.last-col { margin-right:0!important}
+
+/*header*/
+#container{
+    background:url(http://a.xnimg.cn/smallsite/images/theme/xeffect/main-bga.png) 0 0 repeat;
+    background-color:#f2f1f1;
+}
+#container header,
+.end #header{
+    background-color:#fff;
+    text-align:center;
+	_zoom:1;
+}
+#container header,
+#sitesummary{
+    padding:40px 0 40px 0;
+    box-shadow:0 3px 2px rgba(0,0,0,0.2)
+}
+#main-wrap {
+    padding-top:40px;
+    box-shadow:0 3px 2px rgba(0, 0, 0, 0.2);
+}
+#title {
+    font-size:46px;
+    color:#666;
+    text-decoration:none;
+    line-height:1.5;
+}
+
+/*html5 reset*/
+footer,
+section,
+header{
+    display:block
+}
+
+/*main*/
+#main{
+    position: relative;
+    width:952px;
+    margin:0 auto;
+    padding:10px 15px 5px 15px;
+    border-left:1px solid #ccc;
+    border-top:1px solid #ccc;
+    border-right:1px solid #ccc;
+    background-color:#f2f1f1;
+}
+.home .post-audio .audio-desc {
+    padding-top:28px
+}
+.end .post-link {
+    margin: 0 auto;
+    width: 790px;
+}
+.reprint  {
+    width:720px;
+    margin:0 auto;
+    text-align:left
+}
+.end .morereply {
+    padding-bottom: 10px;
+}
+
+/*action*/
+.home .post-action {
+    display:block
+}
+
+/*sync_area*/
+.end .sync_area {
+    right: 0;
+    *top:78px;
+    _right:2px;
+}
+.add-reply .sync_area input{
+    vertical-align:middle;
+    width:auto;
+    height:auto;
+    margin-bottom:5px;
+    margin-bottom:1px\9;
+    *margin-top:3px;
+    border:none;
+    background:none;
+    outline:none
+}
+.add-reply .sync_area label{
+    cursor:pointer;
+    *zoom:1;
+    *padding-top:3px
+}
+/*post style*/
+.post-audio .audio-desc {
+    text-align:center
+}
+
+.post-audio  .audio-panel{
+    text-align:center;
+    margin-bottom:10px
+}
+.post-video .video-desc{
+    margin:8px 60px 0;
+    font-size:16px;
+    line-height:22px;
+}
+.post .post-video .video-play img{
+    width:194px
+}
+.post-panel .post-music{
+    height:260px;
+    overflow:hidden;
+    text-align:center
+}
+.post-panel .post-music .music-desc{
+    display:none
+}
+.post-panel .post-music .music-play {
+    float:left;
+    _position:relative;
+    _width:100%;
+    _height:100%
+}
+.post-panel .post-music .music-screen{
+    position:relative;
+    width:443px;
+    height:257px;
+    margin:0px auto;
+    text-align:center;
+    zoom:1; 
+    background:url("http://a.xnimg.cn/smallsite/images/theme/xeffect/music-bga.png") no-repeat scroll 0 0 transparent;
+}
+.end .post-panel .post-music .music-screen{
+    position:relative;
+    width:100%;
+    height:100%;
+    margin:0px auto;
+    text-align:center;
+    zoom:1; 
+    background:none
+}
+#postList .post-panel .post-music .music-screen img{
+    width:255px;
+    height:255px;
+    border:1px solid #666;
+    _float:left;
+    *z-index:1
+}
+.post-panel .post-music .music-screen .music-botton{
+    display:none;
+}
+.home .post-article .content{
+    margin:10px 0 20px;
+    font-size:14px;
+    line-height:21px;
+}
+.end .post-article .title {
+    font-size:30px;
+}
+.post .post-audio .audio-play {
+    display: block;
+    width:102px;
+    height:28px;
+    margin:8px auto 20px;
+    background:url("http://s.xnimg.cn/smallsite/images/audio-player.png") no-repeat scroll 0 0 transparent;
+    cursor:pointer;
+}
+
+/*postList*/
+#postList{
+    position:relative;
+    padding:20px  0 0;
+    z-index: 5;
+}
+#postList .post{
+    position:absolute;
+    width:470px;
+    overflow: hidden;
+    *z-index:1
+}
+#postList .col_0{
+    left:480px;
+}
+#postList .audio-holder{}
+#postList .post .post-video .video-play{
+    display:block;
+    position:relative;
+    width:448px;
+    overflow:hidden;
+    cursor:pointer;
+}
+#postList .post .post-video .play-botton {position:absolute;background:url("http://xnimg.cn/apps/smallsite/css/cssimg/play.png") no-repeat scroll 0 0 transparent;display: block;height: 82px;left: 50%;margin: -38px 0 0 -41px;top: 50%;width: 81px;zoom:1}
+#postList .post .cover{
+    display:none
+}
+#postList .feed-video .post-panel{
+    position: relative;
+}
+#postList .feed-video a.cover{
+    position:absolute;
+    display:block;
+    top:0;
+    left:0;
+    width:100%;
+    _width:448px;
+    height:100%;
+    _height:1000px;
+    _zoom:1;
+    _background:url("http://s.xnimg.cn/smallsite/images/z.gif");
+    _z-index:100;
+}
+#postList .feed-video .video-desc,
+#postList .feed-video .post-action,
+#postList .feed-video .cover i,
+#postList .feed-video .cover h4,
+#postList .feed-video .cover:hover i{
+    display:none
+}
+
+#postList .post-panel {
+    padding:10px;
+    overflow:hidden;
+    border-width:1px;
+    border-style:solid;
+    border-color:#ccc;
+    background-color:#fff!important;
+}
+#postList .post-panel .time-meta{
+    display:none;
+}
+#postList .post-panel img{
+    width:448px;
+}
+
+#postList .feed-article .post-panel,
+#postList .feed-text .post-panel {
+    border:none;
+    background:#f2f1f1!important;
+}
+/*post title*/
+.post  h4,.post-music h3,
+.post-link .link a,
+.post-text .post-content,
+.audio-desc,
+.post-text .content{
+    color:#6292a1;
+    font-size:24px;
+    line-height:36px;
+    text-decoration:none;
+    font-weight:normal
+}
+/*topic*/
+#siteTopic-followsCounter {
+    display:block;
+    position:relative;
+    left:-60px;
+    top:215px;
+    float:left;
+    font-size:16px;
+    z-index:110;
+}
+#siteTopic-followsCounter a,
+#siteTopic-followsCounter a:hover{
+    text-decoration:none;
+    color:#666;
+}
+#siteTopic-followsCounter em {font-style:normal;font-size:13px;}
+.topics {height:40px; overflow:hidden; width:570px;line-height:20px;}
+.topics li {
+    display:block;
+    float:left; 
+    padding:0 8px;
+    margin-top:26px;
+    height:26px; 
+    _height:28px;
+    line-height:26px; 
+    overflow:hidden;
+} 
+.topics li a {
+    display:block; 
+    float:left; 
+    padding:0 12px; 
+    background-color:#ddd; 
+    border-radius:10px;
+    color:#666!important;
+}
+.topics li a:hover {
+    text-decoration:none;
+    background-color:#e7e7e7;
+    color:#b2b2b2!important;
+}
+.topics li .s {
+    height:24px;
+    color:#666;
+    font-weight:bold;
+    border:1px solid #9f9f9f;
+}
+#siteTopic h4 { display:none}
+
+/*home post-action*/
+.home .post .post-action{
+    padding-top:10px
+}
+.home .post .post-action .hot-count{
+    display: none;
+}
+.home .feed-article .post-action{
+    border-top:1px solid #ddd;
+}
+.home .post .post-action ul{
+    text-align:center;
+}
+.home .post .post-action li{
+    display:inline-block;
+    *zoom:1;
+    *display:inline;
+}
+.home .post .post-action li a{
+    display:block;
+    float:left;
+    height:22px;
+    line-height:22px;
+    text-decoration:none;
+    background:url("http://a.xnimg.cn/smallsite/images/theme/xeffect/meta-sprite-newa.png") no-repeat scroll 0 0 transparent;
+    font-family:"宋体"
+}
+.home .post .post-action .reply{
+    display:none;
+    float:left;
+    background-position:0 -38px;
+}
+.home .post .post-action .share{
+    float:right;
+    *float:left
+}
+.home .post .post-action .enjoy{
+    background-position:0 -17px;
+}
+.home .post .post-action .enjoyed{
+    background-position:0 -82px;
+}
+.home .post .post-action .share{
+    background-position:0 -62px;
+}
+.home .post .post-action .delete{
+    background-position:0 -195px;
+}
+.home .post .post-action li a{
+    padding-left:20px;
+    padding-right:15px;
+}
+.home .post .post-action .view{
+    background:url("http://a.xnimg.cn/smallsite/images/theme/xeffect/more2.png") no-repeat scroll 0 0 transparent;
+    background-position:0 5px;
+}
+.home .post .post-action .placetop{
+    display:none;
+}
+.home .post .post-photo .photo{
+    *z-index:1
+}
+.home #postList .feed-photo .post-panel .cover,
+.home #postList .feed-music .post-panel .cover{
+    position:absolute;
+    display:block;
+    bottom:50px;
+    left:0;
+    width:100%;
+    *width:460px;
+    height:100%;
+    *height:10000px;
+    *zoom:1;
+    *z-index:10;
+    background:url("http://s.xnimg.cn/smallsite/images/z.gif");
+}
+
+.home #postList .post-panel .cover i,
+.home #postList .post-panel .cover h4,
+.home #postList .post-panel .cover p,
+.home #postList .post-panel .cover span{
+    display:none
+}
+
+/*footer*/
+#main-wrap footer {
+    width:983px;
+    margin:50px auto 0;
+    position:relative;
+    padding-bottom:20px;
+    z-index:98;
+}
+#main-wrap footer h4 {height:30px; margin:35px 0 0 5px;font-size:16px; font-weight:normal;}
+#main-wrap footer #followers h4 {margin-top:20px;}
+#main-wrap footer #master img,#main-wrap footer #followers img{height:49px;width:49px;}
+#main-wrap footer li{
+    float:left;
+    _display:inline;
+    width:49px;
+    height:49px;
+    margin:0 5px 10px;
+    border:1px solid #E5EEF1
+}
+
+/*pages bar*/
+#pagerbar{
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:100%;
+}
+.pages {
+   width:100%;
+}
+.pages li{display:inline-block; *float:left; line-height:18px}
+.pages li a{
+    position: absolute;
+    display: block;
+    top:10px;
+    width:47px;
+    height:0px;
+    padding-top:96px;
+    overflow:hidden;
+    background:url("http://s.xnimg.cn/smallsite/images/theme/mise/mise-btn.png") no-repeat scroll 0 0 transparent;
+}
+.pages li.prev a{
+    left:-38px;
+    background-position:0px 0px;
+}
+.pages li.next a{
+    right:-38px;
+    _right:-68px;
+    background-position:right 0;
+    text-decoration:none;
+    text-indent:-9999px;
+}
+.pages li.prev a:hover{
+    background-position:0 -120px;
+}
+.pages li.next a:hover{
+    background-position:right -120px;
+}
+.pages li.current {display:none;}
+
+/*terminal main*/
+.end #main {margin-top:60px;min-height:150px;height:auto!important;height:150px;overflow:visible;padding:0 0 50px 0;}
+
+/*terminal style*/
+.end .post-audio .audio-desc { width:900px; margin:0 auto; font-size:16px}
+
+.end{
+    background:url(http://a.xnimg.cn/smallsite/images/theme/xeffect/main-bga.png) 0 0 repeat;
+    background-color:#f2f1f1;
+}
+
+/*terminal music style*/
+.end .post-panel .post-music{
+    width:580px;
+    height:auto;
+    margin:0px auto
+}
+.end .post-panel .post-music h4{
+    width:100%;
+    text-align:center;
+    padding:10px 0px
+}
+.end .post-panel .post-music .music-desc{
+    position:relative;
+    display:block;
+    min-height:10px;
+    height:auto!important;
+    height:10px;
+    top:-95px;
+    padding:10px 10px 10px 150px;
+    text-align:left;width:410px;
+    font-size:14px;
+    line-height:21px;
+    *overflow-y:visible
+}
+.end .post-panel .post-music .music-play{
+    display:block;
+    width:100%;
+    height:100%;
+}
+.end .post-panel .post-music .music-play img{
+    display:block;
+    margin:0px 20px 0 auto;
+    float:left;
+    width:120px;
+    height:120px
+}
+.end .post-panel .post-music .music-play object {
+    float:right;
+    margin-right:239px
+}
+.end .post-panel .post-music .music-play span{
+    display:none;
+    float:left
+}
+.end .post-panel .post-music .music-screen{
+    position:relative;
+    width:auto;
+    height:auto;
+    margin:0px;
+}
+.end .post-panel .post-music .reprint{
+    width:580px;
+    overflow-x:hidden;
+    margin-left:0px
+}
+
+/*end spilth dom*/
+.end #header-followsCounter, .end header .sitehead, .end .back, .end #sitedesc, .end .data, .end #footer-sitedesc,
+.end footer .sitehead, .end #master, .end #followers,.end #header-master {display:none;}
+
+/*teminal footer*/
+#content footer{
+    width:952px;
+    margin:-50px auto 0px auto;
+    border-bottom:1px solid #ccc;
+    border-left:1px solid #ccc;
+    border-right:1px solid #ccc;
+}
+.post-link .thumbnail  {
+    margin:0 auto;
+    text-align:center
+}
+.post-link .thumbnail img {
+    padding:9px;
+    border:1px solid #ccc;
+    background-color:#fff
+}
+.post-link .thumbnail .desc {
+    width:580px;
+    margin:24px auto;
+    color:#333;
+    font-size:12px
+}
+.post-meta{
+    width:790px;
+    margin:12px auto 0px
+}
+.post-meta .post-topic{
+    display: block;
+    position: relative;
+    margin:0 auto;
+    overflow:hidden;
+    background: none;
+    width:755px;
+    height: 44px;
+    line-height:18px;
+    border-top:1px solid #ccc;
+    overflow:hidden;
+}
+.post-meta .post-topic ul {
+    line-height:26px;
+}
+.post-meta .post-topic ul:before, .post-meta .post-topic ul:after {
+    content: '\0020';
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+.post-meta .post-topic ul:after {clear: both;}
+.post-meta .post-topic ul {zoom: 1;}
+.post-meta .post-topic li{
+    margin:25px 30px 0 0;
+    line-height:20px;
+    height:20px;
+}
+.post-meta .post-action{margin:0 auto; white-space: nowrap;width:790px; *margin-bottom: 30px;}
+.post-meta .post-action ul {margin:20px 0 30px; float:left; height:20px;}
+.post-meta .post-action li {
+    display: inline-block;
+    *zoom:1;
+    *display:inline;
+}
+.post-meta .post-action li a:hover {text-decoration:none;}
+.add-reply textarea {width:690px;}
+.post-reply { background-color:#F2F1F1; width: 790px; margin: 0 auto;}
+/*reply*/
+.reply-list{margin-bottom: 10px; zoom:1}
+.end .reply-list li{position:relative; padding:13px 0; margin-right: 0; *zoom:1; color: #888888;}
+.reply-list .head img{float:left;display:block;width:30px;height:30px;border:1px solid #ffffff;}
+.reply-list .reply-main{display:inline-block;width:620px;zoom:1}
+.reply-list .reply-content{padding:0 180px 0 4px;font-size:12px; _zoom:1;_padding-left:0;_display:inline;*zoom:1;*padding-left:0;*display:inline}
+.reply-list .reply-content a{display:inline-block;zoom:1;*display:inline;}
+.reply-list .reply-time{position:absolute;right:3px;top:13px;font-size:12px}
+.reply-list .delete,.reply-panel .shield, .reply-panel .reply-report {float:left; margin:0 0 0 4px; display:none;width:13px;height:13px;text-indent:-9999px;overflow:hidden; outline:none;background-image:url('http://a.xnimg.cn/smallsite/images/home-new/reply-icon.png'); background-repeat:no-repeat;}
+.reply-list .reply-list-btn {top:16px; right:2px; }
+.reply-list .to-share {display:none; position:absolute; right:3px; top:30px;}
+
+.end .post-photo,.end .video-holder,.end .post-article {text-align:left;}
+.end .post-article p{ text-align:left}
+.end .post-photo .desc { padding:10px 0}
+.end .post-panel {
+    width:100%;
+    overflow:hidden;
+    padding-top:25px;
+    font-size:14px
+}
+.end .post-panel img {
+    max-width:900px;
+    margin:0px auto;
+    overflow:hidden;
+    display:block;
+}
+.home .post-audio .audio-screen{
+    width:102px;
+    height:28px;
+    margin:0px auto;
+    background:url("http://s.xnimg.cn/smallsite/images/audio-player.png") no-repeat scroll 0 0 transparent;
+    cursor:pointer;
+}
+.home .post-audio .audio-screen a{
+    display:none;
+}
+.end .post-article .content,.end .post-music { width:720px; margin:20px auto 0}
+.end .post-article .content {margin:20px auto;}
+.end  h4, .end .post-text, .end .post-link .link{font-size:30px; margin:0px auto 25px; line-height:40px; text-align:center; width:780px; font-weight:normal;}
+.end .post-photo .desc { width:800px;margin:0 auto}
+.end .back { display:none}
+.end #sitedesc { display:none}
+.end .data { display:none}
+.home .post-link .link a{cursor:default}
+#header-followsCounter,#sitedesc,#siteTopic .sitehead,#followsCounter,header .sitehead{display:none}
+#siteTopic { width:782px; margin:0 auto; height:150px;padding:15px 100px 0;position:relative;background-color:#F2F1F1;z-index:99; border-left:1px solid #ccc; border-right:1px solid #ccc; border-bottom:1px solid #ccc;}
+#siteTopic ul{width:630px; margin:0 auto;text-align:center;height:78px;overflow:hidden; border-top:1px solid #ccc; border-bottom:1px solid #ccc;}
+footer .sitehead { position:absolute;top:125px; left:40px; z-index:100;}
+footer .sitehead img{max-width:70px;max-height:75px;_width:70px}
+#footer-sitedesc{position:absolute; top:60px; left:0; display:block;width:275px; padding:60px 40px 95px 130px;margin:0 auto 0; background-color:rgba(255,255,255,0.6); background-color:#fff\9; z-index:1;color:#666;font-size:14px;text-align:left; line-height:22px;overflow:visible}
+#footer-sitedesc a,#footer-sitedesc p { display:block; float:left}
+#footer-sitedesc p { width:555px; line-height:24px;margin-left:-325px}
+.post-prev,.post-next {
+    background: url("http://s.xnimg.cn/smallsite/images/theme/mise/mise-btn.png") no-repeat scroll 0 0 transparent;
+    height: 96px;
+    position: absolute;
+    text-indent: -9999px;
+    top: 40px;
+    width:47px;
+	z-index:100}
+.post-prev {
+    left: -36px}
+.post-next {
+    background-position: right 0;
+    right: -36px}
+.post-prev:hover, .post-next:hover {
+    background: url("http://s.xnimg.cn/smallsite/images/theme/mise/mise-btn.png") no-repeat scroll 0 -120px transparent;}
+.post-prev:hover {
+    left: -36px}
+.post-next:hover {
+    background-position: right -120px;
+    right: -36px}
+.post{ position:relative}
+footer #master{
+    width:370px; position:absolute;right:0;top:60px; padding:0 40px; z-index:2; background-color:rgba(255,255,255,0.6);background-color:#fff\9;}
+footer #followers{
+    width:370px;
+    position:absolute;
+    right:0;
+    top:166px;
+    margin-top:20px;
+    *margin-top:0;
+    padding:0 40px 20px;
+    background-color:rgba(255,255,255,0.6);
+    background-color:#fff\9;
+}
+img[src='']{
+		display:none;
+	}
+
+.post-footer {background-color:#F2F1F1;}
+.reprint a {color:#666;}
+.reprint a:hover {text-decoration:none;};
+
+/*tag share*/
+.tag-selector li a,
+.tag-selector li a:hover,
+.share-to dt a,
+.share-to dt a:hover{
+    _color:#536981!important
+}
+.share-to dd a{
+    _color:#4F647A
+}
+
+/*RSS与归档样式*/
+.rss a,.archive a{background: url("http://a.xnimg.cn/smallsite/images/theme/mise/rss-new.png") no-repeat scroll 0 0 transparent;
+    display: none;
+    height: 21px;
+    position: absolute;
+    text-indent: -9999em;
+    width: 21px;
+    left:50%;
+    _height:12px;
+    _width:12px;
+    _background:url(http://a.xnimg.cn/smallsite/images/theme/mise/rss-ie.png) no-repeat;
+}
+.end .rss a, .end .archive a{top:170px;_top:175px;}
+header .rss a{background-position: -87px 0;
+    display: block;
+    margin-left: 450px;
+    top: 200px;
+    _top:205px;
+    _background-position:0px -21px;
+    }
+header .archive a{ background-position: -60px 0;
+    display: block;
+    margin-left: 423px;
+    top: 200px;
+    _top:205px;
+    _background-position:0px 0px;
+    }
+header .sitehead,.end .back {
+    background: url("http://a.xnimg.cn/smallsite/images/theme/mise/home.png") no-repeat scroll 0 5px transparent;
+    _background:url(http://a.xnimg.cn/smallsite/images/theme/mise/home-ie.png) no-repeat scroll 0 0px;
+    display: block;
+    height: 21px;
+    position: absolute;
+    left:50%;
+    margin-left: 475px;
+    top: 200px;
+    _top:205px;
+    width: 21px;
+    _height:12px;
+    _width:12px;
+    text-indent: -9999px;
+}
+.customize header .sitehead{top:160px;_top:165px;}
+.end .back {top: 170px;margin-left:460px;_top:175px;_margin-left:470px;}
+header .sitehead:hover,.end .back:hover{background-position: 0 -26px;_background-position:0 0;}
+.end .rss a{margin-left:435px;_margin-left:440px;}
+.end .archive a{ margin-left: 408px;}
+header .sitehead img{display: none;}
+header .rss a:hover{ background-position:-27px 0; _background-position:0px -21px;}
+header .archive a:hover{ background-position:0 0; _background-position:0 0;}
+body.customize header .rss a,body.customize header .archive a{top: 160px;_top:165px;}
+/*#siteTopic .rss a{}
+#siteTopic .archive a{}
+footer .rss a{}
+footer .archive a{}*/
+
+/*hot-count*/
+.hot-count h5 {display:none;}
+.reply-list .to-share a{color:#888;}
+.reply-list .to-share a:hover{color:#000;}
+header #master, header #followers {display:none;}
+.end footer .post-topic{background-position: 0 28px;}
+.end .post-action .hot-count a:hover {color:#666;}
+header #master, header #followers,#header-followers,#header-master {display:none;}
+#container .post .post-photo .photo h4{display:none;}
+/*status*/
+#container .feed-text .inner .quote-start,#container .feed-text .inner .quote-end{display:none;}
+.followabout .layer-content .about-sites h4{text-align: left; width: auto; line-height: 19px; color: #333!important;}
+.end footer li {
+    margin-right: 40px;
+}
+#morecoment, #morecoment:link, #morecoment:visited{color:#888!important;}
+.post .ccagreement{margin-left: 115px; width: 66px;}

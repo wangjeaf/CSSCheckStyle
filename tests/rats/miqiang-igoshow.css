@@ -1,0 +1,375 @@
+a:link ,a:visited { color:#0685b1; text-decoration:none;}
+body{font-family:"Microsoft Yahei", Arial;font-size:14px;color:#58676c;word-wrap:break-word;background:url("http://a.xnimg.cn/smallsite/images/theme/miqiang/bg.png") repeat scroll 50% 0 transparent;}
+
+#header { border-top:4px solid #0685b1; position:relative;background:url("http://a.xnimg.cn/smallsite/images/theme/miqiang/header-pointer-v1.png") no-repeat 0 0 #fff; padding:6px 26px;}
+#header #sitesummary { float:left; width:60%;}
+#header #siteTopic {text-align:right; width:30%; position:absolute; right:10px; top:0px; margin-right:10px;}
+.topics li { float:right; padding-left:18px;}
+.topics { height:16px; overflow:hidden; line-height:16px;  }
+.topics a.s { font-weight:bold;}
+#title a { font-size:26px; }
+#sitedesc { padding-top:10px; display:block; }
+#siteTopic .title { font-size:16px; line-height:28px;} 
+
+#postList { position:relative;}
+#content { width:925px; margin:15px auto 70px;}
+
+#publishbar .barpanel {width:1150px;}
+#publishbar .barpanel #logo {margin-left:0;}
+#publishbar .barpanel .tools {margin-right:30px;}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Main
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#main {
+	padding: 0 0 0 0;
+}
+#postList {
+	 
+	margin: 0 auto;
+	-webkit-transition-duration: 0s;
+    -moz-transition-duration: 0s;
+    transition-duration: 0s;
+}
+.end{ background:none;}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Posts
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.column { width:230px; float:left;}
+#postList .article-box {
+	position:relative;
+	background-color: transparent;
+	padding: 0 0 20px;
+	z-index: 50;
+	opacity: 0;
+	background-image: url(http://s.xnimg.cn/smallsite/images/theme/miqiang/corner-shadow.png);
+	*background-image:none;
+	background-position: 100% 100%;
+	background-repeat: no-repeat;
+	transition:opacity 1s ease;
+	-moz-transition:opacity 1s ease;
+	-webkit-transition:opacity 1s ease;
+	overflow:hidden;
+	width:224px;
+}
+#postList .isotope-item {
+	opacity: 1;
+	display: block;
+}
+#postList .article-box-hover {
+	position:relative;
+	z-index: 60;
+	background-color: #ffffff;
+	margin: -10px 10px 10px -10px;
+	padding:10px 0 0 10px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-moz-box-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+	-webkit-box-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+	box-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+	cursor: pointer; 
+	width:224px;
+}
+#postList .post-panel {
+	background: #ffffff;
+	width: 194px;
+	padding:10px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+} 
+#postList .post-panel header {
+	position: relative;
+}
+#postList .post-panel img {
+	width:194px;
+	display:block;
+}
+#postList .post-text img {
+	width:34px;
+}
+#postList .post-panel h3 {
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #58676c;
+}
+#postList .post-panel blockquote {
+	border-left: 4px solid #eef0f0;
+	padding-left: 10px;
+}
+#postList .post-panel .more-link {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #58676c;
+	font-size: 10px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+body.index-page section.post-full {
+	display: none;
+}
+body.permalink-page section.post-summary {
+	display: none;
+}
+.article .post-details {
+	display: none;
+}
+#main .click-block {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 100;
+	background: transparent;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	status
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#postList .post-text  { line-height:20px;font-size:20px; font-weight:bold; padding:8px 13px 0 40px; background:url(http://s.xnimg.cn/smallsite/images/theme/miqiang/quote-left-v1.png) no-repeat  0 0 transparent;}
+#postList .post-text img {
+    display: inline;
+    vertical-align: top;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Photo
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#postList .post-panel.photo h2 {
+	font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+	font-size: 20px;
+	padding-bottom: 10px;
+	margin-bottom: 16px;
+	border-bottom: 1px solid #eef0f0;
+}
+#postList .post-panel.photo header {
+	margin-bottom: 6px;
+	text-align: center;
+}
+#postList .post-panel.photo header img {
+	vertical-align: top;
+}
+#postList .post-panel.photo header img a {
+	line-height: 0;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Photoset
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#postList .post-panel.photoset h2 {
+	font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+	font-size: 20px;
+	padding-bottom: 10px;
+	margin-bottom: 16px;
+	border-bottom: 1px solid #eef0f0;
+}
+#postList .post-panel.photoset header {
+	margin-bottom: 6px;
+	background: #e4e7e8;
+}
+#postList .html_photoset {
+	text-align: center;
+	line-height: 0;
+}
+#postList .post-panel.photoset header img {
+	vertical-align: top;
+}
+#postList .post-panel.photoset header img a {
+	line-height: 0;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Link
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#postList .post-link .link { text-align:center; font-size:24px; padding-bottom:5px; margin-bottom:5px; border-bottom:1px solid #eef0f0;}
+#postList .thumbnail a { display:block; text-align:center;}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Audio
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#postList .post-audio h3 { text-align:center; font-size:24px; padding-bottom:5px; margin-bottom:5px; border-bottom:1px solid #eef0f0;}
+ 
+#postList .post-audio .audio-player {
+    background: url("http://s.xnimg.cn/smallsite/images/audio-player.png") no-repeat scroll 0 0 transparent;
+    cursor: pointer;
+    display: block;
+    height: 28px;
+    width: 102px;
+	margin:0 auto;
+}
+.post-audio .audio-play {
+    background: url("http://s.xnimg.cn/smallsite/images/audio-player.png") no-repeat scroll 0 0 transparent;
+    cursor: pointer;
+    display: block;
+    height: 28px;
+    width: 102px;
+	margin:0 auto;
+}
+#postList .post-panel .desc { padding-top:10px;}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Video
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#postList .post-panel.video h2 {
+	font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+	font-size: 20px;
+	padding-bottom: 10px;
+	margin-bottom: 16px;
+	border-bottom: 1px solid #eef0f0;
+}
+ #postList .post-video .play-botton {
+      background: url("http://xnimg.cn/apps/smallsite/css/cssimg/play.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 82px;
+    left: 50%;
+    margin: -38px 0 0 -41px;
+    position: absolute;
+    top: 50%;
+    width: 81px;
+}
+ #postList .post-video .video-player {
+    cursor: pointer;
+    display: block; 
+    overflow: hidden;
+    position: relative;
+}
+.post-video .video-play {
+    cursor: pointer;
+    display: block; 
+    overflow: hidden; 
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	article
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#postList .post-article .title { text-align:center; font-size:24px; padding-bottom:5px; margin-bottom:5px; border-bottom:1px solid #eef0f0;}
+#postList .post-article .content {  line-height:20px;}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Post Meta
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+ul.post-meta {
+	margin: 5px 0 0 0;
+	list-style-type: none;	 
+	display:none;
+}
+.article-box-hover ul.post-meta {
+	display: block;
+	text-align: right;
+}
+ul.post-meta li {
+	 float:right;
+	display: inline-block;
+	font-size: 12px;
+	font-weight: bold;
+	padding-right: 8px;
+}
+ul.post-meta li.timeago{
+	float: left; 
+	padding-left:25px;
+	background:url(http://s.xnimg.cn/smallsite/images/theme/miqiang/sprite-v1.png) no-repeat  0 -2px transparent;
+}
+ul.post-meta li.notes{
+	padding-left:25px;
+	background:url(http://s.xnimg.cn/smallsite/images/theme/miqiang/sprite-v1.png) no-repeat  3px -32px transparent;
+}
+ul.post-meta li a {
+	text-decoration: none;
+	color: #58676c;
+	font-size:12px;
+	font-weight:normal;
+}
+ul.post-meta li a:hover {
+	color: #0685b1;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Post View
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: #333c3f;
+	opacity: 0.75;
+	z-index: 61;
+}
+.pop-post .post { z-index:9999;  display:inline;padding:0 10px 50px; background-color:#fff; -webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;}
+.pop-post .post-panel { padding:0 17px 30px 10px;}
+.pop-post .post .header{height:32px; border-bottom:1px solid #EEF0F0; font-size:12px;}
+.pop-post .header .close { float:right; line-height:32px; background:url(http://s.xnimg.cn/smallsite/images/theme/miqiang/sprite-v1.png) no-repeat  26px -61px transparent; padding-right:15px;} 
+.pop-post  h4{ line-height:60px; text-align:center; font-size:22px;}
+.pop-post .post-link .link { font-size:22px; line-height:34px;}
+.pop-post .post-article img,.pop-post .post-photo img { max-width:1000px; display:block; margin:0 auto;}
+.pop-post .post-article ,.pop-post .post-photo { *width:940px; overflow:hidden;} 
+.pop-post .post-link ,.pop-post .post-audio,.pop-post .post-photo,.pop-post .post-video { text-align:center;}
+.desc { padding:8px 0;}
+.video-desc { padding-top:10px;}
+.reprint { padding-top:12px;}
+.pop-post .post-text { font-size:22px; padding:20px 0 0 40px; background:url(http://s.xnimg.cn/smallsite/images/theme/miqiang/quote-left-v1.png) no-repeat  0 16px transparent;}
+.pop-post .post-text img { vertical-align:middle;}
+ 
+.pop-post .post-meta{ padding:15px 20px 0; }
+.post-reply { padding-top:13px;  background:url(http://a.xnimg.cn/smallsite/images/pointer2.png) 110px 3px no-repeat;}
+.post-meta .post-topic li{ font-size:12px; float:left; margin:2px 10px 0 0; padding:0 5px; -webkit-border-radius: 2px;-moz-border-radius: 2px;border-radius: 2px; line-height:22px; background-color:#787878; }
+.post-meta .post-topic a { color:#eee;}
+.post-meta .post-topic { padding:20px 0; }
+.post-meta .post-action a,#postList  .footer .delete{ padding: 0 20px; background:url(http://s.xnimg.cn/smallsite/images/theme/miqiang/sprite-v1.png) no-repeat;}
+.post-meta .post-action .share { background-position:2px -95px;}
+.post-meta .post-action .reply { background-position:2px -116px;}
+.post-meta .post-action .enjoy { background-position:2px -136px;}
+.post-meta .post-action .enjoyed { background-position:2px -187px;}
+.post-meta .post-action .edit,.post-meta .post-action .placetop{background:url(http://s.xnimg.cn/smallsite/images/theme/miqiang/fun.png) no-repeat!important;}
+.post-meta .post-action .edit{background-position:-5px -80px!important;}
+.post-meta .post-action .placetop{background-position:-5px -40px!important;}
+#postList .footer .delete { background-position:2px -164px; *background-position:2px -166px;}
+.post-meta .post-action .edit { background:none;}
+
+.add-reply{*zoom:1;  border-top:1px solid #EBEAEA; padding:15px 20px; background-color:#F7F7F7;}
+.add-reply textarea{width:935px;height:26px;padding:3px;border:1px solid #d9d9d9;vertical-align:bottom;  background-color:#fff; float:left;}
+.add-reply .reply-submit,.share-box .input-button{ float:right;width:76px;height:34px;line-height:34px;padding:0;border:1px solid #d9d9d9;outline: 0 none;margin:0;font-size:18px;font-weight:bold;color:#0685b1;background-color:#eee;cursor:pointer;border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;}
+.reply-panel{margin-top:-5px; padding-left:20px; background-color:#F7F7F7;}
+.reply-list li{ *zoom:1;padding:15px 0;border-bottom:1px dotted #7ac7bd;padding-right:35px}
+.reply-list li .head { float:left;}
+.reply-list li .reply-main { float:left;}
+.reply-list li.last{border-bottom:0 none;}
+.reply-list .head img{float:left;display:block;width:30px;height:30px;padding:1px;border:1px solid #ffffff;margin-right:14px;}
+.reply-list .reply-content{ width:860px; padding-right:10px;}
+.reply-list .reply-content a{padding:0 14px;}
+.reply-list .reply-content .replyer{padding-left:0;}
+.reply-list .reply-time{ font-size:12px; float:left; padding-right:10px;}
+.reply-list .delete,.reply-panel .shield{display:block;width:13px;height:13px;text-indent:-9999px;outline:none;background:url('http://a.xnimg.cn/smallsite/images/theme/miqiang/db.png') no-repeat -15px 4px; float:right;_float:left;height:13px;_overflow:hidden}
+.reply-panel .delete{margin-top:-2px}
+.reply-panel .delete:hover { background-position:-15px -9px;height:15px;margin-top:-1px}
+.reply-panel .shield{ background-position:0px 2px;_height:12px;_overflow:hidden}
+.reply-panel .shield:hover { background-position:0px -10px;_height:13px;_overflow:hidden}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Footer
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#aside { padding:20px 40px; background-color:#fff; border-bottom:4px solid #0685B1;}
+#aside h4 { margin-bottom:8px;}
+#aside img { width:50px; height:50px;}
+.owners { float:left;width:30%;}
+ .followers{ float:left; width:70%; }
+ .followers .list{height:50px; overflow:hidden;}
+.followers li { float:left;}
+.owners a,.followers a { padding:0 10px 10px 0;} 
+.pop-post { height:600px; overflow-y:scroll; background-color:#fff;}
+
+.post .cover{display:none;position:absolute;right:0; bottom:0; background-color:#000; color:#fff; padding:2px 10px;}
+.article-box-hover .cover{ display:inline;}
+#postList .post-photo .photo { position:relative;*zoom:1;}
+.post .post-panel { font-size:14px;}
+
+
+.miqiang-share {position:static; border-top:none; background:url(http://a.xnimg.cn/smallsite/images/pointer2.png) 40px 3px no-repeat; padding-top:13px;}
+.miqiang-share .share-box textarea { width:935px;height:26px;padding:3px;border:1px solid #d9d9d9;vertical-align:bottom; float:left;}
+.miqiang-share .share-to { float:left;}
+.miqiang-share .tag-selector { width:750px;}
+.miqiang-share .share-box { border-top:1px solid #EBEAEA; background-color:#F7F7F7;}
+.post-panel .content p { width:900px;}
+.post-panel .content .desc { width:900px; margin:0 auto;}
+img[src='']{
+		display:none;
+	}
