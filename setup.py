@@ -70,6 +70,7 @@ if setupFlag:
             'console_scripts': [
                 'ckstyle = ckstyle.command.index:ckstyle',
                 'fixstyle = ckstyle.command.index:fixstyle',
+                'compress = ckstyle.command.index:compress',
                 'csscompress = ckstyle.command.index:compress'
             ]
         },
