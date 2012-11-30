@@ -1,6 +1,6 @@
 from Base import *
 
-class FED16ColorShouldUpper(RuleChecker):
+class FEDHexColorShouldUpper(RuleChecker):
     def __init__(self):
         self.id = 'hexadecimal-color'
         self.errorLevel = ERROR_LEVEL.WARNING

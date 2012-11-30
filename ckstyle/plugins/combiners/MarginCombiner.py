@@ -71,7 +71,7 @@ class MarginCombiner(Combiner):
             self.combined = left
         elif left == right and bottom == top:
             self.combined = '%s %s' % (top, left)
-        elif top != bottom and left == bottom:
+        elif top != bottom and left == right:
             self.combined = '%s %s %s' % (top, right, bottom)
         else:
             self.combined = '%s %s %s %s' % (top, right, bottom, left)

@@ -22,3 +22,16 @@ class FEDCss3PropSpaces(RuleChecker):
         if len(roughName.split(name)[0]) != 12:
             return False
         return True
+
+    def fix(self, rule, config):
+        name = rule.name
+        # only for css3 props
+        if not isCss3Prop(name):
+            return True
+
+        if not isCss3PrefixProp(name):
+            return True
+
+        fixedName = rule.fixedName
+        prefix = fixedName.split(name)[0]
+        rule.fixedName = (8 - len(prefix)) * ' ' + fixedName

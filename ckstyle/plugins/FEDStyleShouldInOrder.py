@@ -43,7 +43,7 @@ class FEDStyleShouldInOrder(RuleSetChecker):
         ruleSet.setRules(sortedRules)
 
     def _generateNameOrderMapping(self, rules):
-        return [(getAttrOrder(rule.name), rule.strippedName) for rule in rules]
+        return [(getAttrOrder(rule.name, rule.strippedName), rule.strippedName) for rule in rules]
 
     def _generateNameRuleMapping(self, rules):
-        return [(getAttrOrder(rule.name), rule) for rule in rules]
+        return [(getAttrOrder(rule.name, rule.strippedName), rule) for rule in rules]

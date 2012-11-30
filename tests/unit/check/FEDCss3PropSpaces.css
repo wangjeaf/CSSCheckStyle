@@ -21,6 +21,8 @@
     1: css3 prop "-ms-animation-delay" should keep in "-webkit-,-moz-,-ms-,-o-,std" order in ".not-keep-in-order"
     1: css3 prop "-o-animation-delay" should keep in "-webkit-,-moz-,-ms-,-o-,std" order in ".not-keep-in-order"
     1: css3 prop "animation-delay" should keep in "-webkit-,-moz-,-ms-,-o-,std" order in ".not-keep-in-order"
+
+    1: "-ms-animation-delay" should after "-webkit-animation-delay" in ".not-keep-in-order" (order: display/box/text/other/css3)
 }
 
 .css-three-attrs-no-order {

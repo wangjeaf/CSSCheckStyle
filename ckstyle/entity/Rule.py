@@ -24,8 +24,8 @@ class Rule():
         self.roughValue = self.value = self.strippedValue = self.fixedValue = value
 
     def compress(self):
-        name = self.name if self.fixedName == '' else self.fixedName
-        value = self.value if self.fixedValue == '' else self.fixedValue
+        name = self.name if self.fixedName == '' else self.fixedName.strip()
+        value = self.value if self.fixedValue == '' else self.fixedValue.strip()
         return name + ':' + value + ';'
 
     def fixed(self):

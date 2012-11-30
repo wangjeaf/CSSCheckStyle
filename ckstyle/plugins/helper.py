@@ -1,14 +1,28 @@
-def getAttrOrder(attr):
+def getAttrOrder(attr, strippedName):
     if cssAttrOrders.has_key(attr):
-        return cssAttrOrders[attr]
+        return cssAttrOrders[attr] + addCss3PrefixValue(strippedName)
     if attr.find('-') != -1:
         splited = attr.split('-')
         while len(splited) != 0:
             splited = splited[0:-1]
             attr = '-'.join(splited)
             if cssAttrOrders.has_key(attr):
-                return cssAttrOrders[attr]
-    return 200
+                return cssAttrOrders[attr] + addCss3PrefixValue(strippedName)
+    return 2000
+
+def addCss3PrefixValue(attr):
+    value = 0
+    if attr.startswith('-webkit'):
+        value = value - 5
+    elif attr.startswith('-khtml'):
+        value = value - 5
+    elif attr.startswith('-moz'):
+        value = value - 3
+    elif attr.startswith('-ms'):
+        value = value - 2
+    elif attr.startswith('-o'):
+        value = value - 1
+    return value
 
 def isHTMLTag(tag):
     return containsInArray(validHTMLTags, tag)
@@ -60,13 +74,13 @@ def containsInArray(array, value):
 # according to http://fed.renren.com/archives/1212
 cssAttrOrdersMap = {
     0 : ['display', 'position', 'left', 'top', 'bottom', 'right', 'float', 'list-style', 'clear'],
-    20 : ['width', 'height', 'margin', 'padding', 'border'],
-    40 : ['background'],
-    60 : ['line-height'],
-    80 : ['color', 'font', 'text-decoration', 'text-align', 'text-indent', 'vertical-align', 'white-space', 'content'],
-    100: ['cursor', 'z-index', 'zoom'],
-    120: ['transform', 'transition', 'animation', 'box-shadow', 'border-radius']
-    # 14 : ['other']
+    200 : ['width', 'height', 'margin', 'padding', 'border'],
+    400 : ['background'],
+    600 : ['line-height'],
+    800 : ['color', 'font', 'text-decoration', 'text-align', 'text-indent', 'vertical-align', 'white-space', 'content'],
+    1000: ['cursor', 'z-index', 'zoom'],
+    1200: ['transform', 'transition', 'animation', 'box-shadow', 'border-radius']
+    # 1400 : ['other']
 }
 
 # convert 0:a, b to a:0, b:0
@@ -75,7 +89,7 @@ for key, value in cssAttrOrdersMap.items():
     counter = 0
     for x in value:
         cssAttrOrders[x] = key + counter
-        counter = counter + 1
+        counter = counter + 10
 
 
 canBeCombinedProps = 'border margin padding background font'.split(' ')

@@ -30,5 +30,5 @@ def camelCase(name):
 
 if __name__ == '__main__':
     print doCombine('margin', [
-        ['margin', 'margin', '0 0 0 0']
+        ['margin', 'margin', '50px auto 0 auto']
     ])

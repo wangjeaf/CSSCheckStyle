@@ -25,4 +25,4 @@ def _with_different_level():
 
 def _with_css3_props():
     msg = doCssCompress('.test {-moz-transform:xxxx;-webkit-transform:xxxx;transform:xxxx;*zoom:1;width:100px;display:none;}')
-    equal(msg, '.test{display:none;width:100px;*zoom:1;-moz-transform:xxxx;-webkit-transform:xxxx;transform:xxxx}', 'different levels is ok')
+    equal(msg, '.test{display:none;width:100px;*zoom:1;-webkit-transform:xxxx;-moz-transform:xxxx;transform:xxxx}', 'different levels is ok')
