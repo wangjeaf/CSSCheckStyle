@@ -28,6 +28,14 @@ class StyleSheet():
     def removeRuleSetByIndex(self, index):
         self._ruleSets[index] = None
 
+    def removeRuleSet(self, ruleSet):
+        newRuleSets = []
+        for x in self._ruleSets:
+            if x == ruleSet:
+                continue
+            newRuleSets.append(x)
+        self._ruleSets = newRuleSets
+
     def clean(self):
         newRuleSets = []
         for x in self._ruleSets:

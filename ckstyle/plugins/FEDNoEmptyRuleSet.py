@@ -14,3 +14,11 @@ class FEDNoEmptyRuleSet(RuleSetChecker):
         if len(ruleSet.getRules()) == 0:
             return False
         return True 
+
+    def fix(self, ruleSet, config):
+        if isKeyFrames(ruleSet.selector):
+            return
+
+        if len(ruleSet.getRules()) == 0:
+            styleSheet = ruleSet.getStyleSheet()
+            styleSheet.removeRuleSet(ruleSet)
