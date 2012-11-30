@@ -6,3 +6,10 @@ for p in os.environ.get('PYTHONPATH', '').split(';'):
 
 from asserts import *
 from ckstyle.doCssFix import doFix
+
+def getFixed(css, name):
+    fixer, msg = doFix(css, '')
+
+    ruleSet = fixer.getStyleSheet().getRuleSets()[0]
+    rule = ruleSet.getRuleByName(name)
+    return rule.fixedValue

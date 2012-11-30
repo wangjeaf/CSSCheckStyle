@@ -52,6 +52,8 @@ def getExtension(value):
     if value.strip() == '':
         return None
     value = value.strip()
+    if value == 'none':
+        return value
     if not value.startswith('.'):
         value = '.' + value
     return value
@@ -206,7 +208,7 @@ def handleCompressCmdArgs():
     _handle(options, dirHandler, fileHandler, argsParser, operation)
 
 def handleFixStyleCmdArgs():
-    options = ["help", "config=", "errorLevel=", "extension=", "include=", "exclude=", "--fixedExtension"]
+    options = ["help", "config=", "errorLevel=", "extension=", "include=", "exclude=", "fixedExtension="]
     dirHandler = fixDir
     fileHandler = fixFile
     argsParser = parseFixStyleCmdArgs

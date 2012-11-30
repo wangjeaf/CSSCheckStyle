@@ -40,6 +40,7 @@ class FED16ColorShouldUpper(RuleChecker):
         if value.find('#') == -1:
             return
 
+        hasImportant = rule.fixedValue.find('important') != -1
         found = self._findColor(rule.fixedValue)
         if found is None:
             return
@@ -51,7 +52,7 @@ class FED16ColorShouldUpper(RuleChecker):
         if len(found) == 3:
             return
 
-        if self._wrongLength(found):
+        if not hasImportant and self._wrongLength(found):
             final = found[0:6] if len(found) > 6 else (found + (6 - len(found)) * 'F')
             rule.fixedValue = rule.fixedValue.replace('#' + found, '#' + final)
             found = final
@@ -74,6 +75,7 @@ class FED16ColorShouldUpper(RuleChecker):
         for x in splited:
             if x.startswith('#'):
                 found = x
+                found = found.split('!important')[0]
                 break
         if found is not None:
             found = found[1:]

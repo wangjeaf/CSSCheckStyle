@@ -25,7 +25,8 @@ class RuleSet():
         self.selector = self.selector + ',' + other.selector
         self.fixedSelector = self.fixedSelector + ',' + other.fixedSelector
 
-        if len(other.comment) != 0:
+        if len(other.comment) != 0 and self.comment.find(other.comment) == -1:
+            # do not need duplicated comment
             self.roughComment = self.roughComment + ('\n' + other.roughComment)
             self.comment = self.comment + '\n' + other.comment
             self.fixedComment = self.fixedComment + '\n' + other.fixedComment

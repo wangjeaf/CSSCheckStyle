@@ -24,13 +24,19 @@ def doCompress(fileContent, fileName = '', config = defaultConfig):
 
 def compressFile(filePath, config = defaultConfig):
     extension = config.compressConfig.extension
-    if filePath.endswith(extension):
+    if extension.lower() == 'none':
+        extension = None
+    if extension is not None and filePath.endswith(extension):
         return
     fileContent = open(filePath).read()
     console.show('[compress] compressing %s' % filePath)
     checker, message = doCompress(fileContent, filePath, config)
 
-    path = os.path.realpath(filePath.split('.css')[0] + extension)
+    if extension is None:
+        path = filePath
+        open(path + '.bak', 'w').write(fileContent)
+    else:
+        path = os.path.realpath(filePath.split('.css')[0] + extension)
     if config.printFlag:
         if os.path.exists(path):
             os.remove(path)

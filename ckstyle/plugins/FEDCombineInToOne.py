@@ -51,8 +51,6 @@ class FEDCombineInToOne(RuleSetChecker):
     def _combineAttrs(self, rules, counter):
         originRules = rules
         for name, value in counter.items():
-            if len(value) < 2:
-                continue
             combined, deleted, hasFather = doCombine(name, value)
             if combined == None:
                 continue
