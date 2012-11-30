@@ -42,7 +42,7 @@ class FED16ColorShouldUpper(RuleChecker):
 
         found = self._findColor(rule.fixedValue)
         if found is None:
-            return True
+            return
 
         if self._isLower(found):
             rule.fixedValue = rule.fixedValue.replace('#' + found, '#' + found.upper())
