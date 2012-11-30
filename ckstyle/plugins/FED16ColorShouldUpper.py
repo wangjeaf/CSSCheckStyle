@@ -15,6 +15,8 @@ class FED16ColorShouldUpper(RuleChecker):
             return True
 
         found = self._findColor(rule.value)
+        if found is None:
+            return True
 
         if self._isLower(found):
             self.errorMsg = self.errorMsg_upper
@@ -39,6 +41,8 @@ class FED16ColorShouldUpper(RuleChecker):
             return
 
         found = self._findColor(rule.fixedValue)
+        if found is None:
+            return True
 
         if self._isLower(found):
             rule.fixedValue = rule.fixedValue.replace('#' + found, '#' + found.upper())
@@ -59,7 +63,7 @@ class FED16ColorShouldUpper(RuleChecker):
         return len(found) != 3 and len(found) != 6
 
     def _isLower(self, found):
-        return found != found.upper()
+        return found is not None and found != found.upper()
 
     def _isDuplicate(self, found):
         return found[0] == found[1] and found[2] == found[3] and found[4] == found[5]

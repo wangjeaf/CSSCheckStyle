@@ -51,4 +51,4 @@ class StyleSheet():
         result = []
         for ruleSet in self._ruleSets:
             result.append(ruleSet.fixed())
-        return ''.join(result)
+        return '\n\n'.join(result)

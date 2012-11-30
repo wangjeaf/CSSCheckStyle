@@ -14,6 +14,8 @@ class FEDUseLowerCaseSelector(RuleSetChecker):
         return True 
 
     def fix(self, ruleSet, config):
-        selector = ruleSet.selector
-        if selector.lower() != selector:
-            ruleSet.fixedSelector = ruleSet.fixedSelector.lower()
+        # if fix upper to lower, will cause error in HTML(do not do evil)
+        pass
+        #selector = ruleSet.selector
+        #if selector.lower() != selector:
+        #    ruleSet.fixedSelector = ruleSet.fixedSelector.lower()

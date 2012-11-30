@@ -27,4 +27,8 @@ class Cleaner():
 
     @staticmethod
     def clearComment(comment):
-        return comment.strip()
+        comment = comment.strip()
+        if len(comment) != 0 and comment.find('\n') == -1:
+            comment = comment.replace('/*', '').replace('*/', '').strip()
+            comment = '/* ' + comment + ' */'
+        return comment

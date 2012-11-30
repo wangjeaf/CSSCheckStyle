@@ -25,6 +25,11 @@ class RuleSet():
         self.selector = self.selector + ',' + other.selector
         self.fixedSelector = self.fixedSelector + ',' + other.fixedSelector
 
+        if len(other.comment) != 0:
+            self.roughComment = self.roughComment + ('\n' + other.roughComment)
+            self.comment = self.comment + '\n' + other.comment
+            self.fixedComment = self.fixedComment + '\n' + other.fixedComment
+
     def compressRules(self):
         collector = []
         for rule in self._rules:
@@ -36,6 +41,15 @@ class RuleSet():
 
     def compress(self):
         result = self.selector if self.fixedSelector == '' else self.fixedSelector
+        if result.find(','):
+            # remove duplicated selectors
+            selectors = []
+            for x in result.split(','):
+                x = x.strip()
+                if x in selectors:
+                    continue
+                selectors.append(x)
+            result = ','.join(selectors)
         result = result + '{' + self.compressRules() + '}'
         return result
 
@@ -48,7 +62,17 @@ class RuleSet():
         return collected
 
     def fixed(self):
-        result = self.selector if self.fixedSelector == '' else self.fixedSelector
+        result = self.comment if self.fixedComment == '' else self.fixedComment
+        result = result + '\n' + (self.selector if self.fixedSelector == '' else self.fixedSelector)
+        if result.find(','):
+            # remove duplicated selectors
+            selectors = []
+            for x in result.split(','):
+                x = x.strip()
+                if x in selectors:
+                    continue
+                selectors.append(x)
+            result = ',\n'.join(selectors)
         result = result + ' {\n' + self.fixedRules() + '\n}'
         return result
 

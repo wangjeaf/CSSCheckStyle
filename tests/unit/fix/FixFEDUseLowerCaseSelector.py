@@ -11,6 +11,8 @@ def _lower():
     equal(ruleSet.fixedSelector, '.test', 'selector lower is ok')
 
 def _upper():
+    # if fix upper to lower, will cause error in HTML, do not do evil
+    return
     fixer, msg = doFix('.TEST {width:100px;}', '')
     styleSheet = fixer.getStyleSheet()
     ruleSet = styleSheet.getRuleSets()[0]

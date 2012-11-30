@@ -29,7 +29,31 @@ def compressCss(filePath):
     print content
 
 if __name__ == '__main__':
-    path = os.path.realpath(os.path.join(__file__, '../test.css'))
-    checkCssFileByOpm(path)
+    dirpath = 'smallsite'
+    content = ''
+    for f in os.listdir(dirpath):
+        selectors = {}
+        path = dirpath + '/' + f
+        parser = CssParser(open(path, 'r').read(), f)
+        parser.doParse()
+        for ruleSet in parser.styleSheet._ruleSets:
+            selector = ruleSet.selector
+            splited = selector.split(',')
+            for x in splited:
+                x = x.strip()
+                if x == '':
+                    continue
+                if selectors.has_key(x):
+                    selectors[x].append(f)
+                else:
+                    selectors[x] = [f]
+        for name, value in selectors.items():
+            if len(value) > 2:
+                content = content + name + " =====> " + value[0] + "(" + str(len(value)) + 'times)\n'
+
+    open('result.txt', 'w').write(content)
+
+    #path = os.path.realpath(os.path.join(__file__, '../test.css'))
+    #checkCssFileByOpm(path)
     #fixCss('test.css')
     #compressCss(path)
