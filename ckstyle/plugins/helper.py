@@ -19,9 +19,6 @@ def isCssProp(prop):
 def isCss3Prop(prop):
     return containsInArray(allCss3Props, prop)
 
-def isKeyFrames(prop):
-    return prop.startswith('@') and prop.find('keyframes') != -1
-
 def canBeCombined(prop):
     prop = prop.strip()
     for x in canBeCombinedProps:

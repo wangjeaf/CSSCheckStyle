@@ -1,5 +1,5 @@
 from Base import *
-from helper import isHTMLTag, isKeyFrames
+from helper import isHTMLTag
 
 class FEDUnknownHTMLTagName(RuleSetChecker):
     def __init__(self):
@@ -13,8 +13,6 @@ class FEDUnknownHTMLTagName(RuleSetChecker):
         if selector.find('@media') != -1:
             return True
         if selector.find('@-moz-document') != -1:
-            return True
-        if isKeyFrames(selector):
             return True
         selectors = selector.split(',')
         for s in selectors:
