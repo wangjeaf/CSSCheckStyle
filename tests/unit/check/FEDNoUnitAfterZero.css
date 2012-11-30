@@ -22,3 +22,7 @@
 .test-padding {
     padding: 1px 0px;
 }
+
+.test-padding-start-with-zero {
+    padding: 0 1px 0 1px;
+}

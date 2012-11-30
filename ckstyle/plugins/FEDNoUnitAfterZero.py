@@ -11,9 +11,6 @@ class FEDNoUnitAfterZero(RuleChecker):
         def startsWithZero(value):
             return value.startswith('0') and value != '0' and value[1] != '.'
 
-        if startsWithZero(rule.value):
-            return False
-
         values = rule.value.split(' ')
         for v in values:
             if startsWithZero(v.strip()):
