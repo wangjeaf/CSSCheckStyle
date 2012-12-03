@@ -139,3 +139,23 @@ class CssParser():
                 collector = collector + char
 
         return errors
+
+if __name__ == '__main__':
+    text = '''.test {
+        width: 100px;height:20px;
+        border-radius:3px;
+    }
+
+    @keyframes fdasfads {
+        12% {
+            width: 100px;
+        }
+        11% {
+            width: 100px;
+        }
+        fdasl {
+            width: 200px;
+        }
+    }'''
+    parser = CssParser(text)
+    parser.doParse()

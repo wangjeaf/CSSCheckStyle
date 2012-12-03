@@ -126,7 +126,7 @@ class RuleSet():
         for name in names:
             name = name.strip()
             for rule in self._rules:
-                if rule.roughName.strip() == name:
+                if rule.strippedName == name:
                     return True
         return False
 

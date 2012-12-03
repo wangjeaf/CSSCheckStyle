@@ -27,10 +27,13 @@ class FEDCss3PropSpaces(RuleChecker):
         name = rule.name
         # only for css3 props
         if not isCss3Prop(name):
-            return True
+            return
 
         if not isCss3PrefixProp(name):
-            return True
+            return
+
+        if not rule.getRuleSet().existRoughNames('-webkit-%s,-moz-%s,-ms-%s,-o-%s' % (name,name,name,name)):
+            return
 
         fixedName = rule.fixedName
         prefix = fixedName.split(name)[0]

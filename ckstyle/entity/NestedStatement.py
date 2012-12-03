@@ -10,7 +10,7 @@ class NestedStatement():
         self.styleSheet = styleSheet
 
     def compress(self):
-        return self.selector + '{' + self.statement.replace('\n', '').replace(' ' * 4, '') + '}'
+        return self.selector + '{' + self.statement.replace('\r', '').replace('\n', '').replace(' ' * 4, '').replace(': ', ':').replace(';}', '}') + '}'
 
     def fixed(self):
         spaces = ' ' * 4
