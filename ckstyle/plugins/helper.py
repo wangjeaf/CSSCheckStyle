@@ -1,3 +1,9 @@
+import re
+pattern = re.compile(r'[@\*\[\]\(\):]')
+
+def hasHackChars(text):
+    return len(pattern.findall(text)) != 0
+
 def getAttrOrder(attr, strippedName):
     if cssAttrOrders.has_key(attr):
         return cssAttrOrders[attr] + addCss3PrefixValue(strippedName)

@@ -1,0 +1,16 @@
+li:nth-child(even) {
+  background:gray;
+}
+* html li.even {
+  background:gray;
+}
+.test[^=aaa] {
+    background:gray;
+}
+
+.test1 {
+    width: 100px;
+}
+.test2 {
+    width: 100px;
+}

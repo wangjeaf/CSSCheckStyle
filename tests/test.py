@@ -28,7 +28,7 @@ def compressCss(filePath):
     checker, content = doCompress(fileContent, filePath)
     print content
 
-if __name__ == '__main__':
+def findDupliated():
     dirpath = 'smallsite'
     content = ''
     for f in os.listdir(dirpath):
@@ -57,3 +57,24 @@ if __name__ == '__main__':
     #checkCssFileByOpm(path)
     #fixCss('test.css')
     #compressCss(path)
+
+if __name__ == '__main__':
+    dirpath = 'smallsite'
+    content = ''
+    counter = 0
+    import re
+    pattern = re.compile(r'[@\*>\[\]\(\):]')
+    collector = []
+    for f in os.listdir(dirpath):
+        counter = counter + 1
+        selectors = {}
+        path = dirpath + '/' + f
+        parser = CssParser(open(path, 'r').read(), f)
+        parser.doParse()
+        for ruleSet in parser.styleSheet._ruleSets:
+            selector = ruleSet.selector
+            if len(pattern.findall(selector)) != 0:
+                collector.extend(pattern.findall(selector))
+    #open('result.txt', 'w').write(content)
+    print set(collector)
+    print pattern.findall('@>*li:nth-child(even)')

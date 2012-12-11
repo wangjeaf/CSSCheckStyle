@@ -1,4 +1,5 @@
 from Base import *
+from helper import hasHackChars
 
 class FEDCombineSameRuleSets(StyleSheetChecker):
     def __init__(self):
@@ -38,9 +39,9 @@ class FEDCombineSameRuleSets(StyleSheetChecker):
         mapping = []
         counter = 0
         for r in ruleSets:
-            if r.extra:
-                # make it imposible to equal
-                mapping.append(['extra', "imposible" + str(counter)])
+            if r.extra or hasHackChars(r.selector):
+                # make it impossible to equal
+                mapping.append(['extra', "do_not_combine_" + str(counter)])
                 counter = counter + 1
                 continue
             mapping.append([r.selector, r.compressRules()])
