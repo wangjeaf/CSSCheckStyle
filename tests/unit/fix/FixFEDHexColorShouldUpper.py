@@ -46,4 +46,4 @@ def _special():
     fixer, msg = doFix(css, '')
     ruleSet = fixer.getStyleSheet().getRuleSets()[0]
     rule = ruleSet.getRules()[0]
-    equal(rule.fixedValue, '0 4px 5px 1px rgba(74, 116, 161, 0.1), inset 0 -1px #CADAEA, inset 0 -2px #FBFCFE', 'fixed ok')
+    equal(rule.fixedValue, '0 4px 5px 1px rgba(74, 116, 161, .1), inset 0 -1px #CADAEA, inset 0 -2px #FBFCFE', 'fixed ok')

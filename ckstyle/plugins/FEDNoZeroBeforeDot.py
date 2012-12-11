@@ -9,15 +9,21 @@ class FEDNoZeroBeforeDot(RuleChecker):
     def check(self, rule, config):
         value = rule.value
 
-        def startsWithZeroDot(value):
-            return value.startswith('0.')
-
-        if startsWithZeroDot(value):
+        if self._startsWithZeroDot(value):
             return False
 
         values = rule.value.split(' ')
         for v in values:
-            if startsWithZeroDot(v.strip()):
+            if self._startsWithZeroDot(v.strip()):
                 return False
 
         return True 
+
+    def fix(self, rule, config):
+        fixedValue = rule.fixedValue
+        for v in fixedValue.split(' '):
+            if self._startsWithZeroDot(v):
+                rule.fixedValue = rule.fixedValue.replace(v, v[1:])
+
+    def _startsWithZeroDot(self, value):
+        return value.startswith('0.')
