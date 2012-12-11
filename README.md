@@ -33,7 +33,7 @@ CSSCheckStyle
 结果来自plugins/*.py中的fix方法，以及entity/*.py的compress方法。
 
 对于fix，目前只做了以下几个plugin的fix：
-* FED16ColorShouldUpper
+* FEDHexColorShouldUpper
 * FEDUseSingleQuotation
 * FEDCombineInToOne (通过combiner的方式灵活扩展，目前只做了MarginCombiner)
 
@@ -373,7 +373,7 @@ CSS的单元测试，必须满足以下条件：
 
 <pre>
 @all-rules {
-    hexadecimal-color:              16进制颜色，大写，并且尽量省略 (FED16ColorShouldUpper);
+    hexadecimal-color:              16进制颜色，大写，并且尽量省略 (FEDHexColorShouldUpper);
     no-font-family:                 不允许业务代码设置字体 (FEDCanNotSetFontFamily);
     combine-into-one:               将可以合并的样式设置合并 (FEDCombineInToOne);
     comment-length:                 注释长度不允许超过80个字符 (FEDCommentLengthLessThan80);
@@ -413,6 +413,7 @@ CSS的单元测试，必须满足以下条件：
     lowercase-selector:             选择器用小写字母 (FEDUseLowerCaseSelector);
     single-quotation:               使用单引号 (FEDUseSingleQuotation);
     z-index-in-range:               z-index取值应该符合范围要求 (FEDZIndexShouldInRange);
+    remove-duplicated-attr:         删除重复的属性设置，取后面的(FEDRemoveDuplicatedAttr);
 }
 </pre>
 
