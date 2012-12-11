@@ -12,3 +12,9 @@ def doTest():
 
     msg = doCssFileCompress('_just_margin.css')
     equal(msg, '.test,.test2,.test3,.test4{margin:20px 10px 10px}', 'just margin compress ok')
+
+    msg = doCssFileCompress('_with_padding.css')
+    equal(msg, '.test,.test2,.test3,.test4,.test5{_width:100px;*height:100px;padding:20px 10px 10px}.test6{display:none;_width:100px;*height:100px}', 'padding compress ok')
+
+    msg = doCssFileCompress('_just_padding.css')
+    equal(msg, '.test,.test2,.test3,.test4{padding:20px 10px 10px}', 'just padding compress ok')

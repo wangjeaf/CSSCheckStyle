@@ -1,0 +1,44 @@
+/* @author wangjeaf */ 
+
+.test {
+    _width: 100px; 
+    *height: 100px;
+    padding: 10px;
+    padding-top: 20px;
+}
+
+.test2 {
+    _width: 100px; 
+    *height: 100px;
+    padding: 20px 10px 10px;
+}
+.test3 {
+    _width: 100px;
+    *height: 100px;
+    padding: 0 10px 0px;
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.test4 {
+    padding: 10px;
+    _width: 100px; 
+    padding-top: 20px;
+    *height: 100px;
+}
+
+.test5 {
+    padding: 10px;
+    padding-top: 20px;
+    padding-left: 10px;
+    *height: 100px;
+    _width: 100px;
+}
+
+.test6 {
+    _width: 100px; 
+    *height: 100px;
+    display:none;
+}

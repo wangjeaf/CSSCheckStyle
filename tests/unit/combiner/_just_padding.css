@@ -1,0 +1,22 @@
+.test {
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-top: 20px;
+}
+
+.test2 {
+    padding: 0 1px 2px 3px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-top: 20px;
+}
+
+.test3 {
+    padding: 20px 10px 10px;
+}
+.test4 {
+    padding: 10px;
+    padding-top: 20px;
+}
