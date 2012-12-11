@@ -188,6 +188,7 @@ class CssChecker():
                         rule.fixedValue = rule.value
                         rule.fixedName = rule.strippedName
 
+                    #print checker.id, checker, rule.fixedValue
                     checker.fix(rule, self.config)
 
         styleSheet = self.parser.styleSheet

@@ -3,6 +3,7 @@ from helper import *
 def doTest():
     _color()
     _complicated_color()
+    _special()
 
 def _complicated_color():
     fixer, msg = doFix('.test {background0:#dddddd url(dddddd) no-repeat left top;}', '')
@@ -39,3 +40,10 @@ def _color():
     equal(ruleSet.getRuleByName('color8').fixedValue, '#ABCDEF', 'color8 ok')
     equal(ruleSet.getRuleByName('color9').fixedValue, '#FFF', 'color9 ok')
     equal(ruleSet.getRuleByName('color10').fixedValue, '#FFF', 'color10 ok')
+
+def _special():
+    css = '.t{box-shadow:0 4px 5px 1px rgba(74, 116, 161, 0.1), inset 0 -1px #cadaea, inset 0 -2px #fbfcfe;}'
+    fixer, msg = doFix(css, '')
+    ruleSet = fixer.getStyleSheet().getRuleSets()[0]
+    rule = ruleSet.getRules()[0]
+    equal(rule.fixedValue, '0 4px 5px 1px rgba(74, 116, 161, 0.1), inset 0 -1px #CADAEA, inset 0 -2px #FBFCFE', 'fixed ok')

@@ -15,6 +15,13 @@ class FEDHexColorShouldUpper(RuleChecker):
             return True
 
         found = self._findColor(rule.value)
+        for f in found:
+            flag = self._checkEach(f)
+            if not flag:
+                return False
+        return True
+
+    def _checkEach(self, found):
         if found is None:
             return True
 
@@ -42,9 +49,10 @@ class FEDHexColorShouldUpper(RuleChecker):
 
         hasImportant = rule.fixedValue.find('important') != -1
         found = self._findColor(rule.fixedValue)
-        if found is None:
-            return
+        for f in found:
+            self._fixEach(rule, f, hasImportant)
 
+    def _fixEach(self, rule, found, hasImportant):
         if self._isLower(found):
             rule.fixedValue = rule.fixedValue.replace('#' + found, '#' + found.upper())
             found = found.upper()
@@ -71,12 +79,9 @@ class FEDHexColorShouldUpper(RuleChecker):
 
     def _findColor(self, value):
         splited = value.split(' ')
-        found = None
+        found = []
         for x in splited:
+            x = x.strip()
             if x.startswith('#'):
-                found = x
-                found = found.split('!important')[0]
-                break
-        if found is not None:
-            found = found[1:]
+                found.append(x.split('!important')[0][1:].split(',')[0])
         return found
