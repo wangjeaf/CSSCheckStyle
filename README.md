@@ -15,6 +15,7 @@ CSSCheckStyle
 <pre>
 @description {
 	destination: 检查CSS代码中的编码规范和编码风格问题;
+    blog: <a href="http://fed.renren.com/archives/1427">《CSSCheckStyle——CSS的解析、检查、修复和压缩》</a>;
     good-news: 初步对比各大工具（包括YUI compressor和各种在线工具），确定初步达到业内领先水平，后期任重道远;
 	reference: <a href="http://fed.renren.com/archives/1212">《人人FED CSS编码规范》</a>;
     what-can-i-do: parse -> check -> fix -> combine-attr -> reorder -> combine -> compress;
