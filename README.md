@@ -3,7 +3,7 @@ CSSCheckStyle
 ## Catalog
 * <a href="https://github.com/wangjeaf/CSSCheckStyle#description">Description</a>
 * <a href="https://github.com/wangjeaf/CSSCheckStyle#installation">Installation</a>
-* <a href="https://github.com/wangjeaf/CSSCheckStyle#demo-parse---fix---combine-attr---reorder---combine---compress">Demo (parse -> fix -> combine-attr -> reorder -> combine -> compress)</a>
+* <a href="https://github.com/wangjeaf/CSSCheckStyle#demo-parse---fix---compress">Demo (parse -> fix -> compress)</a>
 * <a href="https://github.com/wangjeaf/CSSCheckStyle#demo-parse---check">Demo (parse -> check)</a>
 * <a href="https://github.com/wangjeaf/CSSCheckStyle#usage">Usage</a>
 * <a href="https://github.com/wangjeaf/CSSCheckStyle#config-file">Config File</a>
@@ -27,7 +27,7 @@ CSSCheckStyle
 ## Installation
 **easy_install https://github.com/wangjeaf/CSSCheckStyle/archive/master.tar.gz**
 
-## Demo (parse -> fix -> combine-attr -> reorder -> combine -> compress)
+## Demo (parse -> fix -> compress)
 ### 说明
 以下是通过自动fix，自动排序，自动合并，自动压缩以后的代码示例。
 
