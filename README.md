@@ -94,8 +94,23 @@ CSSCheckStyle
     margin-left: 10px;
 }
 ```
-
-### after
+### fixstyle
+自动修复以后的代码：
+```css
+.test1,
+.test2,
+.test3,
+.test4,
+.test5 {
+    *display: none;
+    _display: inline-block;
+    width: 100px;
+    height: 200px;
+    margin: 20px 10px 10px;
+    border: 1px solid #FFF;
+}
+```
+### after compress
 本压缩工具的压缩结果（属性排列顺序已经按照推荐顺序优化），压缩率： 140 / 766 = 18.3%：
 ```css
 .test1,.test2,.test3,.test4,.test5{*display:none;_display:inline-block;width:100px;height:200px;margin:20px 10px 10px;border:1px solid #FFF}
