@@ -76,6 +76,8 @@ class CommandFileParser():
         args.printFlag  = getBoolean(config, 'ckstyle', 'print-flag',  args.printFlag)
         args.extension  = get       (config, 'ckstyle', 'extension',   args.extension)
         args.standard   = get       (config, 'ckstyle', 'standard',    args.standard)
+        args.safeMode   = getBoolean(config, 'ckstyle', 'safe-mode',   args.safeMode)
+
         args.fixedExtension   = get       (config, 'ckstyle', 'fixed-extension',    args.fixedExtension)
         args.fixToSingleLine  = getBoolean(config, 'ckstyle', 'fix-to-single-line', args.fixToSingleLine)
         self.handleIgnoreRuleSets(config)

@@ -49,6 +49,8 @@ class CssChecker():
         # ids = {}
         include = self.config.include
         exclude = self.config.exclude
+        safeMode = self.config.safeMode
+        safeModeExcludes = 'combine-same-rulesets,keep-in-order,combine-into-one'
 
         for filename in os.listdir(pluginDir):
             if not filename.endswith('.py') or filename.startswith('_'):
@@ -72,6 +74,8 @@ class CssChecker():
             if include != 'all' and include.find(instance.id) == -1:
                 continue
             elif exclude != 'none' and exclude.find(instance.id) != -1:
+                continue
+            elif safeMode and safeModeExcludes.find(instance.id) != -1:
                 continue
 
             if instance.errorMsg.find(';') != -1 or instance.errorMsg.find('\n') != -1:

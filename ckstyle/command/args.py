@@ -11,6 +11,7 @@ class CommandArgs():
         self.fixedExtension = '.fixed.css'
         self.fixToSingleLine = False
         self.compressConfig = CompressArgs()
+        self.safeMode = False
 
     def __str__(self):
         return 'errorLevel: %s\n recursive: %s\n printFlag: %s\n extension: %s\n include: %s\n exclude: %s' % (self.errorLevel, self.recursive, self.printFlag, self.extension, self.include, self.exclude)
