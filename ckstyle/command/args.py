@@ -9,6 +9,7 @@ class CommandArgs():
         self.standard = ''
         self.ignoreRuleSets = ['@unit-test-expecteds']
         self.fixedExtension = '.fixed.css'
+        self.fixToSingleLine = False
         self.compressConfig = CompressArgs()
 
     def __str__(self):

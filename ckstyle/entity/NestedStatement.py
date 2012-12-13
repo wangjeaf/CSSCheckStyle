@@ -10,11 +10,16 @@ class NestedStatement():
         self.styleSheet = styleSheet
 
     def compress(self):
-        return self.selector + '{' + self.statement.replace('\r', '').replace('\n', '').replace(' ' * 4, '').replace(': ', ':').replace(';}', '}') + '}'
+        return self.selector + self._compressedStatement()
 
-    def fixed(self):
-        spaces = ' ' * 4
+    def fixed(self, config):
+        if config.fixToSingleLine:
+            return self.selector + ' ' + self._compressedStatement()
+
         return self.selector + ' {\n' + self.roughStatement + '\n}'
+
+    def _compressedStatement(self):
+        return '{' + self.statement.replace('\r', '').replace('\n', '').replace(' ' * 4, '').replace(': ', ':').replace(';}', '}') + '}'
 
     def __str__(self):
         return '%s' % self.statement

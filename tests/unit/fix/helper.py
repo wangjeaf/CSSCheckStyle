@@ -6,6 +6,8 @@ for p in os.environ.get('PYTHONPATH', '').split(';'):
 
 from asserts import *
 from ckstyle.doCssFix import doFix
+import ckstyle.command.args as args
+defaultConfig = args.CommandArgs()
 
 def getFixed(css, name):
     fixer, msg = doFix(css, '')

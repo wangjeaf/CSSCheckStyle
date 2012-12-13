@@ -54,15 +54,15 @@ class RuleSet():
         result = result + '{' + self.compressRules() + '}'
         return result
 
-    def fixedRules(self):
+    def fixedRules(self, config):
         collector = []
-        spaces = ' ' * 4
+        spaces = ' ' * 4 if not config.fixToSingleLine else ''
         for rule in self._rules:
             collector.append(spaces + rule.fixed())
-        collected = '\n'.join(collector)
+        collected = ('\n' if not config.fixToSingleLine else ' ').join(collector)
         return collected
 
-    def fixed(self):
+    def fixed(self, config):
         result = self.comment if self.fixedComment == '' else self.fixedComment
         result = result + '\n' + (self.selector if self.fixedSelector == '' else self.fixedSelector)
         if result.find(','):
@@ -74,7 +74,8 @@ class RuleSet():
                     continue
                 selectors.append(x)
             result = ',\n'.join(selectors)
-        result = result + ' {\n' + self.fixedRules() + '\n}'
+        seperator = ' ' if config.fixToSingleLine else '\n'
+        result = result + ' {' + seperator + self.fixedRules(config) + seperator + '}'
         return result
 
     def getSingleLineFlag(self):

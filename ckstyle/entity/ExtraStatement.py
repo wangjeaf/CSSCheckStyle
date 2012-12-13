@@ -18,7 +18,7 @@ class ExtraStatement(RuleSet):
     def compress(self):
         return self.statement.strip()
 
-    def fixed(self):
+    def fixed(self, config):
         return self.statement.strip()
 
     def __str__(self):

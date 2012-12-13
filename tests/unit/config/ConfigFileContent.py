@@ -14,6 +14,7 @@ def _missing():
     equal(config.exclude, 'none', 'exclude is none from python')
     equal(config.standard, 'standard3.css', 'standard css file name is ok')
     equal(config.fixedExtension, '.fixed2.css', 'fixed extension is ok from python')
+    equal(config.fixToSingleLine, False, 'fix to single line is false')
     equal(len(config.ignoreRuleSets), 1, 'one ignored rule set')
 
     args = config.compressConfig
@@ -32,6 +33,7 @@ def _configed():
     equal(config.ignoreRuleSets[0], '@unit-test-expecteds', 'rule sets ignored')
     equal(config.ignoreRuleSets[1], '@unit-tests-fda', 'rule sets ignored')
     equal(len(config.ignoreRuleSets), 2, 'two ignored rule sets')
+    equal(config.fixToSingleLine, True, 'fix to single line is true')
 
     args = config.compressConfig
     equal(args.combineFile, True, 'combine file is True')
@@ -48,3 +50,4 @@ def _default():
     equal(config.standard, 'standard.css', 'standard css file name is ok')
     equal(config.ignoreRuleSets[0], '@unit-test-expecteds', 'rule sets ignored')
     equal(len(config.ignoreRuleSets), 1, 'only one ignored rule set')
+    equal(config.fixToSingleLine, False, 'fix to single line is false default')

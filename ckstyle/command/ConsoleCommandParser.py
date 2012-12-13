@@ -119,16 +119,20 @@ def parseCkStyleCmdArgs(defaultConfigFile, opts, args, debug = False, called = F
 
 def parseFixStyleCmdArgs(defaultConfigFile, opts, args, debug = False):
     extension = None
+    singleLine = None
     for op, value in opts:
         if op == "--help" or op == '-h':
             usage_fix()
             sys.exit()
         elif op == '--fixedExtension':
             extension = getExtension(value)
+        elif op == '--singleLine':
+            singleLine = True
 
     config = parseCkStyleCmdArgs(defaultConfigFile, opts, args, debug, True)
 
     if extension is not None: config.fixedExtension = extension
+    if singleLine is not None: config.fixToSingleLine = singleLine
     return config
 
 def parseCompressCmdArgs(defaultConfigFile, opts, args, debug = False):
@@ -208,7 +212,7 @@ def handleCompressCmdArgs():
     _handle(options, dirHandler, fileHandler, argsParser, operation)
 
 def handleFixStyleCmdArgs():
-    options = ["help", "config=", "errorLevel=", "extension=", "include=", "exclude=", "fixedExtension="]
+    options = ["help", "config=", "errorLevel=", "extension=", "include=", "exclude=", "fixedExtension=", "singleLine"]
     dirHandler = fixDir
     fileHandler = fixFile
     argsParser = parseFixStyleCmdArgs

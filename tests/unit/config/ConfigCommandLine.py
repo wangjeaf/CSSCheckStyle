@@ -37,11 +37,12 @@ def _default():
     equal(config.compressConfig.combineFile, True, 'combine file is true')
     equal(config.compressConfig.browsers, True, 'browsers is true')
 
-    config = parseFixStyleCmdArgs(realpath('ckstyle.ini'), [("--errorLevel", "2"), ("--include", "abcde"), ("--exclude", "fghi"), ("-p", True), ("-r", True), ('--fixedExtension', '.xxx.fixed.css')], [], True)
+    config = parseFixStyleCmdArgs(realpath('ckstyle.ini'), [("--errorLevel", "2"), ("--include", "abcde"), ("--exclude", "fghi"), ("-p", True), ("-r", True), ('--fixedExtension', '.xxx.fixed.css'), ("--singleLine", True)], [], True)
     equal(config.errorLevel, 2, 'errorLevel is 2')
     equal(config.recursive, True, 'recursive is True')
     equal(config.printFlag, True, 'print flag is True')
     equal(config.include, 'abcde', 'include is abcde')
     equal(config.exclude, 'fghi', 'exclude is fghi')
 
+    equal(config.fixToSingleLine, True, 'fix to single line is true')
     equal(config.fixedExtension, '.xxx.fixed.css', 'fixed extension changed')

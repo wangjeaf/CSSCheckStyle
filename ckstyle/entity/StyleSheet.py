@@ -55,8 +55,8 @@ class StyleSheet():
             result.append(ruleSet.compress())
         return ''.join(result)
 
-    def fixed(self):
+    def fixed(self, config):
         result = []
         for ruleSet in self._ruleSets:
-            result.append(ruleSet.fixed())
+            result.append(ruleSet.fixed(config))
         return '\n\n'.join(result)

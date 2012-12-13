@@ -77,6 +77,7 @@ class CommandFileParser():
         args.extension  = get       (config, 'ckstyle', 'extension',   args.extension)
         args.standard   = get       (config, 'ckstyle', 'standard',    args.standard)
         args.fixedExtension   = get       (config, 'ckstyle', 'fixed-extension',    args.fixedExtension)
+        args.fixToSingleLine  = getBoolean(config, 'ckstyle', 'fix-to-single-line', args.fixToSingleLine)
         self.handleIgnoreRuleSets(config)
 
     def handleIgnoreRuleSets(self, config):

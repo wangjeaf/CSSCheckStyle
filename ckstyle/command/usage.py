@@ -70,6 +70,7 @@ fixUsage = '''
     fixstyle -r -p dir
 
     fixstyle --fixedExtension=.fixed2.css dirpath
+    fixstyle --singleLine dirpath
 
 %s
     fixstyle -r -p -c xxx.ini --fixedExtension=.test.txt --include=all --exclude=none dirpath
@@ -82,4 +83,5 @@ fixUsage = '''
     --include       specify rules(can be configed in .ini file)
     --exclude       specify exclude rules(can be configed in .ini file)
     --fixedExtension     specify fixed file extension(use ".fixed.css" as default)
+    --singleLine    fix all rule sets to single line mode
     ''' % (usage, example, options)
