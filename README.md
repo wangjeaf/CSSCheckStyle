@@ -95,7 +95,7 @@ CSSCheckStyle
 }
 ```
 ### fixstyle
-自动修复以后的代码：
+`fixstyle` 自动修复以后的代码：
 ```css
 .test1,
 .test2,
@@ -110,6 +110,16 @@ CSSCheckStyle
     border: 1px solid #FFF;
 }
 ```
+
+`fixstyle --singleLine` 自动修复后的代码：
+```css
+.test1,
+.test2,
+.test3,
+.test4,
+.test5 { *display: none; _display: inline-block; width: 100px; height: 200px; margin: 20px 10px 10px; border: 1px solid #FFF; }
+```
+
 ### after compress
 本压缩工具的压缩结果（属性排列顺序已经按照推荐顺序优化），压缩率： 140 / 766 = 18.3%：
 ```css
@@ -200,7 +210,7 @@ border-radius:3px
 ckstyle(检查)/fixstyle(自动修复)/compress(压缩) 三个工具的命令行参数基本相同
 
 不同之处：
-* fixstyle给出了额外的参数：--fixedExtension（修复后文件的扩展名） 
+* fixstyle给出了额外的参数：--fixedExtension（修复后文件的扩展名）, --singleLine（自动修复并以单行模式格式化）
 * compress给出了额外的参数：--browsers（是否分浏览器压缩）, --compressExtension（压缩后文件的扩展名）, --combineFile（是否将多个压缩后文件合并），这些参数目前有的尚未实现~~~
 
 ### Examples
@@ -249,6 +259,7 @@ extension          [=.ckstyle.txt] 指定检查结果文件的扩展名
 standard           [=standard.css] 给一个标准的css文件，检查时遵照此文件来检查
 ignore-rule-sets   [=@unit-test-expecteds] 忽略的一些规则集
 fixed-extension    [=.fixed.css] 修复后文件的扩展名
+fix-to-single-line [=false] 是否自动修复成一行
 
 extension(compress)[=.min.css] 压缩后的文件扩展名
 combine-file       [=all.min.css] 压缩多个文件合并成一个的文件名
@@ -267,6 +278,7 @@ extension = .ckstyle.txt
 standard = standard.css
 ignore-rule-sets = @unit-test-expecteds
 fixed-extension = .fixed.css
+fix-to-single-line = false
 
 [compress]
 extension = .min.css
