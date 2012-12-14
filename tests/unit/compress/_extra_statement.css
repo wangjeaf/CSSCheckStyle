@@ -1,0 +1,10 @@
+@-css-compiler {
+    selector-compile:                  no-combinator;
+    rule-compile:            all;
+}
+
+@charset utf-8;
+
+@-css-compiler-xxx                fdasfdas;
+
+@import url(fdafdas/fdafdas.css)

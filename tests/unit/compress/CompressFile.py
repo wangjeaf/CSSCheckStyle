@@ -5,6 +5,7 @@ def doTest():
     _one_line_file()
     _with_extra()
     _compress_with_hack_chars()
+    _extra_statement()
 
 def _basic():
     msg = doCssFileCompress('_file.css')
@@ -22,3 +23,6 @@ def _compress_with_hack_chars():
     msg = doCssFileCompress('_compress_special_hack_chars.css')
     equal(msg, "li:nth-child(even){background:gray}* html li.even{background:gray}.test[^=aaa]{background:gray}.test1,.test2{width:100px}", 'file compressed')
     
+def _extra_statement():
+    msg = doCssFileCompress('_extra_statement.css')
+    equal(msg, "@-css-compiler{selector-compile:no-combinator;rule-compile:all};@charset utf-8;@-css-compiler-xxx fdasfdas;@import url(fdafdas/fdafdas.css);", 'extra statement compressed')
