@@ -39,12 +39,7 @@ class CommandFileParser():
     def __init__(self, filePath, debug = False):
         self.args = args.CommandArgs()
         if exists(filePath):
-            if debug:
-                console.log('load config from %s' % filePath)
             self.load(filePath)
-        else:
-            if debug:
-                console.log('no config file specified, will use default settings.')
     
     def load(self, filePath):
         config = ConfigParser.ConfigParser()
