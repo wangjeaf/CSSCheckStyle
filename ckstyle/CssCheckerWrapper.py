@@ -160,7 +160,7 @@ class CssChecker():
 
     def doCompress(self):
         self.doFix()
-        return self.getStyleSheet().compress()
+        return self.getStyleSheet().compress().strip()
 
     def doFix(self):
         # 忽略的规则集（目前只忽略单元测试的selector）

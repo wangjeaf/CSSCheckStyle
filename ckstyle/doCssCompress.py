@@ -29,7 +29,8 @@ def compressFile(filePath, config = defaultConfig):
     if extension is not None and filePath.endswith(extension):
         return
     fileContent = open(filePath).read()
-    console.show('[compress] compressing %s' % filePath)
+    if not config.printFlag:
+        console.show('[compress] compressing %s' % filePath)
     checker, message = doCompress(fileContent, filePath, config)
 
     if extension is None:

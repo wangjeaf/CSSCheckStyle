@@ -29,7 +29,9 @@ def fixFile(filePath, config = defaultConfig):
     if extension is not None and filePath.endswith(extension):
         return
     fileContent = open(filePath).read()
-    console.show('[fixstyle] fixing %s' % filePath)
+    if not config.printFlag:
+        console.show('[fixstyle] fixing %s' % filePath)
+
     checker, msg = doFix(fileContent, filePath, config)
 
     if extension is None:
