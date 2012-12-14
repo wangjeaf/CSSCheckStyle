@@ -209,10 +209,10 @@ border-radius:3px
 }
 ```
 ## Usage
-### 关于ckstyle / fixstyle / compress(compresscss)的命令行参数说明
+### 关于ckstyle / fixstyle / compress(csscompress)的命令行参数说明
 通过 command -h / command --help可以查看命令的帮助，例如： `compress -h`  `compress --help`
 
-ckstyle(检查)/fixstyle(自动修复)/compress(压缩，同名工具compresscss) 三个工具的命令行参数基本相同
+ckstyle(检查)/fixstyle(自动修复)/compress(压缩，同名工具csscompress) 三个工具的命令行参数基本相同
 
 不同之处：
 * fixstyle给出了额外的参数：--fixedExtension（修复后文件的扩展名）, --singleLine（自动修复并以单行模式格式化），--safeMode（安全模式，不对原有代码做大改动）
