@@ -13,7 +13,13 @@ class FEDNoUnitAfterZero(RuleChecker):
 
         values = rule.value.split(' ')
         for v in values:
-            if self._startsWithZero(v.strip()) is not None:
+            v = v.strip()
+            if v.find('(') != -1:
+                matched = self._startsWithZero(v.split('(')[1])
+            else:
+                matched = self._startsWithZero(v)
+
+            if matched is not None:
                 return False
 
         return True 
@@ -25,7 +31,6 @@ class FEDNoUnitAfterZero(RuleChecker):
         for v in rule.fixedValue.split(' '):
             v = v.strip()
             if v.find('(') != -1:
-                #handle spacial case, eg:  rgba(0xxx
                 matched = self._startsWithZero(v.split('(')[1])
             else:
                 matched = self._startsWithZero(v)
