@@ -11,17 +11,14 @@ def _singleLine():
     equal(msg, 
 '''.test {
     width: '100px';
+    margin: 0 auto;
     color: #DDD;
-    margin: 0 auto 0 auto;
 }
 
 .test2 {
     width: '100px';
+    margin: 0 auto;
     color: #DDD;
-    margin-top: 0;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 0;
 }''', 'safe mode true, fix is ok')
 
 def _multiLine():

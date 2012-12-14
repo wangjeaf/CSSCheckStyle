@@ -50,7 +50,7 @@ class CssChecker():
         include = self.config.include
         exclude = self.config.exclude
         safeMode = self.config.safeMode
-        safeModeExcludes = 'combine-same-rulesets,keep-in-order,combine-into-one'
+        safeModeExcludes = 'combine-same-rulesets'
 
         for filename in os.listdir(pluginDir):
             if not filename.endswith('.py') or filename.startswith('_'):

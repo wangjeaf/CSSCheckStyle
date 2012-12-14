@@ -19,7 +19,7 @@ class FEDNoUnitAfterZero(RuleChecker):
             else:
                 matched = self._startsWithZero(v)
 
-            if matched is not None:
+            if matched is not None and matched != '0s':
                 return False
 
         return True 
@@ -35,7 +35,7 @@ class FEDNoUnitAfterZero(RuleChecker):
             else:
                 matched = self._startsWithZero(v)
 
-            if matched is not None:
+            if matched is not None and matched != '0s':
                 collector.append(v.replace(matched, '0'))
             else:
                 collector.append(v)
