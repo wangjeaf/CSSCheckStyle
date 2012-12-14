@@ -23,13 +23,14 @@ class ExtraStatement(RuleSet):
         return self.operator.find('@-css-compiler') != -1
 
     def compress(self):
-        msg = self.statement.strip().replace('\r', '').replace('\n', '').replace(' ' * 4, ' ').replace(';}', '}')
+        msg = self.statement.strip().replace('\r', '').replace('\n', '').replace(' ' * 4, ' ')
         msg = replacer1.sub('{', msg)
         msg = replacer2.sub(':', msg)
         msg = replacer3.sub('}', msg)
         msg = replacer4.sub(';', msg)
         msg = replacer5.sub(' ', msg)
-        if not msg.endswith(';'):
+        msg = msg.strip()
+        if not msg.endswith('}') and not msg.endswith(';'):
             msg = msg + ';'
         return msg
 

@@ -19,6 +19,7 @@ class NestedStatement():
         return self.selector + ' {\n' + self.roughStatement + '\n}'
 
     def _compressedStatement(self):
+        # TODO
         return '{' + self.statement.replace('\r', '').replace('\n', '').replace(' ' * 4, '').replace(': ', ':').replace(';}', '}') + '}'
 
     def __str__(self):
