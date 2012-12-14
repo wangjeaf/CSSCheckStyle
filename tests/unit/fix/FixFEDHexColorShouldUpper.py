@@ -36,7 +36,7 @@ def _color():
     equal(ruleSet.getRuleByName('color4').fixedValue, '#DDD', 'color4 ok')
     equal(ruleSet.getRuleByName('color5').fixedValue, '#DFC', 'color5 ok')
     equal(ruleSet.getRuleByName('color6').fixedValue, '#ABCDEF', 'color6 ok')
-    equal(ruleSet.getRuleByName('color7').fixedValue, '#ABCDEF', 'color7 ok')
+    equal(ruleSet.getRuleByName('color7').fixedValue, '#ABCDEFGH', 'color7 ok')
     equal(ruleSet.getRuleByName('color8').fixedValue, '#ABCDEF', 'color8 ok')
     equal(ruleSet.getRuleByName('color9').fixedValue, '#FFF', 'color9 ok')
     equal(ruleSet.getRuleByName('color10').fixedValue, '#FFF', 'color10 ok')

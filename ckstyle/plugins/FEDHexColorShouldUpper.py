@@ -1,4 +1,7 @@
 from Base import *
+import re
+
+pattern = re.compile(r'#([a-f0-9A-F]+)')
 
 class FEDHexColorShouldUpper(RuleChecker):
     def __init__(self):
@@ -82,6 +85,11 @@ class FEDHexColorShouldUpper(RuleChecker):
         found = []
         for x in splited:
             x = x.strip()
-            if x.startswith('#'):
-                found.append(x.split('!important')[0][1:].split(',')[0])
+            matcher = pattern.findall(x)
+            if matcher is not None:
+                found.extend(matcher)
+            #if x.startswith('#'):
+            #    found.append(x.split('!important')[0][1:].split(',')[0].split(')')[0])
+            #elif x.find('(#') != -1:
+            #    found.append(x.split('(#')[1].split('!important')[0].split(',')[0].split(')')[0])
         return found
