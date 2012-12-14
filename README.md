@@ -215,8 +215,8 @@ border-radius:3px
 ckstyle(检查)/fixstyle(自动修复)/compress(压缩，同名工具csscompress) 三个工具的命令行参数基本相同
 
 不同之处：
-* fixstyle给出了额外的参数：--fixedExtension（修复后文件的扩展名）, --singleLine（自动修复并以单行模式格式化），--safeMode（安全模式，不对原有代码做大改动）
-* compress给出了额外的参数：--safeMode（安全模式，不对原有代码做大改动），--browsers（是否分浏览器压缩）, --compressExtension（压缩后文件的扩展名）, --combineFile（是否将多个压缩后文件合并），这些参数目前有的尚未实现~~~
+* fixstyle给出了额外的参数：--fixedExtension（修复后文件的扩展名）, --singleLine（自动修复并以单行模式格式化），--safeMode（安全模式，不做某些“本工具不能完全保证正确”的修复）
+* compress给出了额外的参数：--safeMode（安全模式，不做某些“本工具不能完全保证正确”的修复），--browsers（是否分浏览器压缩）, --compressExtension（压缩后文件的扩展名）, --combineFile（是否将多个压缩后文件合并），这些参数目前有的尚未实现~~~
 
 ### Examples
 <pre>
@@ -271,7 +271,7 @@ standard           [=standard.css] 给一个标准的css文件，检查时遵照
 ignore-rule-sets   [=@unit-test-expecteds] 忽略的一些规则集
 fixed-extension    [=.fixed.css] 修复后文件的扩展名
 fix-to-single-line [=false] 是否自动修复成一行
-safe-mode          [=false] 是否允许对原有代码做大改动，比如合并属性、合并规则、规则排序
+safe-mode          [=false] 是否尝试做某些“本工具不能完全保证正确”的修复，true为不尝试，false为尝试
 
 extension(compress)[=.min.css] 压缩后的文件扩展名
 combine-file       [=all.min.css] 压缩多个文件合并成一个的文件名
