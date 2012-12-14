@@ -1,4 +1,7 @@
 from Base import *
+import re
+
+pattern = re.compile(r'(0\s*[\w]+)')
 
 class FEDNoUnitAfterZero(RuleChecker):
     def __init__(self):
@@ -10,7 +13,7 @@ class FEDNoUnitAfterZero(RuleChecker):
 
         values = rule.value.split(' ')
         for v in values:
-            if self._startsWithZero(v.strip()):
+            if self._startsWithZero(v.strip()) is not None:
                 return False
 
         return True 
@@ -21,12 +24,21 @@ class FEDNoUnitAfterZero(RuleChecker):
         collector = []
         for v in rule.fixedValue.split(' '):
             v = v.strip()
-            if self._startsWithZero(v):
-                collector.append('0')
+            if v.find('(') != -1:
+                #handle spacial case, eg:  rgba(0xxx
+                matched = self._startsWithZero(v.split('(')[1])
+            else:
+                matched = self._startsWithZero(v)
+
+            if matched is not None:
+                collector.append(v.replace(matched, '0'))
             else:
                 collector.append(v)
 
         rule.fixedValue = ' '.join(collector)
 
     def _startsWithZero(self, value):
-        return value.startswith('0') and value != '0' and value[1] != '.'
+        matcher = pattern.match(value)
+        if matcher is not None:
+            return matcher.group()
+        return None
