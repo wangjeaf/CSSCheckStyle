@@ -209,10 +209,10 @@ border-radius:3px
 }
 ```
 ## Usage
-### 关于ckstyle / fixstyle / compress的命令行参数说明
+### 关于ckstyle / fixstyle / compress(compresscss)的命令行参数说明
 通过 command -h / command --help可以查看命令的帮助，例如： `compress -h`  `compress --help`
 
-ckstyle(检查)/fixstyle(自动修复)/compress(压缩) 三个工具的命令行参数基本相同
+ckstyle(检查)/fixstyle(自动修复)/compress(压缩，同名工具compresscss) 三个工具的命令行参数基本相同
 
 不同之处：
 * fixstyle给出了额外的参数：--fixedExtension（修复后文件的扩展名）, --singleLine（自动修复并以单行模式格式化），--safeMode（安全模式，不对原有代码做大改动）
@@ -240,10 +240,16 @@ ckstyle -c xxx.ini -r -p --extension=.test.txt --include=all --exclude=none --er
 -r              递归检查所有文件
 -p              将结果打印到控制台（同时删除已有的对应的结果文件）
 -c / --config   指定配置文件（默认使用~/ckstyle.ini）
---include       指定包含的规则
---exclude       指定除外的规则
+--include       指定包含的规则（多个规则请以逗号分隔，例如: rule1,rule2,rule3）
+--exclude       指定除外的规则（格式同--include）
 --extension     指定扩展名
 --errorLevel    指定检查出的异常等级(0-error, 1-warning, 2-log)
+
+// for fix and compress
+--fixedExtension 修复后文件的扩展名，如.fixed.css，none为替换原文件（将生成一个.bak文件保存原文件）
+--compressExtension 压缩后文件的扩展名，如.min.css，none为替换原文件（将生成一个.bak文件保存原文件）
+--safeMode      修复和压缩的安全模式
+--singleLine    自动修复成单行模式（默认是多行模式）
 </pre>
 
 ### Config File
