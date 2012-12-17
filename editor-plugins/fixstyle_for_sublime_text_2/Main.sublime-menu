@@ -1,0 +1,19 @@
+[
+    {
+        "id": "tools",
+        "caption": "Tools",
+        "children":
+        [
+            {
+                "id": "fixstyle",
+                "caption": "Fixstyle",
+                "command": "fixstyle"
+            },
+            {
+                "id": "csscompress",
+                "caption": "CssCompress",
+                "command": "csscompress"
+            }
+        ]
+    }
+]

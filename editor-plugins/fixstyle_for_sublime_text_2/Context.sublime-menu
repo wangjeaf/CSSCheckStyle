@@ -1,0 +1,10 @@
+[
+    {
+        "caption": "Fixstyle",
+        "command": "fixstyle"
+    },
+    {
+        "caption": "CssCompress",
+        "command": "csscompress"
+    }
+]
