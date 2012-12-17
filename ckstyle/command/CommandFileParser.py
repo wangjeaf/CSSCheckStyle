@@ -61,6 +61,7 @@ class CommandFileParser():
         args.extension      = get       (config, 'compress', 'extension',       args.extension)
         args.combineFile    = getBoolean(config, 'compress', 'combine-file',    args.combineFile)
         args.browsers       = getBoolean(config, 'compress', 'browsers',        args.browsers)
+        args.noBak          = getBoolean(config, 'compress', 'no-bak',          args.noBak)
 
     def handleCkStyleOptions(self, config):
         args = self.args
@@ -72,6 +73,7 @@ class CommandFileParser():
         args.extension  = get       (config, 'ckstyle', 'extension',   args.extension)
         args.standard   = get       (config, 'ckstyle', 'standard',    args.standard)
         args.safeMode   = getBoolean(config, 'ckstyle', 'safe-mode',   args.safeMode)
+        args.noBak      = getBoolean(config, 'ckstyle', 'no-bak',      args.noBak)
 
         args.fixedExtension   = get       (config, 'ckstyle', 'fixed-extension',    args.fixedExtension)
         args.fixToSingleLine  = getBoolean(config, 'ckstyle', 'fix-to-single-line', args.fixToSingleLine)

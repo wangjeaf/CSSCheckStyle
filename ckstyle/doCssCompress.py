@@ -33,9 +33,10 @@ def compressFile(filePath, config = defaultConfig):
         console.show('[compress] compressing %s' % filePath)
     checker, message = doCompress(fileContent, filePath, config)
 
+    path = filePath
     if extension is None:
-        path = filePath
-        open(path + '.bak', 'w').write(fileContent)
+        if config.compressConfig.noBak is False:
+            open(path + '.bak', 'w').write(fileContent)
     else:
         path = os.path.realpath(filePath.split('.css')[0] + extension)
     if config.printFlag:

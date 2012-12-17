@@ -12,6 +12,7 @@ class CommandArgs():
         self.fixToSingleLine = False
         self.compressConfig = CompressArgs()
         self.safeMode = False
+        self.noBak = False
 
     def __str__(self):
         return 'errorLevel: %s\n recursive: %s\n printFlag: %s\n extension: %s\n include: %s\n exclude: %s' % (self.errorLevel, self.recursive, self.printFlag, self.extension, self.include, self.exclude)
@@ -21,6 +22,7 @@ class CompressArgs():
         self.extension = '.min.css'
         self.combineFile = True
         self.browsers = False
+        self.noBak = False
 
     def __str__(self):
         return 'extension: %s, combineFile: %s, browsers: %s' % (self.recursive, self.extension, self.combineAttr, self.combineRuleSet, self.combineFile, self.browsers)

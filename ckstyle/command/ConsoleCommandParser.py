@@ -121,6 +121,7 @@ def parseFixStyleCmdArgs(defaultConfigFile, opts, args, debug = False):
     extension = None
     singleLine = None
     safeMode = None
+    noBak = None
     for op, value in opts:
         if op == "--help" or op == '-h':
             usage_fix()
@@ -131,12 +132,15 @@ def parseFixStyleCmdArgs(defaultConfigFile, opts, args, debug = False):
             singleLine = True
         elif op == '--safeMode':
             safeMode = True
+        elif op == '--noBak':
+            noBak = True
 
     config = parseCkStyleCmdArgs(defaultConfigFile, opts, args, debug, True)
 
     if extension is not None: config.fixedExtension = extension
     if singleLine is not None: config.fixToSingleLine = singleLine
     if safeMode is not None: config.safeMode = safeMode
+    if noBak is not None: config.noBak = noBak
     return config
 
 def parseCompressCmdArgs(defaultConfigFile, opts, args, debug = False):
@@ -146,6 +150,7 @@ def parseCompressCmdArgs(defaultConfigFile, opts, args, debug = False):
     extension = None
     combineFile = None
     safeMode = None
+    noBak = None
     for op, value in opts:
         if op == "--help" or op == '-h':
             usage_compress()
@@ -158,6 +163,8 @@ def parseCompressCmdArgs(defaultConfigFile, opts, args, debug = False):
             combineFile = getValue(value).lower() == 'true'
         elif op == '--safeMode':
             safeMode = True
+        elif op == '--noBak':
+            noBak = True
 
     config = parseCkStyleCmdArgs(defaultConfigFile, opts, args, debug, True)
     args = config.compressConfig
@@ -167,6 +174,7 @@ def parseCompressCmdArgs(defaultConfigFile, opts, args, debug = False):
     if browsers is not None: args.browsers = browsers
     if extension is not None: args.extension = extension
     if combineFile is not None: args.combineFile = combineFile
+    if noBak is not None: args.noBak = noBak
 
     return config
 
@@ -213,7 +221,7 @@ def handleCkStyleCmdArgs():
     _handle(options, dirHandler, fileHandler, argsParser, operation)
 
 def handleCompressCmdArgs():
-    options = ["help", "config=", "errorLevel=", "extension=", "include=", "exclude=", "browsers=", "compressExtension=", "combineFile=", "safeMode"]
+    options = ["help", "config=", "errorLevel=", "extension=", "include=", "exclude=", "browsers=", "compressExtension=", "combineFile=", "safeMode", "noBak"]
     dirHandler = compressDir
     fileHandler = compressFile
     argsParser = parseCompressCmdArgs
@@ -221,7 +229,7 @@ def handleCompressCmdArgs():
     _handle(options, dirHandler, fileHandler, argsParser, operation)
 
 def handleFixStyleCmdArgs():
-    options = ["help", "config=", "errorLevel=", "extension=", "include=", "exclude=", "fixedExtension=", "singleLine", "safeMode"]
+    options = ["help", "config=", "errorLevel=", "extension=", "include=", "exclude=", "fixedExtension=", "singleLine", "safeMode", "noBak"]
     dirHandler = fixDir
     fileHandler = fixFile
     argsParser = parseFixStyleCmdArgs

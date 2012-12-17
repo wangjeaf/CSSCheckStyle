@@ -17,11 +17,13 @@ def _missing():
     equal(config.fixToSingleLine, False, 'fix to single line is false')
     equal(config.safeMode, False, 'safemode is false by file')
     equal(len(config.ignoreRuleSets), 1, 'one ignored rule set')
+    equal(config.noBak, False, 'no bak is False by default')
 
     args = config.compressConfig
     equal(args.combineFile, True, 'combine file is still True')
     equal(args.browsers, False, 'browsers is false')
     equal(args.extension, '.lala.min.css', 'extension changed')
+    equal(args.noBak, False, 'no bak is False by default')
 
 def _configed():
     config = parseConfigFile('ckstyle_configed.ini')
@@ -36,11 +38,13 @@ def _configed():
     equal(len(config.ignoreRuleSets), 2, 'two ignored rule sets')
     equal(config.fixToSingleLine, True, 'fix to single line is true')
     equal(config.safeMode, True, 'safemode is True by file')
+    equal(config.noBak, True, 'no bak is True by file')
 
     args = config.compressConfig
     equal(args.combineFile, True, 'combine file is True')
     equal(args.browsers, True, 'browsers is True')
     equal(args.extension, '.min3.css', 'extension changed')
+    equal(args.noBak, True, 'no bak is True')
 
 def _default():
     config = parseConfigFile('ckstyle.ini')

@@ -34,9 +34,10 @@ def fixFile(filePath, config = defaultConfig):
 
     checker, msg = doFix(fileContent, filePath, config)
 
+    path = filePath
     if extension is None:
-        path = filePath
-        open(path + '.bak', 'w').write(fileContent)
+        if config.noBak is False:
+            open(path + '.bak', 'w').write(fileContent)
     else:
         path = os.path.realpath(filePath.split('.css')[0] + extension)
 
