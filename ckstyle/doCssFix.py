@@ -42,7 +42,7 @@ def fixFile(filePath, config = defaultConfig):
         path = os.path.realpath(filePath.split('.css')[0] + extension)
 
     if config.printFlag:
-        if os.path.exists(path):
+        if extension is not None and os.path.exists(path):
             os.remove(path)
         console.show(msg)
     else:
