@@ -15,8 +15,18 @@ class FixstylesafeCommand(sublime_plugin.TextCommand):
             sublime.error_message(returnValue)
         else:
             region = sublime.Region(0, self.view.size())
+            msg = self.getRealMsg(returnValue)
             try:
-                self.view.replace(edit, region, returnValue.decode('utf-8'))
+                self.view.replace(edit, region, msg)
             except Exception:
-                sublime.error_message('not utf-8, wrong file encoding charset');
+                sublime.error_message('ERROR, maybe because file encoding charset is not utf-8');
             self.view.end_edit(edit)
+
+    def getRealMsg(self, msg):
+        for charset in ['utf-8', 'gbk', 'gb2312']:
+            try:
+                msg.decode(charset)
+                return msg.decode(charset)
+            except Exception:
+                pass
+        return msg
