@@ -11,7 +11,7 @@
 
 ### 使用方法
 
-* Fixstyle快捷键暂定为：`Ctrl + F1` ，CssCompress无快捷键
+* Fixstyle快捷键：`alt + tab` ，CssCompress无快捷键
 
 * 菜单项：`tools->Fixstyle`   `tools->CssCompress`
 

@@ -5,7 +5,7 @@ import os
 class FixstylesafeCommand(sublime_plugin.TextCommand):
 
     def run(self, edit):
-        path = os.path.realpath(self.view.file_name()).encode('utf-8')
+        path = os.path.realpath(self.view.file_name()).decode('utf-8')
         cmd = 'fixstyle --safeMode -p "' + path + '"'
         returnValue = os.popen3(cmd)
 
@@ -15,5 +15,8 @@ class FixstylesafeCommand(sublime_plugin.TextCommand):
             sublime.error_message(returnValue)
         else:
             region = sublime.Region(0, self.view.size())
-            self.view.replace(edit, region, returnValue)
+            try:
+                self.view.replace(edit, region, returnValue.decode('utf-8'))
+            except Exception:
+                sublime.error_message('not utf-8, wrong file encoding charset');
             self.view.end_edit(edit)
