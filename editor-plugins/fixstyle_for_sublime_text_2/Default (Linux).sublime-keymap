@@ -1,5 +1,5 @@
 [
     {
-        "keys": ["shift+tab"], "command": "fixstyle"
+        "keys": ["ctrl+f1"], "command": "fixstyle"
     }
 ]

@@ -23,7 +23,7 @@ NPP_SENDMSG NPPM_RELOADFILE 0 "$(FULL_CURRENT_PATH)"
 
 * 选中`Place to the Macros menu`，重启Notepad++即可在“宏”菜单中找到`Fixstyle`，点击即可运行
 
-* 在`设置->管理快捷键`的`Plugin commands`选项卡中，找到`Fixstyle`，为Fixstyle设置快捷键（例如：Shift + Tab），即可用此命令运行Fixstyle。
+* 在`设置->管理快捷键`的`Plugin commands`选项卡中，找到`Fixstyle`，为Fixstyle设置快捷键（例如：Ctrl + F1），即可用此命令运行Fixstyle。
 
 * `FixstyleSafe`的设置方式参考Fixstyle，其脚本内容为：
 
