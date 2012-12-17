@@ -3,6 +3,7 @@ CSSCheckStyle
 ## Catalog
 * <a href="https://github.com/wangjeaf/CSSCheckStyle#description">Description</a>
 * <a href="https://github.com/wangjeaf/CSSCheckStyle#installation">Installation</a>
+* <a href="https://github.com/wangjeaf/CSSCheckStyle#editor-plugins">Editor plugins</a>
 * <a href="https://github.com/wangjeaf/CSSCheckStyle#demo-parse---fix---compress">Demo (parse -> fix -> compress)</a>
 * <a href="https://github.com/wangjeaf/CSSCheckStyle#demo-parse---check">Demo (parse -> check)</a>
 * <a href="https://github.com/wangjeaf/CSSCheckStyle#usage">Usage</a>
@@ -26,6 +27,22 @@ CSSCheckStyle
 
 ## Installation
 **easy_install https://github.com/wangjeaf/CSSCheckStyle/archive/master.tar.gz**
+
+## Editor plugins
+目前已经为 VIM / Sublime Text 2 / Notepad ++ 开发了ckstyle插件，可供使用。
+
+不同编辑器实现的命令调用方式如下：
+
+* VIM（command命令）
+* Sublime Text 2（快捷键Ctrl+F1，右键菜单项，tools菜单项）
+* notepad++（快捷键Ctrl+F1，宏菜单项）
+
+各编辑器插件均实现了以下三种操作：
+* Fixstyle（自动修复CSS代码）
+* FixstyleSafe（安全模式下自动修复CSS代码，目前仅排除合并规则集）
+* CssCompress（压缩CSS代码）
+
+所有编辑器插件都在 `editor-plugins` 目录下。
 
 ## Demo (parse -> fix -> compress)
 ### 说明
