@@ -1,4 +1,22 @@
+import re
+replacer1 = re.compile('\s*{\s*')
+replacer2 = re.compile('\s*:\s*')
+replacer3 = re.compile('\s*;\s*}\s*')
+replacer4 = re.compile('\s*;\s*')
+replacer5 = re.compile('\s\s+')
+
 class Cleaner():
+    @staticmethod
+    def clean(msg):
+        msg = msg.strip().replace('\r', '').replace('\n', '').replace(' ' * 4, ' ')
+        msg = replacer1.sub('{', msg)
+        msg = replacer2.sub(':', msg)
+        msg = replacer3.sub('}', msg)
+        msg = replacer4.sub(';', msg)
+        msg = replacer5.sub(' ', msg)
+        msg = msg.strip()
+        return msg
+
     @staticmethod
     def clearName(name):
         name = name.strip()

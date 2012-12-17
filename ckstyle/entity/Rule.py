@@ -26,12 +26,12 @@ class Rule():
     def compress(self):
         name = self.name if self.fixedName == '' else self.fixedName.strip()
         value = self.value if self.fixedValue == '' else self.fixedValue.strip()
-        return name + ':' + value + ';'
+        return name + ':' + Cleaner.clean(value) + ';'
 
     def fixed(self):
         name = self.name if self.fixedName == '' else self.fixedName
         value = self.value if self.fixedValue == '' else self.fixedValue
-        return name + ': ' + value + ';'
+        return name + ': ' + Cleaner.clean(value) + ';'
 
     def getRuleSet(self):
         return self.ruleSet

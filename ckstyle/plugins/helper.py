@@ -14,7 +14,7 @@ def getAttrOrder(attr, strippedName):
             attr = '-'.join(splited)
             if cssAttrOrders.has_key(attr):
                 return cssAttrOrders[attr] + addCss3PrefixValue(strippedName)
-    return 2000
+    return 2000 + addCss3PrefixValue(strippedName)
 
 def addCss3PrefixValue(attr):
     value = 0

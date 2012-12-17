@@ -6,6 +6,7 @@ def doTest():
     _with_extra()
     _compress_with_hack_chars()
     _extra_statement()
+    _expression()
 
 def _basic():
     msg = doCssFileCompress('_file.css')
@@ -26,3 +27,7 @@ def _compress_with_hack_chars():
 def _extra_statement():
     msg = doCssFileCompress('_extra_statement.css')
     equal(msg, "@-css-compiler{selector-compile:no-combinator;rule-compile:all}@charset utf-8;@-css-compiler-xxx fdasfdas;@import url(fdafdas/fdafdas.css);", 'extra statement compressed')
+
+def _expression():
+    msg = doCssFileCompress('_expression.css')
+    equal(msg, "*html .feed-comment textarea{behavior:expression(function(ele){ele.runtimeStyle.behavior='none';Expressions.pseudo.hover(ele, 'textarea_hover')}(this))}", 'expression compressed')
