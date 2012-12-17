@@ -13,6 +13,11 @@
                 "id": "csscompress",
                 "caption": "CssCompress",
                 "command": "csscompress"
+            },
+            {
+                "id": "fixstyleSafe",
+                "caption": "FixstyleSafe",
+                "command": "fixstylesafe"
             }
         ]
     }

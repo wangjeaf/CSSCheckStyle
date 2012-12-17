@@ -1,5 +1,12 @@
-ckstyle的notepad++插件安装配置过程
-===
+##ckstyle的notepad++插件安装配置过程
+
+###功能
+* Fixstyle 代码修复
+* FixstyleSafe 安全模式修复
+* CssCompress 压缩代码
+
+###插件的安装过程
+
 * 安装 notepad++ 的 NppExec 插件
 
 * 在`Plugins -> NppExec -> Execute`弹出的对话框内，添加如下内容：
@@ -17,6 +24,14 @@ NPP_SENDMSG NPPM_RELOADFILE 0 "$(FULL_CURRENT_PATH)"
 * 选中`Place to the Macros menu`，重启Notepad++即可在“宏”菜单中找到`Fixstyle`，点击即可运行
 
 * 在`设置->管理快捷键`的`Plugin commands`选项卡中，找到`Fixstyle`，为Fixstyle设置快捷键（例如：Shift + Tab），即可用此命令运行Fixstyle。
+
+* `FixstyleSafe`的设置方式参考Fixstyle，其脚本内容为：
+
+```
+npp_console off
+fixstyle --noBak --safeMode --fixedExtension=none "$(FULL_CURRENT_PATH)"
+NPP_SENDMSG NPPM_RELOADFILE 0 "$(FULL_CURRENT_PATH)"
+```
 
 * `CssCompress`的设置方式参考Fixstyle，其脚本内容为：
 

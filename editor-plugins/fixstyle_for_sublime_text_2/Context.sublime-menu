@@ -4,6 +4,10 @@
         "command": "fixstyle"
     },
     {
+        "caption": "FixstyleSafe",
+        "command": "fixstylesafe"
+    },
+    {
         "caption": "CssCompress",
         "command": "csscompress"
     }

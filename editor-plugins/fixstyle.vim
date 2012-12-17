@@ -25,6 +25,19 @@ function! g:Fixstyle(a)
 	:put!0
 endfunction
 
+function! g:FixstyleSafe(a)
+	if !s:is_css()
+		echo "Not a CSS file."
+		return
+	endif
+
+    let ret = system("fixstyle -p --safeMode ".expand('%:t'))
+
+	:g/.*/d
+	let @0 = ret
+	:put!0
+endfunction
+
 function! g:CssCompress(a)
 	if !s:is_css()
 		echo "Not a CSS file."
@@ -39,4 +52,5 @@ function! g:CssCompress(a)
 endfunction
 
 command! -nargs=? -range=% Fixstyle :call g:Fixstyle(<count>, <f-args>)
+command! -nargs=? -range=% FixstyleSafe :call g:FixstyleSafe(<count>, <f-args>)
 command! -nargs=? -range=% CssCompress :call g:CssCompress(<count>, <f-args>)
