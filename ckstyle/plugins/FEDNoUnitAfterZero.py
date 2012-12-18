@@ -13,6 +13,7 @@ class FEDNoUnitAfterZero(RuleChecker):
     def check(self, rule, config):
 
         values = rule.value.split(' ')
+
         for v in values:
             v = v.strip()
             if v.find('(') != -1:
@@ -20,8 +21,12 @@ class FEDNoUnitAfterZero(RuleChecker):
             else:
                 matched = self._startsWithZero(v)
 
-            if matched is not None and matched != '0s':
-                return False
+            if matched is None:
+                continue
+
+            for m in matched:
+                if m != '0s':
+                    return False
 
         return True 
 
@@ -39,9 +44,11 @@ class FEDNoUnitAfterZero(RuleChecker):
                 matched = self._startsWithZero(v.split('(')[1])
             else:
                 matched = self._startsWithZero(v)
+
             if matched is None:
                 collector.append(v)
                 continue
+
             finalV = v;
             for m in matched:
                 if m != '0s':

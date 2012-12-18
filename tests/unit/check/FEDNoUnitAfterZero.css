@@ -23,6 +23,13 @@
     padding: 1px 0px;
 }
 
+.test-second {
+    -webkit-animation: rotation 0s linear infinite;
+       -moz-animation: rotation 0s linear infinite;
+         -o-animation: rotation 0s linear infinite;
+            animation: rotation 0s linear infinite;
+}
+
 .test-padding-start-with-zero {
     padding: 0 1px 0 1px;
 }
