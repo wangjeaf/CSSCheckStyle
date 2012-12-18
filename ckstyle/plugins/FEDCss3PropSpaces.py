@@ -37,4 +37,4 @@ class FEDCss3PropSpaces(RuleChecker):
 
         fixedName = rule.fixedName
         prefix = fixedName.split(name)[0]
-        rule.fixedName = (8 - len(prefix)) * ' ' + fixedName
+        rule.fixedName = ((8 - len(prefix)) * ' ' if not config.fixToSingleLine else '') + fixedName

@@ -8,6 +8,10 @@
         "command": "fixstylesafe"
     },
     {
+        "caption": "FixstyleSingleLine",
+        "command": "fixstylesingleline"
+    },
+    {
         "caption": "CssCompress",
         "command": "csscompress"
     }

@@ -15,6 +15,11 @@
                 "command": "csscompress"
             },
             {
+                "id": "fixstyleSingleLine",
+                "caption": "FixstyleSingleLine",
+                "command": "fixstylesingleline"
+            },
+            {
                 "id": "fixstyleSafe",
                 "caption": "FixstyleSafe",
                 "command": "fixstylesafe"

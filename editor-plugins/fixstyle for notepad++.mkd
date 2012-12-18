@@ -2,6 +2,7 @@
 
 ###功能
 * Fixstyle 代码修复
+* FixstyleSingleLine 修复成单行模式
 * FixstyleSafe 安全模式修复
 * CssCompress 压缩代码
 
@@ -30,6 +31,14 @@ NPP_SENDMSG NPPM_RELOADFILE 0 "$(FULL_CURRENT_PATH)"
 ```
 npp_console off
 fixstyle --noBak --safeMode --fixedExtension=none "$(FULL_CURRENT_PATH)"
+NPP_SENDMSG NPPM_RELOADFILE 0 "$(FULL_CURRENT_PATH)"
+```
+
+* `FixstyleSingleLine`的设置方式参考Fixstyle，其脚本内容为：
+
+```
+npp_console off
+fixstyle --noBak --singleLine --fixedExtension=none "$(FULL_CURRENT_PATH)"
 NPP_SENDMSG NPPM_RELOADFILE 0 "$(FULL_CURRENT_PATH)"
 ```
 
