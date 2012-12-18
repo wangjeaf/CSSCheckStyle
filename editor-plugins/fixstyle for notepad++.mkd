@@ -14,6 +14,7 @@
 
 ```
 npp_console off
+npp_save
 fixstyle --noBak --fixedExtension=none "$(FULL_CURRENT_PATH)"
 NPP_SENDMSG NPPM_RELOADFILE 0 "$(FULL_CURRENT_PATH)"
 ```
@@ -30,6 +31,7 @@ NPP_SENDMSG NPPM_RELOADFILE 0 "$(FULL_CURRENT_PATH)"
 
 ```
 npp_console off
+npp_save
 fixstyle --noBak --safeMode --fixedExtension=none "$(FULL_CURRENT_PATH)"
 NPP_SENDMSG NPPM_RELOADFILE 0 "$(FULL_CURRENT_PATH)"
 ```
@@ -38,6 +40,7 @@ NPP_SENDMSG NPPM_RELOADFILE 0 "$(FULL_CURRENT_PATH)"
 
 ```
 npp_console off
+npp_save
 fixstyle --noBak --singleLine --fixedExtension=none "$(FULL_CURRENT_PATH)"
 NPP_SENDMSG NPPM_RELOADFILE 0 "$(FULL_CURRENT_PATH)"
 ```
@@ -46,6 +49,7 @@ NPP_SENDMSG NPPM_RELOADFILE 0 "$(FULL_CURRENT_PATH)"
 
 ```
 npp_console off
+npp_save
 csscompress --noBak --compressExtension=none "$(FULL_CURRENT_PATH)"
 NPP_SENDMSG NPPM_RELOADFILE 0 "$(FULL_CURRENT_PATH)"
 ```
