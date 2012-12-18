@@ -2,6 +2,7 @@ from Base import *
 import re
 
 pattern = re.compile(r'(0\s*[\w]+)')
+replacer = re.compile(',\s+')
 
 class FEDNoUnitAfterZero(RuleChecker):
     def __init__(self):
@@ -25,7 +26,11 @@ class FEDNoUnitAfterZero(RuleChecker):
         return True 
 
     def fix(self, rule, config):
+        if rule.name == 'expression':
+            return
+
         fixed = rule.fixedValue
+        rule.fixedValue = rule.fixedValue.replace(',', ', ')
 
         collector = []
         for v in rule.fixedValue.split(' '):
@@ -34,16 +39,19 @@ class FEDNoUnitAfterZero(RuleChecker):
                 matched = self._startsWithZero(v.split('(')[1])
             else:
                 matched = self._startsWithZero(v)
-
-            if matched is not None and matched != '0s':
-                collector.append(v.replace(matched, '0'))
-            else:
+            if matched is None:
                 collector.append(v)
+                continue
+            finalV = v;
+            for m in matched:
+                if m != '0s':
+                    finalV = finalV.replace(m, '0')
+            collector.append(finalV)
 
-        rule.fixedValue = ' '.join(collector)
+        rule.fixedValue = replacer.sub(', ', ' '.join(collector))
 
     def _startsWithZero(self, value):
         matcher = pattern.match(value)
         if matcher is not None:
-            return matcher.group()
+            return matcher.groups()
         return None

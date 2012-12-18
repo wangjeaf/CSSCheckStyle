@@ -1,6 +1,22 @@
 from helper import *
 
 def doTest():
+    _rgba()
+    _rgba_no_space()
+
+def _rgba_no_space():
+    css = '''.test1 {
+        box-shadow: inset 0 0px 0 0 rgba(0,0px,0px,0.1);
+    }'''
+
+    fixer, msg = doFix(css, '')
+    expectedFixed = '''.test1 {
+    box-shadow: inset 0 0 0 0 rgba(0, 0, 0, .1);
+}'''
+    equal(msg, expectedFixed, 'rgba no space is also ok')
+
+
+def _rgba():
     css = '''html {
         -webkit-tap-highlight-color: rgba(0px, 0px, 0px, 0.1);
     }'''
