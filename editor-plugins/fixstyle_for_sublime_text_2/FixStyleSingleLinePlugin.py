@@ -6,7 +6,7 @@ class FixstylesinglelineCommand(sublime_plugin.TextCommand):
 
     def run(self, edit):
         path = os.path.realpath(self.view.file_name()).decode('utf-8')
-        cmd = 'fixstyle --safeMode -p --singleLine "' + path + '"'
+        cmd = 'fixstyle -p --singleLine "' + path + '"'
         returnValue = os.popen3(cmd)
 
         returnValue = returnValue[1].read() + returnValue[2].read()
