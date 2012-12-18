@@ -1,4 +1,5 @@
 from helper import *
+from helper import *
 
 def doTest():
     _singleLine()

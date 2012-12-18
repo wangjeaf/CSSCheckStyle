@@ -21,9 +21,14 @@ class RuleSet():
         self.singleLineFlag = (len(self.roughValue.split('\n')) == 1)
 
     def extendSelector(self, other):
-        self.roughSelector = self.roughSelector + ',' + other.roughSelector
-        self.selector = self.selector + ',' + other.selector
-        self.fixedSelector = self.fixedSelector + ',' + other.fixedSelector
+        splited = [x.strip() for x in self.selector.split(',')]
+        otherSplited = [x.strip() for x in other.selector.split(',')]
+
+        for x in otherSplited:
+            if x not in splited:
+                self.selector = self.selector + ', ' + x
+                self.roughSelector = self.roughSelector + ', ' + x
+                self.fixedSelector = self.fixedSelector + ',' + x
 
         if len(other.comment) != 0 and self.comment.find(other.comment) == -1:
             # do not need duplicated comment
