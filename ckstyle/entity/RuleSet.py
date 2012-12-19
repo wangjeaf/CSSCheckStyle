@@ -21,8 +21,8 @@ class RuleSet():
         self.singleLineFlag = (len(self.roughValue.split('\n')) == 1)
 
     def extendSelector(self, other):
-        splited = [x.strip() for x in self.selector.split(',')]
-        otherSplited = [x.strip() for x in other.selector.split(',')]
+        splited = [x.strip() for x in self.selector.split(',') if x.strip() is not '']
+        otherSplited = [x.strip() for x in other.selector.split(',') if x.strip() is not '']
 
         for x in otherSplited:
             if x not in splited:
