@@ -1,5 +1,5 @@
 from Base import *
-from helper import isCss3Prop, isCss3PrefixProp
+from helper import isCss3Prop, isCss3PrefixProp, doNotNeedPrefixNow
 
 class FEDCss3PropSpaces(RuleChecker):
     def __init__(self):
@@ -19,6 +19,11 @@ class FEDCss3PropSpaces(RuleChecker):
         if not isCss3PrefixProp(name):
             return True
         
+        if doNotNeedPrefixNow(name):
+            # if exists prefix, then should keep spaces
+            if not rule.getRuleSet().existRoughNames('-webkit-%s,-moz-%s,-ms-%s,-o-%s' % (name,name,name,name)):
+                return True
+
         roughName = rule.roughName
 
         if rule.getRuleSet().singleLineFlag is False:

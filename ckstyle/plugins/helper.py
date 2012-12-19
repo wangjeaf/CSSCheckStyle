@@ -77,6 +77,14 @@ def isSimpleSelector(selector):
 def containsInArray(array, value):
     return value in array
 
+maybeDoNotNeedPrefix = 'border-radius'.split(' ')
+
+def doNotNeedPrefixNow(attr):
+    for x in maybeDoNotNeedPrefix:
+        if attr.find(x) != -1:
+            return True
+
+    return False
 
 # from https://github.com/stubbornella/csslint/wiki/Require-compatible-vendor-prefixes
 prefixCss3Props = 'animation animation-delay animation-direction animation-duration animation-fill-mode animation-iteration-count animation-name animation-play-state animation-timing-function appearance border-end border-end-color border-end-style border-end-width border-image border-radius border-start border-start-color border-start-style border-start-width box-align box-direction box-flex box-lines box-ordinal-group box-orient box-pack box-sizing box-shadow column-count column-gap column-rule column-rule-color column-rule-style column-rule-width column-width hyphens line-break margin-end margin-start marquee-speed marquee-style padding-end padding-start tab-size text-size-adjust transform transform-origin transition transition-delay transition-duration transition-property transition-timing-function user-modify user-select background-size writing-mode'.split(' ')

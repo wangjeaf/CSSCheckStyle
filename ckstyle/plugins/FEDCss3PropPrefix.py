@@ -1,5 +1,5 @@
 from Base import *
-from helper import isCss3Prop, isCss3PrefixProp
+from helper import isCss3Prop, isCss3PrefixProp, doNotNeedPrefixNow
 
 class FEDCss3PropPrefix(RuleChecker):
     def __init__(self):
@@ -19,6 +19,9 @@ class FEDCss3PropPrefix(RuleChecker):
             return True
 
         if not isCss3PrefixProp(name):
+            return True
+
+        if doNotNeedPrefixNow(name):
             return True
         
         ruleSet = rule.getRuleSet()
