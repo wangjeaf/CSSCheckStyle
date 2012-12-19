@@ -4,6 +4,7 @@
 * Fixstyle 代码修复
 * FixstyleSingleLine 修复成单行模式
 * FixstyleSafe 安全模式修复
+* CkStyle 检查代码问题
 * CssCompress 压缩代码
 
 ###插件的安装过程
@@ -44,6 +45,16 @@ npp_save
 fixstyle --noBak --singleLine --fixedExtension=none "$(FULL_CURRENT_PATH)"
 NPP_SENDMSG NPPM_RELOADFILE 0 "$(FULL_CURRENT_PATH)"
 ```
+
+* `CkStyle`的设置方式参考Fixstyle，其脚本内容为：
+
+```
+npp_console off
+npp_save
+ckstyle "$(FULL_CURRENT_PATH)"
+NPP_OPEN "$(FULL_CURRENT_PATH).ckstyle.txt"
+```
+如果报文件不存在是否创建，则说明代码没有问题（有点诡异哈，如果有对notepad++插件比较熟的，欢迎贡献）。
 
 * `CssCompress`的设置方式参考Fixstyle，其脚本内容为：
 

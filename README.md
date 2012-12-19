@@ -37,12 +37,16 @@ CSSCheckStyle
 * Sublime Text 2（快捷键Ctrl+F1，右键菜单项，tools菜单项）
 * notepad++（快捷键Ctrl+F1，宏菜单项）
 
-各编辑器插件均实现了以下三种操作：
+各编辑器插件均实现了以下几种操作：
 * Fixstyle（自动修复CSS代码）
 * FixstyleSafe（安全模式下自动修复CSS代码，目前仅排除合并规则集）
+* FixstyleSingleLine（修复成单行模式）
+* CkStyle（检查代码问题）
 * CssCompress（压缩CSS代码）
 
 所有编辑器插件都在 `editor-plugins` 目录下。
+
+目前插件的功能还比较初级，热烈欢迎熟悉插件开发的同学来贡献编辑器插件。
 
 ## Demo (parse -> fix -> compress)
 ### 说明

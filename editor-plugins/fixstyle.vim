@@ -51,6 +51,21 @@ function! g:FixstyleSafe(a)
 	:put!0
 endfunction
 
+function! g:Ckstyle(a)
+	if !s:is_css()
+		echo "Not a CSS file."
+		return
+	endif
+
+    let ret = system("ckstyle ".expand('%:t'))
+    if filereadable("".expand('%:t').".ckstyle.txt")
+        echo "[ckstyle] has error, @see ".expand('%:t').".ckstyle.txt"
+    else
+        echo "[ckstyle] No mistake found in this CSS, NB!"
+    endif
+
+endfunction
+
 function! g:CssCompress(a)
 	if !s:is_css()
 		echo "Not a CSS file."
@@ -68,3 +83,5 @@ command! -nargs=? -range=% Fixstyle :call g:Fixstyle(<count>, <f-args>)
 command! -nargs=? -range=% FixstyleSafe :call g:FixstyleSafe(<count>, <f-args>)
 command! -nargs=? -range=% FixstyleSingleLine :call g:FixstyleSingleLine(<count>, <f-args>)
 command! -nargs=? -range=% CssCompress :call g:CssCompress(<count>, <f-args>)
+command! -nargs=? -range=% Ckstyle :call g:Ckstyle(<count>, <f-args>)
+
