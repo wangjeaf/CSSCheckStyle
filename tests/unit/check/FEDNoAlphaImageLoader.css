@@ -2,7 +2,7 @@
  * @author: zhifu.wang@renren-inc.com
  */
 @unit-test-expecteds {
-    0: should not use AlphaImageLoader in ".test"
+    1: should not use AlphaImageLoader in ".test"
     1: value of "background-image" should use lower case, in ".test"
 }
 

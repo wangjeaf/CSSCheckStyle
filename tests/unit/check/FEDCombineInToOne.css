@@ -36,3 +36,13 @@
     font-family: 'Microsoft Yahei';
     font-style: italic;
 }
+
+.test-font-only-two {
+    font-size: 12px;
+    font-style: italic;
+}
+
+.help-message-btn {
+    padding: 5px 0;
+    *padding: 6px 0 3px;
+}

@@ -15,7 +15,7 @@ class FEDCombineInToOne(RuleSetChecker):
         counter = self._countCanBeCombined(rules)
 
         for name, value in counter.items():
-            if len(value) > 1:
+            if name == 'font' and len(value) > 2 or name != 'font' and len(value) > 1:
                 self.errorMsg = self.errorMsg_rough % (','.join(value), name)
                 return False
         return True 
@@ -30,6 +30,9 @@ class FEDCombineInToOne(RuleSetChecker):
         counter = {}
         for rule in rules:
             name = rule.name
+            if rule.name != rule.strippedName:
+                continue
+                
             # -moz-border-radius, -o-border-radius is not for me
             if isCss3PrefixProp(name):
                 continue

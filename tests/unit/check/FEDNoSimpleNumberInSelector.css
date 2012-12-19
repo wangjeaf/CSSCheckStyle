@@ -2,10 +2,11 @@
  * @author: zhifu.wang@renren-inc.com
  */
 @unit-test-expecteds {
-    1: do not simply use 1,2,3 as selector, in ".class1"
-    1: do not simply use 1,2,3 as selector, in ".class2"
-    1: do not simply use 1,2,3 as selector, in ".class6"
-    1: do not simply use 1,2,3 as selector, in ".fdjas6"
+    1: do not simply use 1,2,3 as selector(use v1/step1/item1), in ".class1"
+    1: do not simply use 1,2,3 as selector(use v1/step1/item1), in ".class2"
+    1: do not simply use 1,2,3 as selector(use v1/step1/item1), in ".class6"
+    1: do not simply use 1,2,3 as selector(use v1/step1/item1), in ".fdjas6"
+    1: do not simply use 1,2,3 as selector(use v1/step1/item1), in ".test1000"
 }
 
 .class1 {
@@ -33,5 +34,13 @@
 }
 
 .fdjas6 {
+    width: 100px;
+}
+
+.test1000 {
+    width: 100px;
+}
+
+.test-item111 {
     width: 100px;
 }
