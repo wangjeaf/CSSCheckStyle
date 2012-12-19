@@ -12,6 +12,10 @@
         "command": "fixstylesingleline"
     },
     {
+        "caption": "CkStyle",
+        "command": "ckstyle"
+    },
+    {
         "caption": "CssCompress",
         "command": "csscompress"
     }

@@ -8,11 +8,11 @@
                 "id": "fixstyle",
                 "caption": "Fixstyle",
                 "command": "fixstyle"
-            },
+            },            
             {
-                "id": "csscompress",
-                "caption": "CssCompress",
-                "command": "csscompress"
+                "id": "fixstyleSafe",
+                "caption": "FixstyleSafe",
+                "command": "fixstylesafe"
             },
             {
                 "id": "fixstyleSingleLine",
@@ -20,9 +20,14 @@
                 "command": "fixstylesingleline"
             },
             {
-                "id": "fixstyleSafe",
-                "caption": "FixstyleSafe",
-                "command": "fixstylesafe"
+                "id": "ckstyle",
+                "caption": "CkStyle",
+                "command": "ckstyle"
+            },
+            {
+                "id": "csscompress",
+                "caption": "CssCompress",
+                "command": "csscompress"
             }
         ]
     }

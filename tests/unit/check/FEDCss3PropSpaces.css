@@ -23,6 +23,8 @@
     1: css3 prop "animation-delay" should keep in "-webkit-,-moz-,-ms-,-o-,std" order in ".not-keep-in-order"
 
     1: "-ms-animation-delay" should after "-webkit-animation-delay" in ".not-keep-in-order" (order: display/box/text/other/css3)
+    2: should have 1(only) space before css3 prop "-moz-animation-delay" in ".single-css-attr"
+    2: should have 1(only) space before css3 prop "-o-animation-delay" in ".single-css-attr"
 }
 
 .css-three-attrs-no-order {
@@ -32,6 +34,8 @@
     -o-animation-delay: 1;
     animation-delay: 1;
 }
+
+.single-css-attr { -webkit-animation-delay: 1;   -moz-animation-delay: 1; -ms-animation-delay: 1;  -o-animation-delay: 1; animation-delay: 1; }
 
 .border-radius-no-order {
     border-radius: 1;

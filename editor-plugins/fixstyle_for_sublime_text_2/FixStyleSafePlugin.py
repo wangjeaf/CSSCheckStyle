@@ -6,6 +6,10 @@ class FixstylesafeCommand(sublime_plugin.TextCommand):
 
     def run(self, edit):
         path = os.path.realpath(self.view.file_name()).decode('utf-8')
+        if os.path.splitext(path)[1] != '.css':
+            sublime.error_message('Not a CSS file!')
+            return
+            
         cmd = 'fixstyle --safeMode -p "' + path + '"'
         returnValue = os.popen3(cmd)
 

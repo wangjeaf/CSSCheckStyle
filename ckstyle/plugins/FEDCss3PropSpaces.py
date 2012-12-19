@@ -6,7 +6,9 @@ class FEDCss3PropSpaces(RuleChecker):
         self.id = 'css3-prop-spaces'
 
         self.errorLevel = ERROR_LEVEL.LOG
-        self.errorMsg = 'css3 prop "${name}" should align to right in "${selector}"'
+        self.errorMsg_multi = 'css3 prop "${name}" should align to right in "${selector}"'
+        self.errorMsg_single = 'should have 1(only) space before css3 prop "${name}" in "${selector}"'
+        self.errorMsg = ''
 
     def check(self, rule, config):
         name = rule.name
@@ -18,9 +20,16 @@ class FEDCss3PropSpaces(RuleChecker):
             return True
         
         roughName = rule.roughName
-        # 12 = 4 + 8, 4 spaces, 8 for align
-        if len(roughName.split(name)[0]) != 12:
-            return False
+
+        if rule.getRuleSet().singleLineFlag is False:
+            # 12 = 4 + 8, 4 spaces, 8 for align
+            if len(roughName.split(name)[0]) != 12:
+                self.errorMsg = self.errorMsg_multi
+                return False
+        else:
+            if roughName.startswith('  ') or not roughName.startswith(' '):
+                self.errorMsg = self.errorMsg_single
+                return False
         return True
 
     def fix(self, rule, config):
