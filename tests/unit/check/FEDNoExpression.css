@@ -32,3 +32,11 @@
 .expression-with-expressions {
     *width: expression(Expressions.style.width(this,this.offsetWidth-32));
 }
+
+.expression-with-runtime-style {
+    *width: expression(function() {this.runtimeStyle.width = 11;});
+}
+
+* html .with-star-html-do-not-need-hack {
+    width: expression(Expressions.style.width(this,this.offsetWidth-32));
+}

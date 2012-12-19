@@ -16,16 +16,12 @@ class FEDNoExpression(RuleChecker):
         if value.find('expression') == -1:
             return True
 
-        if replaced.find('Expressions') != -1:
-            if rule.name == rule.roughName.strip():
-                self.errorMsg = self.errorMsg_hack
-                return False
-            return True
-
-        if replaced.find('this.style.' + name + '=') != -1:
-            if rule.name == rule.roughName.strip():
-                self.errorMsg = self.errorMsg_hack
-                return False
+        if replaced.find('Expressions') != -1 or replaced.find('this.style.' + name + '=') != -1 or replaced.find('this.runtimeStyle.' + name + '=') != -1:
+            if rule.name == rule.strippedName:
+                selector = rule.selector.replace(' ', '')
+                if selector.find('*html') == -1:
+                    self.errorMsg = self.errorMsg_hack
+                    return False
             return True
 
         self.errorMsg = self.errorMsg_use
