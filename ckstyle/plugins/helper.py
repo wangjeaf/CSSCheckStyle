@@ -9,12 +9,15 @@ def getAttrOrder(attr, strippedName):
         return cssAttrOrders[attr] + addCss3PrefixValue(strippedName)
     if attr.find('-') != -1:
         splited = attr.split('-')
+        tmp = splited[0] + '-' + splited[len(splited) - 1]
+        if cssAttrOrders.has_key(tmp):
+            return cssAttrOrders[tmp] + addCss3PrefixValue(strippedName)
         while len(splited) != 0:
             splited = splited[0:-1]
-            attr = '-'.join(splited)
-            if cssAttrOrders.has_key(attr):
-                return cssAttrOrders[attr] + addCss3PrefixValue(strippedName)
-    return 2000 + addCss3PrefixValue(strippedName) - len(attr)
+            tmp = '-'.join(splited)
+            if cssAttrOrders.has_key(tmp):
+                return cssAttrOrders[tmp] + addCss3PrefixValue(strippedName)
+    return 6000 + addCss3PrefixValue(strippedName)
 
 def addCss3PrefixValue(attr):
     value = 0
@@ -80,6 +83,10 @@ def containsInArray(array, value):
 maybeDoNotNeedPrefix = 'border-radius'.split(' ')
 
 def doNotNeedPrefixNow(attr):
+    attr = attr.strip()
+    if attr.startswith('border') and attr.endswith('radius'):
+        return True
+
     for x in maybeDoNotNeedPrefix:
         if attr.find(x) != -1:
             return True
