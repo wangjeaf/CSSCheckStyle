@@ -36,6 +36,7 @@ CSSCheckStyle
 * VIM（command命令）
 * Sublime Text 2（快捷键Ctrl+F1，右键菜单项，tools菜单项）
 * notepad++（快捷键Ctrl+F1，宏菜单项）
+* EditPlus（工具菜单项，快捷键）
 
 各编辑器插件均实现了以下几种操作：
 * Fixstyle（自动修复CSS代码）
