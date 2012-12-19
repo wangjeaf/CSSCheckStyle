@@ -31,7 +31,12 @@ class FEDCombineSameRuleSets(StyleSheetChecker):
             for j in range(i + 1, length):                
                 if mapping[i][1] != mapping[j][1]:
                     selectorHistory.extend(splitedSelectors[j])
+                    continue                    
+                # bakcground-position is dangerous
+                if mapping[j][1].find('background-position') != -1:
+                    selectorHistory.extend(splitedSelectors[j])
                     continue
+
                 hasFlag = False
                 for x in splitedSelectors[j]:
                     if x in selectorHistory:

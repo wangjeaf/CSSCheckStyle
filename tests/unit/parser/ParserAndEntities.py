@@ -4,6 +4,14 @@ def doTest():
     _oneRule()
     _twoAndMoreRules()
     _rulesInComments()
+    _strangeComments()
+
+def _strangeComments():
+    parser = CssParser('/* test0 /* test1 */ .test {width: 100px;}')
+    parser.doParse()
+    equal(len(parser.styleSheet.getRuleSets()), 1, 'one ruleset')
+    ruleSet1 = parser.styleSheet.getRuleSetBySelector('.test')
+    equal(ruleSet1.comment, '/* test0  test1 */', 'strange comment is ok')
 
 def _rulesInComments():
     parser = CssParser('/* test0 */ /* test1 */ .test {width: 100px;} \n /* test2 */ /* test3 */ .test2 {width: 100px;}')

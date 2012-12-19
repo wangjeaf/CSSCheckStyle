@@ -24,7 +24,7 @@ class CssParser():
                 break;
             i = i + 1
             char = text[i]
-            if isCommentStart(char, text, i):
+            if not inComment and isCommentStart(char, text, i):
                 commentText = ''
                 inComment = True
             if isCommentEnd(char, text, i):

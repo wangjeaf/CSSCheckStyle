@@ -3,6 +3,7 @@ from helper import *
 def doTest():
     _combine_should_not_make_mistake()
     _totally_same_ruleset()
+    do_not_touch_background_position()
 
 def _combine_should_not_make_mistake():
     css = '''.a {width:0px} 
@@ -22,7 +23,26 @@ def _combine_should_not_make_mistake():
     width: 0;
 }'''
     fixer, msg = doFix(css, '')
-    equal(msg, expected, 'it is the same ruleset');
+    equal(msg, expected, 'do not make mistake when combine rulesets');
+
+def do_not_touch_background_position():
+    css = '''.a {background-position: 0 0} 
+.test {width:1}
+.b {background-position: 0 0} '''
+
+    expected = '''.a {
+    background-position: 0 0;
+}
+
+.test {
+    width: 1;
+}
+
+.b {
+    background-position: 0 0;
+}'''
+    fixer, msg = doFix(css, '')
+    equal(msg, expected, 'do not combine background-position');
 
 def _totally_same_ruleset():
     css = '''/*fdafda*/
