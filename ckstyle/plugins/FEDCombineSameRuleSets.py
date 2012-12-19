@@ -17,9 +17,12 @@ class FEDCombineSameRuleSets(StyleSheetChecker):
         mapping = self._gen_hash(ruleSets)
 
         length = len(mapping)
-        # .a {width:0} .a, .b{width:1}, .b{width:0}
-        
-        
+
+        splitedSelectors = []
+        for i in range(length):
+            splitedSelectors.append([x.strip() for x in mapping[i][0].split(',') if x.strip() is not ''])
+
+        # ".a {width:0} .a, .b{width:1}, .b{width:0}" should not be combined to ".a, .b{width:0} .a, .b{width:1}"
         for i in range(length):            
             if mapping[i][0] == 'extra':
                 continue
@@ -27,20 +30,20 @@ class FEDCombineSameRuleSets(StyleSheetChecker):
 
             for j in range(i + 1, length):                
                 if mapping[i][1] != mapping[j][1]:
-                    selectorHistory.extend([x.strip() for x in mapping[j][0].split(',') if x.strip() is not ''])
+                    selectorHistory.extend(splitedSelectors[j])
                     continue
                 hasFlag = False
-                for x in mapping[j][0].split(','):
-                    x = x.strip()
+                for x in splitedSelectors[j]:
                     if x in selectorHistory:
                         hasFlag = True
                         break
                 if hasFlag:
-                    selectorHistory.extend([x.strip() for x in mapping[j][0].split(',') if x.strip() is not ''])
+                    selectorHistory.extend(splitedSelectors[j])
                     continue
 
                 # make it different
                 mapping[j][1] = str(i) + str(j)
+                mapping[j][0] = 'extra'
 
                 # extend target selector
                 target = styleSheet.getRuleSets()[i]
@@ -48,7 +51,7 @@ class FEDCombineSameRuleSets(StyleSheetChecker):
                 target.extendSelector(src)
                 # remove rule set
                 styleSheet.removeRuleSetByIndex(j)
-                selectorHistory.extend([x.strip() for x in mapping[j][0].split(',') if x.strip() is not ''])
+                selectorHistory.extend(splitedSelectors[j])
 
         # remember to clean after remove ruleset
         styleSheet.clean()
