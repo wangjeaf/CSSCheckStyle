@@ -21,6 +21,7 @@ CSSCheckStyle
 	reference: <a href="http://fed.renren.com/archives/1212">《人人FED CSS编码规范》</a>;
     what-can-i-do: parse -> check -> fix -> combine-attr -> reorder -> combine -> compress;
     export-tools: ckstyle(检查) / fixstyle(修复) / compress(压缩)
+    docs: <a href="https://github.com/wangjeaf/CSSCheckStyle-docs">https://github.com/wangjeaf/CSSCheckStyle-docs</a>
 	language: python;
 }
 </pre>
