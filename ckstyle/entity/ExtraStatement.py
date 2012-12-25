@@ -22,7 +22,7 @@ class ExtraStatement(RuleSet):
         return msg
 
     def fixed(self, config):
-        return self.statement.strip()
+        return self.statement.strip() if len(self.comment) == 0 else self.comment + '\n' + self.statement.strip()
 
     def __str__(self):
         return '%s' % self.statement
