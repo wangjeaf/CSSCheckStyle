@@ -64,11 +64,13 @@ def isFontFamilyName(prop):
     added = "," + prop + ","
     return containsInArray(fontFamilyNames, prop) or containsInArray(fontFamilyNames, added)
 
+wordsPattern = re.compile('\w+')
 def existsAppearanceWords(selector):
     selector = selector.lower()
-    for word in appearanceWords:
-        if selector.find(word) != -1:
-            return word
+    words = wordsPattern.findall(selector)
+    for w in words:
+        if w in appearanceWords:
+            return w
     return None
 
 def isSimpleSelector(selector):

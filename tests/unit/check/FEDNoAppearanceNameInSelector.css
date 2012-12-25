@@ -3,7 +3,7 @@
  */
 @unit-test-expecteds {
     1: should not use appearance word "red" in ".color-red"
-    1: should not use appearance word "left" in ".float-left"
+    1: should not use appearance word "float" in ".float-left"
 }
 
 .is-correct-name {
@@ -16,5 +16,9 @@
 }
 
 .float-left {
+    float: left;
+}
+
+.topic {
     float: left;
 }
