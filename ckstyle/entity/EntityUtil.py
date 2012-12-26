@@ -4,6 +4,9 @@ replacer2 = re.compile('\s*:\s*')
 replacer3 = re.compile('\s*;\s*}\s*')
 replacer4 = re.compile('\s*;\s*')
 replacer5 = re.compile('\s\s+')
+replacer6 = re.compile('\(\s+')
+replacer7 = re.compile('\s+\)')
+replacer8 = re.compile('\s+,')
 
 class Cleaner():
     @staticmethod
@@ -14,6 +17,9 @@ class Cleaner():
         msg = replacer3.sub('}', msg)
         msg = replacer4.sub(';', msg)
         msg = replacer5.sub(' ', msg)
+        msg = replacer6.sub('(', msg)
+        msg = replacer7.sub(')', msg)
+        msg = replacer8.sub(',', msg)
         msg = msg.strip()
         return msg
 

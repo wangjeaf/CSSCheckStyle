@@ -4,6 +4,7 @@ def doTest():
     _combine_should_not_make_mistake()
     _totally_same_ruleset()
     do_not_touch_background_position()
+    _do_not_change_comment()
 
 def _combine_should_not_make_mistake():
     css = '''.a {width:0px} 
@@ -63,3 +64,25 @@ def _totally_same_ruleset():
 }'''
     fixer, msg = doFix(css, '')
     equal(msg, expected, 'it is the same ruleset');
+
+def _do_not_change_comment():
+    css = '''/*fdafda, fda,fda,fdas
+    */
+.page-title {
+   width: 100px;
+   padding: 0px 1px;
+}
+
+.page-title {
+   width: 100px;
+   padding: 0px 1px;
+}'''
+
+    expected = '''/*fdafda, fda,fda,fdas
+    */
+.page-title {
+    width: 100px;
+    padding: 0 1px;
+}'''
+    fixer, msg = doFix(css, '')
+    equal(msg, expected, 'do not change comment is ok');

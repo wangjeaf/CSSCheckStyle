@@ -68,19 +68,21 @@ class RuleSet():
         return collected
 
     def fixed(self, config):
-        result = self.comment if self.fixedComment == '' else self.fixedComment
-        result = result + '\n' + (self.selector if self.fixedSelector == '' else self.fixedSelector)
-        if result.find(','):
+        comment = self.comment if self.fixedComment == '' else self.fixedComment
+        selector = self.selector if self.fixedSelector == '' else self.fixedSelector
+        if selector.find(','):
             # remove duplicated selectors
             selectors = []
-            for x in result.split(','):
+            for x in selector.split(','):
                 x = x.strip()
                 if x in selectors:
                     continue
                 selectors.append(x)
-            result = ',\n'.join(selectors)
+            selector = ',\n'.join(selectors)
         seperator = ' ' if config.fixToSingleLine else '\n'
-        result = result + ' {' + seperator + self.fixedRules(config) + seperator + '}'
+        result = selector + ' {' + seperator + self.fixedRules(config) + seperator + '}'
+        if comment != '':
+            result = comment + '\n' + result
         return result
 
     def getSingleLineFlag(self):

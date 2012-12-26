@@ -1,6 +1,8 @@
 from Base import *
 from helper import isCss3Prop, isCss3PrefixProp, doNotNeedPrefixNow
+import re
 
+pattern = re.compile('%\d+')
 class FEDCss3PropSpaces(RuleChecker):
     def __init__(self):
         self.id = 'css3-prop-spaces'
@@ -51,4 +53,9 @@ class FEDCss3PropSpaces(RuleChecker):
 
         fixedName = rule.fixedName
         prefix = fixedName.split(name)[0]
+        if rule.selector.find('%') != -1:
+            remained = '-webkit-,-moz-,-ms-,-o-,'.replace(prefix + ',', '')
+            testString = ','.join([(x + name) for x in remained[:-1].split(',')])
+            if not rule.getRuleSet().existRoughNames(testString):
+                return
         rule.fixedName = ((8 - len(prefix)) * ' ' if not config.fixToSingleLine else '') + fixedName

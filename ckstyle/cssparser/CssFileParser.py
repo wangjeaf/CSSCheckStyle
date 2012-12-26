@@ -94,15 +94,15 @@ class CssParser():
                 break;
             i = i + 1
             char = text[i]
-            if isCommentStart(char, text, i):
+            if not valueStarted and isCommentStart(char, text, i):
                 inComment = True
                 #errors.append([-1, 'find comment in values of "%s"' % selector])
                 collector = ''
-            if isCommentEnd(char, text, i):
+            if not valueStarted and isCommentEnd(char, text, i):
                 collector = ''
                 inComment = False
                 continue
-            if inComment:
+            if not valueStarted and inComment:
                 continue
             if char == ':':
                 if valueStarted is True:

@@ -10,7 +10,7 @@ specialTexts = [
 
 specialStartChars = set([x['start'] for x in specialTexts])
 
-nestedStatements = ['@keyframes', '@media', '@-moz-document']
+nestedStatements = ['keyframes', '@media', '@-moz-document']
 
 def isSpecialStart(char):
     for x in specialStartChars:
