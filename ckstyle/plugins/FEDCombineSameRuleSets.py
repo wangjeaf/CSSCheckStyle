@@ -65,7 +65,7 @@ class FEDCombineSameRuleSets(StyleSheetChecker):
         mapping = []
         counter = 0
         for r in ruleSets:
-            if r.extra or hasHackChars(r.selector):
+            if r.extra or hasHackChars(r.selector) or r.selector.find('%') != -1:
                 # make it impossible to equal
                 mapping.append(['extra', "do_not_combine_" + str(counter)])
                 counter = counter + 1

@@ -1,12 +1,15 @@
 from Base import *
 
-class FEDHackRuleSetInCorrectWay(RuleSetChecker):
+class FEDHackRuleSetInCorrectWay(ExtraChecker):
     def __init__(self):
         self.id = 'hack-ruleset'
         self.errorLevel = ERROR_LEVEL.ERROR
         self.errorMsg = 'not correct hacking way in "${selector}"'
 
     def check(self, ruleSet, config):
+        if not ruleSet.nested:
+            return True
+
         selector = ruleSet.selector.strip()
         if selector.find('@-moz-document') != -1:
             if selector != '@-moz-document url-prefix()':

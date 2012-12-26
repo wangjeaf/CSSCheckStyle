@@ -25,12 +25,10 @@
     width: 100px;
 }
 
-@media all and (-webkit-min-device-pixel-ratio:10000),
-not all and (-webkit-min-device-pixel-ratio:0) {
+@media all and (-webkit-min-device-pixel-ratio:10000), not all and (-webkit-min-device-pixel-ratio:0) {
     width: 100px;
 }
 
-@media all and (-webkit-min-device-pixel-ratio:10),
-not all and (-webkit-min-device-pixel-ratio:0) {
+@media all and (-webkit-min-device-pixel-ratio:10), not all and (-webkit-min-device-pixel-ratio:0) {
     width: 100px;
 }

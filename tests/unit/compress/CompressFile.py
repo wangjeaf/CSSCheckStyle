@@ -10,11 +10,11 @@ def doTest():
 
 def _basic():
     msg = doCssFileCompress('_file.css')
-    equal(msg, ".test{width:100px;height:200px;_z-index:111}@keyframes 'name'{10% {width:100px}}.another{*width:100px;background-color:#ABC;color:#DDD}", 'file compressed')
+    equal(msg, ".test{width:100px;height:200px;_z-index:111}@keyframes 'name'{10%{width:100px}}.another{*width:100px;background-color:#ABC;color:#DDD}", 'file compressed')
 
 def _one_line_file():
     msg = doCssFileCompress('_one_line_file.css')
-    equal(msg, ".test{width:100px;height:200px;_z-index:111}@keyframes 'name'{10% {width:100px}}.another{*width:100px;background-color:#ABC;color:#DDD}", 'file compressed')
+    equal(msg, ".test{width:100px;height:200px;_z-index:111}@keyframes 'name'{10%{width:100px}}.another{*width:100px;background-color:#ABC;color:#DDD}", 'file compressed')
 
 def _with_extra():
     msg = doCssFileCompress('_with_extra.css')

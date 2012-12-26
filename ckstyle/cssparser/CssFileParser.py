@@ -141,21 +141,18 @@ class CssParser():
         return errors
 
 if __name__ == '__main__':
-    text = '''.test {
-        width: 100px;height:20px;
-        border-radius:3px;
-    }
-
-    @keyframes fdasfads {
-        12% {
-            width: 100px;
-        }
-        11% {
-            width: 100px;
-        }
-        fdasl {
-            width: 200px;
-        }
-    }'''
+    text = '''@media screen and (-webkit-min-device-pixel-ratio:0) {
+ .publisher-c .global-publisher-selector{ top:5px;}
+ .publisher-a .global-publisher-selector-status a,
+ .publisher-a .global-publisher-selector-status .global-publisher-status-trigger:hover,
+ .publisher-a .global-publisher-selector .active .global-publisher-status-trigger {
+    background-position: 0 1px;
+}
+ .publisher-a .global-publisher-selector-share a,
+ .publisher-a .global-publisher-selector-share a:hover,
+ .publisher-a .global-publisher-selector .active .global-publisher-share-trigger{
+    background-position: 0 -48px;
+ }
+}'''
     parser = CssParser(text)
     parser.doParse()

@@ -34,3 +34,10 @@ class StyleSheetChecker(Checker):
         self.errorMsg = ''
     def check(self, styleSheet, config):
         return True
+
+class ExtraChecker(Checker):
+    def __init__(self):
+        self.errorLevel = ERROR_LEVEL.LOG
+        self.errorMsg = ''
+    def check(self, ruleSet, config):
+        return True

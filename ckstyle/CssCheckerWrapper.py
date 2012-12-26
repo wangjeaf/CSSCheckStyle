@@ -25,6 +25,8 @@ class CssChecker():
         self.ruleCheckers = []
         self.styleSheetCheckers = []
 
+        self.extraCheckers = []
+
         # 如果有解析过程的错误，则先把那些错误记录下来
         self.handleParseErrors()
 
@@ -91,8 +93,10 @@ class CssChecker():
             self.registerRuleChecker(checker)
         elif isinstance(checker, RuleSetChecker):
             self.registerRuleSetChecker(checker)
-        else:
+        elif isinstance(checker, StyleSheetChecker):
             self.registerStyleSheetChecker(checker)
+        else:
+            self.registerExtraChecker(checker)
 
     def registerStyleSheetChecker(self, checker):
         self.styleSheetCheckers.append(checker)
@@ -102,6 +106,9 @@ class CssChecker():
 
     def registerRuleChecker(self, checker):
         self.ruleCheckers.append(checker)
+
+    def registerExtraChecker(self, checker):
+        self.extraCheckers.append(checker)
 
     def remember(self, errorLevel, errorMsg):
         '''记录代码中的问题'''
@@ -195,9 +202,21 @@ class CssChecker():
                     #print checker.id, checker, rule.fixedValue
                     checker.fix(rule, self.config)
 
+        def fixExtraRules(ruleSet):
+            for checker in self.extraCheckers:
+                if not hasattr(checker, 'fix'):
+                    continue
+                if ruleSet.fixedSelector == '':
+                    ruleSet.fixedSelector = ruleSet.selector
+                    ruleSet.fixedStatement = ruleSet.statement
+
+                checker.fix(ruleSet, self.config)
+
         styleSheet = self.parser.styleSheet
+
         for ruleSet in styleSheet.getRuleSets():
             if ruleSet.extra:
+                fixExtraRules(ruleSet)
                 continue
             # 判断此规则是否忽略
             if findInArray(ignoreRuleSets, ruleSet.selector):
@@ -256,6 +275,20 @@ class CssChecker():
                     else:
                         console.error('check should be boolean/list, %s is not.' % checker.id)
 
+        # 检查规则
+        def checkExtraRule(ruleSet):
+            for checker in self.extraCheckers:
+                if not hasattr(checker, 'check'):
+                    continue
+                result = checker.check(ruleSet, self.config)
+                if isBoolean(result):
+                    if not result:
+                        self.logRuleSetMessage(checker, ruleSet)
+                elif isList(result) and len(result) != 0:
+                    self.logRuleSetMessage(checker, ruleSet, result)
+                else:
+                    console.error('check should be boolean/list, %s is not.' % checker.id)
+
         # 检查样式表
         styleSheet = self.parser.styleSheet
         for checker in self.styleSheetCheckers:
@@ -272,6 +305,7 @@ class CssChecker():
 
         for ruleSet in styleSheet.getRuleSets():
             if ruleSet.extra:
+                checkExtraRule(ruleSet)
                 continue
             # 判断此规则是否忽略
             if findInArray(ignoreRuleSets, ruleSet.selector):

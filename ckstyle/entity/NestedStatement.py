@@ -3,24 +3,24 @@ from EntityUtil import Cleaner
 class NestedStatement():
     def __init__(self, selector, statement, comments, styleSheet = None):
         self.extra = True
+        self.nested = True
         self.selector = selector.strip()
         self.statement = statement.strip()
         self.roughStatement = statement
         self.comments = comments.strip()
         self.styleSheet = styleSheet
 
+        self.fixedSelector = ''
+        self.fixedStatement = ''
+
     def compress(self):
-        return self.selector + self._compressedStatement()
+        return self.fixedSelector + self._compressedStatement()
 
     def fixed(self, config):
-        if config.fixToSingleLine:
-            return self.selector + ' ' + self._compressedStatement()
-
-        return self.selector + ' {\n' + self.roughStatement + '\n}'
+        return self.fixedSelector + ' {\n    ' + '\n    '.join(self.fixedStatement.split('\n')) + '\n}'
 
     def _compressedStatement(self):
-        # TODO
-        return '{' + self.statement.replace('\r', '').replace('\n', '').replace(' ' * 4, '').replace(': ', ':').replace(';}', '}') + '}'
+        return '{' + Cleaner.clean(self.fixedStatement) + '}'
 
     def __str__(self):
         return '%s' % self.statement
