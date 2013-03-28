@@ -26,11 +26,11 @@ def doCheck(fileContent, fileName = '', config = defaultConfig):
 def checkFile(filePath, config = defaultConfig):
     '''通过路径检查css文件'''
     fileContent = open(filePath).read()
-    console.show('[ckstyle] checking %s' % filePath)
+    console.log('[ckstyle] checking %s' % filePath)
     checker = doCheck(fileContent, filePath, config)
     path = os.path.realpath(filePath + config.extension)
     if checker.hasError():
-        reporter = ReporterUtil.getReporter('text', checker)
+        reporter = ReporterUtil.getReporter('json' if config.exportJson else 'text', checker)
         reporter.doReport()
         if config.printFlag:
             if os.path.exists(path):

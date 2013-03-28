@@ -82,6 +82,7 @@ def parseCkStyleCmdArgs(defaultConfigFile, opts, args, debug = False, called = F
     extension = None
     include = None
     exclude = None
+    exportJson = None
     for op, value in opts:
         if op == "-r":
             recur = True
@@ -93,6 +94,8 @@ def parseCkStyleCmdArgs(defaultConfigFile, opts, args, debug = False, called = F
             if not called:
                 usage_ckstyle()
                 sys.exit()
+        elif op == '--json':
+            exportJson = True
         elif op == '--extension':
             extension = getExtension(value)
         elif op == '--errorLevel':
@@ -114,6 +117,7 @@ def parseCkStyleCmdArgs(defaultConfigFile, opts, args, debug = False, called = F
     if extension: config.extension = extension
     if include: config.include = include
     if exclude: config.exclude = exclude
+    if exportJson: config.exportJson = exportJson
 
     return config
 
@@ -213,7 +217,7 @@ def _handle(options, dirHandler, fileHandler, argsParser, operation):
         console.error('%s aborted! because "%s" is neither css file, nor dir' % (operation, filePath))
 
 def handleCkStyleCmdArgs():
-    options = ["help", "config=", "errorLevel=", "extension=", "include=", "exclude="]
+    options = ["help", "config=", "errorLevel=", "extension=", "include=", "exclude=", "json"]
     dirHandler = checkDir
     fileHandler = checkFile
     argsParser = parseCkStyleCmdArgs

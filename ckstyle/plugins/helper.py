@@ -1,5 +1,5 @@
 import re
-pattern = re.compile(r'[@\*\[\]\(\):]')
+pattern = re.compile(r'[@\*\[\]\(\):>]')
 
 def hasHackChars(text):
     return len(pattern.findall(text)) != 0

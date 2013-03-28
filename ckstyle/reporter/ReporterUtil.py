@@ -1,4 +1,5 @@
 from TextReporter import TextReporter
+from JsonReporter import JsonReporter
 from XMLReporter import XMLReporter
 
 class ReporterUtil():
@@ -6,5 +7,5 @@ class ReporterUtil():
     def getReporter(reporterType, checker):
         if reporterType == 'text':
             return TextReporter(checker)
-        else:
-            return XMLReporter(checker)
+        elif reporterType == 'json':
+            return JsonReporter(checker)

@@ -7,6 +7,7 @@ class CommandArgs():
         self.include = 'all'
         self.exclude = 'none'
         self.standard = ''
+        self.exportJson = False
         self.ignoreRuleSets = ['@unit-test-expecteds']
         self.fixedExtension = '.fixed.css'
         self.fixToSingleLine = False
