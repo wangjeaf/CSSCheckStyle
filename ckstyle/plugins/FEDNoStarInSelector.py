@@ -1,6 +1,15 @@
+#/usr/bin/python
+#encoding=utf-8
+
 from Base import *
 
 class FEDNoStarInSelector(RuleSetChecker):
+    
+    '''{
+        "summary":"xxx",
+        "desc":"xxx"
+    }'''
+
     def __init__(self):
         self.id = 'no-star-in-selector'
         self.errorLevel = ERROR_LEVEL.ERROR

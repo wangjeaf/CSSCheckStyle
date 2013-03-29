@@ -1,6 +1,15 @@
+#/usr/bin/python
+#encoding=utf-8
+
 from Base import *
 
 class FEDNoZeroBeforeDot(RuleChecker):
+    
+    '''{
+        "summary":"xxx",
+        "desc":"xxx"
+    }'''
+
     def __init__(self):
         self.id = 'no-zero-before-dot'
         self.errorLevel = ERROR_LEVEL.WARNING

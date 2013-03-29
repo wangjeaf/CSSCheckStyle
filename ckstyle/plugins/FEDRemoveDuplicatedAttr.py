@@ -1,6 +1,15 @@
+#/usr/bin/python
+#encoding=utf-8
+
 from Base import *
 
 class FEDRemoveDuplicatedAttr(RuleSetChecker):
+    
+    '''{
+        "summary":"xxx",
+        "desc":"xxx"
+    }'''
+
     def __init__(self):
         self.id = 'remove-duplicated-attr'
         self.errorLevel = ERROR_LEVEL.ERROR

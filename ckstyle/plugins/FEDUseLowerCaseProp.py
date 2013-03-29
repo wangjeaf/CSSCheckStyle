@@ -1,6 +1,15 @@
+#/usr/bin/python
+#encoding=utf-8
+
 from Base import *
 
 class FEDUseLowerCaseProp(RuleChecker):
+    
+    '''{
+        "summary":"xxx",
+        "desc":"xxx"
+    }'''
+
     def __init__(self):
         self.id = 'lowercase-prop'
         self.errorLevel = ERROR_LEVEL.WARNING

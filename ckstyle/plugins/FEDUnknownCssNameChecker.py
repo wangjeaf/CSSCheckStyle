@@ -1,7 +1,16 @@
+#/usr/bin/python
+#encoding=utf-8
+
 from Base import *
 from helper import isCssProp
 
 class FEDUnknownCssNameChecker(RuleChecker):
+    
+    '''{
+        "summary":"xxx",
+        "desc":"xxx"
+    }'''
+
     def __init__(self):
         self.id = 'unknown-css-prop'
         self.errorLevel = ERROR_LEVEL.ERROR

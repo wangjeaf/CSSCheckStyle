@@ -1,7 +1,16 @@
+#/usr/bin/python
+#encoding=utf-8
+
 from helper import getAttrOrder
 from Base import *
 
 class FEDStyleShouldInOrder(RuleSetChecker):
+    
+    '''{
+        "summary":"xxx",
+        "desc":"xxx"
+    }'''
+
     def __init__(self):
         self.id = 'keep-in-order'
         self.errorLevel = ERROR_LEVEL.WARNING

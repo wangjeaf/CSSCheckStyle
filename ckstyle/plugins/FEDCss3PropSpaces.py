@@ -1,9 +1,24 @@
+#/usr/bin/python
+#encoding=utf-8
+
 from Base import *
 from helper import isCss3Prop, isCss3PrefixProp, doNotNeedPrefixNow
 import re
 
 pattern = re.compile('%\d+')
 class FEDCss3PropSpaces(RuleChecker):
+    
+    '''{
+        "summary":"CSS3缩进相关检查",
+        "desc":"CSS3属性的缩进，必须将属性名称的第一个字符对齐。即：<br>
+            <code>-webkit-transition:3s;</code>
+            <br><code>&nbsp;&nbsp;&nbsp;-moz-transition:3s;</code>
+            <br><code>&nbsp;&nbsp;&nbsp;&nbsp;-ms-transition:3s;</code>
+            <br><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-o-transition:3s;</code>
+            <br><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transition:3s;</code>
+        "
+    }'''
+
     def __init__(self):
         self.id = 'css3-prop-spaces'
 

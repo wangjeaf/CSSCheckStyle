@@ -1,3 +1,6 @@
+#/usr/bin/python
+#encoding=utf-8
+
 from Base import *
 import re
 
@@ -5,6 +8,12 @@ pattern = re.compile(r'(0\s*[\w]+)')
 replacer = re.compile(',\s+')
 
 class FEDNoUnitAfterZero(RuleChecker):
+    
+    '''{
+        "summary":"xxx",
+        "desc":"xxx"
+    }'''
+
     def __init__(self):
         self.id = 'del-unit-after-zero'
         self.errorLevel = ERROR_LEVEL.WARNING

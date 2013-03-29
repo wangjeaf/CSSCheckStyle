@@ -1,8 +1,17 @@
+#/usr/bin/python
+#encoding=utf-8
+
 from Base import *
 import re
 pattern = re.compile('\d+')
 
 class FEDNoSimpleNumberInSelector(RuleSetChecker):
+    
+    '''{
+        "summary":"xxx",
+        "desc":"xxx"
+    }'''
+
     def __init__(self):
         self.id = 'number-in-selector'
         self.errorLevel = ERROR_LEVEL.WARNING

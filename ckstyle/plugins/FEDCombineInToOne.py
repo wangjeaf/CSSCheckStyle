@@ -1,8 +1,23 @@
+#/usr/bin/python
+#encoding=utf-8
+
 from Base import *
 from helper import canBeCombined, isCss3PrefixProp
 from combiners.CombinerFactory import doCombine
 
 class FEDCombineInToOne(RuleSetChecker):
+    '''{
+        "summary":"将多个子样式合并",
+        "desc":"有的子样式可以合并为总样式，包括
+            <code>margin</code> <code>padding</code> <code>font</code> <code>background</code> <code>border</code>
+            等，合并以后可以获得更好的执行效率和压缩效果，<br/>
+            例如：<br/>
+            <code>.test {margin:4px; margin-right:0;}</code><br/>
+            <code>==></code><br/>
+            <code>.test{margin:4px 0 4px 4px}</code><br/>
+        "
+    }'''
+
     def __init__(self):
         self.id = 'combine-into-one'
         self.errorLevel = ERROR_LEVEL.WARNING

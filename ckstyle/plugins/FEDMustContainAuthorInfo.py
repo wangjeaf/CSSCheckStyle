@@ -1,7 +1,16 @@
+#/usr/bin/python
+#encoding=utf-8
+
 from Base import *
 from helper import isHTMLTag
 
 class FEDMustContainAuthorInfo(StyleSheetChecker):
+    
+    '''{
+        "summary":"xxx",
+        "desc":"xxx"
+    }'''
+
     def __init__(self):
         self.id = 'add-author'
         self.errorMsg_author = 'should add @author in the head of "${file}"'

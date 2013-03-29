@@ -1,10 +1,20 @@
+#/usr/bin/python
+#encoding=utf-8
+
 from Base import *
 
 class FEDFixNestedStatement(ExtraChecker):
+    
+    '''{
+        "summary":"修复嵌套的CSS",
+        "desc":"@keyframes, @media之类的"
+    }'''
+
     def __init__(self):
         self.id = 'fix-nested-ruleset'
         self.errorLevel = ERROR_LEVEL.ERROR
         self.errorMsg = ''
+        self.always = True
 
     def check(self, ruleSet, config):
         return True

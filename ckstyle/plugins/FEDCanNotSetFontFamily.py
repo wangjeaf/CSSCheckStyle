@@ -1,7 +1,16 @@
+#/usr/bin/python
+#encoding=utf-8
+
 from Base import *
 from helper import isFontFamilyName
 
 class FEDCanNotSetFontFamily(RuleChecker):
+    
+    '''{
+        "summary":"不允许业务代码设置字体",
+        "desc":"由于业务代码中随意设置字体，导致字体取值混乱，因此不允许随意在业务代码中设置字体"
+    }'''
+
     def __init__(self):
         self.id = 'no-font-family'
         self.errorLevel = ERROR_LEVEL.ERROR

@@ -1,7 +1,22 @@
+#/usr/bin/python
+#encoding=utf-8
+
 from Base import *
 from helper import isCss3PrefixProp
 
 class FEDMultiLineSpaces(RuleChecker):
+    
+    '''{
+        "summary":"CSS多行风格的空格检查",
+        "desc":"多行风格下，CSS的空格检查包括：
+            <ol>
+                <li>选择器的空格</li>
+                <li>属性的空格</li>
+                <li>结尾}的空格</li>
+            </ol>
+            具体请参见人人相关的CSS规范"
+    }'''
+
     def __init__(self):
         self.id = 'multi-line-space'
         self.errorLevel = ERROR_LEVEL.LOG

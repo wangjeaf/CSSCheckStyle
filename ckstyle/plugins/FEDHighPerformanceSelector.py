@@ -1,7 +1,17 @@
+#/usr/bin/python
+#encoding=utf-8
+
 from Base import *
 from helper import isHTMLTag
 
 class FEDHighPerformanceSelector(RuleSetChecker):
+    
+    '''{
+        "summary":"针对低性能的选择器的检查",
+        "desc":"低性能选择器，害人害己还集体，本工具收集了一些低性能选择器的情形，具体请参见：<br>
+            <code>FEDHighPerformanceSelector.py</code>中的相关内容"
+    }'''
+
     def __init__(self):
         self.id = 'high-perf-selector'
         self.errorLevel = ERROR_LEVEL.ERROR

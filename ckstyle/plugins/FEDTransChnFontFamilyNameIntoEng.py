@@ -1,7 +1,16 @@
+#/usr/bin/python
+#encoding=utf-8
+
 from Base import *
 from helper import containsChnChar
 
 class FEDTransChnFontFamilyNameIntoEng(RuleChecker):
+    
+    '''{
+        "summary":"xxx",
+        "desc":"xxx"
+    }'''
+
     def __init__(self):
         self.id = 'no-chn-font-family'
         self.errorLevel = ERROR_LEVEL.ERROR

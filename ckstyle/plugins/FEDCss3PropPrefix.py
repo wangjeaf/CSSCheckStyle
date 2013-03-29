@@ -1,7 +1,20 @@
+#/usr/bin/python
+#encoding=utf-8
+
 from Base import *
 from helper import isCss3Prop, isCss3PrefixProp, doNotNeedPrefixNow
 
 class FEDCss3PropPrefix(RuleChecker):
+
+    '''{
+        "summary":"CSS3前缀相关检查",
+        "desc":"CSS3属性的前缀，有的可以省略，比如：<br>
+            <code>border-radius</code><br>
+            有的是省略，必须写全，比如：<br><code>transition</code> <code>transform</code>等<br>
+            在编写顺序上，本工具要求按照<br>
+            <code>-webkit-,-moz-,-ms-,-o-,std</code><br>的顺序来编写，并且严格将属性的第一个字符对齐。"
+    }'''
+
     def __init__(self):
         self.id = 'css3-with-prefix'
         self.errorLevel_keepInOrder = ERROR_LEVEL.WARNING

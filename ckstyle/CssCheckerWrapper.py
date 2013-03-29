@@ -71,14 +71,15 @@ class CssChecker():
                 continue
             # 构造plugin的类
             instance = pluginClass()
-            # ids[instance.id] = pluginName
 
-            if include != 'all' and include.find(instance.id) == -1:
-                continue
-            elif exclude != 'none' and exclude.find(instance.id) != -1:
-                continue
-            elif safeMode and safeModeExcludes.find(instance.id) != -1:
-                continue
+            # 如果是always，则说明不论是否选择都需要的规则
+            if not hasattr(instance, 'always'):
+                if include != 'all' and include.find(instance.id) == -1:
+                    continue
+                elif exclude != 'none' and exclude.find(instance.id) != -1:
+                    continue
+                elif safeMode and safeModeExcludes.find(instance.id) != -1:
+                    continue
 
             if instance.errorMsg.find(';') != -1 or instance.errorMsg.find('\n') != -1:
                 console.error(r'[TOOL] errorMsg should not contain ";" or "\n" in %s.py' % pluginName)

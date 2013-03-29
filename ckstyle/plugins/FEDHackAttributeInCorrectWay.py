@@ -1,7 +1,16 @@
+#/usr/bin/python
+#encoding=utf-8
+
 from Base import *
 from helper import isCss3PrefixProp
 
 class FEDHackAttributeInCorrectWay(RuleChecker):
+    
+    '''{
+        "summary":"hack属性时的检查",
+        "desc":"必须使用正确的 hack 方式， 比如 <code>_ * +</code> 等，其他的属性前缀一律不允许"
+    }'''
+
     def __init__(self):
         self.id = 'hack-prop'
         self.errorLevel = ERROR_LEVEL.ERROR

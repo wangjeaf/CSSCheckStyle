@@ -1,10 +1,20 @@
+#/usr/bin/python
+#encoding=utf-8
+
 from Base import *
 
 class FEDFixCommentInValue(RuleChecker):
+    
+    '''{
+        "summary":"修复属性中的注释",
+        "desc":"width:/* fdasfdas */ 100px /* fdafdas */; ==> width:100px;"
+    }'''
+
     def __init__(self):
         self.id = 'fix-comment-in-value'
         self.errorLevel = ERROR_LEVEL.WARNING
         self.errorMsg = ''
+        self.always = True
 
     def check(self, rule, config):
         return True

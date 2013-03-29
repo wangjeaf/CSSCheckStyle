@@ -1,8 +1,17 @@
+#/usr/bin/python
+#encoding=utf-8
+
 from Base import *
 import string
 from helper import isCss3PrefixProp
 
 class FEDZIndexShouldInRange(RuleChecker):
+    
+    '''{
+        "summary":"xxx",
+        "desc":"xxx"
+    }'''
+
     def __init__(self):
         self.id = 'z-index-in-range'
         self.errorLevel = ERROR_LEVEL.ERROR

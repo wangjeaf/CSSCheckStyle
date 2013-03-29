@@ -1,6 +1,16 @@
+#/usr/bin/python
+#encoding=utf-8
+
 from Base import *
 from helper import isHTMLTag
+
 class FEDDoNotSetStyleForTagOnly(RuleSetChecker):
+    
+    '''{
+        "summary":"不要为html tag设置样式",
+        "desc":"除了重置 CSS(如Reset.css) 的相关设置，其他代码一律不允许为html tag设置样式。"
+    }'''
+
     def __init__(self):
         self.id = 'no-style-for-tag'
         self.errorLevel = ERROR_LEVEL.ERROR

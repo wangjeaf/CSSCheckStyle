@@ -1,6 +1,16 @@
+#/usr/bin/python
+#encoding=utf-8
+
 from Base import *
 
 class FEDHackRuleSetInCorrectWay(ExtraChecker):
+    
+    '''{
+        "summary":"hack规则时的检查",
+        "desc":"针对Firefox Opera Safari等浏览器的 hack 方式， <strong>人人FED CSS编码规范</strong>中有详细的描述， 
+            不允许使用规定之外的方式进行规则级别的hack"
+    }'''
+
     def __init__(self):
         self.id = 'hack-ruleset'
         self.errorLevel = ERROR_LEVEL.ERROR

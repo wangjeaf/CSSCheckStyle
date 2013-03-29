@@ -1,7 +1,16 @@
+#/usr/bin/python
+#encoding=utf-8
+
 from Base import *
 from helper import existsAppearanceWords
 
 class FEDNoAppearanceNameInSelector(RuleSetChecker):
+    
+    '''{
+        "summary":"xxx",
+        "desc":"xxx"
+    }'''
+
     def __init__(self):
         self.id = 'no-appearance-word-in-selector'
         self.errorLevel = ERROR_LEVEL.WARNING

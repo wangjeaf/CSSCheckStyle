@@ -1,6 +1,21 @@
+#/usr/bin/python
+#encoding=utf-8
+
 from Base import *
 
 class FEDMultiLineSelectors(RuleSetChecker):
+    
+    '''{
+        "summary":"多行CSS风格的选择器检查",
+        "desc":"多行风格下，每一个选择器单独占一行，并以逗号结尾，例如：<br>
+            <code>.a,</code><br>
+            <code>.b,</code><br>
+            <code>.c {</code><br>
+            <code>&nbsp;&nbsp;&nbsp;&nbsp;width: 100px;</code><br>
+            <code>}</code>
+        "
+    }'''
+
     def __init__(self):
         self.id = 'multi-line-selector'
         self.errorLevel = ERROR_LEVEL.LOG

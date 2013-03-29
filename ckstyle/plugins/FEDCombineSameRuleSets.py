@@ -1,7 +1,25 @@
+#/usr/bin/python
+#encoding=utf-8
+
 from Base import *
 from helper import hasHackChars
 
 class FEDCombineSameRuleSets(StyleSheetChecker):
+
+    '''{
+        "summary":"合并两个完全相同的规则集",
+        "desc":"如果两个规则集完全一样，则可以进行合并。<br>
+            需要指出的是：合并可能会带来功能上的问题。如果有问题，还请告知~<br>
+            例如：<br>
+            <code>.a {width:100px}</code><br>
+            <code>.b {width:100px}</code><br>
+            <code>==></code><br>
+            <code>.a, .b {width:100px}</code><br>
+            <br>
+            <strong>安全模式下将不执行此规则</strong><br>
+        "
+    }'''
+
     def __init__(self):
         self.id = 'combine-same-rulesets'
         self.errorMsg_empty = '"%s" and "%s" contains same rules, should be combined in ${file}"'

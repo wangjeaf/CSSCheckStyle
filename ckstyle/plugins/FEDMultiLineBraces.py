@@ -1,6 +1,15 @@
+#/usr/bin/python
+#encoding=utf-8
+
 from Base import *
 
 class FEDMultiLineBraces(RuleSetChecker):
+    
+    '''{
+        "summary":"多行CSS风格的括号检查",
+        "desc":"用于检查多行风格下的 <code>{</code> 和 <code>}</code> 的编写风格，前后空格符和回车符的情况等。"
+    }'''
+
     def __init__(self):
         self.id = 'multi-line-brace'
         self.errorLevel = ERROR_LEVEL.LOG

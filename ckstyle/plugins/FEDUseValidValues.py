@@ -1,7 +1,16 @@
+#/usr/bin/python
+#encoding=utf-8
+
 from Base import *
 from validators.ValidatorFactory import doValidate
 
 class FEDUseValidValues(RuleChecker):
+    
+    '''{
+        "summary":"xxx",
+        "desc":"xxx"
+    }'''
+
     def __init__(self):
         self.id = 'valid-values'
         self.errorLevel = ERROR_LEVEL.ERROR
