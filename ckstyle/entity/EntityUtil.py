@@ -7,6 +7,7 @@ replacer5 = re.compile('\s\s+')
 replacer6 = re.compile('\(\s+')
 replacer7 = re.compile('\s+\)')
 replacer8 = re.compile('\s+,')
+replacer9 = re.compile(',\s+')
 
 class Cleaner():
     @staticmethod
@@ -20,6 +21,7 @@ class Cleaner():
         msg = replacer6.sub('(', msg)
         msg = replacer7.sub(')', msg)
         msg = replacer8.sub(',', msg)
+        msg = replacer9.sub(',', msg)
         msg = msg.strip()
         return msg
 

@@ -11,7 +11,7 @@ def _rgba_no_space():
 
     fixer, msg = doFix(css, '')
     expectedFixed = '''.test1 {
-    box-shadow: inset 0 0 0 0 rgba(0, 0, 0, .1);
+    box-shadow: inset 0 0 0 0 rgba(0,0,0,.1);
 }'''
     equal(msg, expectedFixed, 'rgba no space is also ok')
 

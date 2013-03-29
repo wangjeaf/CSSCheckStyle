@@ -30,4 +30,4 @@ def _extra_statement():
 
 def _expression():
     msg = doCssFileCompress('_expression.css')
-    equal(msg, "*html .feed-comment textarea{behavior:expression(function(ele){ele.runtimeStyle.behavior='none';Expressions.pseudo.hover(ele, 'textarea_hover')}(this))}", 'expression compressed')
+    equal(msg, "*html .feed-comment textarea{behavior:expression(function(ele){ele.runtimeStyle.behavior='none';Expressions.pseudo.hover(ele,'textarea_hover')}(this))}", 'expression compressed')
