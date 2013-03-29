@@ -5,7 +5,7 @@ import json
 
 def loadPlugins(pluginDir):
     ids = []
-    tmp = '{id:"%s",priority:%s,summary:"%s",desc:"%s",checked:%s}';
+    tmp = '{id:"%s", priority:%s, summary:"%s", desc:"%s", checked:%s}';
 
     '''从plugins目录动态载入检查类'''
     for filename in os.listdir(pluginDir):
@@ -45,9 +45,9 @@ def loadPlugins(pluginDir):
                 print '[JSON ERROR] doc error in ' + pluginClass.__name__ + ', not json format'
                 obj["desc"] = pluginClass.__doc__
         if data is not None:
-            if data.has_key('summary'):
+            if data.has_key('summary') and data['summary'] != 'xxx':
                 obj['summary'] = data['summary'].encode('utf-8')
-            if data.has_key('desc'):
+            if data.has_key('desc') and data['desc'] != 'xxx':
                 obj['desc'] = data['desc'].encode('utf-8')
 
         obj["checked"] = 'true' if (instance.errorLevel == 0 or instance.errorLevel == 1) else 'false'
