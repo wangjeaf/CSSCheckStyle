@@ -7,8 +7,8 @@ from helper import isHTMLTag
 class FEDMustContainAuthorInfo(StyleSheetChecker):
     
     '''{
-        "summary":"xxx",
-        "desc":"xxx"
+        "summary":"需要在文件中添加作者信息",
+        "desc":"需要在文件中添加作者的信息，本工具认可的作者信息是在文件顶部的注释中添加 <code>@author:xxx</code>"
     }'''
 
     def __init__(self):

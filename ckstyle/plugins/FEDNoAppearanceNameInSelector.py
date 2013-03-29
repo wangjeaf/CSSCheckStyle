@@ -7,8 +7,9 @@ from helper import existsAppearanceWords
 class FEDNoAppearanceNameInSelector(RuleSetChecker):
     
     '''{
-        "summary":"xxx",
-        "desc":"xxx"
+        "summary":"选择器中避免表现相关的词汇",
+        "desc":"避免将在selector中出现 <code>.red</code> <code>.left</code> 等描述性词汇，
+            用具体的实际意义来代替，比如 <code>.error</code> <code>.sidebar</code> "
     }'''
 
     def __init__(self):
