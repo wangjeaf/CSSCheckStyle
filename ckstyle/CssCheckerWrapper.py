@@ -81,9 +81,9 @@ class CssChecker():
                 elif safeMode and safeModeExcludes.find(instance.id) != -1:
                     continue
 
-            if instance.errorMsg.find(';') != -1 or instance.errorMsg.find('\n') != -1:
-                console.error(r'[TOOL] errorMsg should not contain ";" or "\n" in %s.py' % pluginName)
-                continue
+            #if instance.errorMsg.find(';') != -1 or instance.errorMsg.find('\n') != -1:
+            #    console.error(r'[TOOL] errorMsg should not contain ";" or "\n" in %s.py' % pluginName)
+            #    continue
 
             # 注册到检查器中
             self.registerChecker(instance)
@@ -130,13 +130,19 @@ class CssChecker():
         if errors is None:
             errors = [checker.getMsg()]
         for errorMsg in errors:
+            obj = {}
             if errorMsg is None or errorMsg == '':
                 console.error('[TOOL] no errorMsg in your plugin, please check it')
-            if errorMsg.find('${file}') == -1:
-                errorMsg = errorMsg + ' (from "' + styleSheet.getFile() + '")'
-            else:
-                errorMsg = errorMsg.replace('${file}', styleSheet.getFile())
-            self.remember(errorLevel, errorMsg);
+
+            #if errorMsg.find('${file}') == -1:
+            #    errorMsg = errorMsg + ' (from "' + styleSheet.getFile() + '")'
+            #else:
+            #    errorMsg = errorMsg.replace('${file}', styleSheet.getFile())
+
+            obj["errorMsg"] = errorMsg
+            obj["file"] = styleSheet.getFile()
+            obj["level"] = 'stylesheet'
+            self.remember(errorLevel, obj);
 
     def logRuleMessage(self, checker, rule, errors = None):
         '''记录一条key/value的问题'''
@@ -144,15 +150,21 @@ class CssChecker():
         if errors is None:
             errors = [checker.getMsg()]
         for errorMsg in errors:
+            obj = {}
             if errorMsg is None or errorMsg == '':
                 console.error('[TOOL] no errorMsg in your plugin, please check it')
-            if errorMsg.find('${selector}') == -1:
-                errorMsg = errorMsg + ' (from "' + rule.selector + '")'
-            else:
-                errorMsg = errorMsg.replace('${selector}', rule.selector)
-            errorMsg = errorMsg.replace('${name}', rule.roughName.strip())
-            errorMsg = errorMsg.replace('${value}', rule.value.strip())
-            self.remember(errorLevel, errorMsg);
+            #if errorMsg.find('${selector}') == -1:
+            #    errorMsg = errorMsg + ' (from "' + rule.selector + '")'
+            #else:
+            #    errorMsg = errorMsg.replace('${selector}', rule.selector)
+            #errorMsg = errorMsg.replace('${name}', rule.roughName.strip())
+            #errorMsg = errorMsg.replace('${value}', rule.value.strip())
+            obj["errorMsg"] = errorMsg
+            obj["selector"] = rule.selector
+            obj["name"] = rule.roughName.strip()
+            obj["value"] = rule.value.strip()
+            obj["level"] = 'rule'
+            self.remember(errorLevel, obj);
 
     def logRuleSetMessage(self, checker, ruleSet, errors = None):
         '''记录一个"规则集"中的问题'''
@@ -160,11 +172,15 @@ class CssChecker():
         if errors is None:
             errors = [checker.getMsg()]
         for errorMsg in errors:
-            if errorMsg.find('${selector}') == -1:
-                errorMsg = errorMsg + ' (from "' + ruleSet.selector + '")'
-            else:
-                errorMsg = errorMsg.replace('${selector}', ruleSet.selector)
-            self.remember(errorLevel, errorMsg);
+            obj = {}
+            #if errorMsg.find('${selector}') == -1:
+            #    errorMsg = errorMsg + ' (from "' + ruleSet.selector + '")'
+            #else:
+            #    errorMsg = errorMsg.replace('${selector}', ruleSet.selector)
+            obj["errorMsg"] = errorMsg
+            obj["selector"] = ruleSet.selector
+            obj["level"] = 'ruleset'
+            self.remember(errorLevel, obj);
 
     def doCompress(self):
         self.doFix()

@@ -15,10 +15,7 @@ class JsonReporter(Reporter):
         if len(logs) == 0 and len(warns) == 0 and len(errors) == 0:
             self.setMsg('{}')
             return
-        self.setMsg('{"errors":%s,"warnings":%s,"logs":%s}' % (
-            ('[' + ','.join([('"' + x.replace('"', '\\"') + '"') for x in errors if not x.startswith('"')]) + ']') if len(errors) != 0 else 'null', 
-            ('[' + ','.join([('"' + x.replace('"', '\\"') + '"') for x in warns if not x.startswith('"')]) + ']') if len(warns) != 0 else 'null', 
-            ('[' + ','.join([('"' + x.replace('"', '\\"') + '"') for x in logs if not x.startswith('"')]) + ']') if len(logs) != 0 else 'null'))
+        self.setMsg('{"errors":%s,"warnings":%s,"logs":%s}' % (errors, warns, logs))
 
     def export(self):
         return self.msg

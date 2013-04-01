@@ -4,6 +4,7 @@ import datetime
 from ckstyle.cmdconsole.ConsoleClass import console
 from ckstyle.plugins.Base import *
 from ckstyle.doCssCheck import doCheck
+from ckstyle.reporter.helper import fill
 
 def realpath(directory, fileName):
     return os.path.realpath(os.path.join(directory, fileName))
@@ -24,6 +25,7 @@ def checkUnitTestResult(expecteds, reals, level, fileName):
     global okCounter
     global errorCounter
     for real in reals:
+        real = fill(real)
         real = real.split('(from "')[0].strip()
         if expecteds.has_key(real):
             okCounter = okCounter + 1
