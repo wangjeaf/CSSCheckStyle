@@ -41,7 +41,10 @@ def checkFile(filePath, config = defaultConfig):
             console.show('[ckstyle] @see %s\n' % path)
         return False
     else:
-        console.show('[ckstyle] %s is ok\n' % filePath)
+        if config.exportJson:
+            console.show('{"status":"ok","result":"%s is ok"}' % filePath)
+        else:
+            console.show('[ckstyle] %s is ok\n' % filePath)
         if os.path.exists(path):
             os.remove(path)
         return True
