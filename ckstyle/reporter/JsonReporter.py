@@ -1,4 +1,5 @@
 from Reporter import Reporter
+import json
 
 class JsonReporter(Reporter):
     def __init__(self, checker):
@@ -15,7 +16,7 @@ class JsonReporter(Reporter):
         if len(logs) == 0 and len(warns) == 0 and len(errors) == 0:
             self.setMsg('{}')
             return
-        self.setMsg('{"errors":%s,"warnings":%s,"logs":%s}' % (errors, warns, logs))
+        self.setMsg('{"errors":%s,"warnings":%s,"logs":%s}' % (json.dumps(errors), json.dumps(warns), json.dumps(logs)))
 
     def export(self):
         return self.msg
