@@ -8,8 +8,9 @@ from helper import isCss3PrefixProp
 class FEDZIndexShouldInRange(RuleChecker):
     
     '''{
-        "summary":"xxx",
-        "desc":"xxx"
+        "summary":"z-index取值应符合范围要求",
+        "desc":"<code>z-index</code> 的取值如果混乱，则会造成层之间的相互覆盖，
+            因此 <code>z-index</code> 取值必须符合一定的范围要求，具体要求请参见人人FED CSS编码规范"
     }'''
 
     def __init__(self):

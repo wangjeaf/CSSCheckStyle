@@ -6,8 +6,8 @@ from Base import *
 class FEDShouldNotUseImportant(RuleChecker):
     
     '''{
-        "summary":"xxx",
-        "desc":"xxx"
+        "summary":"不要使用!important",
+        "desc":"CSS中不要使用<code>!important</code>"
     }'''
 
     def __init__(self):

@@ -72,8 +72,8 @@ class CssChecker():
             # 构造plugin的类
             instance = pluginClass()
 
-            # 如果是always，则说明不论是否选择都需要的规则
-            if not hasattr(instance, 'always'):
+            # 如果是private，则说明不论是否选择都需要的规则
+            if not hasattr(instance, 'private') or getattr(instance, 'private') is not True:
                 if include != 'all' and include.find(instance.id) == -1:
                     continue
                 elif exclude != 'none' and exclude.find(instance.id) != -1:

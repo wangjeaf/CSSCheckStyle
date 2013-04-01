@@ -7,8 +7,9 @@ from Base import *
 class FEDStyleShouldInOrder(RuleSetChecker):
     
     '''{
-        "summary":"xxx",
-        "desc":"xxx"
+        "summary":"属性应该按照推荐的顺序编写",
+        "desc":"相同的CSS属性，如果按照推荐的顺序来编写，浏览器的处理性能会更高，推荐的顺序一般为：<br>
+            显示属性 => 盒模型属性 => 背景/行高 => 文本属性 => 其他"
     }'''
 
     def __init__(self):

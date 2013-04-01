@@ -6,8 +6,8 @@ from Base import *
 class FEDUseLowerCaseSelector(RuleSetChecker):
     
     '''{
-        "summary":"xxx",
-        "desc":"xxx"
+        "summary":"选择器用小写字母",
+        "desc":"选择器应该用小写字母， 例如 <code>.demo</code> ， 不允许使用大写，例如： <code>.Demo .Test</code>"
     }'''
 
     def __init__(self):

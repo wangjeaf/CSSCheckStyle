@@ -6,8 +6,8 @@ from Base import *
 class FEDUseSingleQuotation(RuleChecker):
     
     '''{
-        "summary":"xxx",
-        "desc":"xxx"
+        "summary":"使用单引号",
+        "desc":"CSS的属性取值一律使用单引号<code>'</code>， 不允许使用双引号"
     }'''
 
     def __init__(self):

@@ -6,8 +6,9 @@ from Base import *
 class FEDReplaceBorderZeroWithBorderNone(RuleChecker):
     
     '''{
-        "summary":"xxx",
-        "desc":"xxx"
+        "summary":"用border:none替换border:0",
+        "desc":"<code>border:0</code> 实际上是有border的，只不过宽度为0， 而 <code>border:none;</code> 
+            是根本没有border的，对于浏览器来说后者的效率高，但是要注意，后者的代码长度稍微长一些。"
     }'''
 
     def __init__(self):

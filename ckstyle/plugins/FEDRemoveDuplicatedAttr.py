@@ -6,8 +6,17 @@ from Base import *
 class FEDRemoveDuplicatedAttr(RuleSetChecker):
     
     '''{
-        "summary":"xxx",
-        "desc":"xxx"
+        "summary":"删除重复的属性设置",
+        "desc":"如果在一个规则集中，对相同的两个属性进行了赋值，而且取值相同，则可以删除前面的赋值，例如：
+            <br>
+            <code>.test {</code><br>
+            <code>&nbsp;&nbsp;&nbsp;&nbsp;width: 100px;</code><br>
+            <code>&nbsp;&nbsp;&nbsp;&nbsp;width: 100px;</code><br>
+            <code>}</code><br>
+            <code>==></code><br>
+            <code>.test {</code><br>
+            <code>&nbsp;&nbsp;&nbsp;&nbsp;width: 100px;</code><br>
+            <code>}</code>"
     }'''
 
     def __init__(self):

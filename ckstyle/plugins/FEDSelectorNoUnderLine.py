@@ -6,8 +6,8 @@ from Base import *
 class FEDSelectorNoUnderLine(RuleSetChecker):
     
     '''{
-        "summary":"xxx",
-        "desc":"xxx"
+        "summary":"不要在选择器中使用下划线",
+        "desc":"在selector中不要使用下划线 <code>_</code> ，可以使用中划线 <code>-</code>"
     }'''
 
     def __init__(self):

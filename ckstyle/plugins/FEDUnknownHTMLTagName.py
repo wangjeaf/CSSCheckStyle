@@ -7,8 +7,8 @@ from helper import isHTMLTag
 class FEDUnknownHTMLTagName(RuleSetChecker):
     
     '''{
-        "summary":"xxx",
-        "desc":"xxx"
+        "summary":"错误的HTML Tag",
+        "desc":"如果您输入了错误的HTML Tag，本工具也会给出响应的提示"
     }'''
 
     def __init__(self):

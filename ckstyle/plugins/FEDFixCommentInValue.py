@@ -14,7 +14,7 @@ class FEDFixCommentInValue(RuleChecker):
         self.id = 'fix-comment-in-value'
         self.errorLevel = ERROR_LEVEL.WARNING
         self.errorMsg = ''
-        self.always = True
+        self.private = True
 
     def check(self, rule, config):
         return True

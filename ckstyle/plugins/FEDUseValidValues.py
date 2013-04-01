@@ -7,8 +7,8 @@ from validators.ValidatorFactory import doValidate
 class FEDUseValidValues(RuleChecker):
     
     '''{
-        "summary":"xxx",
-        "desc":"xxx"
+        "summary":"不正确的属性取值",
+        "desc":"检查不正确的属性取值，比如： <code>width: underline;</code> 等"
     }'''
 
     def __init__(self):

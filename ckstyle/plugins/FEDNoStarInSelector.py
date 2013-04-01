@@ -6,8 +6,10 @@ from Base import *
 class FEDNoStarInSelector(RuleSetChecker):
     
     '''{
-        "summary":"xxx",
-        "desc":"xxx"
+        "summary":"不要在选择器中使用星号",
+        "desc":"禁止在选择器中加入<code>*</code>来选择所有元素，例如：<br>
+            <br>
+            <code>*html</code> <code>*+html</code> <code>*:not</code>等几种特殊hack除外"
     }'''
 
     def __init__(self):

@@ -6,8 +6,8 @@ from Base import *
 class FEDSingleLineSpaces(RuleChecker):
     
     '''{
-        "summary":"xxx",
-        "desc":"xxx"
+        "summary":"单行的空格检查",
+        "desc":"单行CSS编码风格相关的空格检查，具体内容请参见CSS编码规范"
     }'''
 
     def __init__(self):

@@ -14,7 +14,7 @@ class FEDFixNestedStatement(ExtraChecker):
         self.id = 'fix-nested-ruleset'
         self.errorLevel = ERROR_LEVEL.ERROR
         self.errorMsg = ''
-        self.always = True
+        self.private = True
 
     def check(self, ruleSet, config):
         return True

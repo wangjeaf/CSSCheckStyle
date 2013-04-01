@@ -6,8 +6,8 @@ from Base import *
 class FEDSingleLineSelector(RuleSetChecker):
     
     '''{
-        "summary":"xxx",
-        "desc":"xxx"
+        "summary":"单行的选择器检查",
+        "desc":"单行的选择器检查内容，请参考多行选择器检查和人人FED CSS编码规范"
     }'''
 
     def __init__(self):

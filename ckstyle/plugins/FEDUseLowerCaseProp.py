@@ -6,8 +6,9 @@ from Base import *
 class FEDUseLowerCaseProp(RuleChecker):
     
     '''{
-        "summary":"xxx",
-        "desc":"xxx"
+        "summary":"属性名称应该用小写",
+        "desc":"所有的CSS属性名称一律小写，例如 <code>width</code> ，大写的方式是不正确的，
+            例如： <code>WIDTH:100px;</code>"
     }'''
 
     def __init__(self):

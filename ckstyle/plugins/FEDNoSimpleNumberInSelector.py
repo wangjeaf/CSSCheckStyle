@@ -8,8 +8,10 @@ pattern = re.compile('\d+')
 class FEDNoSimpleNumberInSelector(RuleSetChecker):
     
     '''{
-        "summary":"xxx",
-        "desc":"xxx"
+        "summary":"不要在选择器中使用简单数字",
+        "desc":"在业务代码的css中，选择器中不要使用简单的 <code>1, 2, 3</code> 来进行命名，下面的命名方式就是错误的：<br>
+            <code>.test1</code> <code>.main1</code>，但是允许使用 <code>v1</code> <code>step1</code> <code>item1</code> 
+            来代表版本、步骤、第几个元素的意思"
     }'''
 
     def __init__(self):

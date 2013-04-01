@@ -6,8 +6,8 @@ from Base import *
 class FEDSingleLineBraces(RuleSetChecker):
     
     '''{
-        "summary":"xxx",
-        "desc":"xxx"
+        "summary":"单行的括号检查",
+        "desc":"与单行CSS编码风格相关的括号检查"
     }'''
 
     def __init__(self):

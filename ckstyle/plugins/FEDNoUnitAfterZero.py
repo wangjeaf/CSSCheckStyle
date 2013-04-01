@@ -10,8 +10,9 @@ replacer = re.compile(',\s+')
 class FEDNoUnitAfterZero(RuleChecker):
     
     '''{
-        "summary":"xxx",
-        "desc":"xxx"
+        "summary":"删除0后面的单位",
+        "desc":"0后面的单位可以删除，以实现更好的压缩。比如 <code>0px ==> 0</code> ，<code>0em ==> 0</code> 等，
+            但是<code>transition: 0s</code>的<code>s</code>不能省略"
     }'''
 
     def __init__(self):

@@ -6,8 +6,8 @@ from Base import *
 class FEDNoEmptyRuleSet(RuleSetChecker):
     
     '''{
-        "summary":"xxx",
-        "desc":"xxx"
+        "summary":"删除空的规则",
+        "desc":"空的CSS规则集是没有任何意义的，应该直接删除掉"
     }'''
 
     def __init__(self):

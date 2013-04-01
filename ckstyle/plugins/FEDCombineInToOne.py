@@ -6,6 +6,7 @@ from helper import canBeCombined, isCss3PrefixProp
 from combiners.CombinerFactory import doCombine
 
 class FEDCombineInToOne(RuleSetChecker):
+    
     '''{
         "summary":"将多个子样式合并",
         "desc":"有的子样式可以合并为总样式，包括

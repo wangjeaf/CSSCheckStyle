@@ -6,8 +6,13 @@ from Base import *
 class FEDNoExpression(RuleChecker):
     
     '''{
-        "summary":"xxx",
-        "desc":"xxx"
+        "summary":"不要使用非一次性表达式",
+        "desc":"IE下，非一次性expression对性能有很大的影响，或许一次鼠标移动，
+            将触发<strong>成千上万次</strong>的expression表达式的执行，
+            因此，为了浏览器的更新换代，应该杜绝使用非一次性表达式。<br>
+            本工具针对一次性表达式的检查，将判断expression中是否有如下两个内容：<br>
+            1. <code>Expressions</code><br>
+            2. <code>this.style.attrName = </code>"
     }'''
 
     def __init__(self):

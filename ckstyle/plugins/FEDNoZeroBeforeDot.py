@@ -6,8 +6,12 @@ from Base import *
 class FEDNoZeroBeforeDot(RuleChecker):
     
     '''{
-        "summary":"xxx",
-        "desc":"xxx"
+        "summary":"删除0.x前面的0",
+        "desc":" 0.xxx 前面的 0 是可以删除的，以实现更好的压缩。例如<br>
+            <code>0.3px ==> .3px</code><br><br>
+            <code>rgba(0,0,0,0.3)<code><br>
+            <code>==></code><br>
+            <code>rgba(0,0,0,.3)</code>"
     }'''
 
     def __init__(self):

@@ -6,8 +6,8 @@ from Base import *
 class FEDSemicolonAfterValue(RuleChecker):
     
     '''{
-        "summary":"xxx",
-        "desc":"xxx"
+        "summary":"为每一个属性后添加分号",
+        "desc":"按照CSS编码规范，每一个规则后面都必须加上分号 <code>;</code>"
     }'''
 
     def __init__(self):
