@@ -25,7 +25,7 @@ def loadPlugins(pluginDir):
             continue
         # 构造plugin的类
         instance = pluginClass()
-        if (hasattr(instance, 'always')):
+        if (hasattr(instance, 'private') and getattr(instance, 'private') is True):
             continue
         obj = {}
         obj["id"] = instance.id
