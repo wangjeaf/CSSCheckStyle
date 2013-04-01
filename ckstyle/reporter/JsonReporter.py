@@ -1,4 +1,5 @@
 from Reporter import Reporter
+from helper import fill
 import json
 
 class JsonReporter(Reporter):
@@ -16,6 +17,13 @@ class JsonReporter(Reporter):
         if len(logs) == 0 and len(warns) == 0 and len(errors) == 0:
             self.setMsg('{}')
             return
+        for error in errors:
+            error["errorMsg"] = fill(error)
+        for warn in warns:
+            warn["errorMsg"] = fill(warn)
+        for log in logs:
+            log["errorMsg"] = fill(log)
+            
         self.setMsg('{"errors":%s,"warnings":%s,"logs":%s}' % (json.dumps(errors), json.dumps(warns), json.dumps(logs)))
 
     def export(self):
