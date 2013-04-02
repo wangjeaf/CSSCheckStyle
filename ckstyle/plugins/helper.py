@@ -4,6 +4,9 @@ pattern = re.compile(r'[@\*\[\]\(\):>]')
 def hasHackChars(text):
     return len(pattern.findall(text)) != 0
 
+def containsHack(rule):
+    return rule.value.find('\\0') != -1 or rule.value.find('\\9') != -1
+
 def getAttrOrder(attr, strippedName):
     if cssAttrOrders.has_key(attr):
         return cssAttrOrders[attr] + addCss3PrefixValue(strippedName)

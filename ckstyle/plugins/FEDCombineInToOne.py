@@ -2,7 +2,7 @@
 #encoding=utf-8
 
 from Base import *
-from helper import canBeCombined, isCss3PrefixProp
+from helper import canBeCombined, isCss3PrefixProp, containsHack
 from combiners.CombinerFactory import doCombine
 
 class FEDCombineInToOne(RuleSetChecker):
@@ -48,7 +48,9 @@ class FEDCombineInToOne(RuleSetChecker):
             name = rule.name
             if rule.name != rule.strippedName:
                 continue
-                
+            # do not do any hack combine
+            if containsHack(rule):
+                continue
             # -moz-border-radius, -o-border-radius is not for me
             if isCss3PrefixProp(name):
                 continue
@@ -76,6 +78,9 @@ class FEDCombineInToOne(RuleSetChecker):
 
             newRules = []
             for rule in originRules:
+                if containsHack(rule):
+                    newRules.append(rule)
+                    continue
                 # it is what i want
                 if rule.fixedName == name:
                     rule.fixedValue = combined
