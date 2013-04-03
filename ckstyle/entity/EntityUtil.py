@@ -28,7 +28,8 @@ class Cleaner():
     @staticmethod
     def clearName(name):
         name = name.strip()
-        if name.startswith('_') or name.startswith('*') or name.startswith('+'):
+        # #padding: 10px???
+        if name.startswith('_') or name.startswith('*') or name.startswith('+') or name.startswith('#'):
             name = name[1:]
         if name.startswith('-'):
             if name.startswith('-moz-') or name.startswith('-webkit-') or name.startswith('-ms-') or name.startswith('-o-') or name.startswith('-khtml-'):
