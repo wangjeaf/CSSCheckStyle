@@ -6,6 +6,7 @@ specialTexts = [
     {'start':'@', 'text':'@charset', 'end':';\n'},
     {'start':'@', 'text':'@namespace', 'end':';'},
     {'start':'@', 'text':'@-css-compiler ', 'end':'}'},
+    {'start':'@', 'text':'@-css-compiler{', 'end':'}'},
     {'start':'@', 'text':'@-css-compiler-', 'end':';\n'}]
 
 specialStartChars = set([x['start'] for x in specialTexts])
