@@ -20,6 +20,9 @@ class ExtraStatement(RuleSet):
         return self.operator.find('@-css-compiler') != -1
 
     def compress(self):
+        # do not export @-css-compiler to online 
+        if self.isOpmOperator():
+            return ''
         msg = Cleaner.clean(self.statement)
         if not msg.endswith('}') and not msg.endswith(';'):
             msg = msg + ';'

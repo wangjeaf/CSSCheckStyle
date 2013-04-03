@@ -26,7 +26,8 @@ def _compress_with_hack_chars():
     
 def _extra_statement():
     msg = doCssFileCompress('_extra_statement.css')
-    equal(msg, "@-css-compiler{selector-compile:no-combinator;rule-compile:all}@charset utf-8;@-css-compiler-xxx fdasfdas;@import url(fdafdas/fdafdas.css);", 'extra statement compressed')
+    # do not show @-css-compile content after compress
+    equal(msg, "@charset utf-8;@import url(fdafdas/fdafdas.css);", 'extra statement compressed')
 
 def _expression():
     msg = doCssFileCompress('_expression.css')
