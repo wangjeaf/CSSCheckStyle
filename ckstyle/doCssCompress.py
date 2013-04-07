@@ -54,7 +54,7 @@ def compressFile(filePath, config = defaultConfig):
     else:
         for key, value in config.compressConfig.browsers.items():
             message = checker.doCompress(value)
-            path = os.path.realpath(filePath.split('.css')[0] + '.' + key + 'min.css')
+            path = os.path.realpath(filePath.split('.css')[0] + '.' + key + '.min.css')
             if config.printFlag:
                 if extension is not None and os.path.exists(path):
                     os.remove(path)
