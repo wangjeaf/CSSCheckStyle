@@ -1,4 +1,5 @@
 import re
+
 pattern = re.compile(r'[@\*\[\]\(\):>]')
 
 def hasHackChars(text):

@@ -1,11 +1,13 @@
 from RuleSet import RuleSet
 from ExtraStatement import ExtraStatement
 from NestedStatement import NestedStatement
+from EntityUtil import ALL
 
 class StyleSheet():
     def __init__(self, fileName = ''):
         self._ruleSets = [];
         self._file = fileName
+        self.browser = ALL
 
     def addRuleSetByStr(self, selector, attrs, comment):
         self._ruleSets.append(RuleSet(selector, attrs, comment, self))
@@ -49,10 +51,12 @@ class StyleSheet():
             if ruleSet.selector == selector:
                 return ruleSet
 
-    def compress(self):
+    def compress(self, browser = ALL):
         result = []
         for ruleSet in self._ruleSets:
-            result.append(ruleSet.compress())
+            if not ruleSet.browser & browser:
+                continue
+            result.append(ruleSet.compress(browser))
         return ''.join(result)
 
     def fixed(self, config):

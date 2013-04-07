@@ -18,7 +18,7 @@ def _default():
 
     equal(config.compressConfig.extension, '.min.css', 'extension is .min.css')
     equal(config.compressConfig.combineFile, False, 'combine file is False')
-    equal(config.compressConfig.browsers, False, 'browsers is false')
+    equal(config.compressConfig.browsers, None, 'browsers is false')
     equal(config.compressConfig.noBak, False, 'no bak is false default')
 
     config = parseCkStyleCmdArgs(realpath('ckstyle.ini'), [("--errorLevel", "2"), ("--include", "abcde"), ("--exclude", "fghi"), ("-p", True), ("-r", True)], [], True)
@@ -29,7 +29,7 @@ def _default():
     equal(config.include, 'abcde', 'include is abcde')
     equal(config.exclude, 'fghi', 'exclude is fghi')
 
-    config = parseCompressCmdArgs(realpath('ckstyle.ini'), [("--errorLevel", "2"), ("--include", "abcde"), ("--exclude", "fghi"), ("-p", True), ("-r", True), ('--compressExtension', '.xxx.min.css'), ('--browsers', 'true'), ('--combineFile', 'true'), ("--safeMode", True), ("--noBak", True)], [], True)
+    config = parseCompressCmdArgs(realpath('ckstyle.ini'), [("--errorLevel", "2"), ("--include", "abcde"), ("--exclude", "fghi"), ("-p", True), ("-r", True), ('--compressExtension', '.xxx.min.css'), ('--browsers', 'ie6,ie7,std'), ('--combineFile', 'true'), ("--safeMode", True), ("--noBak", True)], [], True)
     equal(config.errorLevel, 2, 'errorLevel is 2')
     equal(config.recursive, True, 'recursive is True')
     equal(config.printFlag, True, 'print flag is True')
@@ -41,7 +41,7 @@ def _default():
 
     equal(config.compressConfig.extension, '.xxx.min.css', 'extension changed')
     equal(config.compressConfig.combineFile, True, 'combine file is true')
-    equal(config.compressConfig.browsers, True, 'browsers is true')
+    equal(config.compressConfig.browsers.has_key('ie6'), True, 'browsers is true')
 
     config = parseFixStyleCmdArgs(realpath('ckstyle.ini'), [("--errorLevel", "2"), ("--include", "abcde"), ("--exclude", "fghi"), ("-p", True), ("-r", True), ('--fixedExtension', '.xxx.fixed.css'), ("--singleLine", True), ("--safeMode", True), ("--noBak", True)], [], True)
     equal(config.errorLevel, 2, 'errorLevel is 2')

@@ -10,6 +10,7 @@ from ckstyle.doCssFix import fixFile, fixDir
 from ckstyle.doCssCompress import compressFile, compressDir
 from ckstyle.cmdconsole.ConsoleClass import console
 from ckstyle.command.usage import fixUsage, ckstyleUsage, compressUsage
+from ckstyle.browsers.Analyser import analyse
 import CommandFileParser
 
 def usage_compress():
@@ -162,19 +163,16 @@ def parseCompressCmdArgs(defaultConfigFile, opts, args, debug = False):
         elif op == '--compressExtension':
             extension = getExtension(value)
         elif op == '--browsers':
-            browsers = getValue(value).lower() == 'true'
+            browsers = analyse(getValue(value).replace('"', ''))
         elif op == '--combineFile':
             combineFile = getValue(value).lower() == 'true'
         elif op == '--safeMode':
             safeMode = True
         elif op == '--noBak':
             noBak = True
-
     config = parseCkStyleCmdArgs(defaultConfigFile, opts, args, debug, True)
     args = config.compressConfig
-
     if safeMode is not None: config.safeMode = safeMode
-
     if browsers is not None: args.browsers = browsers
     if extension is not None: args.extension = extension
     if combineFile is not None: args.combineFile = combineFile

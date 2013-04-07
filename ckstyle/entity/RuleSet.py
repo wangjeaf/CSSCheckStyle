@@ -1,4 +1,4 @@
-from EntityUtil import Cleaner
+from EntityUtil import Cleaner, ALL
 from Rule import Rule
 
 class RuleSet():
@@ -20,6 +20,8 @@ class RuleSet():
 
         self.singleLineFlag = (len(self.roughValue.split('\n')) == 1)
 
+        self.browser = ALL
+
     def extendSelector(self, other):
         splited = [x.strip() for x in self.selector.split(',') if x.strip() is not '']
         otherSplited = [x.strip() for x in other.selector.split(',') if x.strip() is not '']
@@ -36,16 +38,18 @@ class RuleSet():
             self.comment = self.comment + '\n' + other.comment
             self.fixedComment = self.fixedComment + '\n' + other.fixedComment
 
-    def compressRules(self):
+    def compressRules(self, browser = ALL):
         collector = []
         for rule in self._rules:
-            collector.append(rule.compress())
+            collector.append(rule.compress(browser))
         collected = ''.join(collector)
         if collected != '':
             collected = collected[0:-1]
         return collected
 
-    def compress(self):
+    def compress(self, browser = ALL):
+        if not self.browser & browser:
+            return ''
         result = self.selector if self.fixedSelector == '' else self.fixedSelector
         if result.find(','):
             # remove duplicated selectors
@@ -56,7 +60,7 @@ class RuleSet():
                     continue
                 selectors.append(x)
             result = ','.join(selectors)
-        result = result + '{' + self.compressRules() + '}'
+        result = result + '{' + self.compressRules(browser) + '}'
         return result
 
     def fixedRules(self, config):

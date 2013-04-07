@@ -2,6 +2,7 @@ import os
 import ConfigParser
 from ckstyle.cmdconsole.ConsoleClass import console
 import args
+from ckstyle.browsers.Analyser import analyse
 
 def exists(filePath):
     return os.path.exists(filePath)
@@ -60,7 +61,7 @@ class CommandFileParser():
         args = self.args.compressConfig
         args.extension      = get       (config, 'compress', 'extension',       args.extension)
         args.combineFile    = getBoolean(config, 'compress', 'combine-file',    args.combineFile)
-        args.browsers       = getBoolean(config, 'compress', 'browsers',        args.browsers)
+        args.browsers       = analyse(get(config,'compress', 'browsers',        args.browsers))
         args.noBak          = getBoolean(config, 'compress', 'no-bak',          args.noBak)
 
     def handleCkStyleOptions(self, config):

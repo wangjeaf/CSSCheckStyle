@@ -1,4 +1,4 @@
-from EntityUtil import Cleaner
+from EntityUtil import Cleaner, ALL
 
 class Rule():
     def __init__(self, selector, name, value, ruleSet):
@@ -19,11 +19,15 @@ class Rule():
 
         self.ruleSet = ruleSet
 
+        self.browser = ALL
+
     def reset(self, name, value):
         self.roughName = self.name = self.strippedName = self.fixedName = name
         self.roughValue = self.value = self.strippedValue = self.fixedValue = value
 
-    def compress(self):
+    def compress(self, browser = ALL):
+        if not self.browser & browser:
+            return ''
         name = self.name if self.fixedName == '' else self.fixedName.strip()
         value = self.value if self.fixedValue == '' else self.fixedValue.strip()
         return name + ':' + Cleaner.clean(value) + ';'

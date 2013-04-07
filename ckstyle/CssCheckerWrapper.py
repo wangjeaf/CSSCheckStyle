@@ -5,6 +5,7 @@ import os
 
 from plugins.Base import *
 from ckstyle.cmdconsole.ConsoleClass import console
+from ckstyle.browsers.BinaryRule import ALL
 
 class CssChecker():
     '''CSS检查类，需要CSS解析器作为辅助'''
@@ -182,9 +183,9 @@ class CssChecker():
             obj["level"] = 'ruleset'
             self.remember(errorLevel, obj);
 
-    def doCompress(self):
+    def doCompress(self, browser=ALL):
         self.doFix()
-        return self.getStyleSheet().compress().strip()
+        return self.getStyleSheet().compress(browser).strip()
 
     def doFix(self):
         # 忽略的规则集（目前只忽略单元测试的selector）

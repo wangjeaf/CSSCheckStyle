@@ -1,4 +1,4 @@
-from EntityUtil import Cleaner
+from EntityUtil import Cleaner, ALL
 from RuleSet import RuleSet
 
 class ExtraStatement(RuleSet):
@@ -13,15 +13,20 @@ class ExtraStatement(RuleSet):
         self.fixedSelector = ''
         self.fixedStatement = ''
 
+        self.browser = ALL
+
     def isImport(self):
         return self.operator == '@import'
 
     def isOpmOperator(self):
         return self.operator.find('@-css-compiler') != -1
 
-    def compress(self):
+    def compress(self, browser = ALL):
         # do not export @-css-compiler to online 
         if self.isOpmOperator():
+            return ''
+
+        if not self.browser & browser:
             return ''
         msg = Cleaner.clean(self.statement)
         if not msg.endswith('}') and not msg.endswith(';'):

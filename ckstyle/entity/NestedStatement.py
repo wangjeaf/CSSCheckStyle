@@ -1,4 +1,4 @@
-from EntityUtil import Cleaner
+from EntityUtil import Cleaner, ALL
 
 class NestedStatement():
     def __init__(self, selector, statement, comments, styleSheet = None):
@@ -13,7 +13,11 @@ class NestedStatement():
         self.fixedSelector = ''
         self.fixedStatement = ''
 
-    def compress(self):
+        self.browser = ALL
+
+    def compress(self, browser = ALL):
+        if not self.browser & browser:
+            return ''
         return self.fixedSelector + self._compressedStatement()
 
     def fixed(self, config):

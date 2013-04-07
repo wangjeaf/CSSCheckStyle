@@ -21,7 +21,7 @@ def _missing():
 
     args = config.compressConfig
     equal(args.combineFile, True, 'combine file is still True')
-    equal(args.browsers, False, 'browsers is false')
+    equal(args.browsers, None, 'browsers is false')
     equal(args.extension, '.lala.min.css', 'extension changed')
     equal(args.noBak, False, 'no bak is False by default')
 
@@ -42,7 +42,10 @@ def _configed():
 
     args = config.compressConfig
     equal(args.combineFile, True, 'combine file is True')
-    equal(args.browsers, True, 'browsers is True')
+    equal(args.browsers.has_key('std'), True, 'browsers is True')
+    equal(args.browsers.has_key('ie6'), True, 'browsers is True')
+    equal(args.browsers.has_key('ie7'), True, 'browsers is True')
+    equal(args.browsers.has_key('ie9'), False, 'browsers is True')
     equal(args.extension, '.min3.css', 'extension changed')
     equal(args.noBak, True, 'no bak is True')
 

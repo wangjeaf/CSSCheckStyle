@@ -1,0 +1,12 @@
+*html a {
+	width: 100px;
+}
+
+*+html a {
+	width: 200px;
+}
+
+a {
+	width: 300px;
+	_width: 400px;
+}

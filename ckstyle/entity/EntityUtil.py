@@ -1,3 +1,5 @@
+from ckstyle.browsers.BinaryRule import ALL
+
 import re
 replacer1 = re.compile('\s*{\s*')
 replacer2 = re.compile('\s*:\s*')

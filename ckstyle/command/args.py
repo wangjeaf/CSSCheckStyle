@@ -23,7 +23,7 @@ class CompressArgs():
     def __init__(self):
         self.extension = '.min.css'
         self.combineFile = True
-        self.browsers = False
+        self.browsers = None
         self.noBak = False
 
     def __str__(self):
