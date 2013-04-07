@@ -12,6 +12,8 @@ defaultConfig = args.CommandArgs()
 
 def doFix(fileContent, fileName = '', config = defaultConfig):
     '''封装一下'''
+    config.operation = 'fixstyle'
+
     parser = CssParser(fileContent, fileName)
     parser.doParse(config)
 

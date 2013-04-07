@@ -199,6 +199,7 @@ def _handle(options, dirHandler, fileHandler, argsParser, operation):
         return
 
     config = argsParser(configFile, opts, args)
+    config.operation = operation
     
     filePath = None
     if len(args) == 0:

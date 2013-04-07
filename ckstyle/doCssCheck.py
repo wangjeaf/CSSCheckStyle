@@ -13,6 +13,8 @@ defaultConfig = args.CommandArgs()
 
 def doCheck(fileContent, fileName = '', config = defaultConfig):
     '''封装一下'''
+
+    config.operation = 'ckstyle'
     parser = CssParser(fileContent, fileName)
     parser.doParse(config)
 

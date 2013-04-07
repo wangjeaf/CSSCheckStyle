@@ -1,5 +1,6 @@
 class CommandArgs():
     def __init__(self):
+        self.operation = None
         self.errorLevel = 2
         self.recursive = False
         self.printFlag = False

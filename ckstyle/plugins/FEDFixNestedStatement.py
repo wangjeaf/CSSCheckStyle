@@ -24,6 +24,10 @@ class FEDFixNestedStatement(ExtraChecker):
             return
         ruleSet.fixedSelector = ruleSet.fixedSelector.replace('"', '\'')
         statement = ruleSet.fixedStatement
-        from ckstyle.doCssFix import doFix
+        
+        if (hasattr(config, 'operation') and getattr(config, 'operation') == 'compress'):
+            from ckstyle.doCssCompress import doCompress as doFix
+        else:
+            from ckstyle.doCssFix import doFix
         checker, msg = doFix(statement, '', config)
         ruleSet.fixedStatement = msg

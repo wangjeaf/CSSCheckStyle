@@ -12,6 +12,8 @@ defaultConfig = args.CommandArgs()
 
 def doCompress(fileContent, fileName = '', config = defaultConfig):
     '''封装一下'''
+    config.operation = 'compress'
+
     parser = CssParser(fileContent, fileName)
     parser.doParse(config)
 
