@@ -1,0 +1,18 @@
+a {
+	-webkit-transform: 1s;
+	-moz-transform: 1s;
+	-o-transform: 1s;
+	width: 300px;
+}
+
+b {
+	-moz-transform: 1s;
+	width: 300px;
+	_width: 400px;
+}
+
+d {
+	-moz-transform: 1s;
+	width: 300px;
+	_width: 400px;
+}

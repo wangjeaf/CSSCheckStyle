@@ -12,23 +12,17 @@ defaultConfig = args.CommandArgs()
 
 def prepare(fileContent, fileName = '', config = defaultConfig):
     config.operation = 'compress'
-
     parser = CssParser(fileContent, fileName)
     parser.doParse(config)
-
     checker = CssChecker(parser, config)
-
     checker.loadPlugins(os.path.realpath(os.path.join(__file__, '../plugins')))
 
     return checker
 
 def doCompress(fileContent, fileName = '', config = defaultConfig):
     '''封装一下'''
-
     checker = prepare(fileContent, fileName, config)
-
     message = checker.doCompress()
-
     return checker, message
 
 def compressFile(filePath, config = defaultConfig):
@@ -40,11 +34,6 @@ def compressFile(filePath, config = defaultConfig):
     fileContent = open(filePath).read()
     if not config.printFlag:
         console.show('[compress] compressing %s' % filePath)
-    if config.compressConfig.browsers is None:
-        checker, message = doCompress(fileContent, filePath, config)
-    else:
-        checker = prepare(fileContent, filePath, config)
-
     path = filePath
     basic = filePath.split('.css')[0]
     if extension is None:
@@ -53,7 +42,9 @@ def compressFile(filePath, config = defaultConfig):
             open(path + '.bak', 'w').write(fileContent)
     else:
         path = os.path.realpath(filePath.split('.css')[0] + extension)
+        
     if config.compressConfig.browsers is None:
+        checker, message = doCompress(fileContent, filePath, config)
         if config.printFlag:
             if extension is not None and os.path.exists(path):
                 os.remove(path)
@@ -63,6 +54,8 @@ def compressFile(filePath, config = defaultConfig):
             console.show('[compress] compressed ==> %s' % path)
     else:
         for key, value in config.compressConfig.browsers.items():
+            # 每次都需要一个新的，避免上一次操作后的对象在内存中重复使用导致错误
+            checker = prepare(fileContent, filePath, config)
             message = checker.doCompress(value)
             path = os.path.realpath(filePath.split('.css')[0] + '.' + key + '.min.css')
             if config.printFlag:
