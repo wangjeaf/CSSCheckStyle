@@ -5,8 +5,6 @@ from Hacks import doRuleDetect, doRuleSetDetect
 
 class Browser():
 
-    # http://www.swordair.com/tools/css-hack-table/
-    # big table
     @staticmethod
     def handleRule(rule):
         rule.browser = doRuleDetect(rule.fixedName.strip(), rule.fixedValue.strip())

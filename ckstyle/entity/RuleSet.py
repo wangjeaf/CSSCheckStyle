@@ -41,7 +41,9 @@ class RuleSet():
     def compressRules(self, browser = ALL):
         collector = []
         for rule in self._rules:
-            collector.append(rule.compress(browser))
+            compressed = rule.compress(browser)
+            if compressed != '':
+                collector.append(compressed)
         collected = ''.join(collector)
         if collected != '':
             collected = collected[0:-1]

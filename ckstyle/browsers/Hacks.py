@@ -3,6 +3,9 @@
 from BinaryRule import *
 import re
 
+# http://www.swordair.com/tools/css-hack-table/
+# big table
+
 # some hacks
 RULE_HACKS = [
     [r'^_',                     1,  IE6],
