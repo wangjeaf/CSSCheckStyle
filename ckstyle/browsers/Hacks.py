@@ -12,7 +12,12 @@ RULE_HACKS = [
     [r'\\0/',                   2,  IE8],
     [r'\\0',                    2,  IE8 | IE9PLUS],
     [r'zoom|behavior|filter',   1,  ALLIE],
-    [r'expression',             2,  ALLIE]
+    [r'expression',             2,  ALLIE],
+    [r'^\-webkit\-',            1,  WEBKIT],
+    [r'^\-moz\-',               1,  FIREFOX],
+    [r'^\-ms\-',                1,  IE9PLUS],
+    [r'^\-khtml\-',             1,  ALLIE],
+    [r'^\-o\-',                 1,  OPERA]
 ]
 
 # some hacks
@@ -41,4 +46,4 @@ def doRuleSetDetect(selector):
     return STD
 
 if __name__ == '__main__':
-    print doRuleSetDetect('html>/**/body .sss')
+    print doRuleDetect('-moz-fdafda', 'fda') & (IE6 | STD)

@@ -10,8 +10,7 @@ import command.args as args
 
 defaultConfig = args.CommandArgs()
 
-def doCompress(fileContent, fileName = '', config = defaultConfig):
-    '''封装一下'''
+def prepare(fileContent, fileName = '', config = defaultConfig):
     config.operation = 'compress'
 
     parser = CssParser(fileContent, fileName)
@@ -20,6 +19,14 @@ def doCompress(fileContent, fileName = '', config = defaultConfig):
     checker = CssChecker(parser, config)
 
     checker.loadPlugins(os.path.realpath(os.path.join(__file__, '../plugins')))
+
+    return checker
+
+def doCompress(fileContent, fileName = '', config = defaultConfig):
+    '''封装一下'''
+
+    checker = prepare(fileContent, fileName, config)
+
     message = checker.doCompress()
 
     return checker, message
@@ -33,7 +40,10 @@ def compressFile(filePath, config = defaultConfig):
     fileContent = open(filePath).read()
     if not config.printFlag:
         console.show('[compress] compressing %s' % filePath)
-    checker, message = doCompress(fileContent, filePath, config)
+    if config.compressConfig.browsers is None:
+        checker, message = doCompress(fileContent, filePath, config)
+    else:
+        checker = prepare(fileContent, filePath, config)
 
     path = filePath
     basic = filePath.split('.css')[0]

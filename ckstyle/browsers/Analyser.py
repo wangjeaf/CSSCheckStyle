@@ -2,12 +2,20 @@
 #encoding=utf-8
 
 from BinaryRule import *
+
 mapping = {
-	'ie6' : IE6,
-	'ie7' : IE7,
-	'ie8' : IE8,
-	'ie9' : IE9PLUS,
-	'std' : STD
+	'ie' : ALLIE,
+	'webkit' : WEBKIT,
+	'ie6' : IE6 | STD,
+	'ie7' : IE7 | STD,
+	'ie8' : IE8 | STD,
+	'ie9' : IE9PLUS | STD,
+	'ie10': IE9PLUS | STD,
+	'chrome' : CHROME | STD,
+	'firefox' : FIREFOX | STD,
+	'opera' : OPERA | STD,
+	'safari' : SAFARI | STD,
+	'std' : STD | NONEIE
 }
 
 def analyse(text):

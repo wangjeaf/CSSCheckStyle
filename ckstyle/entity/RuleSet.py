@@ -60,7 +60,10 @@ class RuleSet():
                     continue
                 selectors.append(x)
             result = ','.join(selectors)
-        result = result + '{' + self.compressRules(browser) + '}'
+        compressed = self.compressRules(browser)
+        if compressed == '':
+            return ''
+        result = result + '{' + compressed + '}'
         return result
 
     def fixedRules(self, config):

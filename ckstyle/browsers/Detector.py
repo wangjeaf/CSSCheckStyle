@@ -9,7 +9,7 @@ class Browser():
     # big table
     @staticmethod
     def handleRule(rule):
-        rule.browser = doRuleDetect(rule.fixedName, rule.fixedValue)
+        rule.browser = doRuleDetect(rule.fixedName.strip(), rule.fixedValue.strip())
 
     @staticmethod
     def handleRuleSet(ruleSet):

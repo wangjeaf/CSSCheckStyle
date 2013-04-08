@@ -3,7 +3,7 @@
 
 from Base import *
 from helper import hasHackChars
-
+from ckstyle.browsers.BinaryRule import ALL
 class FEDCombineSameRuleSets(StyleSheetChecker):
 
     '''{
@@ -31,8 +31,9 @@ class FEDCombineSameRuleSets(StyleSheetChecker):
         return True 
 
     def fix(self, styleSheet, config):
+        browser = config._curBrowser if config._curBrowser is not None else ALL
         ruleSets = styleSheet.getRuleSets()
-        mapping = self._gen_hash(ruleSets)
+        mapping = self._gen_hash(ruleSets, browser)
 
         length = len(mapping)
 
@@ -79,7 +80,7 @@ class FEDCombineSameRuleSets(StyleSheetChecker):
         # remember to clean after remove ruleset
         styleSheet.clean()
 
-    def _gen_hash(self, ruleSets):
+    def _gen_hash(self, ruleSets, browser):
         mapping = []
         counter = 0
         for r in ruleSets:
@@ -88,5 +89,5 @@ class FEDCombineSameRuleSets(StyleSheetChecker):
                 mapping.append(['extra', "do_not_combine_" + str(counter)])
                 counter = counter + 1
                 continue
-            mapping.append([r.selector, r.compressRules()])
+            mapping.append([r.selector, r.compressRules(browser)])
         return mapping

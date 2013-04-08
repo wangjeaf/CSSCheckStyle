@@ -26,6 +26,7 @@ class Rule():
         self.roughValue = self.value = self.strippedValue = self.fixedValue = value
 
     def compress(self, browser = ALL):
+        #print self.strippedName, self.value, bin(self.browser), bin(browser), self.browser & browser
         if not self.browser & browser:
             return ''
         name = self.name if self.fixedName == '' else self.fixedName.strip()

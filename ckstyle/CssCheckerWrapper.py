@@ -183,11 +183,12 @@ class CssChecker():
             obj["level"] = 'ruleset'
             self.remember(errorLevel, obj);
 
-    def doCompress(self, browser=ALL):
+    def doCompress(self, browser = ALL):
+        self.config._curBrowser = browser
         self.doFix()
         return self.getStyleSheet().compress(browser).strip()
 
-    def doFix(self):
+    def doFix(self, browser = ALL):
         # 忽略的规则集（目前只忽略单元测试的selector）
         ignoreRuleSets = self.config.ignoreRuleSets
 
@@ -248,7 +249,6 @@ class CssChecker():
         for checker in self.styleSheetCheckers:
             if hasattr(checker, 'fix'):
                 checker.fix(styleSheet, self.config)
-
         return self.getStyleSheet().fixed(self.config)
 
     def doCheck(self):
