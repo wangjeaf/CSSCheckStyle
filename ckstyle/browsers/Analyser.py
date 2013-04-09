@@ -10,6 +10,7 @@ mapping = {
 	'ie7' : IE7 | STD,
 	'ie8' : IE8 | STD,
 	'ie9' : IE9PLUS | STD,
+	'ie9plus' : IE9PLUS | STD,
 	'ie10': IE9PLUS | STD,
 	'chrome' : CHROME | STD,
 	'firefox' : FIREFOX | STD,
