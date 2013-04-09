@@ -18,6 +18,7 @@ def _ie():
 	equal(doRuleDetect('behavior', '1'), ALLIE, 'behavior')
 	equal(doRuleDetect('filter', '1'), ALLIE, 'filter')
 	equal(doRuleDetect('width', 'xxxx.Microsoft.AlphaImageLoader'), ALLIE, 'Microsoft')
+	equal(doRuleDetect('width', 'xxxx.microsoft.AlphaImageLoader'), ALLIE, 'microsoft')
 	equal(doRuleDetect('width', 'expression()'), ALLIE, 'expression')
 
 def _other():

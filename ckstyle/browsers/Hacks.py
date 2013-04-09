@@ -17,7 +17,7 @@ RULE_HACKS = [
 
     [r'zoom|behavior|filter',   1,  ALLIE],
 
-    [r'.*Microsoft',            2,  ALLIE],
+    [r'.*(m|M)icrosoft',        2,  ALLIE],
     [r'^expression',            2,  ALLIE],
 
     [r'^\-webkit\-',            1,  WEBKIT],
