@@ -18,6 +18,10 @@ class ExtraStatement(RuleSet):
     def isImport(self):
         return self.operator == '@import'
 
+    def rebase(self):
+        self.fixedSelector = ''
+        self.fixedStatement = ''
+        
     def isOpmOperator(self):
         return self.operator.find('@-css-compiler') != -1
 

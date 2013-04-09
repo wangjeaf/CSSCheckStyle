@@ -22,6 +22,10 @@ class RuleSet():
 
         self.browser = ALL
 
+    def rebase(self):
+        self.fixedSelector = ''
+        self.fixedComment = ''
+
     def extendSelector(self, other):
         splited = [x.strip() for x in self.selector.split(',') if x.strip() is not '']
         otherSplited = [x.strip() for x in other.selector.split(',') if x.strip() is not '']

@@ -21,6 +21,10 @@ class Rule():
 
         self.browser = ALL
 
+    def rebase(self):
+        self.fixedName = ''
+        self.fixedValue = ''
+        
     def reset(self, name, value):
         self.roughName = self.name = self.strippedName = self.fixedName = name
         self.roughValue = self.value = self.strippedValue = self.fixedValue = value

@@ -31,6 +31,9 @@ class CssChecker():
         # 如果有解析过程的错误，则先把那些错误记录下来
         self.handleParseErrors()
 
+    def resetStyleSheet(self):
+        self.parser.styleSheet.rebase()
+
     def getStyleSheet(self):
         '''获取styleSheet引用'''
         return self.parser.styleSheet
@@ -189,6 +192,7 @@ class CssChecker():
         return self.getStyleSheet().compress(browser).strip()
 
     def doFix(self, browser = ALL):
+        #self.resetStyleSheet()
         # 忽略的规则集（目前只忽略单元测试的selector）
         ignoreRuleSets = self.config.ignoreRuleSets
 

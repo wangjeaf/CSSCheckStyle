@@ -15,6 +15,10 @@ class NestedStatement():
 
         self.browser = ALL
 
+    def rebase(self):
+        self.fixedSelector = ''
+        self.fixedStatement = ''
+        
     def compress(self, browser = ALL):
         if not self.browser & browser:
             return ''

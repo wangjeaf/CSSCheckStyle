@@ -57,6 +57,7 @@ def compressFile(filePath, config = defaultConfig):
         onlyOne = len(items) == 1
         for key, value in items:
             # 每次都需要一个新的，避免上一次操作后的对象在内存中重复使用导致错误
+            # 尤其是合并过的CSS规则集
             checker = prepare(fileContent, filePath, config)
             message = checker.doCompress(value)
             path = os.path.realpath(filePath.split('.css')[0] + '.' + key + '.min.css')

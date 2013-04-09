@@ -64,3 +64,7 @@ class StyleSheet():
         for ruleSet in self._ruleSets:
             result.append(ruleSet.fixed(config))
         return '\n\n'.join(result)
+
+    def rebase(self):
+        for ruleSet in self._ruleSets:
+            ruleSet.rebase()
