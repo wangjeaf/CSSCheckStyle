@@ -53,7 +53,9 @@ def compressFile(filePath, config = defaultConfig):
             open(path, 'w').write(message)
             console.show('[compress] compressed ==> %s' % path)
     else:
-        for key, value in config.compressConfig.browsers.items():
+        items = config.compressConfig.browsers.items()
+        onlyOne = len(items) == 1
+        for key, value in items:
             # 每次都需要一个新的，避免上一次操作后的对象在内存中重复使用导致错误
             checker = prepare(fileContent, filePath, config)
             message = checker.doCompress(value)
@@ -61,7 +63,7 @@ def compressFile(filePath, config = defaultConfig):
             if config.printFlag:
                 if extension is not None and os.path.exists(path):
                     os.remove(path)
-                console.show(key + ' : ' + message)
+                console.show(((key + ' : ') if not onlyOne else '') + message)
             else:
                 open(path, 'w').write(message)
                 console.show('[compress] compressed ==> %s' % path)
