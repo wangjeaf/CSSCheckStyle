@@ -1,18 +1,18 @@
 #/usr/bin/python
 #encoding=utf-8
 from BinaryRule import *
-from Hacks import doRuleDetect, doRuleSetDetect
+from Hacks import doRuleDetect, doRuleSetDetect, doExtraDetect
 
 class Browser():
 
     @staticmethod
     def handleRule(rule):
-        rule.browser = doRuleDetect(rule.fixedName.strip(), rule.fixedValue.strip())
+        rule.browser = doRuleDetect(rule.fixedName, rule.fixedValue)
 
     @staticmethod
     def handleRuleSet(ruleSet):
-        ruleSet.browser = doRuleSetDetect(ruleSet.selector.replace(' ', ''))
+        ruleSet.browser = doRuleSetDetect(ruleSet.selector)
     
     @staticmethod
-    def handleNestedStatement(ruleSet):
-        pass
+    def handleNestedStatement(statement):
+    	statement.browser = doExtraDetect(statement.selector)
