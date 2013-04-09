@@ -24,10 +24,13 @@ class FEDFixNestedStatement(ExtraChecker):
             return
         ruleSet.fixedSelector = ruleSet.fixedSelector.replace('"', '\'')
         statement = ruleSet.fixedStatement
-        
         if (hasattr(config, 'operation') and getattr(config, 'operation') == 'compress'):
-            from ckstyle.doCssCompress import doCompress as doFix
+            from ckstyle.doCssCompress import prepare
+            checker = prepare(statement, '', config)
+            # 嵌套的CSS，如果是压缩，也需要精简
+            msg = checker.doCompress(config._curBrowser)
+            ruleSet.fixedStatement = msg
         else:
             from ckstyle.doCssFix import doFix
-        checker, msg = doFix(statement, '', config)
-        ruleSet.fixedStatement = msg
+            checker, msg = doFix(statement, '', config)
+            ruleSet.fixedStatement = msg
