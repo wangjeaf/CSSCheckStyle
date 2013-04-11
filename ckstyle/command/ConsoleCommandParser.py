@@ -26,7 +26,7 @@ def usage_ckstyle():
 def getDefaultConfigPath():
     homedir = os.getenv('USERPROFILE') or os.getenv('HOME')
     if homedir is None:
-        return 'ckstyle.ini'
+        return None
     else:
         return os.path.realpath(os.path.join(homedir, 'ckstyle.ini'))
 
@@ -36,7 +36,16 @@ def getConfigFilePath():
     if not os.path.exists(configFile):
         configFile = getDefaultConfigPath()
 
-    return None
+    return configFile
+
+def getDefaultConfig(configFile):
+    if configFile is not None:
+        parser = CommandFileParser.CommandFileParser(configFile)
+        config = parser.args
+    else:
+         config = CommandArgs()
+
+    return config
 
 def getErrorLevel(value):
     if value.strip() == '':
@@ -113,8 +122,7 @@ def parseCkStyleCmdArgs(defaultConfigFile, opts, args, debug = False, called = F
     if configFile is None :
         configFile = defaultConfigFile
 
-    parser = CommandFileParser.CommandFileParser(configFile, debug)
-    config = parser.args
+    config = getDefaultConfig(configFile)
 
     if recur: config.recursive = True
     if printFlag: config.printFlag = True
@@ -194,18 +202,11 @@ def _handle(options, dirHandler, fileHandler, argsParser, operation):
     configFile = getConfigFilePath()
 
     if len(args) == 0 and len(opts) == 0:
-        if configFile is not None:
-            parser = CommandFileParser.CommandFileParser(configFile)
-            config = parser.args
-        else:
-            config = CommandArgs()
+        config = getDefaultConfig(configFile)
         dirHandler(os.getcwd(), config = config)
         return
-        
-    if configFile is not None:
-        config = argsParser(configFile, opts, args)
-    else:
-        config = CommandArgs()
+
+    config = argsParser(configFile, opts, args)
 
     config.operation = operation
     
