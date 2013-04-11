@@ -50,7 +50,48 @@ class CssChecker():
         '''把错误信息导出'''
         return self.logMsgs, self.warningMsgs, self.errorMsgs
 
-    def loadPlugins(self, pluginDir):
+    def loadPlugins(self, pluginDir, debug = False):
+        '''如果是debug模式，则从细小的plugin文件中载入插件，否则，从大文件中载入插件'''
+        if debug:
+            self.loadFromSubFiles(pluginDir)
+        else:
+            self.loadFromBigFile(pluginDir)
+
+    def loadFromBigFile(self, pluginDir):
+        '''从plugins目录动态载入检查类'''
+        # ids = {}
+        include = self.config.include
+        exclude = self.config.exclude
+        safeMode = self.config.safeMode
+        safeModeExcludes = 'combine-same-rulesets'
+
+        # 获取plugins的引用
+        plugin = __import__("ckstyle.plugins.AllRules", fromlist = ['AllRules'])
+        props = dir(plugin)
+        for prop in props:
+            if not prop.startswith('FED'):
+                continue
+
+            pluginClass = getattr(plugin, prop)
+            # 构造plugin的类
+            instance = pluginClass()
+            # 如果是private，则说明不论是否选择都需要的规则
+            if not hasattr(instance, 'private') or getattr(instance, 'private') is not True:
+                if include != 'all' and include.find(instance.id) == -1:
+                    continue
+                elif exclude != 'none' and exclude.find(instance.id) != -1:
+                    continue
+                elif safeMode and safeModeExcludes.find(instance.id) != -1:
+                    continue
+
+            #if instance.errorMsg.find(';') != -1 or instance.errorMsg.find('\n') != -1:
+            #    console.error(r'[TOOL] errorMsg should not contain ";" or "\n" in %s.py' % pluginName)
+            #    continue
+
+            # 注册到检查器中
+            self.registerChecker(instance)
+
+    def loadFromSubFiles(self, pluginDir):
         '''从plugins目录动态载入检查类'''
         # ids = {}
         include = self.config.include

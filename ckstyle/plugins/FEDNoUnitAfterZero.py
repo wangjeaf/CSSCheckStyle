@@ -4,8 +4,8 @@
 from Base import *
 import re
 
-pattern = re.compile(r'(0\s*[\w]+)')
-replacer = re.compile(',\s+')
+pattern_unit = re.compile(r'(0\s*[\w]+)')
+replacer_unit = re.compile(',\s+')
 
 class FEDNoUnitAfterZero(RuleChecker):
     
@@ -65,10 +65,10 @@ class FEDNoUnitAfterZero(RuleChecker):
                     finalV = finalV.replace(m, '0')
             collector.append(finalV)
 
-        rule.fixedValue = replacer.sub(', ', ' '.join(collector))
+        rule.fixedValue = replacer_unit.sub(', ', ' '.join(collector))
 
     def _startsWithZero(self, value):
-        matcher = pattern.match(value)
+        matcher = pattern_unit.match(value)
         if matcher is not None:
             return matcher.groups()
         return None

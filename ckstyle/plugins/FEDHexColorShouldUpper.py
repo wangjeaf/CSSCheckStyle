@@ -4,7 +4,7 @@
 from Base import *
 import re
 
-pattern = re.compile(r'#([a-f0-9A-F]+)')
+pattern_color = re.compile(r'#([a-f0-9A-F]+)')
 
 class FEDHexColorShouldUpper(RuleChecker):
     '''{
@@ -94,7 +94,7 @@ class FEDHexColorShouldUpper(RuleChecker):
         found = []
         for x in splited:
             x = x.strip()
-            matcher = pattern.findall(x)
+            matcher = pattern_color.findall(x)
             if matcher is not None:
                 found.extend(matcher)
             #if x.startswith('#'):
