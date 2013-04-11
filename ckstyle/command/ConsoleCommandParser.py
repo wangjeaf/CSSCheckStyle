@@ -11,6 +11,7 @@ from ckstyle.doCssCompress import compressFile, compressDir
 from ckstyle.cmdconsole.ConsoleClass import console
 from ckstyle.command.usage import fixUsage, ckstyleUsage, compressUsage
 from ckstyle.browsers.Analyser import analyse
+from args import CommandArgs
 import CommandFileParser
 
 def usage_compress():
@@ -24,7 +25,10 @@ def usage_ckstyle():
 
 def getDefaultConfigPath():
     homedir = os.getenv('USERPROFILE') or os.getenv('HOME')
-    return os.path.realpath(os.path.join(homedir, 'ckstyle.ini'))
+    if homedir is None:
+        return 'ckstyle.ini'
+    else:
+        return os.path.realpath(os.path.join(homedir, 'ckstyle.ini'))
 
 def getConfigFilePath():
     configFile = 'ckstyle.ini'
@@ -32,7 +36,7 @@ def getConfigFilePath():
     if not os.path.exists(configFile):
         configFile = getDefaultConfigPath()
 
-    return configFile
+    return None
 
 def getErrorLevel(value):
     if value.strip() == '':
@@ -190,13 +194,19 @@ def _handle(options, dirHandler, fileHandler, argsParser, operation):
     configFile = getConfigFilePath()
 
     if len(args) == 0 and len(opts) == 0:
-        parser = CommandFileParser.CommandFileParser(configFile)
-        config = parser.args
-
+        if configFile is not None:
+            parser = CommandFileParser.CommandFileParser(configFile)
+            config = parser.args
+        else:
+            config = CommandArgs()
         dirHandler(os.getcwd(), config = config)
         return
+        
+    if configFile is not None:
+        config = argsParser(configFile, opts, args)
+    else:
+        config = CommandArgs()
 
-    config = argsParser(configFile, opts, args)
     config.operation = operation
     
     filePath = None
