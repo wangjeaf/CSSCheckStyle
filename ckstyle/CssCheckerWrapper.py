@@ -50,7 +50,7 @@ class CssChecker():
         '''把错误信息导出'''
         return self.logMsgs, self.warningMsgs, self.errorMsgs
 
-    def loadPlugins(self, pluginDir, debug = False):
+    def loadPlugins(self, pluginDir, debug = True):
         '''如果是debug模式，则从细小的plugin文件中载入插件，否则，从大文件中载入插件'''
         if debug:
             self.loadFromSubFiles(pluginDir)
