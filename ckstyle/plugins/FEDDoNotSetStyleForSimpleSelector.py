@@ -1,8 +1,8 @@
 #/usr/bin/python
 #encoding=utf-8
 
-from Base import *
-from helper import isSimpleSelector
+from .Base import *
+from .helper import isSimpleSelector
 
 class FEDDoNotSetStyleForSimpleSelector(RuleSetChecker):
     

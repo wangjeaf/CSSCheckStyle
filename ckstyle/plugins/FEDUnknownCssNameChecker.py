@@ -1,8 +1,8 @@
 #/usr/bin/python
 #encoding=utf-8
 
-from Base import *
-from helper import isCssProp
+from .Base import *
+from .helper import isCssProp
 
 class FEDUnknownCssNameChecker(RuleChecker):
     

@@ -1,5 +1,5 @@
-from EntityUtil import Cleaner, ALL
-from Rule import Rule
+from .EntityUtil import Cleaner, ALL
+from .Rule import Rule
 
 class RuleSet():
     def __init__(self, selector, values, comment, styleSheet):

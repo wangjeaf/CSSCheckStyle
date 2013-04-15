@@ -1,7 +1,7 @@
 #/usr/bin/python
 #encoding=utf-8
 
-from Base import *
+from .Base import *
 
 class FEDSingleLineSpaces(RuleChecker):
     

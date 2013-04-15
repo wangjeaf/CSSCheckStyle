@@ -1,7 +1,7 @@
 #/usr/bin/python
 #encoding=utf-8
 
-from BinaryRule import *
+from .BinaryRule import *
 
 mapping = {
 	'ie' : ALLIE,

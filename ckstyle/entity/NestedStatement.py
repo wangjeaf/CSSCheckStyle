@@ -1,4 +1,4 @@
-from EntityUtil import Cleaner, ALL
+from .EntityUtil import Cleaner, ALL
 
 class NestedStatement():
     def __init__(self, selector, statement, comments, styleSheet = None):

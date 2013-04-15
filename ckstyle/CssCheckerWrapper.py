@@ -3,7 +3,7 @@
 
 import os
 
-from plugins.Base import *
+from .plugins.Base import *
 from ckstyle.cmdconsole.ConsoleClass import console
 from ckstyle.browsers.BinaryRule import ALL
 

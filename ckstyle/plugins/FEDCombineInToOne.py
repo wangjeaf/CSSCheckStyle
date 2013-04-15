@@ -1,9 +1,9 @@
 #/usr/bin/python
 #encoding=utf-8
 
-from Base import *
-from helper import canBeCombined, isCss3PrefixProp, containsHack
-from combiners.CombinerFactory import doCombine
+from .Base import *
+from .helper import canBeCombined, isCss3PrefixProp, containsHack
+from .combiners.CombinerFactory import doCombine
 
 class FEDCombineInToOne(RuleSetChecker):
     

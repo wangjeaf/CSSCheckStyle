@@ -1,7 +1,7 @@
 #/usr/bin/python
 #encoding=utf-8
-from BinaryRule import *
-from Hacks import doRuleDetect, doRuleSetDetect, doExtraDetect
+from .BinaryRule import *
+from .Hacks import doRuleDetect, doRuleSetDetect, doExtraDetect
 
 class Browser():
 

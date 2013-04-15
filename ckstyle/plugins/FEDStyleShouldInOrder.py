@@ -1,8 +1,8 @@
 #/usr/bin/python
 #encoding=utf-8
 
-from helper import getAttrOrder
-from Base import *
+from .helper import getAttrOrder
+from .Base import *
 
 class FEDStyleShouldInOrder(RuleSetChecker):
     

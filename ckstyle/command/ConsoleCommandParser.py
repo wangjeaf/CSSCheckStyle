@@ -11,8 +11,8 @@ from ckstyle.doCssCompress import compressFile, compressDir
 from ckstyle.cmdconsole.ConsoleClass import console
 from ckstyle.command.usage import fixUsage, ckstyleUsage, compressUsage
 from ckstyle.browsers.Analyser import analyse
-from args import CommandArgs
-import CommandFileParser
+from .args import CommandArgs
+from . import CommandFileParser
 
 def usage_compress():
     console.show(compressUsage)

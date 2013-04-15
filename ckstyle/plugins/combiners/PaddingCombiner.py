@@ -1,5 +1,5 @@
-from Combiner import Combiner
-from helper import containsHack
+from .Combiner import Combiner
+from .helper import containsHack
 
 class PaddingCombiner(Combiner):
     def __init__(self, name, attrs):

@@ -1,8 +1,8 @@
 #/usr/bin/python
 #encoding=utf-8
 
-from Base import *
-from helper import hasHackChars
+from .Base import *
+from .helper import hasHackChars
 from ckstyle.browsers.BinaryRule import ALL
 class FEDCombineSameRuleSets(StyleSheetChecker):
 

@@ -1,8 +1,8 @@
 #/usr/bin/python
 #encoding=utf-8
 
-from Base import *
-from helper import isFontFamilyName
+from .Base import *
+from .helper import isFontFamilyName
 
 class FEDCanNotSetFontFamily(RuleChecker):
     

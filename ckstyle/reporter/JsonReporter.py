@@ -1,5 +1,5 @@
-from Reporter import Reporter
-from helper import fill
+from .Reporter import Reporter
+from .helper import fill
 import json
 
 class JsonReporter(Reporter):

@@ -3,10 +3,10 @@
 
 import sys
 import os
-from cssparser.CssFileParser import CssParser
+from .cssparser.CssFileParser import CssParser
 from ckstyle.cmdconsole.ConsoleClass import console
-from CssCheckerWrapper import CssChecker
-import command.args as args
+from .CssCheckerWrapper import CssChecker
+from .command import args as args
 
 defaultConfig = args.CommandArgs()
 

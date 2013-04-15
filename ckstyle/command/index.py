@@ -1,4 +1,4 @@
-from ConsoleCommandParser import handleCkStyleCmdArgs, handleFixStyleCmdArgs, handleCompressCmdArgs
+from .ConsoleCommandParser import handleCkStyleCmdArgs, handleFixStyleCmdArgs, handleCompressCmdArgs
 
 def ckstyle():
     handleCkStyleCmdArgs()

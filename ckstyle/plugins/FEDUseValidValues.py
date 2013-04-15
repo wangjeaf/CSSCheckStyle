@@ -1,8 +1,8 @@
 #/usr/bin/python
 #encoding=utf-8
 
-from Base import *
-from validators.ValidatorFactory import doValidate
+from .Base import *
+from .validators.ValidatorFactory import doValidate
 
 class FEDUseValidValues(RuleChecker):
     

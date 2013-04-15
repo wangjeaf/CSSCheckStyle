@@ -1,5 +1,5 @@
-from Reporter import Reporter
-from helper import fill
+from .Reporter import Reporter
+from .helper import fill
 
 class TextReporter(Reporter):
     def __init__(self, checker):

@@ -1,6 +1,6 @@
-from TextReporter import TextReporter
-from JsonReporter import JsonReporter
-from XMLReporter import XMLReporter
+from .TextReporter import TextReporter
+from .JsonReporter import JsonReporter
+from .XMLReporter import XMLReporter
 
 class ReporterUtil():
     @staticmethod

@@ -1,4 +1,4 @@
-from EntityUtil import Cleaner, ALL
+from .EntityUtil import Cleaner, ALL
 
 class Rule():
     def __init__(self, selector, name, value, ruleSet):

@@ -1,7 +1,7 @@
-from RuleSet import RuleSet
-from ExtraStatement import ExtraStatement
-from NestedStatement import NestedStatement
-from EntityUtil import ALL
+from .RuleSet import RuleSet
+from .ExtraStatement import ExtraStatement
+from .NestedStatement import NestedStatement
+from .EntityUtil import ALL
 
 class StyleSheet():
     def __init__(self, fileName = ''):

@@ -1,5 +1,5 @@
-from EntityUtil import Cleaner, ALL
-from RuleSet import RuleSet
+from .EntityUtil import Cleaner, ALL
+from .RuleSet import RuleSet
 
 class ExtraStatement(RuleSet):
     def __init__(self, operator, statement, comment, styleSheet = None):

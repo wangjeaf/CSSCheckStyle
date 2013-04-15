@@ -1,6 +1,6 @@
 #/usr/bin/python
 #encoding=utf-8
-from BinaryRule import *
+from .BinaryRule import *
 import re
 
 # http://www.swordair.com/tools/css-hack-table/

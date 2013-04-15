@@ -1,8 +1,8 @@
 #/usr/bin/python
 #encoding=utf-8
 
-from Base import *
-from helper import isCss3PrefixProp
+from .Base import *
+from .helper import isCss3PrefixProp
 
 class FEDHackAttributeInCorrectWay(RuleChecker):
     

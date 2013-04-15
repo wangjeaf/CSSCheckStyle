@@ -1,7 +1,7 @@
 import os
 import ConfigParser
 from ckstyle.cmdconsole.ConsoleClass import console
-import args
+from . import args
 from ckstyle.browsers.Analyser import analyse
 
 def exists(filePath):

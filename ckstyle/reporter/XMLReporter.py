@@ -1,4 +1,4 @@
-from Reporter import Reporter
+from .Reporter import Reporter
 
 class XMLReporter(Reporter):
     def __init__(self, checker):

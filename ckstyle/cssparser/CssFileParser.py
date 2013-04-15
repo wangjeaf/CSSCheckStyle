@@ -1,4 +1,4 @@
-from helper import findCharFrom, handleSpecialStatement, isCommentStart, isCommentEnd, isSpecialStart, isNestedStatement
+from .helper import findCharFrom, handleSpecialStatement, isCommentStart, isCommentEnd, isSpecialStart, isNestedStatement
 from ckstyle.entity.StyleSheet import StyleSheet
 
 class CssParser():
