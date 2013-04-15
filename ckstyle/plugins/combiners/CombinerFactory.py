@@ -29,6 +29,6 @@ def camelCase(name):
     return ''.join(collector)
 
 if __name__ == '__main__':
-    print doCombine('margin', [
+    print(doCombine('margin', [
         ['margin', 'margin', '50px auto 0 auto']
-    ])
+    ]))
