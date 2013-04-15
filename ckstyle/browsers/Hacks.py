@@ -88,6 +88,6 @@ def doExtraDetect(selector):
     return STD
 
 if __name__ == '__main__':
-    print bin(doExtraDetect('@media screen and (max-device-width: 480px)'))
-    print bin(doExtraDetect('@media screen and (-webkit-min-device-pixel-ratio:0)'))
-    print bin(doExtraDetect('@media all and (-webkit-min-device-pixel-ratio:10000), not all and (-webkit-min-device-pixel-ratio:0)'))
+    print(bin(doExtraDetect('@media screen and (max-device-width: 480px)')))
+    print(bin(doExtraDetect('@media screen and (-webkit-min-device-pixel-ratio:0)')))
+    print(bin(doExtraDetect('@media all and (-webkit-min-device-pixel-ratio:10000), not all and (-webkit-min-device-pixel-ratio:0)')))

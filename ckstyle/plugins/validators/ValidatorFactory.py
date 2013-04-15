@@ -10,7 +10,7 @@ def doValidate(name, value):
             pluginClass = getattr(plugin, pluginName)
         else:
             console.error('%s should exist in %s.py' % (pluginName, pluginName))
-    except ImportError, e:
+    except ImportError as e:
         pass
     instance = pluginClass(name, value)
     return instance.validate()

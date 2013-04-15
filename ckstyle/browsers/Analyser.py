@@ -34,4 +34,4 @@ def analyse(text):
 	return browsers
 
 if __name__ == '__main__':
-	print analyse('ie6,std')
+	print(analyse('ie6,std'))

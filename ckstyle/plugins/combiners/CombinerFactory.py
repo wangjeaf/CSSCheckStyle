@@ -9,7 +9,7 @@ def doCombine(name, props):
             pluginClass = getattr(plugin, pluginName)
         else:
             console.error('%s should exist in %s.py' % (pluginName, pluginName))
-    except ImportError, e:
+    except ImportError as e:
         pass
     instance = pluginClass(name, props)
     return instance.combine()
