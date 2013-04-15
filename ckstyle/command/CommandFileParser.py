@@ -1,5 +1,8 @@
 import os
-import ConfigParser
+try:
+    import configparser as ConfigParser
+except ImportError:
+    import ConfigParser as ConfigParser
 from ckstyle.cmdconsole.ConsoleClass import console
 from . import args
 from ckstyle.browsers.Analyser import analyse
