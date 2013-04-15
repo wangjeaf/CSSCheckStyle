@@ -30,4 +30,4 @@ def camelCase(name):
     return ''.join(collector)
 
 if __name__ == '__main__':
-    print doValidate('margin', '10 10      10 10')
+    print(doValidate('margin', '10 10      10 10'))
