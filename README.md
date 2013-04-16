@@ -15,12 +15,11 @@ CSSCheckStyle
 ## Description
 <pre>
 @description {
-	destination: 检查CSS代码中的编码规范和编码风格问题;
+	destination: 一个CSS的检查、修复、压缩、分浏览器终极压缩的工具集;
+    website: <a href="http://www.csscheckstyle.com">CKstyle官方网站</a>;
     blog: <a href="http://fed.renren.com/archives/1427">《CSSCheckStyle——CSS的解析、检查、修复和压缩》</a>;
-    good-news: 初步对比各大工具（包括YUI compressor和各种在线工具），确定初步达到业内领先水平，后期任重道远;
 	reference: <a href="http://fed.renren.com/archives/1212">《人人FED CSS编码规范》</a>;
-    what-can-i-do: parse -> check -> fix -> combine-attr -> reorder -> combine -> compress;
-    export-tools: ckstyle(检查) / fixstyle(修复) / compress(压缩)
+    export-tools: ckstyle(检查) / fixstyle(修复) / csscompress&compress(压缩)
     docs: <a href="https://github.com/wangjeaf/CSSCheckStyle-docs">https://github.com/wangjeaf/CSSCheckStyle-docs</a>
 	language: python;
 }
@@ -28,6 +27,8 @@ CSSCheckStyle
 
 ## Installation
 **easy_install https://github.com/wangjeaf/CSSCheckStyle/archive/master.tar.gz**
+
+另外，也可以将此压缩包下载到本地，通过 **easy_install xxxx.tar.gz**完成安装
 
 ## Editor plugins
 目前已经为 VIM / Sublime Text 2 / Notepad ++ 开发了ckstyle插件，可供使用。
@@ -49,6 +50,8 @@ CSSCheckStyle
 所有编辑器插件都在 `editor-plugins` 目录下。
 
 目前插件的功能还比较初级，热烈欢迎熟悉插件开发的同学来贡献编辑器插件。
+
+如果插件使用过程中出现任何问题，请在github上报bug，或者微博 @wangjeaf
 
 ## Demo (parse -> fix -> compress)
 ### 说明
@@ -268,6 +271,7 @@ ckstyle -c xxx.ini -r -p --extension=.test.txt --include=all --exclude=none --er
 --compressExtension 压缩后文件的扩展名，如.min.css，none为替换原文件（将生成一个.bak文件保存原文件）
 --safeMode      修复和压缩的安全模式
 --singleLine    自动修复成单行模式（默认是多行模式）
+--browsers      分浏览器压缩
 </pre>
 
 ### Config File
@@ -293,7 +297,7 @@ safe-mode          [=false] 是否尝试做某些“本工具不能完全保证�
 
 extension(compress)[=.min.css] 压缩后的文件扩展名
 combine-file       [=all.min.css] 压缩多个文件合并成一个的文件名
-browsers           [=false] 针对不同浏览器生成不同的压缩后文件
+browsers           [=None] 针对不同浏览器生成不同的压缩后文件，使用时如果多个浏览器，需要引号括起来，并用逗号分隔
 </pre>
 
 #### Config File Demo
@@ -314,7 +318,7 @@ safe-mode = false
 [compress]
 extension = .min.css
 combine-file = all.min.css(todo)
-browsers = false
+browsers = None
 
 [css-format(todo)]
 tab-spaces = 4
@@ -343,6 +347,10 @@ tab-spaces = 4
 
 6、每一个规则，需要在tests目录中添加对应的单元测试用例，测试用例请参见"Unit Test"小节
 
+7、每一个插件，需要按照json格式，编写此类对应的__doc__，以便为官网的规则集生成选项。
+
+8、插件类可以指定一个private属性，如果是private，则不会在官网中生成选项，而且private的类自动必选。
+
 ### plugin Demo
 
 ``` python
@@ -354,10 +362,14 @@ class FEDSemicolonAfterValue(RuleChecker):
         self.errorLevel = ERROR_LEVEL.WARNING
         self.errorMsg = 'each rule in "${selector}" need semicolon in the end, "${name}" has not'
 
-    def check(self, rule):
+    def check(self, rule, config):
         if not rule.strippedValue.endswith(';'):
             return False
         return True 
+
+    def fix(self, rule, config):
+        pass
+
 ```
 
 ## Unit Test
@@ -479,4 +491,4 @@ CSS的单元测试，必须满足以下条件：
 ## Join Us
 Email: wangjeaf@gmail.com
 
-Websites: <http://fed.renren.com/> | <http://www.renren.com/>
+Websites: <http://www.csscheckstyle.com/> | <http://fed.renren.com/> | <http://www.renren.com/>
