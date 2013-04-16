@@ -21,6 +21,7 @@ class RuleSet():
         self.singleLineFlag = (len(self.roughValue.split('\n')) == 1)
 
         self.browser = ALL
+        self.toBeUsed = {}
 
     def rebase(self):
         self.fixedSelector = ''

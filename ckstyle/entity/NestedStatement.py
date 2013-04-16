@@ -14,6 +14,7 @@ class NestedStatement():
         self.fixedStatement = ''
 
         self.browser = ALL
+        self.toBeUsed = {}
 
     def rebase(self):
         self.fixedSelector = ''

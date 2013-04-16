@@ -20,6 +20,7 @@ class Rule():
         self.ruleSet = ruleSet
 
         self.browser = ALL
+        self.toBeUsed = {}
 
     def rebase(self):
         self.fixedName = ''

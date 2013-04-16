@@ -14,6 +14,7 @@ class ExtraStatement(RuleSet):
         self.fixedStatement = ''
 
         self.browser = ALL
+        self.toBeUsed = {}
 
     def isImport(self):
         return self.operator == '@import'

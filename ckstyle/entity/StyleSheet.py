@@ -8,6 +8,7 @@ class StyleSheet():
         self._ruleSets = [];
         self._file = fileName
         self.browser = ALL
+        self.toBeUsed = {}
 
     def addRuleSetByStr(self, selector, attrs, comment):
         self._ruleSets.append(RuleSet(selector, attrs, comment, self))
