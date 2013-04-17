@@ -34,6 +34,9 @@ def uninstallcmd():
 	removeCmdPlugin(pluginName, version)
 
 def handleExtraCommand(command, usage):
+	if command.startswith('-') or command.startswith('.'):
+		print(usage)
+		return
 	if not findCmdPlugin(command):
 		print('[CKstyle] CKstyle can not find the subcommand.')
 		print('[CKstyle] You can type "ckstyle installcmd %s" to install this command if exists in CKstylePM.' % command)

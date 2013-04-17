@@ -54,6 +54,7 @@ class CssChecker():
         '''如果是debug模式，则从细小的plugin文件中载入插件，否则，从大文件中载入插件'''
         if debug:
             self.loadFromSubFiles(pluginDir)
+            self.loadFromUserPlugins()
         else:
             self.loadFromBigFile(pluginDir)
 
@@ -91,8 +92,50 @@ class CssChecker():
             # 注册到检查器中
             self.registerChecker(instance)
 
+    def loadFromUserPlugins(self):
+        include = self.config.include
+        exclude = self.config.exclude
+        safeMode = self.config.safeMode
+        safeModeExcludes = 'combine-same-rulesets'
+
+        root = os.path.realpath(os.path.join(__file__, '../userplugins/plugins'))
+        modulePath = self.getModulePath(root)
+        pluginClassName = 'PluginClass'
+        for filename in os.listdir(root):
+            if filename.startswith('.') or filename.startswith('_'):
+                continue
+            if not os.path.isdir(os.path.realpath(os.path.join(root, filename))):
+                continue
+            plugin = __import__(modulePath + filename + '.index', fromlist = [filename])
+            pluginClass = None
+            if hasattr(plugin, pluginClassName):
+                pluginClass = getattr(plugin, pluginClassName)
+            else:
+                console.error('[TOOL] class %s should exist in %s.py' % (pluginClassName, filename + '/index'))
+                continue
+            # 构造plugin的类
+            instance = pluginClass()
+
+            # 如果是private，则说明不论是否选择都需要的规则
+            if not hasattr(instance, 'private') or getattr(instance, 'private') is not True:
+                if include != 'all' and include.find(instance.id) == -1:
+                    continue
+                elif exclude != 'none' and exclude.find(instance.id) != -1:
+                    continue
+                elif safeMode and safeModeExcludes.find(instance.id) != -1:
+                    continue
+            self.registerChecker(instance)
+
+    def getModulePath(self, pluginDir):
+        transDir = pluginDir.replace('\\', '/')
+        splited = transDir.split('/ckstyle/')[1]
+        modulePath = 'ckstyle.' + splited.replace('/', '.') + '.'
+        return modulePath
+
     def loadFromSubFiles(self, pluginDir):
         '''从plugins目录动态载入检查类'''
+
+        modulePath = self.getModulePath(pluginDir)
         # ids = {}
         include = self.config.include
         exclude = self.config.exclude
@@ -107,7 +150,7 @@ class CssChecker():
             pluginName = os.path.splitext(filename)[0]
 
             # 获取plugins的引用
-            plugin = __import__("ckstyle.plugins." + pluginName, fromlist = [pluginName])
+            plugin = __import__(modulePath + pluginName, fromlist = [pluginName])
             pluginClass = None
             if hasattr(plugin, pluginName):
                 pluginClass = getattr(plugin, pluginName)

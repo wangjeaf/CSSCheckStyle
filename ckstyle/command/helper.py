@@ -6,7 +6,9 @@ import shutil
 
 def realpath(a, b):
 	return os.path.realpath(os.path.join(a, b))
+	
 debug = False
+noVersion = True # do not support version currently
 
 pluginUrl = 'https://raw.github.com/wangjeaf/ckstyle-pm/master/plugins/%s/%sindex.py'
 cmdPluginUrl = 'https://raw.github.com/wangjeaf/ckstyle-pm/master/commands/%s/%sindex.py'
@@ -20,10 +22,10 @@ def getWhatIWant(pluginType):
 	return pluginWant if pluginType == 'plugins' else cmdPluginWant
 
 def fetchPlugin(name, version = ''):
-	return fetch(name, version, pluginUrl, pluginRootDir, 'plugins')
+	fetch(name, version, pluginUrl, pluginRootDir, 'plugins')
 
 def fetchCmdPlugin(name, version = ''):
-	return fetch(name, version, cmdPluginUrl, cmdPluginRootDir, 'commands')
+	fetch(name, version, cmdPluginUrl, cmdPluginRootDir, 'commands')
 
 def removePlugin(name, version = ''):
 	remove(name, version, pluginRootDir)
@@ -32,7 +34,8 @@ def removeCmdPlugin(name, version = ''):
 	remove(name, version, cmdPluginRootDir)
 
 def remove(name, version, root):
-	version = ''
+	if noVersion:
+		version = ''
 	pluginDir = realpath(root, './' + name)
 	if not os.path.exists(pluginDir):
 		return
@@ -61,9 +64,9 @@ def find(name, root):
 		return False
 	return True
 
-def fetch(name, version, url, root, pluginType):
-	# do not support version currently
-	version = ''
+def fetch(name, version, url, root, pluginType):	
+	if noVersion:
+		version = ''
 	
 	pluginDir = realpath(root, './' + name)
 	replacedVer =  '' if version == '' else version.replace('.', '_')
@@ -110,12 +113,6 @@ def fetch(name, version, url, root, pluginType):
 	filePath = realpath(versionDir, './index.pyc')
 	if os.path.exists(filePath):
 		os.remove(filePath)
-
-	try:
-		attr = getattr(plugin, whatIWant)
-	except Exception:
-		attr = None
-	return attr
 
 if __name__ == '__main__':
 	print fetchPlugin('demo')
