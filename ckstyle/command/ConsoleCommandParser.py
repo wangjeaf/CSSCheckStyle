@@ -194,7 +194,7 @@ def parseCompressCmdArgs(defaultConfigFile, opts, args, debug = False):
 
 def _handle(options, dirHandler, fileHandler, argsParser, operation):
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "hrpc:", options)
+        opts, args = getopt.getopt(sys.argv[2:], "hrpc:", options)
     except getopt.GetoptError as e:
         console.error('[option] %s ' % e.msg)
         return

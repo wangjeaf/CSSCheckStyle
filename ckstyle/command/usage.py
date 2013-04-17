@@ -1,3 +1,6 @@
+#/usr/bin/python
+#encoding=utf-8
+
 usage = '[Usage]'
 example = '[Example]'
 options = '[Options]'

@@ -1,16 +1,52 @@
+#/usr/bin/python
+#encoding=utf-8
 from .ConsoleCommandParser import handleCkStyleCmdArgs, handleFixStyleCmdArgs, handleCompressCmdArgs
+from .PluginManager import install, uninstall, installcmd, uninstallcmd, handleExtraCommand
+import sys
+
+usage = '''[commands]
+    ckstyle check    --options xxxx.css
+    ckstyle fix      --options xxxx.css
+    ckstyle compress --options xxxx.css
+
+    ckstyle install   pluginName
+    ckstyle uninstall pluginName
+
+    ckstyle installcmd   commandName
+    ckstyle uninstallcmd commandName'''
 
 def ckstyle():
-    handleCkStyleCmdArgs()
+    args = sys.argv
+    if len(args) < 2:
+        print(usage)
+        return
 
-def fixstyle():
-    handleFixStyleCmdArgs()
+    commands = {
+        'check' : handleCkStyleCmdArgs,
+        'fix': handleFixStyleCmdArgs,
+        'compress': handleCompressCmdArgs,
+        'install': install,
+        'uninstall': uninstall,
+        'installcmd': installcmd,
+        'uninstallcmd': uninstallcmd
+    }
 
-def compress():
-    handleCompressCmdArgs()
+    subcommand = sys.argv[1]
+    if commands.has_key(subcommand):
+        commands.get(subcommand)()
+    else:
+        handleExtraCommand(subcommand, usage)
 
-def main():
-    ckstyle()
+    #handleCkStyleCmdArgs()
+
+#def fixstyle():
+#    handleFixStyleCmdArgs()
+
+#def compress():
+#    handleCompressCmdArgs()
+
+#def main():
+#    ckstyle()
 
 if __name__ == '__main__':
-    main()
+    ckstyle()
