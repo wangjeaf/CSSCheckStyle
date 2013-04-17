@@ -39,6 +39,16 @@ def get(config, group, attr, default, lowerFlag = False):
             console.log('%s of %s in config file should be valid string' % (attr, group))
     return default
 
+class PluginConfigDict():
+    def __init__(self, values):
+        self._config = dict(values)
+
+    def has_key(self, key):
+        return self._config.has_key(key.lower())
+
+    def get(self, key):
+        return self._config.get(key.lower())
+
 class CommandFileParser():
     def __init__(self, filePath, debug = False):
         self.args = args.CommandArgs()
@@ -55,6 +65,12 @@ class CommandFileParser():
         self.handleCkStyleOptions(config)
         self.handleCompressOptions(config)
         self.handleExtraOptions(config)
+        self.handlePluginOption(config)
+
+    # for plugins to config
+    def handlePluginOption(self, config):
+        if config.has_section('plugin'):
+            self.args.pluginConfig = PluginConfigDict(config.items('plugin'))
 
     def handleExtraOptions(self, config):
         # handle other options, global-files for example

@@ -13,6 +13,7 @@ class CommandArgs():
         self.fixedExtension = '.fixed.css'
         self.fixToSingleLine = False
         self.compressConfig = CompressArgs()
+        self.pluginConfig = None
         self.safeMode = False
         self.noBak = False
 
