@@ -4,16 +4,16 @@ from .ConsoleCommandParser import handleCkStyleCmdArgs, handleFixStyleCmdArgs, h
 from .PluginManager import install, uninstall, installcmd, uninstallcmd, handleExtraCommand
 import sys
 
-usage = '''[commands]
-    ckstyle check    --options xxxx.css
-    ckstyle fix      --options xxxx.css
-    ckstyle compress --options xxxx.css
+usage = '''[Commands]
+  ckstyle check    --options xxxx.css
+  ckstyle fix      --options xxxx.css
+  ckstyle compress --options xxxx.css
 
-    ckstyle install   pluginName
-    ckstyle uninstall pluginName
+  ckstyle install   pluginName
+  ckstyle uninstall pluginName
 
-    ckstyle installcmd   commandName
-    ckstyle uninstallcmd commandName'''
+  ckstyle installcmd   commandName
+  ckstyle uninstallcmd commandName'''
 
 def ckstyle():
     args = sys.argv

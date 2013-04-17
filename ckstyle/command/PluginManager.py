@@ -7,9 +7,9 @@ from .helper import fetchPlugin, fetchCmdPlugin, removePlugin, removeCmdPlugin, 
 def getNameAndVersion():
 	args = sys.argv
 	argLen = len(args)
-	if argLen < 3 or argLen > 5:
-		print '[usage] ckstyle install pluginName version'
-		return
+	if argLen < 3 or argLen > 4:
+		print '[CKstyle ERROR] wrong arg length, use "ckstyle -h" to see help.'
+		return None, None
 	pluginName = args[2]
 	version = ''
 	if argLen == 4:
@@ -19,18 +19,26 @@ def getNameAndVersion():
 
 def install():
 	pluginName, version = getNameAndVersion()
+	if pluginName is None:
+		return
 	fetchPlugin(pluginName, version)
 
 def uninstall():
 	pluginName, version = getNameAndVersion()
+	if pluginName is None:
+		return
 	removePlugin(pluginName, version)
 
 def installcmd():
 	pluginName, version = getNameAndVersion()
+	if pluginName is None:
+		return
 	fetchCmdPlugin(pluginName, version)
 
 def uninstallcmd():
 	pluginName, version = getNameAndVersion()
+	if pluginName is None:
+		return
 	removeCmdPlugin(pluginName, version)
 
 def handleExtraCommand(command, usage):
@@ -38,8 +46,8 @@ def handleExtraCommand(command, usage):
 		print(usage)
 		return
 	if not findCmdPlugin(command):
-		print('[CKstyle] CKstyle can not find the subcommand.')
-		print('[CKstyle] You can type "ckstyle installcmd %s" to install this command if exists in CKstylePM.' % command)
+		print('[CKstyle ERROR] CKstyle can not find the subcommand: "%s".' % command)
+		print('[CKstyle ERROR] Maybe you can type "ckstyle installcmd %s" to install this command from ckstyle-pm.' % command)
 		return
 	cmd = fetchCmdPlugin(command)
 	if cmd is None:
