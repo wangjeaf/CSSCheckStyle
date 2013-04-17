@@ -11,7 +11,11 @@ usage = '''[Commands]
 
   ckstyle install   pluginName
   ckstyle uninstall pluginName
+  ckstyle add    pluginName
+  ckstyle remove pluginName
 
+  ckstyle addcmd     commandName
+  ckstyle removecmd  commandName
   ckstyle installcmd   commandName
   ckstyle uninstallcmd commandName'''
 
@@ -27,6 +31,10 @@ def ckstyle():
         'compress': handleCompressCmdArgs,
         'install': install,
         'uninstall': uninstall,
+        'add': install,
+        'remove': uninstall,
+        'addcmd': installcmd,
+        'removecmd': uninstallcmd,
         'installcmd': installcmd,
         'uninstallcmd': uninstallcmd
     }
