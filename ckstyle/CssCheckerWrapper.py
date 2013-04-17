@@ -59,40 +59,17 @@ class CssChecker():
             self.loadFromBigFile(pluginDir)
 
     def loadFromBigFile(self, pluginDir):
-        '''从plugins目录动态载入检查类'''
-        # ids = {}
-        include = self.config.include
-        exclude = self.config.exclude
-        safeMode = self.config.safeMode
-        safeModeExcludes = 'combine-same-rulesets'
-
-        # 获取plugins的引用
+        '''从AllRules.py动态载入检查类'''
         plugin = __import__("ckstyle.plugins.AllRules", fromlist = ['AllRules'])
         props = dir(plugin)
         for prop in props:
             if not prop.startswith('FED'):
                 continue
-
             pluginClass = getattr(plugin, prop)
-            # 构造plugin的类
-            instance = pluginClass()
-            # 如果是private，则说明不论是否选择都需要的规则
-            if not hasattr(instance, 'private') or getattr(instance, 'private') is not True:
-                if include != 'all' and include.find(instance.id) == -1:
-                    continue
-                elif exclude != 'none' and exclude.find(instance.id) != -1:
-                    continue
-                elif safeMode and safeModeExcludes.find(instance.id) != -1:
-                    continue
-
-            #if instance.errorMsg.find(';') != -1 or instance.errorMsg.find('\n') != -1:
-            #    console.error(r'[TOOL] errorMsg should not contain ";" or "\n" in %s.py' % pluginName)
-            #    continue
-
-            # 注册到检查器中
-            self.registerChecker(instance)
+            self.registerPluginClass(pluginClass)
 
     def loadFromUserPlugins(self):
+        '''允许用户通过ckstyle install添加plugin，执行的时候载入之'''
         include = self.config.include
         exclude = self.config.exclude
         safeMode = self.config.safeMode
@@ -113,35 +90,11 @@ class CssChecker():
             else:
                 console.error('[TOOL] class %s should exist in %s.py' % (pluginClassName, filename + '/index'))
                 continue
-            # 构造plugin的类
-            instance = pluginClass()
-
-            # 如果是private，则说明不论是否选择都需要的规则
-            if not hasattr(instance, 'private') or getattr(instance, 'private') is not True:
-                if include != 'all' and include.find(instance.id) == -1:
-                    continue
-                elif exclude != 'none' and exclude.find(instance.id) != -1:
-                    continue
-                elif safeMode and safeModeExcludes.find(instance.id) != -1:
-                    continue
-            self.registerChecker(instance)
-
-    def getModulePath(self, pluginDir):
-        transDir = pluginDir.replace('\\', '/')
-        splited = transDir.split('/ckstyle/')[1]
-        modulePath = 'ckstyle.' + splited.replace('/', '.') + '.'
-        return modulePath
+            self.registerPluginClass(pluginClass)
 
     def loadFromSubFiles(self, pluginDir):
         '''从plugins目录动态载入检查类'''
-
         modulePath = self.getModulePath(pluginDir)
-        # ids = {}
-        include = self.config.include
-        exclude = self.config.exclude
-        safeMode = self.config.safeMode
-        safeModeExcludes = 'combine-same-rulesets'
-
         for filename in os.listdir(pluginDir):
             if not filename.endswith('.py') or filename.startswith('_'):
                 continue
@@ -157,24 +110,32 @@ class CssChecker():
             else:
                 console.error('[TOOL] class %s should exist in %s.py' % (pluginName, pluginName))
                 continue
-            # 构造plugin的类
-            instance = pluginClass()
+            self.registerPluginClass(pluginClass)
 
-            # 如果是private，则说明不论是否选择都需要的规则
-            if not hasattr(instance, 'private') or getattr(instance, 'private') is not True:
-                if include != 'all' and include.find(instance.id) == -1:
-                    continue
-                elif exclude != 'none' and exclude.find(instance.id) != -1:
-                    continue
-                elif safeMode and safeModeExcludes.find(instance.id) != -1:
-                    continue
+    def registerPluginClass(self, pluginClass):
+        include = self.config.include
+        exclude = self.config.exclude
+        safeMode = self.config.safeMode
+        safeModeExcludes = 'combine-same-rulesets'
 
-            #if instance.errorMsg.find(';') != -1 or instance.errorMsg.find('\n') != -1:
-            #    console.error(r'[TOOL] errorMsg should not contain ";" or "\n" in %s.py' % pluginName)
-            #    continue
+        # 构造plugin的类
+        instance = pluginClass()
 
-            # 注册到检查器中
-            self.registerChecker(instance)
+        # 如果是private，则说明不论是否选择都需要的规则
+        if not hasattr(instance, 'private') or getattr(instance, 'private') is not True:
+            if include != 'all' and include.find(instance.id) == -1:
+                return
+            elif exclude != 'none' and exclude.find(instance.id) != -1:
+                return
+            elif safeMode and safeModeExcludes.find(instance.id) != -1:
+                return
+        self.registerChecker(instance)
+
+    def getModulePath(self, pluginDir):
+        transDir = pluginDir.replace('\\', '/')
+        splited = transDir.split('/ckstyle/')[1]
+        modulePath = 'ckstyle.' + splited.replace('/', '.') + '.'
+        return modulePath
 
     def registerChecker(self, checker):
         '''根据检查器类型的不同，分别注册到不同的检查器列表中'''
