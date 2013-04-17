@@ -13,12 +13,17 @@ class CommandArgs():
         self.fixedExtension = '.fixed.css'
         self.fixToSingleLine = False
         self.compressConfig = CompressArgs()
-        self.pluginConfig = None
         self.safeMode = False
         self.noBak = False
 
         # current browser
         self._curBrowser = None
+
+        # plugin config for developers, add plugin section in ckstyle.ini
+        # 
+        # [plugin]
+        # pluginA = 1
+        self.pluginConfig = {}
 
     def __str__(self):
         return 'errorLevel: %s\n recursive: %s\n printFlag: %s\n extension: %s\n include: %s\n exclude: %s' % (self.errorLevel, self.recursive, self.printFlag, self.extension, self.include, self.exclude)

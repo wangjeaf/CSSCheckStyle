@@ -47,7 +47,14 @@ class PluginConfigDict():
         return self._config.has_key(key.lower())
 
     def get(self, key):
-        return self._config.get(key.lower())
+        key = key.lower()
+        if self.has_key(key):
+            return self._config.get(key.lower())
+        else:
+            return None
+
+    def __str__(self):
+        return str(self._config)
 
 class CommandFileParser():
     def __init__(self, filePath, debug = False):
