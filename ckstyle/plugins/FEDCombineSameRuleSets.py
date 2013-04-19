@@ -42,13 +42,12 @@ class FEDCombineSameRuleSets(StyleSheetChecker):
         for i in range(length):
             splitedSelectors.append([x.strip() for x in mapping[i][0].split(',') if x.strip() is not ''])
 
-        # ".a {width:0} .a, .b{width:1}, .b{width:0}" should not be combined to ".a, .b{width:0} .a, .b{width:1}"
         for i in range(length):            
             if mapping[i][0] == 'extra':
                 continue
             selectorHistory = []
 
-            for j in range(i + 1, length):                
+            for j in range(i + 1, length):
                 if mapping[i][1] != mapping[j][1]:
                     selectorHistory.extend(splitedSelectors[j])
                     continue
@@ -62,12 +61,22 @@ class FEDCombineSameRuleSets(StyleSheetChecker):
                 if not (browserI & browser != 0 and browserJ & browser != 0 and browserI ^ browserJ == 0):
                     continue
 
-                # bakcground-position is dangerous
+                # bakcground-position is dangerous, position设置必须在background-image之后
                 if mapping[j][1].find('background-position') != -1:
                     selectorHistory.extend(splitedSelectors[j])
                     continue
 
                 hasFlag = False
+                # ".a {width:0} .a, .b{width:1}, .b{width:0}" 不应该被合并成 ".a, .b{width:0} .a, .b{width:1}"
+                # 但是目前还有一个最严重的问题：
+                # .c {width:1}, .d{width:0}, .b{width:1}, .a{width:0}
+                # class="a c" => width 0
+                # class="b d" => width 1
+                # 一旦合并成 .b,.c{width:1} .d,.a{width:0} （不论往前合并还是往后合并，都是这个结果，囧）
+                # class="a c" => width 0
+                # class="b d" => width 0(本来为1)
+                # 这是无法解决的问题，因为我不能在没有分析DOM的情况下，确定两个selector指向同一个dom
+                # 为此，安全模式 --safeMode 诞生。
                 for x in splitedSelectors[j]:
                     if x in selectorHistory:
                         hasFlag = True
