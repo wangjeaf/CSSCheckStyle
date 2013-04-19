@@ -3,6 +3,7 @@ from helper import *
 def doTest():
     _basic()
     _combine()
+    _w3school()
 
 def _basic():
     checker = doCssFileCompress2('_browsers.css')
@@ -25,3 +26,29 @@ def _combine():
 	equal('a,b,d{width:300px;-moz-transform:1s}', checker.doCompress(STD | FIREFOX), 'firefox is ok')
 	checker = doCssFileCompress2('_browsers_combine_ruleset.css')
 	equal('a{width:300px;-webkit-transform:1s}b,d{width:300px}', checker.doCompress(STD | CHROME), 'chrome 2 is ok')
+
+def _w3school():
+    checker = doCssFileCompress2('_browsers_from_w3school.css')
+    equal('.test{background-clip:test;background-origin:test;animation:test;animation-delay:test;animation-direction:test;animation-duration:test;animation-iteration-count:test;animation-name:test;animation-play-state:test;animation-timing-function:test;appearance:test;border-image:test;border-image-outset:test;border-image-repeat:test;border-image-slice:test;border-image-source:test;border-image-width:test;border-bottom-left-radius:test;border-bottom-right-radius:test;border-radius:test;border-top-left-radius:test;border-top-right-radius:test;box-align:test;box-direction:test;box-flex:test;box-flex-group:test;box-ordinal-group:test;box-orient:test;box-pack:test;box-sizing:test;box-shadow:test;column-count:test;column-gap:test;column-rule:test;column-rule-color:test;column-rule-style:test;column-rule-width:test;column-width:test;marquee-speed:test;marquee-style:test;transform:test;transform-style:test;transform-origin:test;transition:test;transition-delay:test;transition-duration:test;transition-property:test;transition-timing-function:test;background-size:test;backface-visibility:test;column-span:test;columns:test;marquee-direction:test;marquee-play-count:test;opacity:test;outline-offset:test;overflow-x:test;overflow-y:test;perspective:test;perspective-origin:test;resize:test;text-overflow:test;text-shadow:test;word-break:test;word-wrap:test}', 
+        checker.doCompress(STD | CHROME), 'chrome w3c is ok')
+
+    equal('.test{background-clip:test;background-origin:test;font-size-adjust:test;animation:test;animation-delay:test;animation-direction:test;animation-duration:test;animation-iteration-count:test;animation-name:test;animation-play-state:test;animation-timing-function:test;appearance:test;border-image:test;border-image-outset:test;border-image-repeat:test;border-image-slice:test;border-image-source:test;border-image-width:test;border-bottom-left-radius:test;border-bottom-right-radius:test;border-radius:test;border-top-left-radius:test;border-top-right-radius:test;box-align:test;box-direction:test;box-flex:test;box-flex-group:test;box-ordinal-group:test;box-orient:test;box-pack:test;box-sizing:test;box-shadow:test;column-count:test;column-gap:test;column-rule:test;column-rule-color:test;column-rule-style:test;column-rule-width:test;column-width:test;transform:test;transform-style:test;transform-origin:test;transition:test;transition-delay:test;transition-duration:test;transition-property:test;transition-timing-function:test;background-size:test;backface-visibility:test;columns:test;opacity:test;outline-offset:test;overflow-x:test;overflow-y:test;resize:test;text-overflow:test;text-shadow:test;word-break:test;word-wrap:test}', 
+        checker.doCompress(STD | FIREFOX), 'firefox w3c is ok')
+
+    equal('.test{background-clip:test;background-origin:test;animation:test;animation-delay:test;animation-direction:test;animation-duration:test;animation-iteration-count:test;animation-name:test;animation-play-state:test;animation-timing-function:test;border-image:test;border-image-outset:test;border-image-repeat:test;border-image-slice:test;border-image-source:test;border-image-width:test;border-bottom-left-radius:test;border-bottom-right-radius:test;border-radius:test;border-top-left-radius:test;border-top-right-radius:test;box-flex:test;box-flex-group:test;box-sizing:test;box-shadow:test;column-count:test;column-gap:test;column-rule:test;column-rule-color:test;column-rule-style:test;column-rule-width:test;column-width:test;transform:test;transform-style:test;transform-origin:test;transition:test;transition-delay:test;transition-duration:test;transition-property:test;transition-timing-function:test;background-size:test;column-span:test;columns:test;nav-down:test;nav-index:test;nav-left:test;nav-right:test;nav-up:test;opacity:test;outline-offset:test;overflow-x:test;overflow-y:test;text-overflow:test;text-shadow:test;word-wrap:test}', 
+        checker.doCompress(STD | OPERA), 'opera w3c is ok')
+
+    equal('.test{background-clip:test;background-origin:test;animation:test;animation-delay:test;animation-direction:test;animation-duration:test;animation-iteration-count:test;animation-name:test;animation-play-state:test;animation-timing-function:test;appearance:test;border-image:test;border-image-outset:test;border-image-repeat:test;border-image-slice:test;border-image-source:test;border-image-width:test;border-bottom-left-radius:test;border-bottom-right-radius:test;border-radius:test;border-top-left-radius:test;border-top-right-radius:test;box-align:test;box-direction:test;box-flex:test;box-flex-group:test;box-ordinal-group:test;box-orient:test;box-pack:test;box-sizing:test;box-shadow:test;column-count:test;column-gap:test;column-rule:test;column-rule-color:test;column-rule-style:test;column-rule-width:test;column-width:test;marquee-speed:test;marquee-style:test;transform:test;transform-style:test;transform-origin:test;transition:test;transition-delay:test;transition-duration:test;transition-property:test;transition-timing-function:test;background-size:test;backface-visibility:test;column-span:test;columns:test;marquee-direction:test;marquee-play-count:test;opacity:test;outline-offset:test;overflow-x:test;overflow-y:test;perspective:test;perspective-origin:test;resize:test;text-overflow:test;text-shadow:test;word-break:test;word-wrap:test}', 
+        checker.doCompress(STD | SAFARI), 'safari w3c is ok')
+
+    equal('.test{text-justify:test;text-overflow:test;word-break:test;word-wrap:test}', 
+        checker.doCompress(STD | IE6), 'ie6 w3c is ok')
+
+    equal('.test{text-justify:test;text-overflow:test;word-break:test;word-wrap:test}', 
+        checker.doCompress(STD | IE7), 'ie7 w3c is ok')
+
+    equal('.test{background-clip:test;background-origin:test;animation:test;animation-delay:test;animation-direction:test;animation-duration:test;animation-iteration-count:test;animation-name:test;animation-play-state:test;animation-timing-function:test;border-bottom-left-radius:test;border-bottom-right-radius:test;border-radius:test;border-top-left-radius:test;border-top-right-radius:test;box-sizing:test;box-shadow:test;column-count:test;column-gap:test;column-rule:test;column-rule-color:test;column-rule-style:test;column-rule-width:test;column-width:test;transform:test;transform-style:test;transform-origin:test;transition:test;transition-delay:test;transition-duration:test;transition-property:test;transition-timing-function:test;background-size:test;backface-visibility:test;column-span:test;columns:test;opacity:test;overflow-x:test;overflow-y:test;ruby-align:test;ruby-overhang:test;ruby-position:test;text-justify:test;text-overflow:test;text-shadow:test;word-break:test;word-wrap:test}', 
+        checker.doCompress(STD | IE9PLUS), 'ie9+ w3c is ok')
+
+
+

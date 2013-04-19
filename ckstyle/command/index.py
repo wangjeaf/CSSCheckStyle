@@ -9,15 +9,12 @@ usage = '''[Commands]
   ckstyle fix      --options xxxx.css
   ckstyle compress --options xxxx.css
 
-  ckstyle install   pluginName
-  ckstyle uninstall pluginName
-  ckstyle add    pluginName
-  ckstyle remove pluginName
+  ckstyle install/add/get     pluginName
+  ckstyle uninstall/remove/rm pluginName
 
-  ckstyle addcmd     commandName
-  ckstyle removecmd  commandName
-  ckstyle installcmd   commandName
-  ckstyle uninstallcmd commandName'''
+  ckstyle installcmd/addcmd/getcmd      commandName
+  ckstyle uninstallcmd/removecmd/rmcmd  commandName
+'''
 
 def ckstyle():
     args = sys.argv
