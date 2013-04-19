@@ -1,6 +1,7 @@
 #encoding=utf-8
 import sublime, sublime_plugin
 import os
+from helper import getCkstylePath
 
 class CkstyleCommand(sublime_plugin.TextCommand):
 
@@ -9,8 +10,8 @@ class CkstyleCommand(sublime_plugin.TextCommand):
         if os.path.splitext(path)[1] != '.css':
             sublime.error_message('Not a CSS file!')
             return
-            
-        cmd = 'ckstyle "' + path + '"'
+
+        cmd = getCkstylePath() + ' check "' + path + '"'
         os.popen3(cmd)
         resultFile = self.view.file_name() + '.ckstyle.txt'
         if os.path.exists(resultFile):

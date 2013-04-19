@@ -230,29 +230,48 @@ border-radius:3px
 }
 ```
 ## Usage
-### 关于ckstyle / fixstyle / compress(csscompress)的命令行参数说明
-通过 command -h / command --help可以查看命令的帮助，例如： `compress -h`  `compress --help`
+### 关于ckstyle的子命令及命令行参数说明
+通过 ckstyle -h / ckstyle --help可以查看命令的帮助，例如： `ckstyle compress -h`  `ckstyle compress --help`
 
 ckstyle(检查)/fixstyle(自动修复)/compress(压缩，同名工具csscompress) 三个工具的命令行参数基本相同
+
+注意：从 CSSCheckStyle1.1 以后开始，ckstyle的命令调整为子命令模式，即：
+
+* ckstyle --> ckstyle check
+
+* fixstyle --> ckstyle fix
+
+* csscompress --> ckstyle compress
 
 不同之处：
 * fixstyle给出了额外的参数：--fixedExtension（修复后文件的扩展名）, --singleLine（自动修复并以单行模式格式化），--safeMode（安全模式，不做某些“本工具不能完全保证正确”的修复）
 * compress给出了额外的参数：--safeMode（安全模式，不做某些“本工具不能完全保证正确”的修复），--browsers（是否分浏览器压缩）, --compressExtension（压缩后文件的扩展名）, --combineFile（是否将多个压缩后文件合并），这些参数目前有的尚未实现~~~
 
+此外，自 CSSCheckStyle1.1 以后开始，新增如下几个命令：
+
+* ckstyle install/add/get pluginName  用于从 ckstyle-pm 安装新的规则插件
+* ckstyle uninstall/remove/rm pluginName 用于移除已安装规则插件
+* ckstyle installcmd/addcmd/getcmd commandName 用于从 ckstyle-pm 为ckstyle添加子命令，如 ckstyle demo xxx.css
+* ckstyle uninstallcmd/removecmd/rmcmd commandName 用于移除已安装的子命令
+
+安装的插件将放置在ckstyle/userplugins/plugins目录下
+
+安装的子命令将放置在 ckstyle/userplugins/commands目录下
+
 ### Examples
 <pre>
-ckstyle                        用默认配置检查当前目录下的所有css文件
-ckstyle -h / ckstyle --help    显示帮助
-ckstyle file.css               检查单个css
-ckstyle dir                    检查目录下的所有css
-ckstyle -r dir                 递归检查目录下的所有css
-ckstyle -p file.css            检查结果打印到控制台，默认是写file.css.ckstyle.txt文件
-ckstyle -r -p dir              同上
-ckstyle -c xxx.ini             使用xxx.ini中的配置进行检查
-ckstyle -c xxx.ini -r -p       使用xxx.ini中的配置进行递归检查，并将结果输出到控制台
-ckstyle -r --extension=.test.txt --include=all --exclude=none --errorLevel=2   使用配置的信息进行检查
+ckstyle check                        用默认配置检查当前目录下的所有css文件
+ckstyle check -h / ckstyle --help    显示帮助
+ckstyle check file.css               检查单个css
+ckstyle check dir                    检查目录下的所有css
+ckstyle check -r dir                 递归检查目录下的所有css
+ckstyle check -p file.css            检查结果打印到控制台，默认是写file.css.ckstyle.txt文件
+ckstyle check -r -p dir              同上
+ckstyle check -c xxx.ini             使用xxx.ini中的配置进行检查
+ckstyle check -c xxx.ini -r -p       使用xxx.ini中的配置进行递归检查，并将结果输出到控制台
+ckstyle check -r --extension=.test.txt --include=all --exclude=none --errorLevel=2   使用配置的信息进行检查
 
-ckstyle -c xxx.ini -r -p --extension=.test.txt --include=all --exclude=none --errorLevel=2 dirpath
+ckstyle check -c xxx.ini -r -p --extension=.test.txt --include=all --exclude=none --errorLevel=2 dirpath
 </pre>
 
 ### CommandLine Options
@@ -325,12 +344,19 @@ tab-spaces = 4
 
 [global-selectors(todo)]
 .nav, sidebar2 = home-frame2.css
+
+[plugin]
+plugin-a-prop = 1
+plugin-b-prop = 2
 ```
 ### Config Priority
 配置项的优先级：
 **命令行参数 > 指定的配置文件 > 当前路径下的配置文件 > 用户目录下的配置文件 > 工具的默认参数**
 
 ## Plugin Development
+
+** 目前ckstyle官方插件管理已经开启，在这里：<a href="https://github.com/wangjeaf/ckstyle-pm" target="_blank">ckstyle-pm</a>，大家可以通过ckstyle install/get/add pluginName来安装插件。欢迎贡献插件 **
+
 放置在`ckstyle/plugins`目录下的所有文件（Base.py和helper.py除外），每一个文件都对应一种检查规则。
 
 开发时可自行添加和修改，但是必须满足以下条件：
@@ -347,7 +373,7 @@ tab-spaces = 4
 
 6、每一个规则，需要在tests目录中添加对应的单元测试用例，测试用例请参见"Unit Test"小节
 
-7、每一个插件，需要按照json格式，编写此类对应的__doc__，以便为官网的规则集生成选项。
+7、每一个插件，需要按照json格式，编写此类对应的__doc__，以便为官网的此规则生成选项。
 
 8、插件类可以指定一个private属性，如果是private，则不会在官网中生成选项，而且private的类自动必选。
 

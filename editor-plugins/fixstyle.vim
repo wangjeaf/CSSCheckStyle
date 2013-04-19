@@ -18,7 +18,7 @@ function! g:Fixstyle(a)
 		return
 	endif
 
-    let ret = system("fixstyle -p ".expand('%:t'))
+    let ret = system("ckstyle fix -p ".expand('%:t'))
 
 	:g/.*/d
 	let @0 = ret
@@ -31,7 +31,7 @@ function! g:FixstyleSingleLine(a)
 		return
 	endif
 
-    let ret = system("fixstyle -p --singleLine ".expand('%:t'))
+    let ret = system("ckstyle fix -p --singleLine ".expand('%:t'))
 
 	:g/.*/d
 	let @0 = ret
@@ -44,7 +44,7 @@ function! g:FixstyleSafe(a)
 		return
 	endif
 
-    let ret = system("fixstyle -p --safeMode ".expand('%:t'))
+    let ret = system("ckstyle fix -p --safeMode ".expand('%:t'))
 
 	:g/.*/d
 	let @0 = ret
@@ -57,7 +57,7 @@ function! g:Ckstyle(a)
 		return
 	endif
 
-    let ret = system("ckstyle ".expand('%:t'))
+    let ret = system("ckstyle check ".expand('%:t'))
     if filereadable("".expand('%:t').".ckstyle.txt")
         echo "[ckstyle] has error, @see ".expand('%:t').".ckstyle.txt"
     else
@@ -72,7 +72,7 @@ function! g:CssCompress(a)
 		return
 	endif
 
-    let ret = system("csscompress -p ".expand('%:t'))
+    let ret = system("ckstyle compress -p ".expand('%:t'))
 
 	:g/.*/d
 	let @0 = ret

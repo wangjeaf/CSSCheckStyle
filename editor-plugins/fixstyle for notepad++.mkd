@@ -16,7 +16,7 @@
 ```
 npp_console off
 npp_save
-fixstyle --noBak --fixedExtension=none "$(FULL_CURRENT_PATH)"
+ckstyle fix --noBak --fixedExtension=none "$(FULL_CURRENT_PATH)"
 NPP_SENDMSG NPPM_RELOADFILE 0 "$(FULL_CURRENT_PATH)"
 ```
 
@@ -33,7 +33,7 @@ NPP_SENDMSG NPPM_RELOADFILE 0 "$(FULL_CURRENT_PATH)"
 ```
 npp_console off
 npp_save
-fixstyle --noBak --safeMode --fixedExtension=none "$(FULL_CURRENT_PATH)"
+ckstyle fix --noBak --safeMode --fixedExtension=none "$(FULL_CURRENT_PATH)"
 NPP_SENDMSG NPPM_RELOADFILE 0 "$(FULL_CURRENT_PATH)"
 ```
 
@@ -42,7 +42,7 @@ NPP_SENDMSG NPPM_RELOADFILE 0 "$(FULL_CURRENT_PATH)"
 ```
 npp_console off
 npp_save
-fixstyle --noBak --singleLine --fixedExtension=none "$(FULL_CURRENT_PATH)"
+ckstyle fix --noBak --singleLine --fixedExtension=none "$(FULL_CURRENT_PATH)"
 NPP_SENDMSG NPPM_RELOADFILE 0 "$(FULL_CURRENT_PATH)"
 ```
 
@@ -51,7 +51,7 @@ NPP_SENDMSG NPPM_RELOADFILE 0 "$(FULL_CURRENT_PATH)"
 ```
 npp_console off
 npp_save
-ckstyle "$(FULL_CURRENT_PATH)"
+ckstyle check "$(FULL_CURRENT_PATH)"
 NPP_OPEN "$(FULL_CURRENT_PATH).ckstyle.txt"
 ```
 如果报文件不存在是否创建，则说明代码没有问题（有点诡异哈，如果有对notepad++插件比较熟的，欢迎贡献）。
@@ -61,6 +61,6 @@ NPP_OPEN "$(FULL_CURRENT_PATH).ckstyle.txt"
 ```
 npp_console off
 npp_save
-csscompress --noBak --compressExtension=none "$(FULL_CURRENT_PATH)"
+ckstyle compress --noBak --compressExtension=none "$(FULL_CURRENT_PATH)"
 NPP_SENDMSG NPPM_RELOADFILE 0 "$(FULL_CURRENT_PATH)"
 ```

@@ -21,7 +21,7 @@
 * 按照以下说明进行配置：
 <pre>
 1、菜单文字：Fixstyle
-2、命令：fixstyle
+2、命令：ckstyle fix
 3、参数：-p $(FileName)
 4、初始目录：$(FileDir)
 5、动作：运行为文本过滤器（替换）
@@ -30,12 +30,12 @@
 
 * 关闭对话框后，在“工具”最下方，将出现CkStyle命令，点击，即可运行对应功能
 
-* FixstyleSingleLine/FixstyleSafe/CssCompress的配置方式与Fixstyle相同，CssCompress的第二步（命令）为`csscompress`
+* FixstyleSingleLine/FixstyleSafe/CssCompress的配置方式与Fixstyle相同，CssCompress的第二步（命令）为`ckstyle compress`
 
 * CkStyle的配置方式稍有差别，其配置如下：
 <pre>
 1、菜单文字：Ckstyle
-2、命令：ckstyle
+2、命令：ckstyle check
 3、参数：-p $(FileName)
 4、初始目录：$(FileDir)
 5、动作：运行为文本过滤器（输出窗口）

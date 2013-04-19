@@ -14,16 +14,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-setupFlag = False
+import sys
+
 try:
     from setuptools import setup
-    setupFlag = True
 except ImportError:
-    from distutils.core import setup
+    print '[CKstyle] ERROR please install "easy_install" firstly'
+    sys.exit(0)
 
 from distutils.command.install_data import install_data
 import os
-import sys
 
 cmdclasses = {'install_data': install_data} 
 
@@ -51,52 +51,25 @@ for dirpath, dirnames, filenames in os.walk(ckstyle_dir):
     elif filenames:
         data_files.append([dirpath, [os.path.join(dirpath, f) for f in filenames]])
 
-if setupFlag:
-    # auto generate ckstyle.exe
-    setup(
-        name = "CSSCheckStyle",
-        version = '1.0.0',
-        url = 'https://github.com/wangjeaf/CSSCheckStyle',
-        author = 'wangjeaf',
-        author_email = 'wangjeaf@gmail.com',
-        description = 'Check Code Style and more, for CSS.',
-        download_url = 'https://github.com/wangjeaf/CSSCheckStyle/archive/master.tar.gz',
-        install_requires=['python-gflags'],
-        packages = packages,
-        cmdclass = cmdclasses,
-        data_files = data_files,
-        # support auto-generation
-        entry_points = {
-            'console_scripts': [
-                'ckstyle = ckstyle.command.index:ckstyle'#,
-                #'fixstyle = ckstyle.command.index:fixstyle',
-                #'compress = ckstyle.command.index:compress',
-                #'csscompress = ckstyle.command.index:compress'
-            ]
-        },
-        classifiers = ['Intended Audience :: Developers',
-                       'Programming Language :: Python',
-                       'Topic :: Software Development :: CSS'
-                       ],
-    )
-else:
-    setup(
-        name = "CSSCheckStyle",
-        version = '1.0.0',
-        url = 'https://github.com/wangjeaf/CSSCheckStyle',
-        author = 'wangjeaf',
-        author_email = 'wangjeaf@gmail.com',
-        description = 'Check Code Style and more, for CSS.',
-        download_url = 'https://github.com/wangjeaf/CSSCheckStyle/archive/master.tar.gz',
-        install_requires=['python-gflags'],
-        packages = packages,
-        cmdclass = cmdclasses,
-        data_files = data_files,
-        # copy scripts if not support exe generation
-        # scripts = ['bin/ckstyle-admin.py', 'bin/ckstyle.bat', 'bin/fixstyle-admin.py', 'bin/fixstyle.bat', 'bin/compress-admin.py', 'bin/compress.bat'],
-        scripts = ['bin/ckstyle-admin.py', 'bin/ckstyle.bat'],
-        classifiers = ['Intended Audience :: Developers',
-                       'Programming Language :: Python',
-                       'Topic :: Software Development :: CSS'
-                       ],
-    )
+setup(
+    name = "CSSCheckStyle",
+    version = '1.0.0',
+    url = 'https://github.com/wangjeaf/CSSCheckStyle',
+    author = 'wangjeaf',
+    author_email = 'wangjeaf@gmail.com',
+    description = 'Check Code Style and more, for CSS.',
+    download_url = 'https://github.com/wangjeaf/CSSCheckStyle/archive/master.tar.gz',
+    install_requires=['python-gflags'],
+    packages = packages,
+    cmdclass = cmdclasses,
+    data_files = data_files,
+    entry_points = {
+        'console_scripts': [
+            'ckstyle = ckstyle.command.index:ckstyle'
+        ]
+    },
+    classifiers = ['Intended Audience :: Developers',
+                   'Programming Language :: Python',
+                   'Topic :: Software Development :: CSS'
+                   ],
+)

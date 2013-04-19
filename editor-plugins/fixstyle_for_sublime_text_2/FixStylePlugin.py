@@ -1,6 +1,7 @@
 #encoding=utf-8
 import sublime, sublime_plugin
 import os
+from helper import getCkstylePath
 
 class FixstyleCommand(sublime_plugin.TextCommand):
 
@@ -9,8 +10,7 @@ class FixstyleCommand(sublime_plugin.TextCommand):
         if os.path.splitext(path)[1] != '.css':
             sublime.error_message('Not a CSS file!')
             return
-
-        cmd = 'fixstyle -p "' + path + '"'
+        cmd = getCkstylePath() + ' fix -p "' + path + '"'
         returnValue = os.popen3(cmd)
 
         returnValue = returnValue[1].read() + returnValue[2].read()
