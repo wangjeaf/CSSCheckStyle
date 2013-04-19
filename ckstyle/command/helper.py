@@ -25,7 +25,7 @@ def fetchPlugin(name, version = ''):
 	fetch(name, version, pluginUrl, pluginRootDir, 'plugins')
 
 def fetchCmdPlugin(name, version = ''):
-	fetch(name, version, cmdPluginUrl, cmdPluginRootDir, 'commands')
+	return fetch(name, version, cmdPluginUrl, cmdPluginRootDir, 'commands')
 
 def removePlugin(name, version = ''):
 	remove(name, version, pluginRootDir)
@@ -113,6 +113,10 @@ def fetch(name, version, url, root, pluginType):
 	filePath = realpath(versionDir, './index.pyc')
 	if os.path.exists(filePath):
 		os.remove(filePath)
+
+	if pluginType == 'commands' and hasattr(plugin, 'doCommand'):
+		return getattr(plugin, 'doCommand')
+	return None
 
 if __name__ == '__main__':
 	print fetchPlugin('demo')

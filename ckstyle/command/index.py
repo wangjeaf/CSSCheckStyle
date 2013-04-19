@@ -4,16 +4,18 @@ from .ConsoleCommandParser import handleCkStyleCmdArgs, handleFixStyleCmdArgs, h
 from .PluginManager import install, uninstall, installcmd, uninstallcmd, handleExtraCommand
 import sys
 
-usage = '''[Commands]
-  ckstyle check    --options xxxx.css
-  ckstyle fix      --options xxxx.css
-  ckstyle compress --options xxxx.css
+usage = '''
+  [Commands]
+  
+   - ckstyle check    --options xxxx.css
+   - ckstyle fix      --options xxxx.css
+   - ckstyle compress --options xxxx.css
 
-  ckstyle install/add/get     pluginName
-  ckstyle uninstall/remove/rm pluginName
+   - ckstyle install/add/get      [pluginName]
+   - ckstyle uninstall/remove/rm  [pluginName]
 
-  ckstyle installcmd/addcmd/getcmd      commandName
-  ckstyle uninstallcmd/removecmd/rmcmd  commandName
+   - ckstyle installcmd/addcmd/getcmd      [commandName]
+   - ckstyle uninstallcmd/removecmd/rmcmd  [commandName]
 '''
 
 def ckstyle():
@@ -26,13 +28,21 @@ def ckstyle():
         'check' : handleCkStyleCmdArgs,
         'fix': handleFixStyleCmdArgs,
         'compress': handleCompressCmdArgs,
+        
         'install': install,
-        'uninstall': uninstall,
         'add': install,
+        'get': install,
+
+        'uninstall': uninstall,
         'remove': uninstall,
-        'addcmd': installcmd,
-        'removecmd': uninstallcmd,
+        'rm': uninstall,
+
         'installcmd': installcmd,
+        'addcmd': installcmd,
+        'getcmd': installcmd,
+
+        'rmcmd': uninstallcmd,
+        'removecmd': uninstallcmd,
         'uninstallcmd': uninstallcmd
     }
 
