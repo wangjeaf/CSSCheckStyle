@@ -355,7 +355,8 @@ plugin-b-prop = 2
 
 ## Plugin Development
 
-** 目前ckstyle官方插件管理已经开启，在这里：<a href="https://github.com/wangjeaf/ckstyle-pm" target="_blank">ckstyle-pm</a>，大家可以通过ckstyle install/get/add pluginName来安装插件。欢迎贡献插件 **
+**目前ckstyle官方插件管理已经开启，在这里：<a href="https://github.com/wangjeaf/ckstyle-pm" target="_blank">ckstyle-pm</a>**
+**大家可以通过ckstyle install/get/add pluginName来安装插件。欢迎贡献插件**
 
 放置在`ckstyle/plugins`目录下的所有文件（Base.py和helper.py除外），每一个文件都对应一种检查规则。
 
