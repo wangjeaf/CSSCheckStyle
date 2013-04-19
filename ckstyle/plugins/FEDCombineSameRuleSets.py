@@ -3,7 +3,8 @@
 
 from .Base import *
 from .helper import hasHackChars
-from ckstyle.browsers.BinaryRule import ALL
+from ckstyle.browsers.BinaryRule import ALL, STD
+from ckstyle.browsers.Detector import doRuleSetDetect
 class FEDCombineSameRuleSets(StyleSheetChecker):
 
     '''{
@@ -50,7 +51,17 @@ class FEDCombineSameRuleSets(StyleSheetChecker):
             for j in range(i + 1, length):                
                 if mapping[i][1] != mapping[j][1]:
                     selectorHistory.extend(splitedSelectors[j])
-                    continue                    
+                    continue
+
+                # 合并则遵循如下策略：
+                # 1、两者必须都与当前要求的浏览器兼容，即 browserI & browser != 0 and browserJ & browser != 0
+                # 2、两者的浏览器兼容性必须完全一致，即 browserI ^ browserJ == 0
+                # 第二点主要是因为有的属性合并以后，由于兼容性不同，受不兼容的selector影响，使本应该兼容的selector失效。
+                browserI = doRuleSetDetect(mapping[i][0])
+                browserJ = doRuleSetDetect(mapping[j][0])
+                if not (browserI & browser != 0 and browserJ & browser != 0 and browserI ^ browserJ == 0):
+                    continue
+
                 # bakcground-position is dangerous
                 if mapping[j][1].find('background-position') != -1:
                     selectorHistory.extend(splitedSelectors[j])
@@ -73,6 +84,7 @@ class FEDCombineSameRuleSets(StyleSheetChecker):
                 target = styleSheet.getRuleSets()[i]
                 src = styleSheet.getRuleSets()[j]
                 target.extendSelector(src)
+
                 # remove rule set
                 styleSheet.removeRuleSetByIndex(j)
                 selectorHistory.extend(splitedSelectors[j])
@@ -84,7 +96,7 @@ class FEDCombineSameRuleSets(StyleSheetChecker):
         mapping = []
         counter = 0
         for r in ruleSets:
-            if r.extra or hasHackChars(r.selector) or r.selector.find('%') != -1:
+            if r.extra:# or doRuleSetDetect(r.selector) != STD:
                 # make it impossible to equal
                 mapping.append(['extra', "do_not_combine_" + str(counter)])
                 counter = counter + 1

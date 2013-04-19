@@ -1,3 +1,43 @@
-div         {width: 100px}
-div div     {width: 100px}
-:link       {width: 100px}
+div {width:100px}
+div span {width:100px}
+:link {width:100px}
+div:active {width:100px}
+div:visited {width:100px}
+div:first-line {width:100px}
+div:first-letter {width:100px}
+div.classname {width:100px}
+div#id {width:100px}
+.classname.classname {width:100px}
+* {width:100px}
+div > span {width:100px}
+div:first-child {width:100px}
+div:hover {width:100px}
+div:focus {width:100px}
+div + span {width:100px}
+div[attr] {width:100px}
+div[attr="name"] {width:100px}
+div[attr~="name"] {width:100px}
+div:before {width:100px}
+div:after {width:100px}
+div ~ span {width:100px}
+div[attr^="name"] {width:100px}
+div[attr$="name"] {width:100px}
+div[attr*="name"] {width:100px}
+div[attr|="name"] {width:100px}
+div:root {width:100px}
+div:nth-of-type {width:100px}
+div:nth-last-of-type {width:100px}
+div:first-of-type {width:100px}
+div:last-of-type {width:100px}
+div:only-of-type {width:100px}
+div:only-child {width:100px}
+div:last-child {width:100px}
+div:nth-child {width:100px}
+div:nth-last-child {width:100px}
+div:empty {width:100px}
+div:target {width:100px}
+div:checked {width:100px}
+div::selection {width:100px}
+div:enabled {width:100px}
+div:disabled {width:100px}
+div:not(s) {width:100px}
