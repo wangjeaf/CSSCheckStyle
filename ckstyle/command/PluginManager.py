@@ -3,6 +3,7 @@
 
 import sys
 from .helper import fetchPlugin, fetchCmdPlugin, removePlugin, removeCmdPlugin, findCmdPlugin
+from .usage import newUsage
 
 def getNameAndVersion():
 	args = sys.argv
@@ -41,9 +42,9 @@ def uninstallcmd():
 		return
 	removeCmdPlugin(pluginName, version)
 
-def handleExtraCommand(command, usage):
+def handleExtraCommand(command):
 	if command.startswith('-') or command.startswith('.'):
-		print(usage)
+		newUsage()
 		return
 	if not findCmdPlugin(command):
 		print('[CKstyle ERROR] CKstyle can not find the subcommand: "%s".' % command)

@@ -3,25 +3,12 @@
 from .ConsoleCommandParser import handleCkStyleCmdArgs, handleFixStyleCmdArgs, handleCompressCmdArgs
 from .PluginManager import install, uninstall, installcmd, uninstallcmd, handleExtraCommand
 import sys
-
-usage = '''
-  [Commands]
-  
-   - ckstyle check    --options xxxx.css
-   - ckstyle fix      --options xxxx.css
-   - ckstyle compress --options xxxx.css
-
-   - ckstyle install/add/get      [pluginName]
-   - ckstyle uninstall/remove/rm  [pluginName]
-
-   - ckstyle installcmd/addcmd/getcmd      [commandName]
-   - ckstyle uninstallcmd/removecmd/rmcmd  [commandName]
-'''
+from .usage import newUsage
 
 def ckstyle():
     args = sys.argv
     if len(args) < 2:
-        print(usage)
+        newUsage()
         return
 
     commands = {
@@ -50,7 +37,7 @@ def ckstyle():
     if commands.has_key(subcommand):
         commands.get(subcommand)()
     else:
-        handleExtraCommand(subcommand, usage)
+        handleExtraCommand(subcommand)
 
     #handleCkStyleCmdArgs()
 

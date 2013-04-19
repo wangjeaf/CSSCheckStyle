@@ -1,9 +1,41 @@
 #/usr/bin/python
 #encoding=utf-8
 
+from .helper import cmdPluginRootDir, fetchCmdPlugin
+import os
+
 usage = '[Usage]'
 example = '[Example]'
 options = '[Options]'
+
+
+newUsageBase = '''
+  [Commands]
+  
+   - ckstyle check    --options xxxx.css
+   - ckstyle fix      --options xxxx.css
+   - ckstyle compress --options xxxx.css
+
+   - ckstyle install/add/get      [pluginName]
+   - ckstyle uninstall/remove/rm  [pluginName]
+
+   - ckstyle installcmd/addcmd/getcmd      [commandName]
+   - ckstyle uninstallcmd/removecmd/rmcmd  [commandName]
+'''
+
+def newUsage():
+    extraUsage = ''
+    for f in os.listdir(cmdPluginRootDir):
+        if f.startswith('__') or f.endswith('.py') or f.endswith('.pyc'):
+            continue
+        realPath = os.path.realpath(os.path.join(cmdPluginRootDir, f))
+        if os.path.isdir(realPath) and fetchCmdPlugin(f) is not None:
+            if extraUsage == '':
+                  extraUsage = '  [Installed Cmds]\n\n'
+            extraUsage = extraUsage + '   - ckstyle ' + f
+    if extraUsage != '':
+        extraUsage = '\n' + extraUsage
+    print newUsageBase + extraUsage + '\n'
 
 compressUsage = '''
 [compress]
