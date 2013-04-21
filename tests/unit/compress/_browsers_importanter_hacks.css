@@ -1,0 +1,7 @@
+.test[fd*=df], .test:not(xxx) {
+width:100px;
+}
+
+.test[fd~=df] {
+width:100px;
+}

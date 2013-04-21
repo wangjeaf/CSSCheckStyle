@@ -174,7 +174,7 @@ RULE_HACKS = [
 
 # some hacks
 RULESET_HACKS = [
-    [re.compile(r'\*html'),                 1, IE6,],
+    [re.compile(r'\*html'),                 1, IE6],
     [re.compile(r'\*\+html'),               1, IE7],
     [re.compile(r'\*:first\-child\+html'),  1, IE7],
     [re.compile(r'html>body'),              1, IE7 | IE8 | IE9PLUS],
@@ -218,8 +218,14 @@ RULESET_HACKS = [
     [re.compile(r'.+::selection'), 1, NOIE678],
     [re.compile(r'.+:enabled'), 1, NOIE678],
     [re.compile(r'.+:disabled'), 1, NOIE678],
-    [re.compile(r'.+:not\(.+\)'), 1, NOIE678],
+    [re.compile(r'.+:not\(.+\)'), 1, NOIE678]
 ]
+
+# .test[fd*=df], .test:not(xxx) {
+#      width:100px;
+# }
+# use .test:not(xxx) as important hack
+RULESET_HACKS.sort(lambda a, b: a[2] - b[2])
 
 # some hacks
 EXTRA_HACKS = [
