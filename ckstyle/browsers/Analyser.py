@@ -19,10 +19,13 @@ mapping = {
 	'std' : STD | NONEIE
 }
 
+allBrowsers = ','.join([x for x in mapping.keys() if x != 'webkit' and x != 'ie9plus'])
+
 def analyse(text):
 	if not text or text == '' or text=='none' or text == 'false':
 		return None
-
+	if text == 'all':
+		text = allBrowsers
 	text = text.lower()
 	splited = text.split(',')
 	browsers = {}
