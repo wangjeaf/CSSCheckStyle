@@ -2,7 +2,7 @@
 #encoding=utf-8
 
 import os
-
+import imp
 from .plugins.Base import *
 from ckstyle.cmdconsole.ConsoleClass import console
 from ckstyle.browsers.BinaryRule import ALL
@@ -75,6 +75,13 @@ class CssChecker():
         safeMode = self.config.safeMode
         safeModeExcludes = 'combine-same-rulesets'
 
+        def import_module(name):
+            mod = __import__(name)
+            components = name.split('.')
+            for comp in components[1:]:
+                mod = getattr(mod, comp)
+            return mod
+    
         root = os.path.realpath(os.path.join(__file__, '../userplugins/plugins'))
         modulePath = self.getModulePath(root)
         pluginClassName = 'PluginClass'
@@ -83,12 +90,17 @@ class CssChecker():
                 continue
             if not os.path.isdir(os.path.realpath(os.path.join(root, filename))):
                 continue
-            plugin = __import__(modulePath + filename + '.index', fromlist = [filename])
+            plugin = None
+            try:
+                plugin = import_module(modulePath + filename + '.index')
+            except Exception as e:
+                console.showError('Orz... can not load %s' % modulePath + filename + '.index')
+                continue
             pluginClass = None
             if hasattr(plugin, pluginClassName):
                 pluginClass = getattr(plugin, pluginClassName)
             else:
-                console.error('[TOOL] class %s should exist in %s.py' % (pluginClassName, filename + '/index'))
+                console.showError('class %s should exist in %s.py' % (pluginClassName, filename + '/index'))
                 continue
             self.registerPluginClass(pluginClass)
 

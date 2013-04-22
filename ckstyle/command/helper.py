@@ -83,7 +83,10 @@ def fetch(name, version, url, root, pluginType):
 			os.mkdir(versionDir)
 			open(realpath(versionDir, './__init__.py'), 'w').write('')
 	
+
+		
 	filePath = realpath(versionDir, './index.py')
+
 	if debug or not os.path.exists(filePath):
 		realUrl = url % (name, '' if version == '' else ('' + version + '/'))
 		console.showOk('Downloading %s%s from %s' % (name, version, realUrl))
@@ -101,8 +104,6 @@ def fetch(name, version, url, root, pluginType):
 			#urllib.urlretrieve(realUrl, realUrl)
 		except IOError as e:
 			console.error(str(e))
-	elif os.path.exists(filePath):
-		console.showOk('%s%s is already downloaded in %s' % (name, version, filePath))
 
 	versionPath = '' if replacedVer == '' else '.v' + replacedVer
 
@@ -110,7 +111,7 @@ def fetch(name, version, url, root, pluginType):
 
 	moduleName = "ckstyle.userplugins.%s.%s%s.index" % (pluginType, name, versionPath)
 	try:
-		plugin = __import__(moduleName, fromlist=[whatIWant])
+		plugin = __import__(moduleName, fromlist=["ckstyle.userplugins.%s.%s%s" % (pluginType, name, versionPath)])
 	except ImportError as e:
 		console.showError(('Can not import plugin %s : ' % name) + str(e))
 		return
@@ -119,13 +120,16 @@ def fetch(name, version, url, root, pluginType):
 	if os.path.exists(filePath):
 		os.remove(filePath)
 
-	if pluginType == 'commands' and hasattr(plugin, 'doCommand'):
-		return getattr(plugin, 'doCommand')
+	if pluginType == 'commands':
+		if hasattr(plugin, 'doCommand'):
+			return getattr(plugin, 'doCommand')
+		else:
+			console.showError('%s do not contain %s' % (moduleName, whatIWant))
+
 	return None
 
 if __name__ == '__main__':
-	pass
-	#print fetchPlugin('demo')
+	print fetchPlugin('demo')
 	#print fetchPlugin('demo', '1.0')
 	#print fetchCmdPlugin('democmd')
 	#print fetchCmdPlugin('democmd', '1.0')
