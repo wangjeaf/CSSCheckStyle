@@ -19,7 +19,7 @@ CSSCheckStyle
     website: <a href="http://www.csscheckstyle.com">CKstyle官方网站</a>;
     blog: <a href="http://fed.renren.com/archives/1427">《CSSCheckStyle——CSS的解析、检查、修复和压缩》</a>;
 	reference: <a href="http://fed.renren.com/archives/1212">《人人FED CSS编码规范》</a>;
-    export-tools: ckstyle(检查) / fixstyle(修复) / csscompress&compress(压缩)
+    export-tools: ckstyle(检查check/修复fix/压缩compress)
     docs: <a href="https://github.com/wangjeaf/CSSCheckStyle-docs">https://github.com/wangjeaf/CSSCheckStyle-docs</a>
 	language: python;
 }
@@ -66,7 +66,7 @@ CSSCheckStyle
 
 其他的fix只需要在对应的plugin文件中添加fix方法，即可实现fix和压缩
 
-此Demo执行的命令： `compress -p test.css`
+此Demo执行的命令： `ckstyle compress -p test.css`
 ### before
 ```css
 .test1 {
