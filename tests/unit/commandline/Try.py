@@ -1,6 +1,10 @@
 from helper import *
 
 def doTest():
+    res = doCheck([' ', 'check', '-p', realpath('./_test.css')])
+    res = res.find('[ERROR] 1. should add @author in the head of')
+    equal(res, 0, 'check by cmd line is ok')
+
     res = doFix([' ', 'fix', '-p', realpath('./_test.css')])
     expect = '''.test {
     width: 100px;
