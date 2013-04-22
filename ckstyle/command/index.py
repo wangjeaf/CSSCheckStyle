@@ -33,11 +33,11 @@ def ckstyle():
         'uninstallcmd': uninstallcmd
     }
 
-    subcommand = sys.argv[1]
+    subcommand = args[1]
     if commands.has_key(subcommand):
-        commands.get(subcommand)()
+        commands.get(subcommand)(args)
     else:
-        handleExtraCommand(subcommand)
+        handleExtraCommand(subcommand, args)
 
     #handleCkStyleCmdArgs()
 

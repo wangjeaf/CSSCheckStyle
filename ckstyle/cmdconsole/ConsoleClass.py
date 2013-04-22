@@ -1,21 +1,34 @@
 DEBUG = False
+PREFIX = '[CKstyle %s] '
 
 class console():
+
     @staticmethod
-    def show(msg):
-        print(msg)
+    def show(msg, t=""):
+        if t != "":
+            print(PREFIX % t + msg)
+        else:
+            print(msg)
+
+    @staticmethod
+    def showError(msg):
+        console.show(msg, "ERROR")
+
+    @staticmethod
+    def showOk(msg):
+        console.show(msg, "OK")
 
     @staticmethod
     def log(msg):
         if DEBUG:
-            print('[console.log] %s' % msg)
+            consle.show(msg, "LOG")
 
     @staticmethod
     def warn(msg):
         if DEBUG:
-            print('[console.warn] %s' % msg)
+            console.show(msg, "WARN")
 
     @staticmethod
     def error(msg):
         if DEBUG:
-            print('[console.error] %s' % msg)
+            console.show(msg, "ERROR")

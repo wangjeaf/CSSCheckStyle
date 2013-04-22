@@ -1,0 +1,8 @@
+.test {
+	width: 100px;
+}
+
+
+.test[prop] {
+	width: 100px;
+}

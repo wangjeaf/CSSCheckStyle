@@ -3,6 +3,7 @@
 import urllib
 import os
 import shutil
+from ckstyle.cmdconsole.ConsoleClass import console
 
 def realpath(a, b):
 	return os.path.realpath(os.path.join(a, b))
@@ -46,8 +47,8 @@ def remove(name, version, root):
 		else:
 			shutil.rmtree(versionDir)
 	shutil.rmtree(pluginDir)
-	print('[CKstyle OK] %s is removed from %s' % (name, root))
-	print('[CKstyle OK] Uninstall successfully!')
+	console.showOk('%s is removed from %s' % (name, root))
+	console.showOk('Uninstall successfully!')
 
 def findPlugin(name):
 	return find(name, pluginRootDir)
@@ -85,20 +86,24 @@ def fetch(name, version, url, root, pluginType):
 	filePath = realpath(versionDir, './index.py')
 	if debug or not os.path.exists(filePath):
 		realUrl = url % (name, '' if version == '' else ('' + version + '/'))
-		print('[CKstyle OK] Downloading %s%s from %s' % (name, version, realUrl))
+		console.showOk('Downloading %s%s from %s' % (name, version, realUrl))
 		request = urllib.urlopen(realUrl)
 		if request.getcode() != 200:
-			print('[CKstyle ERROR] Can not download file, status code : ' + str(request.getcode()))
+			console.showError('Can not download file, status code : ' + str(request.getcode()))
 			return
 		try:
 			f = open(filePath, 'w')
 			f.write(request.read())
-			print('[CKstyle OK] %s%s Downloaded in %s' % (name, version, filePath))
+			console.showOk('%s%s Downloaded in %s' % (name, version, filePath))
 			if pluginType == 'commands':
-				print('\n[CKstyle OK] Download successfully!\n[CKstyle OK] Please type "ckstyle %s" to execute.' % name)
+				console.showOk('Download successfully!')
+				console.showOk('Please type "ckstyle %s" to execute.' % name)
 			#urllib.urlretrieve(realUrl, realUrl)
 		except IOError as e:
-			print(str(e))
+			console.error(str(e))
+	elif os.path.exists(filePath):
+		console.showOk('%s%s is already downloaded in %s' % (name, version, filePath))
+
 	versionPath = '' if replacedVer == '' else '.v' + replacedVer
 
 	whatIWant = getWhatIWant(pluginType)
@@ -107,7 +112,7 @@ def fetch(name, version, url, root, pluginType):
 	try:
 		plugin = __import__(moduleName, fromlist=[whatIWant])
 	except ImportError as e:
-		print(('[CKstyle ERROR] Can not import plugin %s : ' % name) + str(e))
+		console.showError(('Can not import plugin %s : ' % name) + str(e))
 		return
 
 	filePath = realpath(versionDir, './index.pyc')
@@ -119,11 +124,12 @@ def fetch(name, version, url, root, pluginType):
 	return None
 
 if __name__ == '__main__':
-	print fetchPlugin('demo')
-	print fetchPlugin('demo', '1.0')
-	print fetchCmdPlugin('democmd')
-	print fetchCmdPlugin('democmd', '1.0')
-	print removePlugin('demo')
-	print removePlugin('demo', '1.0')
-	print removeCmdPlugin('demo')
-	print removeCmdPlugin('democmd', '1.0')
+	pass
+	#print fetchPlugin('demo')
+	#print fetchPlugin('demo', '1.0')
+	#print fetchCmdPlugin('democmd')
+	#print fetchCmdPlugin('democmd', '1.0')
+	#print removePlugin('demo')
+	#print removePlugin('demo', '1.0')
+	#print removeCmdPlugin('demo')
+	#print removeCmdPlugin('democmd', '1.0')

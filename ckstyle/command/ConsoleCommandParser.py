@@ -189,16 +189,16 @@ def parseCompressCmdArgs(defaultConfigFile, opts, args, debug = False):
     if extension is not None: args.extension = extension
     if combineFile is not None: args.combineFile = combineFile
     if noBak is not None: args.noBak = noBak
-
+    
     return config
 
-def _handle(options, dirHandler, fileHandler, argsParser, operation):
+def _handle(roughArgs, options, dirHandler, fileHandler, argsParser, operation):
     try:
-        opts, args = getopt.getopt(sys.argv[2:], "hrpc:", options)
+        opts, args = getopt.getopt(roughArgs[2:], "hrpc:", options)
     except getopt.GetoptError as e:
         console.error('[option] %s ' % e.msg)
         return
-
+    
     configFile = getConfigFilePath()
 
     if len(args) == 0 and len(opts) == 0:
@@ -226,26 +226,26 @@ def _handle(options, dirHandler, fileHandler, argsParser, operation):
     else:
         console.error('%s aborted! because "%s" is neither css file, nor dir' % (operation, filePath))
 
-def handleCkStyleCmdArgs():
+def handleCkStyleCmdArgs(args):
     options = ["help", "config=", "errorLevel=", "extension=", "include=", "exclude=", "json"]
     dirHandler = checkDir
     fileHandler = checkFile
     argsParser = parseCkStyleCmdArgs
     operation = 'ckstyle'
-    _handle(options, dirHandler, fileHandler, argsParser, operation)
+    _handle(args, options, dirHandler, fileHandler, argsParser, operation)
 
-def handleCompressCmdArgs():
+def handleCompressCmdArgs(args):
     options = ["help", "config=", "errorLevel=", "extension=", "include=", "exclude=", "browsers=", "compressExtension=", "combineFile=", "safeMode", "noBak"]
     dirHandler = compressDir
     fileHandler = compressFile
     argsParser = parseCompressCmdArgs
     operation = 'compress'
-    _handle(options, dirHandler, fileHandler, argsParser, operation)
+    _handle(args, options, dirHandler, fileHandler, argsParser, operation)
 
-def handleFixStyleCmdArgs():
+def handleFixStyleCmdArgs(args):
     options = ["help", "config=", "errorLevel=", "extension=", "include=", "exclude=", "fixedExtension=", "singleLine", "safeMode", "noBak"]
     dirHandler = fixDir
     fileHandler = fixFile
     argsParser = parseFixStyleCmdArgs
     operation = 'fixstyle'
-    _handle(options, dirHandler, fileHandler, argsParser, operation)
+    _handle(args, options, dirHandler, fileHandler, argsParser, operation)
