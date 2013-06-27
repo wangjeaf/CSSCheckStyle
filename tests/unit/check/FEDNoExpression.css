@@ -7,6 +7,9 @@
     0: should not use expression in ".abcdef:hover"
     0: should not use expression in ".expression-without-this-equals"
     0: should add hack for expression in ".expression-with-this-equals"
+
+    1: ".abcd, .abcd:hover, .abcdef:hover" contains the same rules in "FEDNoExpression.css"
+    1: ".expression-with-expressions, * html .with-star-html-do-not-need-hack" contains the same rules in "FEDNoExpression.css"
 }
 
 .abcd {

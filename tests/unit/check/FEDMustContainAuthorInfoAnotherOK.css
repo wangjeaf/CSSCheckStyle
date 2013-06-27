@@ -1,6 +1,7 @@
 /** zhifu.wang@renren-inc.com
  */
 @unit-test-expecteds {
+	1: ".test, .test-b, .test-c, .test-d" contains the same rules in "FEDMustContainAuthorInfoAnotherOK.css"
 }
 
 .test {

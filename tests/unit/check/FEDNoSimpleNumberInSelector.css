@@ -7,6 +7,8 @@
     1: do not simply use 1,2,3 as selector(use v1/step1/item1), in ".class6"
     1: do not simply use 1,2,3 as selector(use v1/step1/item1), in ".fdjas6"
     1: do not simply use 1,2,3 as selector(use v1/step1/item1), in ".test1000"
+
+    1: ".class1, .class2, .class6, .class .ok, .v6, .class .step3, .fdjas6, .test1000, .test-item111" contains the same rules in "FEDNoSimpleNumberInSelector.css"
 }
 
 .class1 {

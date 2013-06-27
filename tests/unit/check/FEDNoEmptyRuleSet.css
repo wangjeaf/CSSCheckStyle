@@ -6,6 +6,7 @@
     0: empty ruleset found ".test"
     0: empty ruleset found ".testa"
     0: empty ruleset found ".testb"
+    1: ".test, .testa, .testb" contains the same rules in "FEDNoEmptyRuleSet.css"
 }
 
 .test {

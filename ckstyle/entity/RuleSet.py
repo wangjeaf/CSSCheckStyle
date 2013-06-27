@@ -73,15 +73,19 @@ class RuleSet():
         result = result + '{' + compressed + '}'
         return result
 
-    def fixedRules(self, config):
+    def fixedRules(self, config = None):
         collector = []
-        spaces = ' ' * 4 if not config.fixToSingleLine else ''
+        spaces = ' ' * 4
+        seperator = '\n'
+        if config is not None and config.fixToSingleLine:
+            spaces = ''
+            seperator = ' '
         for rule in self._rules:
             collector.append(spaces + rule.fixed())
-        collected = ('\n' if not config.fixToSingleLine else ' ').join(collector)
+        collected = seperator.join(collector)
         return collected
 
-    def fixed(self, config):
+    def fixed(self, config = None):
         comment = self.comment if self.fixedComment == '' else self.fixedComment
         selector = self.selector if self.fixedSelector == '' else self.fixedSelector
         if selector.find(','):
@@ -93,7 +97,9 @@ class RuleSet():
                     continue
                 selectors.append(x)
             selector = ',\n'.join(selectors)
-        seperator = ' ' if config.fixToSingleLine else '\n'
+        seperator = '\n'
+        if config is not None and config.fixToSingleLine:
+            seperator = ' '
         result = selector + ' {' + seperator + self.fixedRules(config) + seperator + '}'
         if comment != '':
             result = comment + '\n' + result

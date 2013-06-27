@@ -6,6 +6,7 @@
     2: comment for ".test-chn-length" length should less than 80 per line
     2: comment for ".test-chn-and-eng-length" length should less than 80 per line
     2: comment for ".test-comment-multiline-length" length should less than 80 per line
+    1: ".test-comment-length, .test-chn-length, .test-chn-and-eng-length, .test-comment-multiline-length, .correct-comment" contains the same rules in "FEDCommentLengthLessThan80.css"
 }
 
 /** fdasfdsaffffffffffffffffffffffffffffffffffffffffffffffffffffffffftested code */

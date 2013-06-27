@@ -16,6 +16,10 @@
     0: unknown html tag "fff" found in "fff::selection"
     0: unknown html tag "fff" found in "fff.class::selection"
     0: should not put "HTMLtag" and ".class" together in "div.class::selection"
+
+    1: "* + html .input-button, * + html .input-submit, *html, *+html, .test #fuck-id, .test #fuck-idb, diva, .test ffda, ffda.test, .test div, ffda, .test ffda, .testb ffda, .testa .testb .testc ffda.testd, .testa ffda:hover, .testa ffda.test-class:hover" contains the same rules in "FEDUnknownHTMLTagName.css"
+    1: "button, input[type=button], details:not([open]) > *:not(summary)" contains the same rules in "FEDUnknownHTMLTagName.css"
+    1: "::selection, fff::selection, fff.class::selection, div.class::selection" contains the same rules in "FEDUnknownHTMLTagName.css"
 }
 
 @keyframes 'wobble' {

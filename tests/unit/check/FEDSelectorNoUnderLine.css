@@ -3,6 +3,8 @@
  */
 @unit-test-expecteds {
     1: should not use _ in selector ".selector-with-_"
+
+    1: ".selector-with-no-underscore, .selector-with-_" contains the same rules in "FEDSelectorNoUnderLine.css"
 }
 
 

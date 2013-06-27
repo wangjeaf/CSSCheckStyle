@@ -6,6 +6,8 @@
     1: should not use _ in selector ".is_uppeR"
     1: selector should use lower case, in ".is_uppeR"
     1: selector should use lower case, in ".AAA, .BBB"
+
+    1: ".IS-UPPER, .is_uppeR, .AAA, .BBB" contains the same rules in "FEDUseLowerCaseSelector.css"
 }
 
 .is-correct-lower-selector {

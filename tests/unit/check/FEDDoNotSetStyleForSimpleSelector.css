@@ -5,6 +5,8 @@
     0: should not set style for ".nav" in ".nav"
     0: should not set style for "#sidebar" in "#sidebar"
     0: should not set style for ".nav" in ".nav-b, .nav"
+    1: ".nav-b, .nav, .nav:hover" contains the same rules in "FEDDoNotSetStyleForSimpleSelector.css"
+    1: "#side-bar, #sidebar" contains the same rules in "FEDDoNotSetStyleForSimpleSelector.css"
 }
 
 .nav {

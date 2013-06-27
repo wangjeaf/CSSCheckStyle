@@ -4,6 +4,7 @@
 @unit-test-expecteds {
     0: unknown attribute name "^width" found in ".hack-by-extra-char"
     0: "width" is not in correct hacking way in ".error-hack-ie"
+    1: ".no-hack, .hack-ie-six, .hack-ie-seven, .hack-ie-six-and-seven" contains the same rules in "FEDHackAttributeInCorrectWay.css"
 }
 
 .hack-by-extra-char {

@@ -12,6 +12,8 @@
     2: selector should end with only one space ".multih, .multii"
     2: selector should end with only one space ".multin, .multio"
     2: selector should end with only one space ".multij, .multik"
+
+    1: ".multia, .multiaa, .multiaaa,   .multiaaaa, .multi-selector, .multi-selectorb, .multib , .multic, .multid,  .multie, .multif,  .multig, .multih, .multii, .multij, .multik, .multil , .multim, .multip,   .multiq" contains the same rules in "FEDMultiLineSelectors.css"
 }
 
 .multia, .multiaa { width: 100px; height: 100px; }

@@ -7,6 +7,8 @@
     2: should have "only one space" before the opening brace in ".many-spaces-end"
     2: selector should end with only one space ".single-has-enter"
     2: selector should end with only one space ".many-spaces-end"
+
+    1: ".single-has-enter, .single-extra-space, .many-spaces-end" contains the same rules in "FEDSingleLineSelector.css"
 }
 
 .single-ok { width: 100px; height: 100px; }

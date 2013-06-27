@@ -9,6 +9,9 @@
     2: should have one "space" before value of "width" in ".extra-space-before-value"
     2: found extra "space" after value of "width" in ".extra-space-after-value"
     1: each rule in ".extra-space-after-value" need semicolon in the end, "width" has not
+
+    1: ".extra-space-end, .extra-space-before-value, .extra-space-after-value" contains the same rules in "FEDSingleLineSpaces.css"
+    1: ".correct-single-line-styles, .single-line-no-space" contains the same rules in "FEDSingleLineSpaces.css"
 }
 
 .correct-single-line-styles { width: 100px; height: 100px; }

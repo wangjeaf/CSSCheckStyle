@@ -5,6 +5,7 @@
     0: please remove low performance selector "*" from "* > div"
     0: please remove low performance selector "*" from "div *"
     0: do not use low performance selector ">" in "* > div"
+    1: "* > div, div *" contains the same rules in "FEDNoStarInSelector.css"
 }
 
 * > div {

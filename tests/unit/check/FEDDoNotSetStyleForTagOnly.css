@@ -5,6 +5,7 @@
     0: should not set style for html tag in "div"
     0: should not set style for html tag in "div, .class"
     0: should not set style for html tag in "div, html"
+    1: "div, div, .class, div, html, .test div, div:hover" contains the same rules in "FEDDoNotSetStyleForTagOnly.css"
 }
 
 div {

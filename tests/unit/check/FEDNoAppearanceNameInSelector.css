@@ -4,6 +4,7 @@
 @unit-test-expecteds {
     1: should not use appearance word "red" in ".color-red"
     1: should not use appearance word "float" in ".float-left"
+    1: ".float-left, .topic" contains the same rules in "FEDNoAppearanceNameInSelector.css"
 }
 
 .is-correct-name {

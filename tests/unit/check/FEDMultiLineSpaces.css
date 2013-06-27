@@ -10,6 +10,9 @@
     2: should have 4 spaces before "width" in ".five-more-spaces"
     2: should have 4 spaces before "nav-down" in ".css-three-attrs-no-prefix-extra-space"
     2: should have (only) one "space" before value of "width" in ".test-space-before-value"
+
+    1: ".test-space-before-value, .no-space, .one-space, .two-spaces, .three-spaces, .four-spaces, .five-spaces, .five-more-spaces" contains the same rules in "FEDMultiLineSpaces.css"
+    1: ".css-three-attrs-no-prefix-extra-space, .css-three-attrs-no-prefix-no-extra" contains the same rules in "FEDMultiLineSpaces.css"
 }
 
 .test-space-before-value {

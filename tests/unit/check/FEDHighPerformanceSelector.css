@@ -22,6 +22,8 @@
     0: should not use ~=,^=,|=,$=,*= in selector of ".div[class$=xxx]"
 
     0: should not put "HTMLtag" and ".class" together in "div.class::selection"
+
+    1: ".div[class*=xxx], .div[class|=xxx], .div[class$=xxx], .div[class^=xxx], .div[class~=xxx], div#test, .a .b .c .d .e .f, body div ul li, body .a .b li, body.class ul li, body.class ul .class .a, ul.test li, ul li, ol li, dl dt, dl dd" contains the same rules in "FEDHighPerformanceSelector.css"
 }
 
 div.class::selection {

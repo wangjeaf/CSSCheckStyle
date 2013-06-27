@@ -26,6 +26,9 @@
     2: should have 1(only) space before css3 prop "-moz-animation-delay" in ".single-css-attr"
     2: should have 1(only) space before css3 prop "-o-animation-delay" in ".single-css-attr"
     2: css3 prop "border-radius" should align to right in ".border-radius-is-not-ok-if-prefix"
+
+    1: ".css-three-attrs-no-order, .single-css-attr, .keep-in-order, .not-keep-in-order" contains the same rules in "FEDCss3PropSpaces.css"
+    1: ".box-shadow-no-order, .box-shadow-has-webkit" contains the same rules in "FEDCss3PropSpaces.css"
 }
 
 .css-three-attrs-no-order {

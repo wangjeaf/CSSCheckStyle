@@ -15,6 +15,9 @@
     2: should have one "space" before "width" in ".no-space-after-first-brace"
     2: selector should end with only one space ".no-space-after-selector"
     2: selector should end with only one space ".too-many-space-after-selector"
+
+    1: ".correct-single-line-styles, .multi-selector, .multi-selectorb, .no-space-before-closing, .too-space-before-closing, .multia, .multib" contains the same rules in "FEDSingleLineBraces.css"
+    1: ".no-space-after-selector, .too-many-space-after-selector, .test-space-before-selector, .no-space-after-first-brace, .too-many-space-after-first-brace" contains the same rules in "FEDSingleLineBraces.css"
 }
 
 .correct-single-line-styles { width: 100px; height: 100px; }

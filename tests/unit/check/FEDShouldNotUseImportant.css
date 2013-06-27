@@ -5,6 +5,8 @@
     0: Should not use !important in "width" of ".test"
     0: Should not use !important in "width" of ".testa"
     0: Should not use !important in "width" of ".testb"
+
+    1: ".test, .testa" contains the same rules in "FEDShouldNotUseImportant.css"
 }
 
 .test {

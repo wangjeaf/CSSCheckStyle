@@ -23,13 +23,32 @@ class FEDCombineSameRuleSets(StyleSheetChecker):
 
     def __init__(self):
         self.id = 'combine-same-rulesets'
-        self.errorMsg_empty = '"%s" and "%s" contains same rules, should be combined in ${file}"'
+        self.errorMsg_empty = '"%s" contains the same rules in "${file}"'
         self.errorMsg = ''
-        self.errorLevel = ERROR_LEVEL.ERROR
+        self.errorLevel = ERROR_LEVEL.WARNING
 
     # can be checked correctly only after reorder/fix/compress, so do not check
     def check(self, styleSheet, config):
-        return True 
+        ruleSets = styleSheet.getRuleSets()
+        mapping = self._gen_hash(ruleSets, ALL)
+        length = len(mapping)
+
+        errors = {}
+        for i in range(length):
+            for j in range(i + 1, length):
+                if mapping[i][1] == mapping[j][1]:
+                    cssText = mapping[i][1]
+                    if not errors.has_key(cssText):
+                        errors[cssText] = []
+                        errors[cssText].append(mapping[i][0])
+                        errors[cssText].append(mapping[j][0])
+                    elif mapping[j][0] not in errors[cssText]:
+                        errors[cssText].append(mapping[j][0])
+                    #errors.append(self.errorMsg_empty % (mapping[i][0], mapping[j][0]))
+        if len(errors.keys()) == 0:
+            return True
+        msgs = [(self.errorMsg_empty % ', '.join(x)) for x in errors.values()]
+        return msgs 
 
     def fix(self, styleSheet, config):
         browser = config._curBrowser if config._curBrowser is not None else ALL

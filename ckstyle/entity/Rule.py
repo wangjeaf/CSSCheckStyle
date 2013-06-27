@@ -39,8 +39,8 @@ class Rule():
         return name + ':' + Cleaner.clean(value) + ';'
 
     def fixed(self):
-        name = self.name if self.fixedName == '' else self.fixedName
-        value = self.value if self.fixedValue == '' else self.fixedValue
+        name = self.strippedName if self.fixedName == '' else self.fixedName
+        value = self.strippedValue if self.fixedValue == '' else self.fixedValue
         return name + ': ' + Cleaner.clean(value) + ';'
 
     def getRuleSet(self):

@@ -8,6 +8,8 @@
     2: every name/value should in single line in ".multi-brace-no-enter-another"
     2: should have (only) one "space" before value of "width" in ".multi-brace-no-enter"
     2: should have (only) one "space" before value of "width" in ".multi-brace-no-enter-another"
+
+    1: ".multi-a, .multi-no-enter-before-open-brace, .multi-space-after-brace, .multi-brace-no-enter, .multi-brace-no-enter-another" contains the same rules in "FEDMultiLineBraces.css"
 }
 
 .multi-a {

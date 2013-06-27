@@ -2,6 +2,7 @@
  */
 @unit-test-expecteds {
     0: should add @author in the head of "FEDMustContainAuthorInfoAnother.css"
+    1: ".test, .test-b, .test-c, .test-d" contains the same rules in "FEDMustContainAuthorInfoAnother.css"
 }
 
 .test {
